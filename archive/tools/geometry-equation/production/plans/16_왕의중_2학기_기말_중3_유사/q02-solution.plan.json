@@ -1,0 +1,179 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2sqrt(3)"
+      },
+      {
+        "id": "derived_BC",
+        "ownerSegment": "sBC",
+        "text": "2",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 2번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 2번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q02_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q02_solution_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q02_solution_s2",
+      "condition": "실제 그리는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q02_solution_l0",
+      "condition": "선분 sAB의 표기 2sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q02_solution_l1",
+      "condition": "선분 sBC의 표기 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\tan A = \\dfrac{\\overline{BC}}{\\overline{AB}} = \\dfrac{\\sqrt{3}}{3}$이므로 $$\\overline{BC} = 2\\sqrt{3} \\times \\dfrac{\\sqrt{3}}{3} = 2$$ 피타고라스 정리에 의하여 $$\\overline{AC} = \\sqrt{(2\\sqrt{3})^2 + 2^2} = \\sqrt{12 + 4} = \\sqrt{16} = 4$$ 따라서 각 $C$에 대하여 $\\cos C = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\dfrac{2}{4} = \\dfrac{1}{2}$이다. 정답은 ③이다."
+}

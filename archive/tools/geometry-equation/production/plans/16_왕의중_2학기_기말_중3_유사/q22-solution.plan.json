@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "C",
+          "D",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived_BD",
+        "ownerSegment": "sBD",
+        "text": "5sqrt(3)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 22번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 22번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q22_solution_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q22_solution_s2",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q22_solution_s3",
+      "condition": "실제 그리는 선분 D–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q22_solution_s4",
+      "condition": "실제 그리는 선분 B–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q22_solution_l0",
+      "condition": "선분 sAB의 표기 5",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q22_solution_l1",
+      "condition": "선분 sDA의 표기 10",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q22_solution_l2",
+      "condition": "선분 sCD의 표기 8",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q22_solution_l3",
+      "condition": "선분 sBD의 표기 5sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q22_solution_a0",
+      "condition": "각 B–A–D의 60 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q22_solution_a1",
+      "condition": "각 C–D–B의 30 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABD$에서 $\\angle A = 60^\\circ$, $\\overline{AB} = 5\\text{ cm}$이므로 $$\\overline{BD} = \\overline{AB}\\tan 60^\\circ = 5\\sqrt{3}\\text{ (cm)}$$ 따라서 $\\triangle ABD$의 넓이는 $$\\triangle ABD = \\dfrac{1}{2} \\times 5 \\times 5\\sqrt{3} = \\dfrac{25\\sqrt{3}}{2}\\text{ (cm}^2\\text{)}$$ $\\triangle BCD$에서 $\\overline{BD} = 5\\sqrt{3}\\text{ cm}$, $\\overline{CD} = 8\\text{ cm}$, $\\angle CDB = 30^\\circ$이므로 $$\\triangle BCD = \\dfrac{1}{2} \\times 5\\sqrt{3} \\times 8 \\times \\sin 30^\\circ = 20\\sqrt{3} \\times \\dfrac{1}{2} = 10\\sqrt{3}\\text{ (cm}^2\\text{)}$$ 따라서 $\\square ABCD$의 넓이는 $$\\dfrac{25\\sqrt{3}}{2} + 10\\sqrt{3} = \\dfrac{45\\sqrt{3}}{2}\\text{ (cm}^2\\text{)}$$"
+}

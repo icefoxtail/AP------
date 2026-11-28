@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "16_왕의중_2학기_기말_중3_유사 3번 문제의 주어진 원, 길이, 각과 선분 관계",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 3번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q03_problem_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q03_problem_s1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q03_problem_s2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q03_problem_s3",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q03_problem_a0",
+      "condition": "각 D–A–C의 x 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dDB",
+        "from": "D",
+        "to": "B",
+        "label": "2",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "sourceQuote": "다음 그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $C$에서 $\\overline{AB}$에 내린 수선의 발을 $D$라 하면 $\\overline{AD} = 6$, $\\overline{BD} = 2$이다. $\\angle A = x^\\circ$일 때, $\\sin x^\\circ$의 값은?"
+}

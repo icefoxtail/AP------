@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "226"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "314"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 44,
+        "label": "44",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 68,
+        "label": "68",
+        "color": "WARM",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "OM",
+          "ON"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "25_연향중_2학기_기말_중3_유사 2번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 2번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q02_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q02_solution_s1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q02_solution_s2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q02_solution_s3",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q02_solution_s4",
+      "condition": "실제 그리는 선분 O–N",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q02_solution_a0",
+      "condition": "각 B–A–C의 44 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q02_solution_a1",
+      "condition": "각 A–B–C의 68 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q02_solution_c0",
+      "condition": "원 c의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "원의 중심 $O$에서 두 현 $AB, AC$까지의 거리가 $\\overline{OM} = \\overline{ON}$으로 같다. 한 원에서 중심으로부터 같은 거리에 있는 두 현의 길이는 같으므로 $$ \\begin{aligned} \\overline{AB} = \\overline{AC} \\end{aligned} $$ 따라서 $\\triangle ABC$는 꼭짓점이 $A$인 이등변삼각형이다. 삼각형의 세 내각의 크기의 합은 $180^\\circ$이고 꼭지각이 $\\angle BAC = 44^\\circ$이므로 밑각 $\\angle x$의 크기는 $$ \\begin{aligned} \\angle x &= \\dfrac{180^\\circ - 44^\\circ}{2} \\ &= \\dfrac{136^\\circ}{2} \\ &= 68^\\circ \\end{aligned} $$ 따라서 정답은 ②이다."
+}

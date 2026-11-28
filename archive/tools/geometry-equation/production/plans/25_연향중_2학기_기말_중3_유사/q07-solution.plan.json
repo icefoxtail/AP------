@@ -1,0 +1,329 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "71"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "151"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "221"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAB",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "ACarc",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR"
+      },
+      {
+        "id": "BDarc",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "D",
+        "side": "MINOR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle_ABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_APC",
+        "refs": [
+          "A",
+          "P",
+          "C"
+        ],
+        "value": 70,
+        "label": "70",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "caption": "25_연향중_2학기_기말_중3_유사 7번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "sourceQuote": "$\\angle ABC = 35^\\circ$는 호 $AC$를 바라보는 원주각이므로 호 $AC$의 크기는 $$ \\begin{aligned} \\wideparen{AC} = 2 \\times 35^\\circ = 70^\\circ \\end{aligned} $$ 조건에서 $\\wideparen{AC} = \\wideparen{BD}$이므로 호 $BD$의 크기도 $70^\\circ$이다. 두 현 $AB$와 $CD$가 원 내부의 점 $P$에서 만나므로 두 현이 이루는 각 $\\angle APC$의 크기는 마주 보는 두 호의 크기의 합의 절반이다. $$ \\begin{aligned} \\angle APC &= \\dfrac{\\wideparen{AC} + \\wideparen{BD}}{2} \\ &= \\dfrac{70^\\circ + 70^\\circ}{2} \\ &= 70^\\circ \\end{aligned} $$ 따라서 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "q07_solution_s0",
+      "condition": "실제 그리는 선분 A–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q07_solution_s1",
+      "condition": "실제 그리는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q07_solution_s2",
+      "condition": "실제 그리는 선분 C–P",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q07_solution_s3",
+      "condition": "실제 그리는 선분 P–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q07_solution_a0",
+      "condition": "각 A–B–C의 35 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q07_solution_a1",
+      "condition": "각 A–P–C의 70 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q07_solution_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q07_solution_arc0",
+      "condition": "호 A–C의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q07_solution_arc1",
+      "condition": "호 B–D의 그림 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 7번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE"
+}

@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "arcs": [],
+    "angles": [
+      {
+        "id": "angle_BAO",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 70,
+        "label": "70",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_BCO",
+        "refs": [
+          "B",
+          "C",
+          "O"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_ADC",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 140,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "caption": "반지름으로 만든 두 이등변삼각형과 원에 내접한 사각형",
+  "sourceQuote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고 $\\angle BAO = 70^\\circ$, $\\angle BCO = 30^\\circ$일 때, $\\angle ADC$의 크기는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "q09_problem_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q09_problem_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q09_problem_s2",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q09_problem_s3",
+      "condition": "실제 그리는 선분 D–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q09_problem_s4",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q09_problem_s5",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q09_problem_s6",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q09_problem_a0",
+      "condition": "각 B–A–O의 70 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q09_problem_a1",
+      "condition": "각 B–C–O의 30 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q09_problem_a2",
+      "condition": "각 A–D–C의 x 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q09_problem_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 9번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE"
+}

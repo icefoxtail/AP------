@@ -1,0 +1,349 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "18"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAPC",
+        "refs": [
+          "A",
+          "P",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "8pi",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "4pi",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "25_연향중_2학기_기말_중3_유사 22번 문제의 주어진 원, 길이, 각과 선분 관계",
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 22번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22_problem_s0",
+      "condition": "실제 그리는 선분 A–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q22_problem_s1",
+      "condition": "실제 그리는 선분 C–P",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q22_problem_s2",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q22_problem_l0",
+      "condition": "선분 OA의 표기 12",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q22_problem_a0",
+      "condition": "각 A–P–C의 30 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q22_problem_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q22_problem_arc0",
+      "condition": "호 A–B의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q22_problem_arc1",
+      "condition": "호 C–D의 그림 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "sourceQuote": "[서·논술형 2] 다음 그림과 같이 반지름의 길이가 $12,\\mathrm{cm}$인 원 $O$에서 점 $P$는 두 현 $\\overline{AB}$와 $\\overline{CD}$의 연장선의 교점이다. $\\wideparen{AB} = 8\\pi,\\mathrm{cm}$, $\\wideparen{CD} = 4\\pi,\\mathrm{cm}$, $\\angle APC = 30^\\circ$일 때, 호 $\\wideparen{AC}$의 길이를 구하고 그 과정을 서술하시오. [7점]"
+}

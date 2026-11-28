@@ -1,0 +1,352 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "22",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "N",
+    "C",
+    "D",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sOM",
+          "sON"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "2"
+      },
+      {
+        "id": "lON",
+        "ownerSegment": "sON",
+        "text": "2"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 11번 문제의 주어진 원, 길이, 각과 선분 관계",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 11번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q11_problem_s0",
+      "condition": "실제 그리는 선분 A–M",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q11_problem_s1",
+      "condition": "실제 그리는 선분 M–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q11_problem_s2",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q11_problem_s3",
+      "condition": "실제 그리는 선분 O–N",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q11_problem_s4",
+      "condition": "실제 그리는 선분 C–N",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q11_problem_s5",
+      "condition": "실제 그리는 선분 N–D",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q11_problem_s6",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q11_problem_l0",
+      "condition": "선분 sOM의 표기 2",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q11_problem_l1",
+      "condition": "선분 sON의 표기 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q11_problem_c0",
+      "condition": "원 k의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 원의 중심 $O$에서 $\\overline{AB}$, $\\overline{CD}$에 내린 수선의 발을 각각 $M, N$이라 하자. $\\overline{OA} = 2\\sqrt{5}\\text{ cm}$, $\\overline{OM} = \\overline{ON} = 2\\text{ cm}$일 때, $\\overline{CD}$의 길이는?"
+}

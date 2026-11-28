@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived_AOC",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arAC",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arCB",
+        "circle": "k",
+        "center": "O",
+        "from": "C",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rgSector",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A",
+              "to": "C"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rgTri",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOA",
+        "from": "O",
+        "to": "A",
+        "label": "2sqrt(3)",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 10번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 10번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q10_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q10_solution_s1",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q10_solution_s2",
+      "condition": "실제 그리는 선분 C–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q10_solution_a0",
+      "condition": "각 A–B–C의 30 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q10_solution_a1",
+      "condition": "각 A–O–C의 60 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q10_solution_arc0",
+      "condition": "호 A–C의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q10_solution_arc1",
+      "condition": "호 C–B의 그림 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "rightAngles": [],
+  "sourceQuote": "호 $AC$에 대한 원주각이 $\\angle ABC = 30^\\circ$이므로 중심각은 $\\angle AOC = 2 \\times 30^\\circ = 60^\\circ$이다. 부채꼴 $AOC$의 넓이는 $$\\pi \\times (2\\sqrt{3})^2 \\times \\dfrac{60}{360} = 12\\pi \\times \\dfrac{1}{6} = 2\\pi\\text{ (cm}^2\\text{)}$$ $\\triangle OBC$에서 $\\overline{OB} = \\overline{OC} = 2\\sqrt{3}\\text{ cm}$이고 $\\angle BOC = 180^\\circ - 60^\\circ = 120^\\circ$이므로 $$\\triangle OBC = \\dfrac{1}{2} \\times 2\\sqrt{3} \\times 2\\sqrt{3} \\times \\sin(180^\\circ - 120^\\circ) = 6 \\times \\dfrac{\\sqrt{3}}{2} = 3\\sqrt{3}\\text{ (cm}^2\\text{)}$$ 따라서 색칠한 부분의 넓이는 $(2\\pi + 3\\sqrt{3})\\text{ cm}^2$이다. 정답은 ①이다."
+}

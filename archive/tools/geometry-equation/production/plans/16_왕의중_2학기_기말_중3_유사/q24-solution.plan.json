@@ -1,0 +1,418 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "16_왕의중_2학기_기말_중3_유사 24번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 24번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q24_solution_s0",
+      "condition": "실제 그리는 선분 P–T",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q24_solution_s1",
+      "condition": "실제 그리는 선분 P–A",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q24_solution_s2",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q24_solution_s3",
+      "condition": "실제 그리는 선분 B–O",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q24_solution_s4",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q24_solution_l0",
+      "condition": "선분 sPT의 표기 12",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q24_solution_l1",
+      "condition": "선분 sPA의 표기 6",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q24_solution_l2",
+      "condition": "선분 sAB의 표기 12",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q24_solution_l3",
+      "condition": "선분 sBO의 표기 7",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q24_solution_l4",
+      "condition": "선분 sOA의 표기 11",
+      "mappedTo": "planeMarks.expressionLabels[4]"
+    },
+    {
+      "id": "q24_solution_c0",
+      "condition": "원 k의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "1925"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "144"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "265"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-2100"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "132"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "265"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-55"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "432"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "265"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "60"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "396"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "265"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "11"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "T",
+    "O",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPT",
+        "ownerSegment": "sPT",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lPA",
+        "ownerSegment": "sPA",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lBO",
+        "ownerSegment": "sBO",
+        "text": "7",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_OA",
+        "ownerSegment": "sOA",
+        "text": "11",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "rightAngles": [],
+  "sourceQuote": "반직선 $PB$가 원 $O$와 다시 만나는 점을 $X$라 하면 접선과 현이 이루는 각의 성질에 의하여 $\\angle PTA = \\angle PXT$이므로 $\\triangle PTA \\sim \\triangle PXT$ (AA 닮음)이다. 따라서 $\\overline{PT}^2 = \\overline{PA} \\times \\overline{PX}$이므로 $$12^2 = 6 \\times \\overline{PX} \\implies \\overline{PX} = 24\\text{ (cm)}$$ 그러므로 $\\overline{AX} = \\overline{PX} - \\overline{PA} = 24 - 6 = 18\\text{ cm}$이다. 현 $AX$의 중점을 $M$이라 하면 $\\overline{OM} \\perp \\overline{AX}$이고 $\\overline{AM} = 9\\text{ cm}$, $\\overline{BM} = \\overline{AB} - \\overline{AM} = 12 - 9 = 3\\text{ cm}$이다. 원 $O$의 반지름을 $r\\text{ cm}$라 하면 직각삼각형 $OMA$와 $OMB$에서 피타고라스 정리에 의하여 $$r^2 - 9^2 = \\overline{OM}^2 = 7^2 - 3^2 \\implies r^2 - 81 = 49 - 9 = 40$$ $$r^2 = 121 \\implies r = 11\\text{ (cm)}$$"
+}

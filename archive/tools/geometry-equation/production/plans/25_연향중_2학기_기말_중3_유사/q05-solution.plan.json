@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "BAR",
+        "offset": 2
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAF",
+        "ownerSegment": "AF",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_BC",
+        "ownerSegment": "BC",
+        "text": "6",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "caption": "25_연향중_2학기_기말_중3_유사 5번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 5번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q05_solution_s0",
+      "condition": "실제 그리는 선분 A–F",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_s1",
+      "condition": "실제 그리는 선분 F–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_s2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_s3",
+      "condition": "실제 그리는 선분 C–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q05_solution_l0",
+      "condition": "선분 AF의 표기 6",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q05_solution_l1",
+      "condition": "선분 BC의 표기 6",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q05_solution_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "rightAngles": [],
+  "sourceQuote": "삼각형의 꼭짓점에서 내접원에 그은 두 접선의 길이는 서로 같다. 점 $A$에서 그은 두 접선이므로 $$ \\begin{aligned} \\overline{AE} = \\overline{AF} = 6,\\mathrm{cm} \\end{aligned} $$ 따라서 $\\overline{BF}$와 $\\overline{CE}$의 길이는 각각 다음과 같다. $$ \\begin{aligned} \\overline{BF} &= \\overline{AB} - \\overline{AF} = 10 - 6 = 4,\\mathrm{cm} \\ \\overline{CE} &= \\overline{AC} - \\overline{AE} = 8 - 6 = 2,\\mathrm{cm} \\end{aligned} $$ 점 $B$와 $C$에서 그은 접선의 길이도 각각 같으므로 $$ \\begin{aligned} \\overline{BD} = \\overline{BF} = 4,\\mathrm{cm}, \\quad \\overline{CD} = \\overline{CE} = 2,\\mathrm{cm} \\end{aligned} $$ 따라서 선분 $\\overline{BC}$의 길이는 $$ \\begin{aligned} \\overline{BC} &= \\overline{BD} + \\overline{CD} \\ &= 4 + 2 = 6,\\mathrm{cm} \\end{aligned} $$ 따라서 정답은 ⑤이다."
+}

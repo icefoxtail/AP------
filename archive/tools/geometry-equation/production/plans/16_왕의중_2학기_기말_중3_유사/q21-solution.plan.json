@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "P"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBP",
+        "ownerSegment": "sBP",
+        "text": "16",
+        "unit": "m"
+      },
+      {
+        "id": "derived_AP",
+        "ownerSegment": "sPA",
+        "text": "8sqrt(7)",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_BH",
+        "ownerSegment": "sBH",
+        "text": "8",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_PH",
+        "ownerSegment": "sPH",
+        "text": "8sqrt(3)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "24",
+        "unit": "m",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "solutionRight",
+      "refs": [
+        "B",
+        "H",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 21번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 21번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q21_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q21_solution_s1",
+      "condition": "실제 그리는 선분 B–P",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q21_solution_s2",
+      "condition": "실제 그리는 선분 P–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q21_solution_s3",
+      "condition": "실제 그리는 선분 P–H",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q21_solution_s4",
+      "condition": "실제 그리는 선분 B–H",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q21_solution_l0",
+      "condition": "선분 sBP의 표기 16",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q21_solution_l1",
+      "condition": "선분 sPA의 표기 8sqrt(7)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q21_solution_l2",
+      "condition": "선분 sBH의 표기 8",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q21_solution_l3",
+      "condition": "선분 sPH의 표기 8sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q21_solution_a0",
+      "condition": "각 A–B–P의 60 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceQuote": "점 $P$에서 직선 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $BPH$에서 삼각비를 이용하면 $$\\overline{BH} = \\overline{BP}\\cos 60^\\circ = 16 \\times \\dfrac{1}{2} = 8\\text{ (m)}$$ $$\\overline{PH} = \\overline{BP}\\sin 60^\\circ = 16 \\times \\dfrac{\\sqrt{3}}{2} = 8\\sqrt{3}\\text{ (m)}$$ $\\overline{BH} = 8 < \\overline{AB} = 24$이므로 점 $H$는 선분 $AB$ 위에 있고 $$\\overline{AH} = \\overline{AB} - \\overline{BH} = 24 - 8 = 16\\text{ (m)}$$ 직각삼각형 $AHP$에서 피타고라스 정리에 의하여 $$\\overline{AP} = \\sqrt{\\overline{AH}^2 + \\overline{PH}^2} = \\sqrt{16^2 + (8\\sqrt{3})^2} = \\sqrt{256 + 192} = \\sqrt{448} = 8\\sqrt{7}\\text{ (m)}$$"
+}

@@ -1,0 +1,391 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "71"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "141"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "241"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T",
+    "U",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCT",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "sCU",
+      "refs": [
+        "C",
+        "U"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "ABarc",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      },
+      {
+        "id": "BCarc",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle_BCA",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_ACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_TCD",
+        "refs": [
+          "T",
+          "C",
+          "D"
+        ],
+        "value": 50,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "caption": "두 호 AB, BC가 같고 원의 C에 접선을 그은 사각형",
+  "sourceQuote": "다음 그림에서 사각형 $ABCD$는 원에 내접하고 직선 $TT'$은 점 $C$에서의 접선이다. $\\wideparen{AB} = \\wideparen{BC}$, $\\angle BCA = 35^\\circ$, $\\angle ACD = 60^\\circ$일 때, 접선과 현이 이루는 각 $\\angle x$의 크기는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "q06_problem_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q06_problem_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q06_problem_s2",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q06_problem_s3",
+      "condition": "실제 그리는 선분 D–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q06_problem_s4",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q06_problem_s5",
+      "condition": "실제 그리는 선분 C–T",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q06_problem_s6",
+      "condition": "실제 그리는 선분 C–U",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q06_problem_a0",
+      "condition": "각 B–C–A의 35 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q06_problem_a1",
+      "condition": "각 A–C–D의 60 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q06_problem_a2",
+      "condition": "각 T–C–D의 x 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q06_problem_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q06_problem_arc0",
+      "condition": "호 A–B의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q06_problem_arc1",
+      "condition": "호 B–C의 그림 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 6번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE"
+}

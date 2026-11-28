@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "OB",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_PA",
+        "ownerSegment": "PA",
+        "text": "4sqrt(3)",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_PB",
+        "ownerSegment": "PB",
+        "text": "4sqrt(3)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_기말_중3_유사 4번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 4번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q04_solution_s0",
+      "condition": "실제 그리는 선분 P–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q04_solution_s1",
+      "condition": "실제 그리는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q04_solution_s2",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q04_solution_s3",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q04_solution_l0",
+      "condition": "선분 OB의 표기 4",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q04_solution_l1",
+      "condition": "선분 PA의 표기 4sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q04_solution_l2",
+      "condition": "선분 PB의 표기 4sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q04_solution_a0",
+      "condition": "각 A–P–B의 60 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q04_solution_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "원 밖의 한 점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{PA} = \\overline{PB}$이다. 선분 $OP$는 $\\angle APB$를 이등분하므로 $$ \\begin{aligned} \\angle BPO = \\dfrac{60^\\circ}{2} = 30^\\circ \\end{aligned} $$ 반지름 $\\overline{OB}$는 접선 $\\overline{PB}$에 수직이므로 $\\triangle PBO$는 $\\angle PBO = 90^\\circ$인 직각삼각형이다. $$ \\begin{aligned} \\tan 30^\\circ &= \\dfrac{\\overline{OB}}{\\overline{PB}} = \\dfrac{4}{\\overline{PB}} \\ \\dfrac{1}{\\sqrt{3}} &= \\dfrac{4}{\\overline{PB}} \\ \\overline{PB} &= 4\\sqrt{3},\\mathrm{cm} \\end{aligned} $$ 따라서 $\\overline{PA} = 4\\sqrt{3},\\mathrm{cm}$이므로 두 접선의 길이의 합은 $$ \\begin{aligned} \\overline{PA} + \\overline{PB} &= 4\\sqrt{3} + 4\\sqrt{3} \\ &= 8\\sqrt{3},\\mathrm{cm} \\end{aligned} $$ 따라서 정답은 ④이다."
+}

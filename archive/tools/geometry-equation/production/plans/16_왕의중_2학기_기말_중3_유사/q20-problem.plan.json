@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "16_왕의중_2학기_기말_중3_유사 20번 문제의 주어진 원, 길이, 각과 선분 관계",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 20번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q20_problem_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q20_problem_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q20_problem_s2",
+      "condition": "실제 그리는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q20_problem_s3",
+      "condition": "실제 그리는 선분 B–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q20_problem_l0",
+      "condition": "선분 sAB의 표기 8",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q20_problem_l1",
+      "condition": "선분 sBC의 표기 6",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q20_problem_c0",
+      "condition": "원 k의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "sourceQuote": "다음 그림과 같이 $\\angle B = 90^\\circ$인 직각삼각형 $ABC$의 변 $AB$를 지름으로 하는 원 $O$가 변 $AC$와 만나는 점을 $D$라 하자. $\\overline{AB} = 8\\text{ cm}$, $\\overline{BC} = 6\\text{ cm}$일 때, $\\overline{AD}$의 길이는?"
+}

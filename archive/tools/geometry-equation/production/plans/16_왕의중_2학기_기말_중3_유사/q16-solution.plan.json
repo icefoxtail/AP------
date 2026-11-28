@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "222"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "340"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAC",
+          "lBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "color": "BLUE",
+        "label": "1/5",
+        "labelKind": "MATH",
+        "labelPlacement": "LEADER"
+      },
+      {
+        "id": "arcCD",
+        "circle": "k",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "color": "WARM",
+        "label": "1/6",
+        "labelKind": "MATH",
+        "labelPlacement": "LEADER"
+      }
+    ],
+    "angles": [
+      {
+        "id": "derived_BPC",
+        "refs": [
+          "B",
+          "P",
+          "C"
+        ],
+        "value": 114,
+        "label": "114",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "hiddenPointNames": [
+    "O",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "16_왕의중_2학기_기말_중3_유사 16번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 16번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16_solution_s0",
+      "condition": "실제 그리는 선분 A–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q16_solution_s1",
+      "condition": "실제 그리는 선분 P–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q16_solution_s2",
+      "condition": "실제 그리는 선분 B–P",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q16_solution_s3",
+      "condition": "실제 그리는 선분 P–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q16_solution_a0",
+      "condition": "각 B–P–C의 114 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q16_solution_c0",
+      "condition": "원 k의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q16_solution_arc0",
+      "condition": "호 A–B의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q16_solution_arc1",
+      "condition": "호 C–D의 그림 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "rightAngles": [],
+  "sourceQuote": "호 $AB$의 길이가 원주의 $\\dfrac{1}{5}$이므로 호 $AB$에 대한 중심각은 $360^\\circ \\times \\dfrac{1}{5} = 72^\\circ$이고 원주각은 $$\\angle ACB = \\dfrac{72^\\circ}{2} = 36^\\circ$$ 호 $CD$의 길이가 원주의 $\\dfrac{1}{6}$이므로 호 $CD$에 대한 중심각은 $360^\\circ \\times \\dfrac{1}{6} = 60^\\circ$이고 원주각은 $$\\angle DBC = \\dfrac{60^\\circ}{2} = 30^\\circ$$ 따라서 $\\triangle PBC$에서 $$\\angle BPC = 180^\\circ - 36^\\circ - 30^\\circ = 114^\\circ$$ 따라서 정답은 ④이다."
+}

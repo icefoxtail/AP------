@@ -1,0 +1,428 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "115"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "17"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "115"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "115"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "115"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "115"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "98"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "115"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "115"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sAN",
+      "refs": [
+        "A",
+        "N"
+      ]
+    },
+    {
+      "id": "sNC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sMN",
+      "refs": [
+        "M",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sOM",
+          "sON"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAM",
+        "ownerSegment": "sAM",
+        "text": "7",
+        "unit": "cm"
+      },
+      {
+        "id": "lMN",
+        "ownerSegment": "sMN",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_BC",
+        "ownerSegment": "sBC",
+        "text": "18",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "N",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 480
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 12번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 12번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q12_solution_s0",
+      "condition": "실제 그리는 선분 A–M",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q12_solution_s1",
+      "condition": "실제 그리는 선분 M–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q12_solution_s2",
+      "condition": "실제 그리는 선분 A–N",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q12_solution_s3",
+      "condition": "실제 그리는 선분 N–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q12_solution_s4",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q12_solution_s5",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q12_solution_s6",
+      "condition": "실제 그리는 선분 O–N",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q12_solution_s7",
+      "condition": "실제 그리는 선분 M–N",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "q12_solution_l0",
+      "condition": "선분 sAM의 표기 7",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q12_solution_l1",
+      "condition": "선분 sMN의 표기 9",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q12_solution_l2",
+      "condition": "선분 sBC의 표기 18",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q12_solution_c0",
+      "condition": "원 k의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "중심에서 현에 내린 수선은 현을 이등분하므로 $M, N$은 각각 $\\overline{AB}, \\overline{AC}$의 중점이다. $\\overline{OM} = \\overline{ON}$이므로 두 현의 길이는 같아 $\\overline{AB} = \\overline{AC} = 2\\overline{AM} = 2 \\times 7 = 14\\text{ cm}$이다. $\\triangle ABC$에서 두 변 $AB, AC$의 중점 $M, N$을 이은 선분은 나머지 변 $BC$의 절반이므로 $$\\overline{BC} = 2\\overline{MN} = 2 \\times 9 = 18\\text{ (cm)}$$ 따라서 $\\triangle ABC$의 둘레의 길이는 $14 + 14 + 18 = 46\\text{ cm}$이다. 정답은 ②이다."
+}
