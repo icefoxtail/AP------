@@ -1,0 +1,20 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {"kind":"SET","label":"첫째 부등식","pieces":[{"lo":{"value":"2","state":"OPEN"},"hi":null}]},
+      {"kind":"SET","label":"둘째 부등식","pieces":[{"lo":null,"hi":{"value":"5","state":"CLOSED"}}]},
+      {"kind":"RESULT","label":"공통 정수","integerPoints":true}
+    ]
+  },
+  "numberLineCaption": {"text":"두 부등식의 공통 범위"},
+  "caption": "3x−7<4x−9에서 x>2, 4x−9≤2x+1에서 x≤5이므로 정수해는 3, 4, 5이다.",
+  "accessibilityDescription": "수직선 세 줄에서 x가 2보다 큰 구간, 5 이하인 구간, 두 구간에 공통인 정수 3·4·5를 나타낸다.",
+  "sourceConditions": [
+    {"id":"left","condition":"3x−7<4x−9에서 x>2이며 2는 제외","mappedTo":"numberLine.rows[0].pieces[0].lo"},
+    {"id":"right","condition":"4x−9≤2x+1에서 x≤5이며 5는 포함","mappedTo":"numberLine.rows[1].pieces[0].hi"},
+    {"id":"integers","condition":"양의 정수 x=3,4,5를 합한다","mappedTo":"numberLine.rows[2].integerPoints"}
+  ],
+  "newVisualInformation": ["부등식의 열린 끝점 2·닫힌 끝점 5 및 공통 범위의 세 정수점을 구분해 표시한다."]
+}

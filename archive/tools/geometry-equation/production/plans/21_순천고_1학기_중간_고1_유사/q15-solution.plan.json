@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["0","0","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-1,7],"viewport":[-2,8,-12,45],
+    "requiredPoints":[{"id":"T","x":3,"y":9}],
+    "overlays":{"lines":[{"id":"l","slope":"6","intercept":"-9"}]},
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"m=3, n=−9를 구한 뒤 예를 들어 a=0이면 y=x²와 공통 접선 y=6x−9는 T(3,9)에서 접한다.",
+  "accessibilityDescription":"포물선 y=x²와 직선 y=6x−9가 점 T(3,9)에서 한 번 만나는 접선 관계를 보여 주는 a=0의 예시 그래프다.",
+  "sourceConditions":[
+    {"id":"tangent","condition":"판별식 (2m−6)a+m²+n≡0에서 m=3,n=−9","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"example","condition":"a=0일 때 원래 함수는 y=x²; 모든 a의 증명은 해설의 항등식이 담당","mappedTo":"graphPlan.coefficients"},
+    {"id":"contact","condition":"x²=6x−9에서 (x−3)²=0으로 T(3,9)","mappedTo":"graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation":["항등식으로 구한 공통 접선의 의미를 특정 a=0의 실제 접점 하나로 시각화한다."]
+}
