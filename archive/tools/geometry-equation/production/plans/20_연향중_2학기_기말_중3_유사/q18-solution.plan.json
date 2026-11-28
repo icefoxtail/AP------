@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {"x":15,"y":20}, {"x":18,"y":22}, {"x":20,"y":24},
+      {"x":22,"y":25}, {"x":25,"y":28}, {"x":28,"y":30},
+      {"x":30,"y":35}, {"x":20,"y":15}, {"x":22,"y":18},
+      {"x":25,"y":22}, {"x":28,"y":24}, {"x":30,"y":25},
+      {"x":32,"y":30}, {"x":35,"y":28}, {"x":35,"y":32},
+      {"x":38,"y":34}, {"x":40,"y":35}, {"x":24,"y":20},
+      {"x":26,"y":23}, {"x":38,"y":32}
+    ],
+    "xRange": ["10", "45"],
+    "yRange": ["10", "45"],
+    "xStep": "5",
+    "yStep": "5",
+    "xTitle": "왼손 악력",
+    "yTitle": "오른손 악력",
+    "grid": true,
+    "equalUnits": true,
+    "diagonal": true,
+    "pointGroups": [
+      {
+        "points": [[15,20],[18,22],[20,24],[22,25],[25,28],[28,30],[30,35]],
+        "color": "WARM", "label": "조건 만족"
+      },
+      {
+        "points": [[20,15],[22,18],[25,22],[28,24],[30,25],[32,30],[35,28],[35,32],[38,34],[40,35],[24,20],[26,23],[38,32]],
+        "color": "BLUE", "label": "그 외"
+      }
+    ]
+  },
+  "caption": "기준선 y=x의 위쪽에 있는 학생 7명을 구분하여 악력 비율 풀이를 돕는 산점도",
+  "accessibilityDescription": "원본 악력 순서쌍 20개를 그렸다. 오른손 악력이 왼손보다 큰 경우인 기준선 위쪽의 점 7개를 강조한다.",
+  "newVisualInformation": [
+    "원본 산점도와 같은 좌표 20개 및 y=x 기준선을 사용한다.",
+    "해설에 쓰인 분자 7의 근거에 해당하는 7개 점을 별도 강조한다."
+  ],
+  "sourceConditions": [
+    {"id":"S18_DATA","condition":"원본 산점도에서 검증한 20명 자료","mappedTo":"chart.points"},
+    {"id":"S18_DIAGONAL","condition":"두 악력이 같을 때의 대각선 y=x","mappedTo":"chart.diagonal"},
+    {"id":"S18_ABOVE","condition":"y>x인 7명은 20명의 부분집합","mappedTo":"chart.pointGroups[0].points"},
+    {"id":"S18_OTHER","condition":"그 밖의 13명은 전체 자료에서 제외된 점","mappedTo":"chart.pointGroups[1].points"}
+  ]
+}

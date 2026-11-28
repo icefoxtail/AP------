@@ -1,0 +1,56 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"10"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"270"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"50"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"100"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"190"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"T","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"-10"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Tp","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"10"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O","A","B","C","D","T","Tp"],
+  "pointNames": {"Tp":"T'"},
+  "displayLines": [],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sBD","refs":["B","D"]},
+    {"id":"sTangent","refs":["T","Tp"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aBCD","refs":["B","C","D"],"value":110,"label":"110","factRole":"GIVEN","style":"ARC"},
+      {"id":"aABD","refs":["A","B","D"],"value":40,"label":"40","factRole":"GIVEN","style":"ARC"},
+      {"id":"aDAT","refs":["D","A","T"],"value":40,"label":"40","factRole":"DERIVED_INTERMEDIATE","style":"ARC"},
+      {"id":"aBATp","refs":["B","A","Tp"],"value":70,"label":"70","factRole":"DERIVED_INTERMEDIATE","style":"ARC"}
+    ],
+    "facts": [
+      {"kind":"ON_CIRCLE","circle":"circ","points":["A","B","C","D"]}
+    ]
+  },
+  "caption": "접현각 DAT는 40도, BAT'는 70도인 원에 내접한 사각형의 풀이 그림",
+  "accessibilityDescription": "원에 내접한 사각형 ABCD에서 BCD가 110도, ABD가 40도로 주어졌다. 접선과 두 현 AD, AB가 이루는 각은 각각 40도와 70도이다.",
+  "newVisualInformation": [
+    "접선과 현 AD의 각은 같은 호 AD를 보는 원주각 ABD와 같다는 관계를 보인다.",
+    "접선과 현 AB의 각은 원주각 ADB와 같아 70도임을 표시한다."
+  ],
+  "sourceConditions": [
+    {"id":"S09_CIRCLE","condition":"원에 내접한 사각형 ABCD","mappedTo":"planeMarks.facts[0]"},
+    {"id":"S09_TANGENT","condition":"점 A에서의 접선 AT","mappedTo":"displaySegments[5]"},
+    {"id":"S09_GIVEN_BCD","condition":"각 BCD는 110도","mappedTo":"planeMarks.angles[0]"},
+    {"id":"S09_GIVEN_ABD","condition":"각 ABD는 40도","mappedTo":"planeMarks.angles[1]"},
+    {"id":"S09_X","condition":"접현각 DAT는 40도","mappedTo":"planeMarks.angles[2]"},
+    {"id":"S09_Y","condition":"접현각 BAT'는 70도","mappedTo":"planeMarks.angles[3]"}
+  ],
+  "sourceQuote": "원 $O$에 내접하는 사각형 $ABCD$에서 대각의 합은 $180^\\circ$이므로 $$\\angle DAB = 180^\\circ - 110^\\circ = 70^\\circ$$ 접선과 현 $AD$가 이루는 각 $\\angle x$는 그 대각선이 이루는 원주각 $\\angle ABD$와 같으므로 $$\\angle x = \\angle ABD = 40^\\circ$$ 삼각형 $ABD$의 세 내각의 합은 $180^\\circ$이므로 $$\\angle ADB = 180^\\circ - 70^\\circ - 40^\\circ = 70^\\circ$$ 접선과 현 $AB$가 이루는 각 $\\angle y$는 원주각 $\\angle ADB$와 같으므로 $$\\angle y = \\angle ADB = 70^\\circ$$ 따라서 $\\angle x = 40^\\circ, \\angle y = 70^\\circ$이므로 정답은 ③이다."
+}
