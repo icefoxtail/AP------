@@ -264,7 +264,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-042",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q6-problem.svg",
+    "imageAlt": "파란 곡선 y=3^x와 이를 왼쪽 1, 위로 4만큼 옮긴 곡선 g를 함께 보인다. 점 P의 x좌표는 1이고 묻는 y좌표 a는 표기하지 않는다.",
+    "imageCaption": "파란 곡선 y=3^x와 이를 왼쪽 1, 위로 4만큼 옮긴 곡선 g를 함께 보인다. 점 P의 x좌표는 1이고 묻는 y좌표 a는 표기하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q6-solution.svg",
+    "solutionImageAlt": "이동 후 그래프는 y=3^(x+1)+4이며 x=1인 점 P(1,13)를 지난다. 따라서 a=13이다.",
+    "solutionImageCaption": "이동 후 그래프는 y=3^(x+1)+4이며 x=1인 점 P(1,13)를 지난다. 따라서 a=13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -308,7 +316,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-001",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q7-solution.svg",
+    "solutionImageAlt": "정의역은 x>4, 세로 점근선은 x=4이다. 함수는 증가하고 (5,3)을 지난다.",
+    "solutionImageCaption": "정의역은 x>4, 세로 점근선은 x=4이다. 함수는 증가하고 (5,3)을 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -484,7 +496,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q11-solution.svg",
+    "solutionImageAlt": "범위 3π/2<θ<2π이면 θ는 제4사분면, θ/2는 제2사분면이다. 방향만 보이기 위해 그린 대표 예시는 θ=5π/3, θ/2=5π/6이며 임의의 θ값을 고정한 해답은 아니다.",
+    "solutionImageCaption": "범위 3π/2<θ<2π이면 θ는 제4사분면, θ/2는 제2사분면이다. 방향만 보이기 위해 그린 대표 예시는 θ=5π/3, θ/2=5π/6이며 임의의 θ값을 고정한 해답은 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

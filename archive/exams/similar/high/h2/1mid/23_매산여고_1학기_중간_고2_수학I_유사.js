@@ -308,7 +308,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-037",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q7-problem.svg",
+    "imageAlt": "문제에 주어진 두 지수함수의 일부 개형을 비교한다. 구해야 할 평행이동량 m, n과 그 합은 표시하지 않는다.",
+    "imageCaption": "문제에 주어진 두 지수함수의 일부 개형을 비교한다. 구해야 할 평행이동량 m, n과 그 합은 표시하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q7-solution.svg",
+    "solutionImageAlt": "원래 y=3^(x+1)와 이동·y축 대칭 후의 y=9(1/3)^(x−1)+2를 비교한다. 목표 곡선의 수평점근선은 y=2이다.",
+    "solutionImageCaption": "원래 y=3^(x+1)와 이동·y축 대칭 후의 y=9(1/3)^(x−1)+2를 비교한다. 목표 곡선의 수평점근선은 y=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -396,7 +404,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-039",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q9-problem.svg",
+    "imageAlt": "문제에 주어진 y=3^|x−2|+5의 두 지수곡선 조각이 x=2에서 연결되는 개형이다. 미지 수평선 k의 위치와 정답 범위는 표시하지 않는다.",
+    "imageCaption": "문제에 주어진 y=3^|x−2|+5의 두 지수곡선 조각이 x=2에서 연결되는 개형이다. 미지 수평선 k의 위치와 정답 범위는 표시하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q9-solution.svg",
+    "solutionImageAlt": "y=3^|x−2|+5는 x=2의 최솟값 6을 기준으로 좌우 대칭이다. y=6은 한 점, 표본 y=8은 두 점에서 만난다.",
+    "solutionImageCaption": "y=3^|x−2|+5는 x=2의 최솟값 6을 기준으로 좌우 대칭이다. y=6은 한 점, 표본 y=8은 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -484,7 +500,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q11-solution.svg",
+    "solutionImageAlt": "풀이에서 θ=3π/4이므로 2θ=3π/2의 동경은 아래쪽, 6θ=9π/2의 동경은 위쪽으로 향해 서로 반대 방향이다.",
+    "solutionImageCaption": "풀이에서 θ=3π/4이므로 2θ=3π/2의 동경은 아래쪽, 6θ=9π/2의 동경은 위쪽으로 향해 서로 반대 방향이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -572,7 +592,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q13-solution.svg",
+    "solutionImageAlt": "t=θ/π로 환산하면 A∪B는 0≤t≤3/4인 구간과 별도의 고립점 t=5/4의 합집합이다.",
+    "solutionImageCaption": "t=θ/π로 환산하면 A∪B는 0≤t≤3/4인 구간과 별도의 고립점 t=5/4의 합집합이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -868,7 +892,12 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I_유사/q20-solution.svg",
+    "solutionImageAlt": "u=cos(x−π/3), −1≤u≤1에서 f=−u²−u+19/4의 꼭짓점은 최대 5, 오른쪽 끝점은 최소 11/4이다.",
+    "solutionImageCaption": "u=cos(x−π/3), −1≤u≤1에서 f=−u²−u+19/4의 꼭짓점은 최대 5, 오른쪽 끝점은 최소 11/4이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

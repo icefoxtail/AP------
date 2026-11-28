@@ -45,7 +45,11 @@ window.questionBank = [
     "score": 3.4,
     "sourceQid": 1,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q1"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q1",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q1-solution.svg",
+    "solutionImageAlt": "Q01 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 음의 y방향으로 열린 포물선과 초점 F를 함께 보면 부호를 확인할 수 있다.",
+    "solutionImageCaption": "Q01 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 음의 y방향으로 열린 포물선과 초점 F를 함께 보면 부호를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -93,7 +97,15 @@ window.questionBank = [
     "score": 3.6,
     "sourceQid": 2,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q2"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q2",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q2-problem.svg",
+    "imageAlt": "Q02 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선 위 초점현과 준선의 상대 위치를 시각화하면 비의 적용 순서가 보인다.",
+    "imageCaption": "Q02 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선 위 초점현과 준선의 상대 위치를 시각화하면 비의 적용 순서가 보인다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q2-solution.svg",
+    "solutionImageAlt": "Q02 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점현 AF·FB의 길이와 준선 거리 AM·BN의 일치 관계를 드러낸다.",
+    "solutionImageCaption": "Q02 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점현 AF·FB의 길이와 준선 거리 AM·BN의 일치 관계를 드러낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -141,7 +153,11 @@ window.questionBank = [
     "score": 3.7,
     "sourceQid": 3,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q3"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q3",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q3-solution.svg",
+    "solutionImageAlt": "Q03 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 장반축·단반축·초점거리의 직각 관계를 확인할 수 있다.",
+    "solutionImageCaption": "Q03 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 장반축·단반축·초점거리의 직각 관계를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -188,7 +204,11 @@ window.questionBank = [
     "score": 3.7,
     "sourceQid": 4,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q4"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q4",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q4-solution.svg",
+    "solutionImageAlt": "Q04 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 타원 접선과 y절편의 관계를 그래프에서 확인할 수 있다.",
+    "solutionImageCaption": "Q04 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 타원 접선과 y절편의 관계를 그래프에서 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -239,7 +259,11 @@ window.questionBank = [
     "score": 3.7,
     "sourceQid": 5,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q5"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q5",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q5-solution.svg",
+    "solutionImageAlt": "Q05 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 중심 이동과 점근선의 정확한 기울기를 비교할 수 있다.",
+    "solutionImageCaption": "Q05 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 중심 이동과 점근선의 정확한 기울기를 비교할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -337,7 +361,11 @@ window.questionBank = [
     "score": 3.7,
     "sourceQid": 7,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q7"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q7",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q7-solution.svg",
+    "solutionImageAlt": "Q07 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점·주축·허축 길이의 관계를 직각 관계로 연결할 수 있다.",
+    "solutionImageCaption": "Q07 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점·주축·허축 길이의 관계를 직각 관계로 연결할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -386,7 +414,11 @@ window.questionBank = [
     "score": 4,
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q8"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q8",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q8-solution.svg",
+    "solutionImageAlt": "Q08 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: x=t와 타원의 교점, 현의 반길이 계산을 확인할 수 있다.",
+    "solutionImageCaption": "Q08 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: x=t와 타원의 교점, 현의 반길이 계산을 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

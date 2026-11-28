@@ -223,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고2_유사/q8-solution.svg",
+    "solutionImageAlt": "사인법칙의 변 비 3:4:5는 직각삼각형의 변 길이 6,8,10으로 결정된다.",
+    "solutionImageCaption": "사인법칙의 변 비 3:4:5는 직각삼각형의 변 길이 6,8,10으로 결정된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -251,7 +255,15 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_제일고_1학기_중간_고2_유사/q9-problem.svg",
+    "imageAlt": "AB=3, BC=8, ∠ABC=60°인 삼각형이다. 구할 선분 AC의 길이는 표시하지 않는다.",
+    "imageCaption": "AB=3, BC=8, ∠ABC=60°인 삼각형이다. 구할 선분 AC의 길이는 표시하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고2_유사/q9-solution.svg",
+    "solutionImageAlt": "코사인법칙으로 AC²=3²+8²−2×3×8×cos60°=49이므로 AC=7이다.",
+    "solutionImageCaption": "코사인법칙으로 AC²=3²+8²−2×3×8×cos60°=49이므로 AC=7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -337,7 +349,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_제일고_1학기_중간_고2_유사/q12-problem.svg",
+    "imageAlt": "한 변이 1인 정사각형의 각 변을 3등분해 만든 3×3 격자에서 첫 시행의 가운데 작은 정사각형만 연한 회색으로 표시했다.",
+    "imageCaption": "한 변이 1인 정사각형의 각 변을 3등분해 만든 3×3 격자에서 첫 시행의 가운데 작은 정사각형만 연한 회색으로 표시했다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -421,7 +437,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고2_유사/q15-solution.svg",
+    "solutionImageAlt": "u=x/π로 놓으면 두 조건의 공통 범위는 1/4<u<5/6이다.",
+    "solutionImageCaption": "u=x/π로 놓으면 두 조건의 공통 범위는 1/4<u<5/6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -449,7 +469,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고2_유사/q16-solution.svg",
+    "solutionImageAlt": "풀이의 최대 k=48과 허용되는 표본 a=1/2에서 0<x<π/8 안의 코사인 곡선은 y=±1/2와 차례로 네 번 만난다. 이 표본은 일반 a의 교점 합을 이해하기 위한 것이다.",
+    "solutionImageCaption": "풀이의 최대 k=48과 허용되는 표본 a=1/2에서 0<x<π/8 안의 코사인 곡선은 y=±1/2와 차례로 네 번 만난다. 이 표본은 일반 a의 교점 합을 이해하기 위한 것이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -479,7 +503,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_제일고_1학기_중간_고2_유사/q17-problem.svg",
+    "imageAlt": "AB는 반원의 지름이고 호 BC를 B 쪽에서 삼등분한 점이 D, 호 CD의 중점이 E이다. ∠BAC는 45°이며 미지의 BC²는 표시하지 않는다.",
+    "imageCaption": "AB는 반원의 지름이고 호 BC를 B 쪽에서 삼등분한 점이 D, 호 CD의 중점이 E이다. ∠BAC는 45°이며 미지의 BC²는 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -605,7 +633,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고2_유사/q22-solution.svg",
+    "solutionImageAlt": "풀이에서 s=sin t (−1≤s≤1)로 치환하면 g(s)=s²−s+2이며, 닫힌 구간의 꼭짓점 (1/2,7/4)과 양 끝점 (−1,4), (1,2)를 비교한다.",
+    "solutionImageCaption": "풀이에서 s=sin t (−1≤s≤1)로 치환하면 g(s)=s²−s+2이며, 닫힌 구간의 꼭짓점 (1/2,7/4)과 양 끝점 (−1,4), (1,2)를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
