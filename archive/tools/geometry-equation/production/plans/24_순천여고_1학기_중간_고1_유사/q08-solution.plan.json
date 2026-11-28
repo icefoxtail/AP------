@@ -1,0 +1,9 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {"family":"multi-curve","viewport":[-3,7,-34,12],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["-15","-12","3"],"domain":["-2","6"],"color":"BLUE","label":"y=f(x)"}],"overlays":{"points":[{"id":"A","x":"2","y":"-27","coordinates":true},{"id":"B","x":"-1","y":"0","coordinates":true},{"id":"C","x":"5","y":"0","coordinates":true}],"polygons":[{"id":"ABC","points":["A","B","C"],"fill":"LIGHT"}],"segments":[{"id":"BC","from":"B","to":"C","length":true}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames": {"A":"A","B":"B","C":"C"},
+  "caption": "꼭짓점 A(2,−27), x절편 B(−1,0), C(5,0)으로 만든 삼각형의 넓이는 6×27/2=81이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선 위 꼭짓점 A와 두 x축 교점 B,C를 잇고, 삼각형 ABC의 넓이를 옅게 강조했다.",
+  "sourceConditions": [{"id":"function","condition":"y=3(x−2)²−27=3(x+1)(x−5)","mappedTo":"graphPlan.curves[0]"},{"id":"points","condition":"A(2,−27), B(−1,0), C(5,0)","mappedTo":"graphPlan.overlays.points"},{"id":"area","condition":"BC=6, 높이 27, 넓이 81","mappedTo":["graphPlan.overlays.polygons[0]","graphPlan.overlays.segments[0]"]}],
+  "newVisualInformation": ["최솟점과 두 근의 위치 및 넓이 산출에 쓰이는 삼각형의 밑변을 표시한다."]
+}

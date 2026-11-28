@@ -1,0 +1,8 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {"family":"piecewise-polynomial","pieces":[{"coefficients":["6","-1","1"]},{"coefficients":["5","1"]},{"coefficients":["9","-3","1"]}],"breakpoints":[{"x":"1","y":"6"},{"x":"2","y":"7"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"V","x":"1/2","y":"23/4"},{"id":"B","x":"1","y":"6"},{"id":"C","x":"2","y":"7"}],"axisTitles":{"x":"a","y":"합"},"axisTickValues":{"x":[],"y":[]}},
+  "caption": "최댓값 5라는 조건을 만족시키는 a+b는 a<1, 1≤a≤2, a>2의 세 조각이며 전체 최솟점은 (1/2,23/4)이다.",
+  "accessibilityDescription": "a에 따른 a+b의 세 연속된 조각 그래프에 경계 (1,6),(2,7)와 왼쪽 조각의 꼭짓점 (1/2,23/4)을 표시한다.",
+  "sourceConditions": [{"id":"left","condition":"a<1일 때 b=5+(a−1)², a+b=a²−a+6","mappedTo":"graphPlan.pieces[0]"},{"id":"middle","condition":"1≤a≤2일 때 b=5, a+b=a+5","mappedTo":"graphPlan.pieces[1]"},{"id":"right","condition":"a>2일 때 b=5+(a−2)², a+b=a²−3a+9","mappedTo":"graphPlan.pieces[2]"},{"id":"minimum","condition":"전체 최솟값은 a=1/2에서 23/4","mappedTo":"graphPlan.requiredPoints[0]"}],
+  "newVisualInformation": ["대칭축 a의 위치에 따른 세 구간을 한 그래프로 이어 그리고 전역 최솟점이 첫 구간에 있음을 확인한다."]
+}

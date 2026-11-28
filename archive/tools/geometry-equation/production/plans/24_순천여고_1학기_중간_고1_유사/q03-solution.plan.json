@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["2","7","-1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,7],"viewport":[-1,8,-1,18],"requiredPoints":[{"id":"T","x":3,"y":14},{"id":"V","x":3.5,"y":14.25}],"exactCoordinates":{"V":["7/2","57/4"]},"lines":[{"id":"L","slope":"1","intercept":"11","through":["T"],"tangentAt":"T"}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "포물선 y=−x²+7x+2와 직선 y=x+11은 T(3,14)에서 한 번만 만난다.",
+  "accessibilityDescription": "아래로 열린 포물선 위 점 T(3,14)에서 기울기 1인 직선 y=x+11이 접한다.",
+  "sourceConditions": [{"id":"parabola","condition":"f(x)=−x²+7x+2","mappedTo":"graphPlan.coefficients"},{"id":"tangent","condition":"판별식이 0일 때 k=11, 접점 x=3, y=14","mappedTo":["graphPlan.lines[0]","graphPlan.requiredPoints[0]"]},{"id":"vertex","condition":"포물선 꼭짓점 (7/2,57/4)","mappedTo":["graphPlan.requiredPoints[1]","graphPlan.exactCoordinates.V"]}],
+  "newVisualInformation": ["접점과 기울기가 실제로 일치하는 포물선·직선을 그린다."]
+}

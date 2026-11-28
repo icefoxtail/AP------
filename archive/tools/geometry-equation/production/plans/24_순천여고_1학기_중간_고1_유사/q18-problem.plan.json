@@ -1,0 +1,8 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {"family":"piecewise-polynomial","pieces":[{"coefficients":["-8","-2","1"]},{"coefficients":["8","2","-1"]},{"coefficients":["-8","-2","1"]}],"breakpoints":[{"x":"-2","y":"0"},{"x":"4","y":"0"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"L","x":"-2","y":"0"},{"id":"V","x":"1","y":"9"},{"id":"R","x":"4","y":"0"}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "주어진 함수 f(x)=|x²−2x−8|의 그래프. 직선의 매개변수 k와 교점 개수는 표시하지 않는다.",
+  "accessibilityDescription": "x=−2,4에서 x축에 닿고 그 사이가 위로 뒤집힌 절댓값 이차함수의 그래프만 그렸다. 답을 암시하는 직선이나 색칠은 없다.",
+  "sourceConditions": [{"id":"source","condition":"발문에 주어진 f(x)=|x²−2x−8|","mappedTo":"graphPlan.pieces"},{"id":"zeros","condition":"x²−2x−8=(x+2)(x−4), 영점 −2와 4","mappedTo":["graphPlan.breakpoints","graphPlan.requiredPoints[0]","graphPlan.requiredPoints[2]"]},{"id":"middle","condition":"−2≤x≤4에서 f(x)=−x²+2x+8, 가운데 봉우리 (1,9)","mappedTo":["graphPlan.pieces[1]","graphPlan.requiredPoints[1]"]}],
+  "newVisualInformation": ["문제에서 이미 정의한 절댓값 곡선의 세 구간만 보여 주고 정수 k의 범위를 선공개하지 않는다."]
+}

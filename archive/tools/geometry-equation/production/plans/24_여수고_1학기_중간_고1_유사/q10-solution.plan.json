@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["4/9","4/3","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,2],"viewport":[-3,2,-1,9],"requiredPoints":[{"id":"T","x":-0.6666666666666666,"y":0}],"exactCoordinates":{"T":["-2/3","0"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption": "a=2/3, b=4/9를 구한 후 k=0인 대표 사례는 f(x)=(x+2/3)²로 T(−2/3,0)에서 x축에 접한다.",
+  "accessibilityDescription": "x축에 접하는 위로 열린 포물선과 접점 T(−2/3,0)을 표시한다. k=0의 대표 사례이다.",
+  "sourceConditions": [{"id":"identity","condition":"(a−3k)²−(9k²−4k+b)=(4−6a)k+a²−b≡0이므로 a=2/3,b=4/9","mappedTo":"graphPlan.coefficients"},{"id":"sample","condition":"k=0에서 x²+(4/3)x+4/9=(x+2/3)²","mappedTo":["graphPlan.coefficients","graphPlan.requiredPoints[0]","graphPlan.exactCoordinates.T"]}],
+  "newVisualInformation": ["k와 무관하게 항상 접한다는 항등식 조건의 한 대표 그래프를 실제 접점으로 검산한다."]
+}

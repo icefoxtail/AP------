@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["3","-4","2"],"axisVariable":"k","sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,4],"viewport":[-2,4,-1,21],"requiredPoints":[{"id":"V","x":1,"y":1}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "x에 대한 최댓값 f(k)=2(k−1)²+1은 k=1에서 최소 1이다.",
+  "accessibilityDescription": "가로축 k에서 위로 열린 포물선 f(k)의 꼭짓점은 V(1,1)이다.",
+  "sourceConditions": [{"id":"maximum","condition":"y=−(x−k)²+2k²−4k+3이므로 f(k)=2k²−4k+3","mappedTo":"graphPlan.coefficients"},{"id":"minimum","condition":"f(k)=2(k−1)²+1, 최솟점 (1,1)","mappedTo":"graphPlan.requiredPoints[0]"}],
+  "newVisualInformation": ["첫 번째 최댓값 함수를 k에 대한 새 그래프로 표시하여 두 단계의 극값을 구별한다."]
+}
