@@ -926,7 +926,7 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
     "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q19-solution.plan.json",
-    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q19-solution.svg",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q19-solution-plan-repair.svg",
     "solutionImageAlt": "이차식의 교점 조건에서 도출한 세 k값 -2, 2, 6과 이웃한 값 사이 거리 4를 수직선에 표시",
     "solutionImageCaption": "이차식의 교점 조건에서 도출한 세 k값 -2, 2, 6과 이웃한 값 사이 거리 4를 수직선에 표시",
     "solutionImageSize": "full"

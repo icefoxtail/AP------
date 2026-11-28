@@ -799,10 +799,11 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "도형 종류의 항상 닮음 판정",
     "decisiveStep": "원이나다각형의고정각·변비와달리이등변삼각형은꼭지각이자유롭다는반례로구별한다.",
-    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 모양이 다른 두 이등변삼각형이 나란히 있고 각각 같은 두 변에 같은 눈금이 있다. 왼쪽은 꼭지각이 40°로 뾰족하고 오른쪽은 꼭지각이 100°로 납작하다.",
-    "solutionImageCaption": "예: 두 이등변삼각형의 꼭지각을 40°와 100°로 그렸다. 두 원, 두 정삼각형, 두 정사각형, 두 직각이등변삼각형은 각의 크기가 일정하게 정해져 항상 닮은 도형이다. 그러나 이등변삼각형은 두 변의 길이만 같고 꼭지각의 크기가 달라질 수 있어 그림처럼 닮음이 아닐 수 있다. 따라서 항상 닮은 도형이 아닌 것은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q15-solution-plan-repair.svg",
+    "solutionImageAlt": "꼭지각이 40°와 100°로 서로 다른 이등변삼각형의 반례. 두 삼각형은 닮음이 아니다.",
+    "solutionImageCaption": "꼭지각이 40°와 100°로 서로 다른 이등변삼각형의 반례. 두 삼각형은 닮음이 아니다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 16,

@@ -22,7 +22,7 @@ window.examData = {
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q1-problem-visual-v2.svg",
+    "image": "assets/images/21_팔마중_2학기_기말_중2_수학/q1_question-v2.svg",
     "question": "<p>1. 다음 두 그림에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, $x+y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q1-problem-visual-v2.svg\" alt=\"윗그림의 삼각형에서 BD=3 cm, AC=10 cm, EC=5 cm이고 AD=x cm이다. 아랫그림 ED=3 cm, EA=2 cm, AB=5 cm, BC=6 cm이고 AC=y cm이다. 두 그림 모두 가로로 그은 두 선이 나란하다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "content": "<p>1. 다음 두 그림에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, $x+y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_기말_중2_수학/q1-problem-visual-v2.svg\" alt=\"윗그림의 삼각형에서 BD=3 cm, AC=10 cm, EC=5 cm이고 AD=x cm이다. 아랫그림 ED=3 cm, EA=2 cm, AB=5 cm, BC=6 cm이고 AC=y cm이다. 두 그림 모두 가로로 그은 두 선이 나란하다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [

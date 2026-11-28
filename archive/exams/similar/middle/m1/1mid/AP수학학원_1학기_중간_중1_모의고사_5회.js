@@ -459,7 +459,11 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_5회/q16-solution.svg",
+    "solutionImageAlt": "한 변이 5/4 cm인 정사각형의 가로를 10% 늘이고 세로를 30% 줄인 직사각형의 가로와 세로를 나타낸다.",
+    "solutionImageCaption": "한 변이 5/4 cm인 정사각형의 가로를 10% 늘이고 세로를 30% 줄인 직사각형의 가로와 세로를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
