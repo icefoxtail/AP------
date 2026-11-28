@@ -142,7 +142,14 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
     if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1)throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'INTRINSIC_SVG'});
     createRun(input.runRoot,runId);
     // One real-Archive measurement of the target at the given solutionImageScale (undefined = the page's default rule: 80% of the column since 2026-11-21, 60% before); the evidence it leaves is what the policy is derived from.
+    const measuredScales=new Map();
     const measureAt=async scale=>{
+      const previous=measuredScales.get(scale);
+      if(previous){
+        state.paths=previous.paths;
+        state.evidence=previous.evidence;
+        return previous.measured;
+      }
       const preflightRun=path.join(input.productionDir,scale===undefined?'display-envelope-preflight':'display-envelope-preflight-scale'+scale);fs.mkdirSync(preflightRun,{recursive:true});
       state.paths={runRoot:rel(input.runRoot),matrix:rel(path.join(preflightRun,'archive-render-matrix.json'))};
       let measured;
@@ -152,6 +159,7 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
       const names=fs.readdirSync(measured.captureFolder),rowName=names.find(name=>name===identity.assetId+'-sol-desktop-envelope.json'),shotName=names.find(name=>name.endsWith('-'+identity.assetId+'-envelope-context.png'));
       if(!rowName||!shotName)throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:'ENVELOPE_RAW_CAPTURE_MISSING'});
       state.evidence={observationSha256:objectSha(measured.observation),matrixSha256:bytesSha(fs.readFileSync(path.join(preflightRun,'archive-render-matrix.json'))),archiveRow:fileRef(root,rel(path.join(measured.captureFolder,rowName))),screenshot:fileRef(root,rel(path.join(measured.captureFolder,shotName))),engineSha256:'sha256:'+measured.rowEvidence.engineSha256};
+      measuredScales.set(scale,{measured,paths:state.paths,evidence:state.evidence});
       return measured;
     };
     // The default A4 display (80% of the column = 253 css px) is always the binding side (the phone shows a canvas at that same 253 px at most, with a lower font floor), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
