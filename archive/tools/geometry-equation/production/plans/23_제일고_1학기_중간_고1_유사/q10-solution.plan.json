@@ -1,0 +1,21 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints": ["A","B","H"],
+  "displaySegments": [{"id":"sAH","refs":["A","H"]},{"id":"sHB","refs":["H","B"]},{"id":"sAB","refs":["A","B"]}],
+  "rightAngles": [{"id":"rH","refs":["A","H","B"]}],
+  "planeMarks":{"expressionLabels":[{"id":"dx","ownerSegment":"sAH","text":"6"},{"id":"dy","ownerSegment":"sHB","text":"6"}]},
+  "coordinateLabels": ["A","B"],
+  "coordinateCanvas":{"width":620,"height":440},
+  "caption":"A(−2,4)와 B(4,−2)의 좌표 차는 가로 6, 세로 6이므로 AB=√(6²+6²)=6√2이다.",
+  "accessibilityDescription":"점 A와 B를 잇는 대각선 AB, 수평·수직 보조선 AH·HB, 직각 H와 두 길이 6을 표시한다.",
+  "sourceConditions":[
+    {"id":"points","condition":"A(−2,4), B(4,−2)","mappedTo":"mathPlan.nodes[A,B]"},
+    {"id":"legs","condition":"수평 변화 6, 수직 변화 −6, 직각삼각형의 두 변 길이 6","mappedTo":["mathPlan.nodes[H]","displaySegments","rightAngles[0]","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["거리 공식의 제곱항 두 개가 서로 수직인 두 변에 대응함을 보여 준다."]
+}

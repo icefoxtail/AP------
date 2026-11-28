@@ -1,0 +1,20 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"-2"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"-2"},"c":{"kind":"integer","value":"-8"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"C","op":"LINE_INTERSECTION","inputs":["L","M"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"3"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"-14"}},"outputType":"LINE","factRole":"CONCLUSION"}
+  ]},
+  "displayPoints":["C"],"displayLines":["L","M","N"],
+  "lineLabels":[{"nodeId":"L","form":"GENERAL"},{"nodeId":"M","form":"GENERAL"},{"nodeId":"N","form":"GENERAL"}],
+  "coordinateLabels":["C"],"coordinateCanvas":{"width":720,"height":490},
+  "caption":"l, m의 교점 C(4,−2)를 구한 뒤 기울기 3인 직선 3x−y−14=0을 그린다.",
+  "accessibilityDescription":"좌표평면의 두 직선 l과 m이 점 C(4,−2)에서 만나며, C를 지나는 세 번째 직선은 기울기 3인 주어진 기준 직선과 평행하다.",
+  "sourceConditions":[
+    {"id":"given","condition":"l:x+y−2=0, m:x−2y−8=0","mappedTo":"mathPlan.nodes[L,M]"},
+    {"id":"cross","condition":"l,m을 연립하면 C(4,−2)","mappedTo":["mathPlan.nodes[C]","coordinateLabels"]},
+    {"id":"parallel","condition":"3x−y+5=0과 평행하며 C를 지나는 직선은 3x−y−14=0","mappedTo":["mathPlan.nodes[N]","displayLines[N]"]}
+  ],
+  "newVisualInformation":["교점의 소속 관계와 평행선의 방향을 한 좌표계에서 연결한다."]
+}

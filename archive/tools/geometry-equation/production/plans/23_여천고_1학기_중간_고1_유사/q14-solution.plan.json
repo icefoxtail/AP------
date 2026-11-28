@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "1", "-1/2"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-3, 5], "viewport": [-3, 5, -8, 9],
+    "requiredPoints": [{"id": "V", "x": 1, "y": 0.5}],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "lines": [{"id": "t", "slope": "1-sqrt(6)", "intercept": "3", "label": "t"}],
+      "points": [{"id": "P", "x": "0", "y": "3"}, {"id": "T", "curveX": "sqrt(6)"}]
+    }
+  },
+  "caption": "기울기가 음수인 접선은 y=(1−√6)x+3이며 접점 T의 x좌표는 √6이다.",
+  "accessibilityDescription": "아래로 열린 포물선, 점 P(0,3), 기울기가 음수인 접선과 곡선 위 접점 T가 보인다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "y=−x²/2+x", "mappedTo": "graphPlan.coefficients"},
+    {"id": "point", "condition": "접선은 (0,3)을 지난다", "mappedTo": "graphPlan.overlays.points[0]"},
+    {"id": "tangent", "condition": "판별식으로 m=1−√6, 접점 x=√6", "mappedTo": ["graphPlan.overlays.lines[0]", "graphPlan.overlays.points[1]"]}
+  ],
+  "newVisualInformation": ["기울기 부호에 따른 접선 선택과 실제 접점을 연결한다."]
+}
