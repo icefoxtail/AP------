@@ -1,0 +1,30 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 점 $A(1,5)$, $B(3,7)$과 직선 $y=x$ 위의 점 $P$에 대하여",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": {"length": {"kind": "integer", "value": "1"}}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "1"}, {"kind": "integer", "value": "5"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "7"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "m", "op": "SOURCE_LINE", "inputs": [], "args": {"a": {"kind": "integer", "value": "1"}, "b": {"kind": "integer", "value": "-1"}, "c": {"kind": "integer", "value": "0"}}, "outputType": "LINE", "factRole": "GIVEN"}
+    ]
+  },
+  "axisTickValues": {"x": [], "y": []},
+  "displayLines": ["m"],
+  "displayPoints": ["A", "B"],
+  "coordinateLabels": ["A", "B"],
+  "caption": "주어진 두 점 A(1,5), B(3,7)과 점 P가 움직일 직선 y=x의 상대적 위치만 나타낸다. 최소 지점 P는 표시하지 않는다.",
+  "accessibilityDescription": "좌표평면에서 A는 (1,5), B는 (3,7)에 있으며 두 점 모두 직선 y=x의 위쪽에 있다. 최단 거리 조건을 만족하는 P나 그 좌표는 표시하지 않는다.",
+  "sourceConditions": [
+    {"id": "j06-1", "condition": "주어진 점 A의 좌표 (1,5)", "mappedTo": ["mathPlan.nodes.2.args.coordinates", "displayPoints.0", "coordinateLabels.0"]},
+    {"id": "j06-2", "condition": "주어진 점 B의 좌표 (3,7)", "mappedTo": ["mathPlan.nodes.3.args.coordinates", "displayPoints.1", "coordinateLabels.1"]},
+    {"id": "j06-3", "condition": "점 P는 직선 y=x 위에 있으나 그 위치는 미지", "mappedTo": ["mathPlan.nodes.4.args", "displayLines.0"]}
+  ],
+  "newVisualInformation": [
+    "A와 B가 모두 기준 직선 y=x의 같은 쪽에 있는 구조를 점 두 개와 대각선으로 보인다.",
+    "점 P와 대칭점 A'의 풀이상 좌표를 공개하지 않고, 학생이 대칭법을 선택하도록 주어진 조건만 나타낸다."
+  ]
+}
