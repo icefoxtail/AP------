@@ -1,0 +1,15 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "POLAR_POINT", "inputs": ["A", "B"], "args": { "length": { "kind": "integer", "value": "7" }, "angleDeg": { "kind": "integer", "value": "30" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" }
+  ] },
+  "displayPoints": ["A", "B", "C"], "displayLines": [], "displayCircles": [], "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sBC", "refs": ["B", "C"] }],
+  "planeMarks": { "angles": [{ "id": "angleA", "refs": ["B", "A", "C"], "value": 30, "label": "30", "factRole": "GIVEN" }], "expressionLabels": [{ "id": "ab", "ownerSegment": "sAB", "text": "10", "factRole": "GIVEN" }, { "id": "ac", "ownerSegment": "sAC", "text": "7", "factRole": "GIVEN" }] },
+  "coordinateCanvas": { "width": 520, "height": 420 },
+  "caption": "삼각형 ABC의 두 변 AB=10, AC=7과 사이각 A=30°",
+  "accessibilityDescription": "삼각형 ABC에 AB 10, AC 7, 두 변 사이의 각 30도가 표시되어 있다.",
+  "sourceConditions": [{ "id": "q05", "condition": "삼각형 ABC에서 AB=10, AC=7, 각 A=30°이고 넓이를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["주어진 길이 10, 7과 사이각 30°를 직접 표시"]
+}

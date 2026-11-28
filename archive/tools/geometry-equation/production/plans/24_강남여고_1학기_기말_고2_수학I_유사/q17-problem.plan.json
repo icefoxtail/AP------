@@ -1,0 +1,27 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "9", "denominator": "4" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "rational", "numerator": "5", "denominator": "4" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "7" }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"], "displayLines": [], "displayCircles": [],
+  "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sAD", "refs": ["A", "D"] }, { "id": "sBD", "refs": ["B", "D"] }, { "id": "sDC", "refs": ["D", "C"] }],
+  "planeMarks": { "expressionLabels": [
+    { "id": "givenAB", "ownerSegment": "sAB", "text": "4", "factRole": "GIVEN" },
+    { "id": "givenAC", "ownerSegment": "sAC", "text": "5", "factRole": "GIVEN" },
+    { "id": "givenBC", "ownerSegment": "sBC", "text": "6", "factRole": "GIVEN" },
+    { "id": "ratioBD", "ownerSegment": "sBD", "text": "t", "factRole": "GIVEN" },
+    { "id": "ratioDC", "ownerSegment": "sDC", "text": "2t", "factRole": "GIVEN" }
+  ] },
+  "coordinateCanvas": { "width": 560, "height": 440 },
+  "caption": "AB=4, AC=5, BC=6인 삼각형과 BD:DC=1:2인 점 D",
+  "accessibilityDescription": "삼각형 ABC의 세 변에 4, 5, 6이 쓰이고 BC 위의 점 D로부터 두 구간이 t와 2t로 표시되어 있다.",
+  "sourceConditions": [{ "id": "q17", "condition": "AB=4, BC=6, AC=5이며 D는 BC를 1:2로 내분하고 AD를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["세 변의 주어진 길이 4, 5, 6", "BD:DC=1:2를 나타내는 t, 2t", "선분 AD"]
+}

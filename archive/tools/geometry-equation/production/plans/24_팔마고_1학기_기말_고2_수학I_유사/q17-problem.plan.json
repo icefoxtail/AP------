@@ -1,0 +1,30 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "25", "denominator": "13" }, { "kind": "rational", "numerator": "60", "denominator": "13" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "13", "denominator": "2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "circle", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "rational", "numerator": "13", "denominator": "2" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "O"], "displayLines": [], "displayCircles": [],
+  "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sBC", "refs": ["B", "C"] }],
+  "planeMarks": {
+    "arcs": [{ "id": "semicircle", "circle": "circle", "center": "O", "from": "B", "to": "C", "side": "CW" }],
+    "angles": [
+      { "id": "angleB", "refs": ["C", "B", "A"], "value": 67.380135052, "label": "α", "factRole": "GIVEN" },
+      { "id": "angleC", "refs": ["B", "C", "A"], "value": 22.619864948, "label": "β", "factRole": "GIVEN" }
+    ],
+    "expressionLabels": [{ "id": "givenAB", "ownerSegment": "sAB", "text": "5", "factRole": "GIVEN" }, { "id": "givenAC", "ownerSegment": "sAC", "text": "12", "factRole": "GIVEN" }]
+  },
+  "rightAngles": [{ "id": "rightA", "refs": ["B", "A", "C"] }],
+  "coordinateCanvas": { "width": 560, "height": 420 },
+  "caption": "지름 BC인 반원의 호 위에 A가 놓인 삼각형으로 AB=5, AC=12, ∠B=α, ∠C=β",
+  "accessibilityDescription": "반원 지름 BC, 호 위의 점 A, 직각 A와 AB=5, AC=12, B와 C의 각 이름 α와 β가 그려져 있다.",
+  "sourceConditions": [{ "id": "q17", "condition": "지름 BC인 반원 위 A를 가진 삼각형 ABC에서 AB=5, AC=12, 각 B=α, 각 C=β로 cos(7α+6β)를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["상반원 호 BC와 A의 원 위 관계", "AB와 AC의 길이 및 α, β", "반원에 내접한 직각 표식"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": { "kind": "TREE", "root": { "label": "1", "children": [
+    { "label": "3", "children": [{ "label": "7" }, { "label": "13" }] },
+    { "label": "5", "children": [{ "label": "11" }, { "label": "21" }] }
+  ] } },
+  "caption": "p(0)에서 도달한 p(1)을 시작으로 2k+1, 4k+1을 적용한 초기 생성 나무",
+  "accessibilityDescription": "1에서 3과 5로, 3에서 7과 13으로, 5에서 11과 21로 이어지는 생성 규칙의 일부를 가지 나무로 보여 준다.",
+  "sourceConditions": [{ "id": "q20", "condition": "p(0)은 참이고 p(k)가 참이면 p(2k+1), p(4k+1)도 참이다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["수학적 귀납 생성 규칙의 초기 가지 구조", "뿌리 1은 0에서 생성하며 이후 2k+1 및 4k+1로 확장"]
+}

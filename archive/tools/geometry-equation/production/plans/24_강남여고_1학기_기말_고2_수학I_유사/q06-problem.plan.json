@@ -1,0 +1,23 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "10" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }] }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C"], "displayLines": [], "displayCircles": [],
+  "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] }],
+  "planeMarks": {
+    "angles": [{ "id": "angleC", "refs": ["A", "C", "B"], "value": 30, "label": "pi/6", "labelKind": "MATH", "factRole": "GIVEN" }],
+    "expressionLabels": [{ "id": "givenAB", "ownerSegment": "sAB", "text": "10", "factRole": "GIVEN" }]
+  },
+  "coordinateCanvas": { "width": 520, "height": 400 },
+  "caption": "삼각형 ABC의 변 AB가 10이고 각 ACB가 π/6인 도식",
+  "accessibilityDescription": "삼각형 ABC의 변 AB에 10, 꼭짓점 C의 각에 π/6이 표시되어 있다.",
+  "sourceConditions": [{ "id": "q06", "condition": "AB=10이고 각 ACB=π/6인 삼각형 ABC의 외접원 반지름을 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["AB=10의 길이 표시", "각 ACB=π/6의 각 호 표시"]
+}

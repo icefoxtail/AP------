@@ -1,0 +1,15 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "POLAR_POINT", "inputs": ["A", "B"], "args": { "length": { "kind": "integer", "value": "6" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+  ] },
+  "displayPoints": ["A", "B", "C"], "displayLines": [], "displayCircles": [], "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sBC", "refs": ["B", "C"] }],
+  "planeMarks": { "angles": [{ "id": "angleA", "refs": ["B", "A", "C"], "value": 60, "label": "60", "factRole": "GIVEN" }], "expressionLabels": [{ "id": "ab", "ownerSegment": "sAB", "text": "5", "factRole": "GIVEN" }, { "id": "bc", "ownerSegment": "sBC", "text": "sqrt(31)", "factRole": "GIVEN" }] },
+  "coordinateCanvas": { "width": 520, "height": 430 },
+  "caption": "삼각형 ABC의 AB=5, BC=√31, ∠A=60°와 미지 길이 AC",
+  "accessibilityDescription": "삼각형 ABC에서 AB에 5, BC에 루트 31, A의 각에 60도가 표시되어 있고 AC는 수치 없이 선분만 보인다.",
+  "sourceConditions": [{ "id": "q07", "condition": "삼각형 ABC에서 AB=5, BC=√31, 각 A=60°이고 AC를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["미지 AC는 수치 없이 그려짐", "AB=5, BC=√31, 각 A=60° 표시"]
+}
