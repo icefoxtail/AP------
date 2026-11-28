@@ -1,0 +1,32 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"P00","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P20","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P01","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P21","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P02","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P22","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P03","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P23","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P10","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P13","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["P00","P20","P01","P21","P02","P22","P03","P23","P10","P13"],
+  "hiddenPointNames":["P00","P20","P01","P21","P02","P22","P03","P23","P10","P13"],
+  "hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"h0","refs":["P00","P20"]},{"id":"h1","refs":["P01","P21"]},{"id":"h2","refs":["P02","P22"]},{"id":"h3","refs":["P03","P23"]},
+    {"id":"v0","refs":["P00","P03"]},{"id":"v1","refs":["P10","P13"]},{"id":"v2","refs":["P20","P23"]}
+  ],
+  "planeMarks":{"dimensions":[{"id":"uH","from":"P00","to":"P10","label":"1","side":"BELOW","value":"1","factRole":"GIVEN"},{"id":"uV","from":"P00","to":"P01","label":"1","side":"LEFT","value":"1","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":600,"height":420},
+  "caption":"같은 간격 1로 놓인 가로 평행선 4개와 세로 평행선 3개의 수직 교차 도식이다.",
+  "accessibilityDescription":"서로 수직인 가로 평행선 네 개와 세로 평행선 세 개가 간격 1로 교차해 같은 크기의 사각 격자를 만든다. 직사각형은 선택하거나 색칠하지 않았다.",
+  "sourceConditions":[{"id":"grid","condition":"서로 1만큼 떨어진 수평선 4개와 수직선 3개가 만드는 모든 직사각형이 동등하게 선택된다.","mappedTo":["mathPlan.nodes","displaySegments"]}],
+  "newVisualInformation":["가로 4선 h0~h3, 세로 3선 v0~v2를 실제 선분 필드로 정확히 표시한다.","문제에 없는 선택 직사각형이나 넓이 답의 음영을 추가하지 않는다."]
+}

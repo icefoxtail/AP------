@@ -1,0 +1,8 @@
+{
+  "capability":"stat-chart-figure-v1",
+  "chart":{"kind":"NORMAL_CURVE","curves":[{"id":"X","mean":"68","sd":"6","label":"X"}],"ticks":["68","71.12"],"zAxis":true,"shades":[{"from":"71.12","to":null,"color":"BLUE"}]},
+  "caption":"상위 360/1200=0.30이므로 평균 오른쪽 꼬리의 경계는 z=0.52이다. 몸무게는 68+0.52×6=71.12kg이다.",
+  "accessibilityDescription":"평균 68kg, 표준편차 6kg의 몸무게 정규분포에서 경계 71.12kg 오른쪽의 상위 약 30% 영역을 칠했다.",
+  "sourceConditions":[{"id":"rank","condition":"학생 1200명의 몸무게 X~N(68,6²)에서 상위 360명 경계의 몸무게를 구한다. P(0≤Z≤0.52)=0.20.","mappedTo":["chart.curves","chart.ticks","chart.shades"]}],
+  "newVisualInformation":["평균 68과 z=+0.52에 해당하는 경계 71.12, 그보다 무거운 상위 꼬리를 실제 그림에 대응시킨다."]
+}
