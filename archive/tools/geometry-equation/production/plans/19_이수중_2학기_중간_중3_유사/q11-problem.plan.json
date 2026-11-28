@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "10",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lHC",
+        "ownerSegment": "sHC",
+        "text": "5",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "caption": "각 A가 직각인 직각삼각형 ABC에서 꼭짓점 A에서 빗변 BC에 내린 수선의 발이 H이고, 변 AC의 길이가 10 cm, 변 CH의 길이가 5 cm로 주어진 그림이다.",
+  "accessibilityDescription": "19_이수중_2학기_중간_중3_유사 11번 문제 그림. 각 A가 직각인 직각삼각형 ABC에서 꼭짓점 A에서 빗변 BC에 내린 수선의 발이 H이고, 변 AC의 길이가 10 cm, 변 CH의 길이가 5 cm로 주어진 그림이다.",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "주어진 수학 조건만 표시하며 정답 선공개 없음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q11_problem",
+      "condition": "오른쪽 그림과 같이 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AC}}=10\\text{ cm}$, $\\overline{\\text{CH}}=5\\text{ cm}$이고 $\\overline{\\text{AH}}\\perp\\overline{\\text{BC}}$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "오른쪽 그림과 같이 $\\angle\\text{A}=90^\\circ"
+}

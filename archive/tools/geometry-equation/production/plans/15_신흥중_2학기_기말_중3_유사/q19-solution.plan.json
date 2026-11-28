@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "16"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cp",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cq",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "A",
+    "B",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cp",
+    "cq"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sQT",
+      "refs": [
+        "Q",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "16"
+      },
+      {
+        "id": "qr4",
+        "ownerSegment": "sQT",
+        "text": "4",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "ans19",
+        "ownerSegment": "sOP",
+        "text": "8",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "ar1",
+        "circle": "big",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "A",
+    "B"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름이 16인 반원 O의 지름 위에 중심 O가 있고, 이 반원에 내접하는 두 원 P, Q가 서로 외접한다. 원 P는 지름과 호에 접하고, 원 Q는 원 P와 반원에 접한다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 19번 해설 그림. 반지름이 16인 반원 O의 지름 위에 중심 O가 있고, 이 반원에 내접하는 두 원 P, Q가 서로 외접한다. 원 P는 지름과 호에 접하고, 원 Q는 원 P와 반원에 접한다.",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q19_solution",
+      "condition": "원 $P$의 지름은 반원 $O$의 반지름 $16$과 같으므로 원 $P$의 반지름은 $8$이다. 원 $Q$의 반지름을 $r$, 중심 $Q$에서 $\\overline{OP}$에 내린 수선의 발을 $M$, $\\overline{QM} = x$라 하자. $\\overline{OM} = r$이므로 $\\overline{PM} = 8 - r$이다. 직각삼각형 $PMQ$에서 $\\overline{PQ} = 8 + r$이므로 $$(8 - r)^2 + x^2 = (8 + r)^2 \\implies x^2 = 32r$$ 직각삼각형 $OMQ$에서 $\\overline{OQ} = 16 - r$이므로 $$r^2 + x^2 = (16 - r)^2 \\implies x^2 = 256 - 32r$$ 따라서 $32r = 256 - 32r \\implies 64r = 256 \\implies r = 4$이다. 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "원 $P$의 지름은 반원 $O$의 반지름 $16$과 같으므로 원"
+}

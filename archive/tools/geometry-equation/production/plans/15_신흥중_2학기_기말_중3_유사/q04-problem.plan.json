@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 A가 직각인 삼각형 ABC에서 점 D는 변 AB 위에 있고, 점 E는 D에서 변 BC에 내린 수선의 발이다. 변 AC가 5, 변 BC가 13, 각 BDE가 x로 표시되어 있다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 4번 문제 그림. 각 A가 직각인 삼각형 ABC에서 점 D는 변 AB 위에 있고, 점 E는 D에서 변 BC에 내린 수선의 발이다. 변 AC가 5, 변 BC가 13, 각 BDE가 x로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "q04_problem",
+      "condition": "다음 그림과 같이 $\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AC} = 5$, $\\overline{BC} = 13$이고 $\\overline{BC} \\perp \\overline{DE}$, $\\angle BDE = x$일 때, $\\cos x \\times \\tan x$의 값은?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "주어진 수학 조건만 표시하며 정답 선공개 없음"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "30",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0BDE",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 67.38,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "13",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "sourceQuote": "다음 그림과 같이 $\\angle A = 90^\\circ$인 직각"
+}

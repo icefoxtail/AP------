@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "38/5",
+          "12/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-4",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "10",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "좌표평면 위의 두 점 P(-4, -2), Q(1, 10)와 두 점을 잇는 선분을 나타낸 그림이다.",
+  "newVisualInformation": [
+    "piecewise-polynomial-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "주어진 수학 조건만 표시하며 정답 선공개 없음"
+  ],
+  "accessibilityDescription": "19_이수중_2학기_중간_중3_유사 13번 문제 그림. 좌표평면 위의 두 점 P(-4, -2), Q(1, 10)와 두 점을 잇는 선분을 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "q13_problem",
+      "condition": "좌표평면 위의 두 점 $\\text{P}(-4, -2)$, $\\text{Q}(1, 10)$ 사이의 거리를 구하면?",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "sourceQuote": "좌표평면 위의 두 점 $\\text{P}(-4, -2)$, $\\t"
+}

@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "56"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "h",
+        "ownerSegment": "sAC",
+        "text": "9",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a",
+        "ownerSegment": "sAB",
+        "text": "√56",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "빗변 9, 직각변 √56와 x",
+  "sourceQuote": "직각삼각형에서 피타고라스 정리에 의해 $$x^2 + (\\sqrt",
+  "sourceConditions": [
+    {
+      "id": "q08_solution",
+      "condition": "직각삼각형에서 피타고라스 정리에 의해 $$x^2 + (\\sqrt{56})^2 = 9^2 \\implies x^2 = 81 - 56 = 25$$ $x>0$이므로 $x = 5$이다. 따라서 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "accessibilityDescription": "19_이수중_2학기_중간_중3_유사 8번 해설 그림. 빗변 9, 직각변 √56와 x",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ]
+}

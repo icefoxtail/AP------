@@ -1,0 +1,346 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "18"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "18"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0BPC",
+        "refs": [
+          "B",
+          "P",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lPA",
+        "ownerSegment": "sPA",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "ans24",
+        "ownerSegment": "sPB",
+        "text": "6√2",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원에 접하는 직선 PB와 점 P를 지나는 할선이 원과 A, C에서 만나고, PA와 AC는 각각 6센티미터이다. 각 BPC는 30도이다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 24번 해설 그림. 원에 접하는 직선 PB와 점 P를 지나는 할선이 원과 A, C에서 만나고, PA와 AC는 각각 6센티미터이다. 각 BPC는 30도이다.",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q24_solution",
+      "condition": "$P, A, C$가 한 직선 위에 있고 $\\overline{PA} = \\overline{AC} = 6\\text{ cm}$이므로 $\\overline{PC} = 12\\text{ cm}$이다. 원의 중심을 $O$, 현 $AC$의 중점을 $M$이라 하면 $\\overline{OM} \\perp \\overline{PC}$이고 $\\overline{AM} = 3\\text{ cm}$, $\\overline{PM} = 6 + 3 = 9\\text{ cm}$이다. 피타고라스 정리에 의하여 $\\overline{OP}^2 = \\overline{OM}^2 + 9^2$, $\\overline{OA}^2 = \\overline{OM}^2 + 3^2$이고 $\\overline{OB} \\perp \\overline{PB}$, $\\overline{OA} = \\overline{OB}$이므로 $$\\overline{PB}^2 = \\overline{OP}^2 - \\overline{OB}^2 = (\\overline{OM}^2 + 81) - (\\overline{OM}^2 + 9) = 72$$ 따라서 $\\overline{PB} = 6\\sqrt{2}\\text{ cm}$이다. $\\angle BPA = 30^\\circ$이므로 $\\triangle PBA$의 넓이는 $$\\triangle PBA = \\dfrac{1}{2} \\times \\overline{PA} \\times \\overline{PB} \\times \\sin 30^\\circ = \\dfrac{1}{2} \\times 6 \\times 6\\sqrt{2} \\times \\dfrac{1}{2} = 9\\sqrt{2}\\text{ (cm}^2\\text{)}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "$P, A, C$가 한 직선 위에 있고 $\\overline{PA"
+}

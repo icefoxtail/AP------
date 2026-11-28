@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCAB",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived9",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "segment": {
+              "center": "O",
+              "from": "B",
+              "to": "C",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "c",
+        "points": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "지름이 12인 원 O에 내접하는 삼각형 ABC와, 현 BC와 호 BC로 둘러싸인 색칠한 활꼴",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 9번 해설 그림. 지름이 12인 원 O에 내접하는 삼각형 ABC와, 현 BC와 호 BC로 둘러싸인 색칠한 활꼴",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q09_solution",
+      "condition": "원 $O$의 반지름의 길이는 $6\\text{ cm}$이고, 호 $BC$에 대한 원주각이 $\\angle CAB = 30^\\circ$이므로 중심각은 $\\angle BOC = 2 \\times 30^\\circ = 60^\\circ$이다. 부채꼴 $OBC$의 넓이는 $$\\pi \\times 6^2 \\times \\dfrac{60}{360} = 6\\pi\\text{ (cm}^2\\text{)}$$ $\\triangle OBC$의 넓이는 $$\\dfrac{1}{2} \\times 6 \\times 6 \\times \\sin 60^\\circ = 18 \\times \\dfrac{\\sqrt{3}}{2} = 9\\sqrt{3}\\text{ (cm}^2\\text{)}$$ 따라서 색칠한 활꼴의 넓이는 $(6\\pi - 9\\sqrt{3})\\text{ cm}^2$이다. 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "원 $O$의 반지름의 길이는 $6\\text{ cm}$이고, 호 "
+}

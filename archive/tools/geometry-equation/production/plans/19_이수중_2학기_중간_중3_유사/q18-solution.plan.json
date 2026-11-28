@@ -1,0 +1,59 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 12,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "BC",
+      "label": "6"
+    },
+    {
+      "edge": "CG",
+      "label": "12"
+    },
+    {
+      "edge": "AG",
+      "label": "6\\sqrt{6}"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체 모양 우유 팩"
+  },
+  "caption": "세 모서리의 길이가 각각 6 cm, 6 cm, 12 cm인 직육면체 모양의 우유 팩이 보인다.",
+  "accessibilityDescription": "19_이수중_2학기_중간_중3_유사 18번 해설 그림. 세 모서리의 길이가 각각 6 cm, 6 cm, 12 cm인 직육면체 모양의 우유 팩이 보인다.",
+  "newVisualInformation": [
+    "solid-figure-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18_solution",
+      "condition": "직육면체 내부에 들어가는 가장 긴 선분은 공간대각선이므로 그 길이를 $l\\text{ cm}$라 하면 $$l = \\sqrt{6^2 + 6^2 + 12^2} = \\sqrt{36 + 36 + 144} = \\sqrt{216} = 6\\sqrt{6}\\text{ (cm)}$$ 따라서 빨대의 길이는 최소 $6\\sqrt{6}\\text{ cm}$ 이상이어야 하므로 정답은 ①이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "sourceQuote": "직육면체 내부에 들어가는 가장 긴 선분은 공간대각선이므로 그 길"
+}

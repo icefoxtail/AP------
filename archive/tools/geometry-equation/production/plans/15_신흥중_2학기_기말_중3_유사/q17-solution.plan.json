@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "945518575599",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "325568154457",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "945518575599",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-325568154457",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-731353701619",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "681998360062",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-731353701619",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-681998360062",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2477196317746",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 38,
+        "label": "38",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCOD",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 86,
+        "label": "86",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aP",
+        "refs": [
+          "C",
+          "P",
+          "D"
+        ],
+        "value": 24,
+        "label": "24",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "원 밖 P에서의 두 할선과 중심각 38°, 86°",
+  "sourceQuote": "두 점 $A, D$를 이으면 원주각은 중심각의 $\\dfrac{1",
+  "sourceConditions": [
+    {
+      "id": "q17_solution",
+      "condition": "두 점 $A, D$를 이으면 원주각은 중심각의 $\\dfrac{1}{2}$이므로 $$\\angle ADB = \\dfrac{1}{2}\\angle AOB = 19^\\circ, \\quad \\angle CAD = \\dfrac{1}{2}\\angle COD = 43^\\circ$$ $\\triangle PAD$에서 $\\angle CAD$는 외각이므로 $$\\angle CPD = \\angle CAD - \\angle ADB = 43^\\circ - 19^\\circ = 24^\\circ$$ 따라서 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 17번 해설 그림. 원 밖 P에서의 두 할선과 중심각 38°, 86°",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ]
+}

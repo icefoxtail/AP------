@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "R",
+    "S",
+    "P",
+    "Bp"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAR",
+      "refs": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "sBS",
+      "refs": [
+        "B",
+        "S"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sABp",
+      "refs": [
+        "A",
+        "Bp"
+      ]
+    },
+    {
+      "id": "sSBp",
+      "refs": [
+        "S",
+        "Bp"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "S",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ar",
+        "ownerSegment": "sAR",
+        "text": "6",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bs",
+        "ownerSegment": "sBS",
+        "text": "3",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rs",
+        "ownerSegment": "sRS",
+        "text": "12",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ans",
+        "ownerSegment": "sABp",
+        "text": "15",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "도로 반사점 B′와 직선 경로 AB′=15",
+  "sourceQuote": "점 $\\text{B}$를 도로에 대하여 대칭이동한 점을 $\\te",
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "점 $\\text{B}$를 도로에 대하여 대칭이동한 점을 $\\text{B}'$라 하면 최단 거리는 선분 $\\overline{\\text{AB}'}$의 길이와 같다. 가로 거리는 $12\\text{ km}$, 세로 거리는 $6 + 3 = 9\\text{ km}$이므로 $$\\overline{\\text{AB}'} = \\sqrt{12^2 + 9^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15\\text{ (km)}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "accessibilityDescription": "19_이수중_2학기_중간_중3_유사 15번 해설 그림. 도로 반사점 B′와 직선 경로 AB′=15",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ]
+}

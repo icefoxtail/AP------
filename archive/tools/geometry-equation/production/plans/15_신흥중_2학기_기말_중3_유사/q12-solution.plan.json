@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2√10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r10",
+        "ownerSegment": "sOA",
+        "text": "10",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 460
+  },
+  "caption": "두 변 AB, CB의 길이가 같은 삼각형 ABC와 그 외접원 O를 나타낸 그림",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 12번 해설 그림. 두 변 AB, CB의 길이가 같은 삼각형 ABC와 그 외접원 O를 나타낸 그림",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q12_solution",
+      "condition": "점 $B$에서 $\\overline{AC}$에 내린 수선의 발을 $M$이라 하면 $\\overline{AB} = \\overline{CB}$이므로 $\\overline{AM} = \\overline{MC} = 6\\text{ cm}$이다. 직각삼각형 $ABM$에서 피타고라스 정리에 의하여 $$\\overline{BM} = \\sqrt{(2\\sqrt{10})^2 - 6^2} = \\sqrt{40 - 36} = 2\\text{ (cm)}$$ $(2\\sqrt{10})^2 + (2\\sqrt{10})^2 = 80 < 144 = 12^2$이므로 $\\angle B$는 둔각이고 외심 $O$는 $\\overline{AC}$에 대하여 $B$의 반대쪽에 있다. $\\overline{OM} = x\\text{ cm}$라 하면 원의 반지름은 $\\overline{OB} = x + 2$이고 $\\overline{OA}^2 = x^2 + 6^2$이므로 $$(x + 2)^2 = x^2 + 36 \\implies 4x + 4 = 36 \\implies x = 8$$ 따라서 원 $O$의 반지름의 길이는 $8 + 2 = 10\\text{ cm}$이다. 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "점 $B$에서 $\\overline{AC}$에 내린 수선의 발을 "
+}
