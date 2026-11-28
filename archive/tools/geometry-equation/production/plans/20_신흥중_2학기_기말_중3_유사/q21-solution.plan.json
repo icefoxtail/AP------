@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "18"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN",
+        "color": "WARM"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "solution_sAH_0",
+        "ownerSegment": "sAH",
+        "text": "6(3-sqrt(3))",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 21번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 21번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q21_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q21_solution_f1",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q21_solution_f2",
+      "condition": "실제 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q21_solution_f3",
+      "condition": "실제 선분 A–H",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q21_solution_f4",
+      "condition": "선분 sAH의 수식 6(3-sqrt(3))",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q21_solution_f5",
+      "condition": "각 A–B–C의 60 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q21_solution_f6",
+      "condition": "각 A–C–B의 45 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q21_solution_f7",
+      "condition": "수직 표시 A–H–B",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "solution_right_H",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ],
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "sourceQuote": "꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 하고, 높이 $\\overline{AH} = h\\rm,cm$라 하자.\n\n1) 직각삼각형 $ABH$에서 $\\angle B = 60^\\circ$이므로 $$\\tan 60^\\circ = \\dfrac{\\overline{AH}}{\\overline{BH}} \\implies \\overline{BH} = \\dfrac{h}{\\tan 60^\\circ} = \\dfrac{h}{\\sqrt{3}}$$  \n2) 직각삼각형 $ACH$에서 $\\angle C = 45^\\circ$이므로 직각이등변삼각형이다. $$\\overline{CH} = \\overline{AH} = h$$  \n3) 밑변 $\\overline{BC} = \\overline{BH} + \\overline{CH} = 12\\rm,cm$이므로 $$\\dfrac{h}{\\sqrt{3}} + h = 12$$ 양변에 $\\sqrt{3}$을 곱하면 $$(1 + \\sqrt{3})h = 12\\sqrt{3}$$ $$h = \\dfrac{12\\sqrt{3}}{\\sqrt{3} + 1} = \\dfrac{12\\sqrt{3}(\\sqrt{3} - 1)}{(\\sqrt{3} + 1)(\\sqrt{3} - 1)} = \\dfrac{12(3 - \\sqrt{3})}{2} = 6(3 - \\sqrt{3})\\rm,cm$$ 따라서 $\\triangle ABC$의 넓이는 $$\\triangle ABC = \\dfrac{1}{2} \\times \\overline{BC} \\times h = \\dfrac{1}{2} \\times 12 \\times 6(3 - \\sqrt{3}) = 36(3 - \\sqrt{3})\\rm,cm^2$$\n\n답: $36(3 - \\sqrt{3})\\rm,cm^2$"
+}

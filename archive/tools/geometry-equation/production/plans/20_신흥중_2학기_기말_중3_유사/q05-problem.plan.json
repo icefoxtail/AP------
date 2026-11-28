@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a45",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 18.43494882292201,
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "BC",
+          "CH"
+        ]
+      }
+    ],
+    "expressionLabels": []
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 5번 발문의 주어진 선분·각·호를 공식 엔진 좌표와 표식으로 옮긴 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 5번 발문 주어진 기하조건을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "발문의 주어진 도형·호·각 조건을 공식 렌더 필드에 1:1로 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q05_problem_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_problem_f1",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_problem_f2",
+      "condition": "실제 선분 C–H",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_problem_f3",
+      "condition": "실제 선분 A–H",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q05_problem_f4",
+      "condition": "실제 선분 A–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q05_problem_f5",
+      "condition": "각 A–C–H의 45 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q05_problem_f6",
+      "condition": "각 B–A–C의 x 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q05_problem_f7",
+      "condition": "수직 표시 B–H–A",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "그림과 같이 $\\triangle ABC$의 꼭짓점 $A$에서 변 $BC$의 연장선에 내린 수선의 발을 $H$라 하자. $\\angle BAC = x$, $\\angle ACH = 45^\\circ$이고 $\\overline{BC} = \\overline{CH}$일 때, $\\tan x$의 값은?"
+}

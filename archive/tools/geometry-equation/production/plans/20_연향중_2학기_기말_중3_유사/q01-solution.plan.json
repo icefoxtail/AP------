@@ -1,0 +1,692 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 같은 길이의 두 현"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-593",
+                    "denominator": "100"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "16"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "pow",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "593",
+                              "denominator": "100"
+                            },
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "146"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "16"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "pow",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "593",
+                              "denominator": "100"
+                            },
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "16"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "pow",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "593",
+                              "denominator": "100"
+                            },
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "P"
+              ],
+              "args": {
+                "length": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "16"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "pow",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "593",
+                              "denominator": "100"
+                            },
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "16"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "pow",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "593",
+                              "denominator": "100"
+                            },
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "P",
+          "C",
+          "D",
+          "Q"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sAP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "sBP",
+            "refs": [
+              "B",
+              "P"
+            ]
+          },
+          {
+            "id": "sCQ",
+            "refs": [
+              "C",
+              "Q"
+            ]
+          },
+          {
+            "id": "sDQ",
+            "refs": [
+              "D",
+              "Q"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "inscribed34",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 34,
+              "label": "34",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "x1",
+              "refs": [
+                "C",
+                "Q",
+                "D"
+              ],
+              "value": 34,
+              "label": "34",
+              "factRole": "CONCLUSION"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "equalAB",
+              "ownerSegment": "sAB",
+              "text": "8",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "equalCD",
+              "ownerSegment": "sCD",
+              "text": "8",
+              "factRole": "GIVEN"
+            }
+          ],
+          "arcs": []
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 115도 원주각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "130"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "65"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "P"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPA",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "sPB",
+            "refs": [
+              "P",
+              "B"
+            ]
+          },
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "inscribed115",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 115,
+              "label": "115",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "x2",
+              "refs": [
+                "A",
+                "O",
+                "B"
+              ],
+              "value": 130,
+              "label": "130",
+              "factRole": "CONCLUSION"
+            }
+          ],
+          "expressionLabels": [],
+          "arcs": []
+        }
+      }
+    }
+  ],
+  "caption": "같은 현에 대한 원주각 34도와 큰 호 230도에서 작은 중심각 130도를 얻는다",
+  "sourceQuote": "(1) 한 원에서 길이가 같은 현에 대한 원주각의 크기는 서로 같으므로 $$x_1 = 34^\\circ$$ (2) 크기가 $115^\\circ$인 원주각이 마주 보는 호의 크기는 $$115^\\circ \\times 2 = 230^\\circ$$ 따라서 이에 대응하는 작은 중심각 $x_2$는 $$x_2 = 360^\\circ - 230^\\circ = 130^\\circ$$ 그러므로 두 각의 합은 $$x_1 + x_2 = 34^\\circ + 130^\\circ = 164^\\circ$$ 따라서 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "q01_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "panels[0].plan.displaySegments[0]"
+    },
+    {
+      "id": "q01_solution_f1",
+      "condition": "실제 선분 C–D",
+      "mappedTo": "panels[0].plan.displaySegments[1]"
+    },
+    {
+      "id": "q01_solution_f2",
+      "condition": "실제 선분 A–P",
+      "mappedTo": "panels[0].plan.displaySegments[2]"
+    },
+    {
+      "id": "q01_solution_f3",
+      "condition": "실제 선분 B–P",
+      "mappedTo": "panels[0].plan.displaySegments[3]"
+    },
+    {
+      "id": "q01_solution_f4",
+      "condition": "실제 선분 C–Q",
+      "mappedTo": "panels[0].plan.displaySegments[4]"
+    },
+    {
+      "id": "q01_solution_f5",
+      "condition": "실제 선분 D–Q",
+      "mappedTo": "panels[0].plan.displaySegments[5]"
+    },
+    {
+      "id": "q01_solution_f6",
+      "condition": "선분 sAB의 수식 8",
+      "mappedTo": "panels[0].plan.planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q01_solution_f7",
+      "condition": "선분 sCD의 수식 8",
+      "mappedTo": "panels[0].plan.planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q01_solution_f8",
+      "condition": "각 A–P–B의 34 표식",
+      "mappedTo": "panels[0].plan.planeMarks.angles[0]"
+    },
+    {
+      "id": "q01_solution_f9",
+      "condition": "각 C–Q–D의 34 표식",
+      "mappedTo": "panels[0].plan.planeMarks.angles[1]"
+    },
+    {
+      "id": "q01_solution_f10",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "panels[0].plan.displayCircles[0]"
+    },
+    {
+      "id": "q01_solution_f11",
+      "condition": "실제 선분 P–A",
+      "mappedTo": "panels[1].plan.displaySegments[0]"
+    },
+    {
+      "id": "q01_solution_f12",
+      "condition": "실제 선분 P–B",
+      "mappedTo": "panels[1].plan.displaySegments[1]"
+    },
+    {
+      "id": "q01_solution_f13",
+      "condition": "실제 선분 O–A",
+      "mappedTo": "panels[1].plan.displaySegments[2]"
+    },
+    {
+      "id": "q01_solution_f14",
+      "condition": "실제 선분 O–B",
+      "mappedTo": "panels[1].plan.displaySegments[3]"
+    },
+    {
+      "id": "q01_solution_f15",
+      "condition": "각 A–P–B의 115 표식",
+      "mappedTo": "panels[1].plan.planeMarks.angles[0]"
+    },
+    {
+      "id": "q01_solution_f16",
+      "condition": "각 A–O–B의 130 표식",
+      "mappedTo": "panels[1].plan.planeMarks.angles[1]"
+    },
+    {
+      "id": "q01_solution_f17",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "panels[1].plan.displayCircles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "accessibilityDescription": "20_연향중_2학기_기말_중3_유사 1번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림"
+}

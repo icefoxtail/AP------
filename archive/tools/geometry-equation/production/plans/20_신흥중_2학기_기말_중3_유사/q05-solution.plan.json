@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "lineAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a45",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 18.43494882292201,
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "BC",
+          "CH"
+        ]
+      }
+    ],
+    "expressionLabels": []
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "solution_right_D",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ],
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 5번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 5번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q05_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_f1",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_f2",
+      "condition": "실제 선분 C–H",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_f3",
+      "condition": "실제 선분 A–H",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q05_solution_f4",
+      "condition": "실제 선분 A–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q05_solution_f5",
+      "condition": "실제 선분 B–D",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q05_solution_f6",
+      "condition": "실제 선분 A–D",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q05_solution_f7",
+      "condition": "각 A–C–H의 45 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q05_solution_f8",
+      "condition": "각 B–A–C의 x 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q05_solution_f9",
+      "condition": "수직 표시 B–H–A",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q05_solution_f10",
+      "condition": "수직 표시 B–D–A",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "선분 $AH$가 변 $BH$에 수직이고 $\\angle ACH = 45^\\circ$이므로 $\\triangle AHC$는 직각이등변삼각형이다. $\\overline{BC} = \\overline{CH} = \\overline{AH} = k$ ($k > 0$)라 두면 피타고라스 정리에 의해 $$\\overline{AC} = \\sqrt{k^2 + k^2} = \\sqrt{2}k$$ 이제 점 $B$에서 직선 $AC$의 연장선에 내린 수선의 발을 $D$라 하자. $\\angle BCD$와 $\\angle ACH$는 맞꼭지각이므로 $\\angle BCD = 45^\\circ$이다. 따라서 $\\triangle BCD$도 직각이등변삼각형이 되므로 $$\\overline{BD} = \\overline{CD} = \\dfrac{\\overline{BC}}{\\sqrt{2}} = \\dfrac{k}{\\sqrt{2}}$$ 그러므로 선분 $AD$의 길이는 $$\\overline{AD} = \\overline{AC} + \\overline{CD} = \\sqrt{2}k + \\dfrac{k}{\\sqrt{2}} = \\dfrac{2k + k}{\\sqrt{2}} = \\dfrac{3k}{\\sqrt{2}}$$ 직각삼각형 $ABD$에서 $\\angle BAD = x$이므로 탄젠트의 정의에 의하여 $$\\tan x = \\dfrac{\\overline{BD}}{\\overline{AD}} = \\dfrac{k/\\sqrt{2}}{3k/\\sqrt{2}} = \\dfrac{1}{3}$$ 따라서 정답은 ⑤이다."
+}

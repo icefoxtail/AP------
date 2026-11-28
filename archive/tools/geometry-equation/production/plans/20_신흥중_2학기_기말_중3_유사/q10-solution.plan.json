@@ -1,0 +1,388 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "solution_diagonal_right",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ],
+      "factRole": "CONCLUSION"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "11",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "CD",
+        "text": "9",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "AB",
+          "CD"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "BC",
+          "DA"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "angles": []
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 10번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 10번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q10_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q10_solution_f1",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q10_solution_f2",
+      "condition": "실제 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q10_solution_f3",
+      "condition": "실제 선분 D–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q10_solution_f4",
+      "condition": "실제 선분 A–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q10_solution_f5",
+      "condition": "실제 선분 B–D",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q10_solution_f6",
+      "condition": "선분 BC의 수식 11",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q10_solution_f7",
+      "condition": "선분 CD의 수식 9",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q10_solution_f8",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q10_solution_f9",
+      "condition": "수직 표시 A–E–B",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q10_solution_f10",
+      "condition": "수직 표시 A–E–B",
+      "mappedTo": "rightAngles[1]"
+    },
+    {
+      "id": "q10_solution_f11",
+      "condition": "선분 색 구별 AB–CD",
+      "mappedTo": "planeMarks.segmentColors[0]"
+    },
+    {
+      "id": "q10_solution_f12",
+      "condition": "선분 색 구별 BC–DA",
+      "mappedTo": "planeMarks.segmentColors[1]"
+    }
+  ],
+  "sourceQuote": "$\\overline{AB} = x, \\overline{AD} = y$라 하자. 사각형 $ABCD$가 원 $O$에 외접하므로 마주 보는 두 쌍의 대변의 길이의 합이 서로 같다. $$\\overline{AB} + \\overline{CD} = \\overline{BC} + \\overline{AD}$$ $$x + 9 = 11 + y \\implies x - y = 2$$ 한편 두 대각선이 서로 수직으로 만나므로 교점을 $E$라 하면, 네 직각삼각형에서 피타고라스 정리에 의하여 $$\\overline{AB}^2 + \\overline{CD}^2 = (\\overline{AE}^2 + \\overline{BE}^2) + (\\overline{CE}^2 + \\overline{DE}^2) = (\\overline{BE}^2 + \\overline{CE}^2) + (\\overline{DE}^2 + \\overline{AE}^2) = \\overline{BC}^2 + \\overline{AD}^2$$ $$x^2 + 9^2 = 11^2 + y^2$$ $$x^2 - y^2 = 121 - 81 = 40$$ 합차 공식에 의하여 $$(x - y)(x + y) = 40$$ 앞에서 구한 $x - y = 2$를 대입하면 $$2(x + y) = 40 \\implies x + y = 20$$ 따라서 $\\overline{AB} + \\overline{AD} = 20$이다. 그러므로 정답은 ①이다."
+}
