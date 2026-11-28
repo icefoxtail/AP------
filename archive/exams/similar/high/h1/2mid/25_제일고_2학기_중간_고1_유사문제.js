@@ -476,7 +476,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q15-solution.svg",
+    "solutionImageAlt": "넓이비 1:4에서 D와 E가 중점이 되는 과정을 표시한 중점연결선 그림이다.",
+    "solutionImageCaption": "넓이비 1:4에서 D와 E가 중점이 되는 과정을 표시한 중점연결선 그림이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

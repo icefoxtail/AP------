@@ -2323,11 +2323,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q14-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원래 움직이는 점 P의 원과 무게중심 G의 자취인 중심 이동·반지름 1/3 원을 나란히 나타낸다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_page_image_visual_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원래 움직이는 점 P의 원과 무게중심 G의 자취인 중심 이동·반지름 1/3 원을 나란히 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q15-T1-R1",

@@ -170,8 +170,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "각 변을 1:2로 순환 내분한 D, E, F로 만든 삼각형은 원래 삼각형과 무게중심이 같다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 변을 1:2로 순환 내분한 D, E, F로 만든 삼각형은 원래 삼각형과 무게중심이 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q02-T1-R1",
