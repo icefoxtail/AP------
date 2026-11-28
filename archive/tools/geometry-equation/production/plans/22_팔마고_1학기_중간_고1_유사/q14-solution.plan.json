@@ -1,0 +1,16 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["1/4", "1", "1"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-2, 4], "viewport": [-2.4, 4.4, -1.5, 19],
+    "functionName": "f", "referenceLines": [{"id": "l", "slope": "4", "intercept": "0", "intersectionX": ["3/2-sqrt(2)", "3/2+sqrt(2)"]}],
+    "requiredPoints": [{"id": "T", "x": -0.5, "y": 0}], "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "가능한 최대 정수 a=1에서 f(x)=(x+1/2)²은 x축에 접하지만 y=4x와는 서로 다른 두 점에서 만난다.",
+  "accessibilityDescription": "한 포물선은 x축에 한 점에서 접하고, 기울기 4인 직선은 포물선을 두 점에서 가로지른다.",
+  "sourceConditions": [
+    {"id": "tangent", "condition": "a=1, b=1/4이면 f(x)=(x+1/2)²", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.requiredPoints[0]"]},
+    {"id": "secant", "condition": "직선 y=4x와의 교점 방정식 x²−3x+1/4=0의 판별식 8>0", "mappedTo": "graphPlan.referenceLines[0]"}
+  ],
+  "newVisualInformation": ["x축 접점과 사선의 두 교점을 한 좌표평면에서 구분한다."]
+}

@@ -1,0 +1,15 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["1/3", "-2", "3"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 2], "viewport": [-1.4, 2.4, -1, 7],
+    "requiredPoints": [{"id": "T", "x": 0.3333333333333333, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "경계값 a=4/3에서 y=3(x−1/3)²이 되어 T(1/3,0)에서 x축에 접한다.",
+  "accessibilityDescription": "판별식이 영인 경계의 포물선이 x축에 한 점에서 접하는 모습이다.",
+  "sourceConditions": [
+    {"id": "boundary", "condition": "3x²−2x+a−1의 판별식 4−12(a−1)=0인 a=4/3", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints[0]"]}
+  ],
+  "newVisualInformation": ["a≤4/3에서 두 x절편 또는 접점이 존재하며 경계에서는 접함을 표시한다."]
+}

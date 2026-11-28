@@ -1,0 +1,16 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["7", "-4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 3], "viewport": [-0.4, 3.4, 2, 8],
+    "requiredPoints": [{"id": "L", "x": 0, "y": 7}, {"id": "V", "x": 2, "y": 3}, {"id": "R", "x": 3, "y": 4}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a=3인 경우에는 대칭축 x=2가 닫힌 구간 [0,3] 안에 있으므로 꼭짓점 (2,3)에서 최솟값 3이다.",
+  "accessibilityDescription": "닫힌 구간 0부터 3에서 꼭짓점이 구간 안에 들어와 최솟값이 3인 포물선이다.",
+  "sourceConditions": [
+    {"id": "case", "condition": "a≥2이면 최소 a, 이를 3으로 두면 a=3", "mappedTo": ["graphPlan.coefficients", "graphPlan.sourceDomain", "graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation": ["0<a<2의 끝점 최소와 대조되는 꼭짓점 최소를 시각화한다."]
+}

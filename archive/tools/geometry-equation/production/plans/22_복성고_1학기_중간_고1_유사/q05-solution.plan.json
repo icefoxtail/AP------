@@ -1,0 +1,17 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["-9", "3"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [0, 6], "viewport": [-0.5, 6.5, -10, 10],
+    "functionName": "f", "requiredPoints": [
+      {"id": "A", "x": 2, "y": -3}, {"id": "B", "x": 4, "y": 3}
+    ], "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "기울기 3으로 점 (2,−3)을 지나는 직선은 y=3x−9이고, x=4에서 y=3이다.",
+  "accessibilityDescription": "점 A(2,−3)과 B(4,3)를 지나는 우상향 직선 y=3x−9를 그린다.",
+  "sourceConditions": [
+    {"id": "line", "condition": "점 (2,−3)을 지나고 기울기 3인 직선", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.requiredPoints[0]"]},
+    {"id": "output", "condition": "f(4)=3", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["x가 2에서 4로 늘 때 y가 6 증가하는 기울기 관계를 정확한 두 점으로 드러낸다."]
+}

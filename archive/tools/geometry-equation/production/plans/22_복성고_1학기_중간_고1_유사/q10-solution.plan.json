@@ -1,0 +1,31 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-2"}, {"kind": "integer", "value": "3"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "4"}, {"kind": "integer", "value": "-1"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "7"}, {"kind": "integer", "value": "4"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "D", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": {"m": {"kind": "integer", "value": "2"}, "n": {"kind": "integer", "value": "1"}, "mode": "INTERNAL"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "E", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": {"m": {"kind": "integer", "value": "2"}, "n": {"kind": "integer", "value": "1"}, "mode": "INTERNAL"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "F", "op": "DIVISION_POINT", "inputs": ["C", "A"], "args": {"m": {"kind": "integer", "value": "2"}, "n": {"kind": "integer", "value": "1"}, "mode": "INTERNAL"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "G", "op": "CENTROID", "inputs": ["D", "E", "F"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G"], "displayLines": [], "displayCircles": [],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]}, {"id": "sBC", "refs": ["B", "C"]}, {"id": "sCA", "refs": ["C", "A"]},
+    {"id": "sDE", "refs": ["D", "E"]}, {"id": "sEF", "refs": ["E", "F"]}, {"id": "sFD", "refs": ["F", "D"]}
+  ],
+  "coordinateLabels": ["D", "E", "F", "G"],
+  "coordinateCanvas": {"width": 640, "height": 440},
+  "caption": "D(2,1/3), E(6,7/3), F(1,10/3)를 연결한 삼각형의 무게중심은 G(3,2)이다.",
+  "accessibilityDescription": "삼각형 ABC의 세 변을 각각 2대1로 내분한 점 D E F와 그 내부의 무게중심 G를 표시한다.",
+  "sourceConditions": [
+    {"id": "vertices", "condition": "A(−2,3), B(4,−1), C(7,4)", "mappedTo": ["mathPlan.nodes[0]", "mathPlan.nodes[1]", "mathPlan.nodes[2]"]},
+    {"id": "division", "condition": "D,E,F는 차례로 AB,BC,CA의 2:1 내분점", "mappedTo": ["mathPlan.nodes[3]", "mathPlan.nodes[4]", "mathPlan.nodes[5]"]},
+    {"id": "centroid", "condition": "D,E,F의 평균 좌표 (3,2)", "mappedTo": ["mathPlan.nodes[6]", "coordinateLabels[3]"]}
+  ],
+  "newVisualInformation": ["바깥 삼각형과 내분 삼각형을 함께 보이고 실제 내분·무게중심 노드를 계산한다."]
+}

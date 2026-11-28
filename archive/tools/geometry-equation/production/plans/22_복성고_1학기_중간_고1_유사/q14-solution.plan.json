@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["0", "3"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-2, 2], "viewport": [-2.5, 2.5, -9, 11],
+    "functionName": "f",
+    "overlays": {
+      "lines": [
+        {"id": "l1", "slope": "3", "intercept": "-2", "label": "y=3x-2"},
+        {"id": "l2", "slope": "3", "intercept": "4", "label": "y=3x+4"}
+      ],
+      "points": [
+        {"id": "P", "x": "0", "y": "-2"}, {"id": "R", "x": "0", "y": "0"}, {"id": "Q", "x": "0", "y": "4"}
+      ],
+      "segments": [{"id": "PR", "from": "P", "to": "R", "length": true}, {"id": "RQ", "from": "R", "to": "Q", "length": true}]
+    },
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a=b=0인 대표 단면에서 P(0,−2), Q(0,4)의 1:2 내분점 R(0,0)은 y=3x 위에 있다.",
+  "accessibilityDescription": "기울기 3인 평행한 세 직선 위의 점 P R Q가 한 수직선 위에서 1대2의 비를 만든다.",
+  "sourceConditions": [
+    {"id": "lines", "condition": "l1:y=3x−2, l2:y=3x+4, 가운데 자취 y=3x", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.overlays.lines[0]", "graphPlan.overlays.lines[1]"]},
+    {"id": "division", "condition": "임의 P(a,3a−2), Q(b,3b+4)의 내분점 (2a+b)/3, 2a+b는 y=3x 위; 배치 예시 a=b=0", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]}
+  ],
+  "newVisualInformation": ["두 평행선의 두 점을 1:2로 내분하면 세 번째 평행선 위에 놓인다는 위치 관계를 구현한다."]
+}
