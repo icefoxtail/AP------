@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["9", "-4", "1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["2", "5"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [2, 5], "viewport": [1.5, 5.5, 4, 15],
+    "requiredPoints": [{"id": "A", "x": 2, "y": 5}, {"id": "B", "x": 5, "y": 14}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "f(x)=x²−4x+9는 [2,5]에서 증가하고, f(2)=5와 f(5)=14이므로 오른쪽 끝점 B가 최댓값을 준다.",
+  "accessibilityDescription": "x=2부터 x=5까지의 닫힌 포물선 구간과 양 끝점 (2,5), (5,14)을 표시한다.",
+  "sourceConditions": [
+    {"id": "domain", "condition": "2≤x≤5", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "function", "condition": "f(5)=14이므로 25−20+k=14, k=9", "mappedTo": "graphPlan.coefficients"},
+    {"id": "endpoints", "condition": "f(2)=5, f(5)=14", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["구간 끝점 둘을 실제 값으로 표시해 증가함수의 최댓값 조건을 시각화한다."]
+}

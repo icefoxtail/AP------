@@ -1,0 +1,19 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["5", "6", "1"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-6, 0],
+    "viewport": [-6.5, 0.5, -5, 10], "functionName": "f",
+    "referenceCurves": [{"id": "g", "name": "g", "coefficients": ["9", "6", "1"], "intersectionX": [], "color": "WARM"}],
+    "requiredPoints": [{"id": "A", "x": -5, "y": 0}, {"id": "V", "x": -3, "y": -4}, {"id": "B", "x": -1, "y": 0}, {"id": "T", "x": -3, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "pointNames": {"T": "T"},
+  "caption": "f(x)=x²+6x+5는 x=−5,−1에서 x축과 만나고, 4만큼 올린 g(x)=f(x)+4=(x+3)²은 T(−3,0)에서 x축에 접한다.",
+  "accessibilityDescription": "두 포물선 f와 g를 한 좌표축에 겹쳐 그리며, f의 꼭짓점 (−3,−4), 위로 4만큼 이동한 g의 접점 (−3,0)을 표시한다.",
+  "sourceConditions": [
+    {"id": "f", "condition": "k=5에서 f(x)=x²+6x+5, 두 실근 −5,−1", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "g", "condition": "f(x)+4=x²+6x+9=(x+3)²", "mappedTo": ["graphPlan.referenceCurves[0]", "graphPlan.requiredPoints[3]"]}
+  ],
+  "newVisualInformation": ["수직 평행이동 4와 접점·두 x절편의 차이를 정확한 두 곡선으로 보여 준다."]
+}

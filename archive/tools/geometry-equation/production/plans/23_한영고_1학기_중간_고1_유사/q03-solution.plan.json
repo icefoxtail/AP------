@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["5", "-8", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 5],
+    "viewport": [-1, 5, -4, 14],
+    "requiredPoints": [{"id": "V", "x": 2, "y": -3}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "y=2(x−2)²−3에서 꼭짓점 V(2,−3)이 최솟값 −3을 결정하고, a−b=2−(−3)=5이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=2x²−8x+5와 최솟점 V(2,−3)을 좌표축에 표시한다.",
+  "sourceConditions": [
+    {"id": "f", "condition": "y=2x²−8x+5", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "완전제곱식 2(x−2)²−3의 꼭짓점 (2,−3)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["이차함수의 최솟값과 그때의 x를 꼭짓점에 연결한다."]
+}

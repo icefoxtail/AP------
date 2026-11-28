@@ -1,0 +1,15 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{"kind": "SET", "pieces": [{"lo": {"value": "2", "state": "OPEN"}, "hi": {"value": "8", "state": "OPEN"}}], "integerPoints": true}]
+  },
+  "numberLineCaption": {"text": "정수해가 놓인 열린 구간"},
+  "caption": "|x−5|<3은 2<x<8이므로 열린 양 끝점 사이 정수 3, 4, 5, 6, 7의 합은 25이다.",
+  "accessibilityDescription": "수직선에서 2와 8은 열린 원, 그 사이의 정수 3에서 7까지는 정수점으로 나타낸다.",
+  "sourceConditions": [
+    {"id": "interval", "condition": "−3<x−5<3 ⇔ 2<x<8", "mappedTo": "numberLine.rows[0].pieces"},
+    {"id": "integers", "condition": "가능한 정수는 3,4,5,6,7", "mappedTo": "numberLine.rows[0].integerPoints"}
+  ],
+  "newVisualInformation": ["열린 끝점을 제외한 정수 5개가 해집합에 들어 있음을 실제 정수점으로 나타낸다."]
+}

@@ -1,0 +1,19 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x", "rows": [
+      {"kind": "SET", "pieces": [{"lo": {"value": "6", "state": "OPEN"}, "hi": null}], "label": "첫째 조건"},
+      {"kind": "SET", "pieces": [{"lo": null, "hi": {"value": "9", "state": "CLOSED"}}], "label": "둘째 조건"},
+      {"kind": "RESULT", "label": "공통 범위"}
+    ]
+  },
+  "numberLineCaption": {"text": "두 일차부등식의 공통해"},
+  "caption": "−3a=6, (a+2b)/2=9이므로 두 조건 x>6과 x≤9의 공통 범위는 6<x≤9이다.",
+  "accessibilityDescription": "수직선 세 줄에서 x>6, x≤9, 교집합 6<x≤9를 차례로 표시하고 6은 열린 끝점, 9는 닫힌 끝점으로 표시한다.",
+  "sourceConditions": [
+    {"id": "left", "condition": "x>−3a, a=−2이므로 x>6", "mappedTo": "numberLine.rows[0]"},
+    {"id": "right", "condition": "x≤(a+2b)/2, a=−2,b=10이므로 x≤9", "mappedTo": "numberLine.rows[1]"},
+    {"id": "intersection", "condition": "6<x≤9", "mappedTo": "numberLine.rows[2]"}
+  ],
+  "newVisualInformation": ["서로 다른 열린·닫힌 끝점과 두 해집합의 교집합을 실제 세 수직선 줄로 연결한다."]
+}

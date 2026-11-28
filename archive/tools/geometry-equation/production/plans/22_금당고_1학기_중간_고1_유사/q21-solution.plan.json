@@ -1,0 +1,18 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["0", "-8", "1"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [1, 10],
+    "viewport": [0, 11, -20, 20], "functionName": "f",
+    "referenceCurves": [{"id": "g", "name": "g", "coefficients": ["-64", "16", "-1"], "intersectionX": ["4", "8"], "color": "WARM"}],
+    "requiredPoints": [{"id": "A", "x": 4, "y": -16}, {"id": "B", "x": 8, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "조건을 풀면 a=4, b=−64, f(x)=x²−8x와 g(x)=−x²+16x−64가 A(4,−16), B(8,0)에서 만나고 β−α=4이다.",
+  "accessibilityDescription": "위로 열린 f의 꼭짓점 A(4,−16), 아래로 열린 g의 꼭짓점 B(8,0), 두 곡선의 두 교점 A와 B를 한 좌표축에 표시한다.",
+  "sourceConditions": [
+    {"id": "parameters", "condition": "β−α=4 및 조건 (다)(라)에서 a=4,b=−64", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.referenceCurves[0]"]},
+    {"id": "intersections", "condition": "f(x)=g(x) ⇒ 2(x−4)(x−8)=0", "mappedTo": ["graphPlan.referenceCurves[0].intersectionX", "graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["두 포물선의 교점이 각자 다른 꼭짓점이기도 하고 가로 거리 β−α가 4임을 드러낸다."]
+}

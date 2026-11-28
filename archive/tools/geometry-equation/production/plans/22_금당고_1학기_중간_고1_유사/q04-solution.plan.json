@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["14", "-6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 7],
+    "viewport": [-1, 7, 4, 19],
+    "requiredPoints": [{"id": "V", "x": 3, "y": 5}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "y=x²−6x+14=(x−3)²+5의 꼭짓점 V(3,5)가 함수의 최솟값 5를 나타낸다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²−6x+14의 최솟점 (3,5)을 정확하게 표시한다.",
+  "sourceConditions": [
+    {"id": "function", "condition": "y=x²−6x+14", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "완전제곱꼴 (x−3)²+5", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["기존 문제 그림이 수치로 표시하지 않은 꼭짓점의 좌표와 최솟값을 해설에서 명시한다."]
+}

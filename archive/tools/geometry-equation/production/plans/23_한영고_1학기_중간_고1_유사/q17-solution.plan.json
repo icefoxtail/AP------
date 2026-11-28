@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["5", "4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-5, 1],
+    "viewport": [-5.5, 1.5, -0.5, 11],
+    "requiredPoints": [{"id": "V", "x": -2, "y": 1}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k의 최소 정수 5를 대입하면 y=(x+2)²+1이고, 꼭짓점 (−2,1)이 x축 위에 있어 실근이 없다.",
+  "accessibilityDescription": "포물선 y=x²+4x+5가 최솟점 V(−2,1)에서도 x축 위에 있고 x축과 만나지 않음을 보여 준다.",
+  "sourceConditions": [
+    {"id": "k", "condition": "판별식 16−4k<0에서 최소 정수 k=5", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "이때 완전제곱꼴 (x+2)²+1의 꼭짓점", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["판별식의 음수 조건을 x절편이 없는 포물선의 위치로 확인한다."]
+}
