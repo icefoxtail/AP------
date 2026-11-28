@@ -1,0 +1,28 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1.4, 1.4, -6, 7],
+    "curves": [
+      {"id": "lower", "kind": "Y_OF_X", "coefficients": ["0", "4", "-3"], "domain": ["-1", "1"], "color": "BLUE", "label": "y=-3x^2+4x"},
+      {"id": "upper", "kind": "Y_OF_X", "coefficients": ["0", "4", "3"], "domain": ["-1", "1"], "color": "WARM", "label": "y=3x^2+4x"},
+      {"id": "tangent", "kind": "LINE", "coefficients": ["0", "4"], "domain": ["-1", "1"], "style": "DASHED", "label": "y=4x"}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [{"id": "O", "x": "0", "y": "0"}]
+    }
+  },
+  "pointNames": {"O": "O"},
+  "caption": "두 경계곡선 -3x²+4x와 3x²+4x는 원점에서 만나고 같은 접선 y=4x를 갖는다. 이 사이의 f(x)도 x→0⁺에서 f(x)/x→4이다.",
+  "accessibilityDescription": "원점에서 만나는 위아래 포물선은 원점에서 기울기 4인 직선을 공유한다. 파란 경계곡선은 아래쪽, 따뜻한 색 경계곡선은 위쪽이고 점선은 접선이다. 두 경계 사이 함수 f 자체는 그리지 않았다.",
+  "newVisualInformation": [
+    "현행 유사 JS의 상하 경계 -3x²+4x와 3x²+4x를 같은 좌표축에서 비교",
+    "원점에서의 공통 접선 y=4x를 점선으로 표시",
+    "원문에 모양이 지정되지 않은 f(x)의 임의 곡선을 만들지 않음"
+  ],
+  "sourceConditions": [
+    {"id": "c1", "condition": "모든 실수 x에 대해 -3x²+4x≤f(x)≤3x²+4x이다.", "mappedTo": ["graphPlan.curves[0]", "graphPlan.curves[1]"]},
+    {"id": "c2", "condition": "x>0에서 -3x+4≤f(x)/x≤3x+4이므로 x→0⁺에서 f(x)/x→4이다.", "mappedTo": ["graphPlan.curves[2]", "graphPlan.overlays.points"]}
+  ]
+}
