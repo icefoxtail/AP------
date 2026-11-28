@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rOA",
+        "ownerSegment": "sOA",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "rgFold",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "B"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "sixty",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름 6인 사분원에서 B를 O에 겹치도록 접은 색칠 영역: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "19년 연향중 15번 해설 그림. 반지름 6인 사분원에서 B를 O에 겹치도록 접은 색칠 영역: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 6, 선분 5, 각도호 1, 직각 0, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "점 $\\text{B}$가 $\\text{O}$에 오도록 접었으므로 $\\overline{\\text{CD}}$는 $\\overline{\\text{OB}}$의 수직이등분선이고 $\\overline{\\text{OD}}=\\overline{\\text{DB}}=3\\text{ cm}$이다. 또 $\\overline{\\text{OC}}=\\overline{\\text{BC}}=\\overline{\\text{OB}}=6\\text{ cm}$이므로 $\\triangle\\text{OBC}$는 정삼각형이고 $\\angle\\text{BOC}=60^\\circ$이다. 직각삼각형 $\\text{OCD}$에서 $\\overline{\\text{CD}} = \\sqrt{6^2 - 3^2} = 3\\sqrt{3}\\text{ cm}$이다. 색칠한 부분의 넓이는 부채꼴 $\\text{OBC}$의 넓이에서 $\\triangle\\text{DBC}$의 넓이를 뺀 값이므로 $$\\pi \\times 6^2 \\times \\frac{60}{360} - \\frac{1}{2}\\times 3\\times 3\\sqrt{3} = 6\\pi - \\frac{9\\sqrt{3}}{2}\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "점 $\\text{B}$가 $\\text{O}$에 오도록 접었으므로 $\\overline{\\text{CD}}$는 $\\overline{\\text{OB}}$의 수직이등분선이고 $\\overline{\\text{OD}}=\\overline{\\text{DB}}=3\\text{ cm}$이다. 또 $\\overline{\\text{OC}}=\\overline{\\text{BC}}=\\overline{\\text{OB}}=6\\text{ cm}$이므로 $\\triangle\\text{OBC}$는 정삼각형이고 $\\angle\\text{BOC}=60^\\circ$이다. 직각삼각형 $\\text{OCD}$에서 $\\overline{\\text{CD}} = \\sqrt{6^2 - 3^2} = 3\\sqrt{3}\\text{ cm}$이다. 색칠한 부분의 넓이는 부채꼴 $\\text{OBC}$의 넓이에서 $\\triangle\\text{DBC}$의 넓이를 뺀 값이므로 $$\\pi \\times 6^2 \\times \\frac{60}{360} - \\frac{1}{2}\\times 3\\times 3\\sqrt{3} = 6\\pi - \\frac{9\\sqrt{3}}{2}\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ④이다."
+}

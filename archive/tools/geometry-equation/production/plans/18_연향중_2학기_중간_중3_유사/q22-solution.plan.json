@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "14"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "14"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "la",
+        "ownerSegment": "sCB",
+        "text": "a"
+      },
+      {
+        "id": "lb",
+        "ownerSegment": "sCA",
+        "text": "b"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10"
+      }
+    ],
+    "regions": [
+      {
+        "id": "tri",
+        "fill": "LIGHT",
+        "label": "11",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "빗변 10, 두 직각변 a와 b인 삼각형 ABC: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "18년 연향중 22번 해설 그림. 빗변 10, 두 직각변 a와 b인 삼각형 ABC: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 3, 선분 3, 각도호 0, 직각 1, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22_solution",
+      "condition": "직각삼각형 $\\mathrm{ABC}$의 넓이가 $11$이므로 $$\\frac{1}{2}ab = 11 \\implies ab = 22$$ 피타고라스 정리에 의해 $$a^2 + b^2 = 10^2 = 100$$ 곱셈 공식에 의해 $$(a+b)^2 = a^2 + b^2 + 2ab = 100 + 2 \\times 22 = 144$$ $a, b$는 변의 길이이므로 $a+b > 0$이고, 따라서 $a + b = \\sqrt{144} = 12$이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $\\mathrm{ABC}$의 넓이가 $11$이므로 $$\\frac{1}{2}ab = 11 \\implies ab = 22$$ 피타고라스 정리에 의해 $$a^2 + b^2 = 10^2 = 100$$ 곱셈 공식에 의해 $$(a+b)^2 = a^2 + b^2 + 2ab = 100 + 2 \\times 22 = 144$$ $a, b$는 변의 길이이므로 $a+b > 0$이고, 따라서 $a + b = \\sqrt{144} = 12$이다."
+}

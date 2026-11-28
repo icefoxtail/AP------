@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "15"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "B",
+    "M",
+    "H",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOL",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lHB",
+        "ownerSegment": "sHB",
+        "text": "2",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "H",
+    "L"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "모선 8, 밑면 반지름 2인 원뿔과 모선 OB의 중점 M",
+  "accessibilityDescription": "18년 연향중 20번 문제 그림. 모선 8, 밑면 반지름 2인 원뿔과 모선 OB의 중점 M",
+  "newVisualInformation": [
+    "발문의 조건과 라벨: 모선 8, 밑면 반지름 2인 원뿔과 모선 OB의 중점 M",
+    "렌더 필드: 점 5, 선분 3, 각도호 0, 직각 0, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q20_problem",
+      "condition": "다음 그림과 같이 모선의 길이가 $8,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 모선의 길이가 $8,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?"
+}

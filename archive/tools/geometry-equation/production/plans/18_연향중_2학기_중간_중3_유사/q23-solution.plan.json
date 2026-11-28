@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "F",
+          "lBH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "F",
+    "H",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFH",
+      "refs": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sFM",
+      "refs": [
+        "F",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "bf",
+        "ownerSegment": "sBF",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "fh",
+        "ownerSegment": "sFH",
+        "text": "6√2",
+        "unit": "cm"
+      },
+      {
+        "id": "bh",
+        "ownerSegment": "sBH",
+        "text": "6√3",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raF",
+      "refs": [
+        "B",
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "raM",
+      "refs": [
+        "B",
+        "M",
+        "F"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 BFH의 두 넓이 식으로 수선 FM 계산",
+  "accessibilityDescription": "18년 연향중 23번 해설 그림. 직각삼각형 BFH의 두 넓이 식으로 수선 FM 계산",
+  "newVisualInformation": [
+    "BH=6√3, FH=6√2, FM⊥BH 관계",
+    "렌더 필드: 점 4, 선분 4, 각도호 0, 직각 2, 입체 0"
+  ],
+  "sourceQuote": "정육면체의 한 모서리의 길이가 $6,\\mathrm{cm}$이므로 $\\overline{\\mathrm{BF}}=6,\\mathrm{cm}$이다. 밑면 $\\mathrm{EFGH}$의 대각선 $\\overline{\\mathrm{FH}}$의 길이는 $$\\overline{\\mathrm{FH}} = \\sqrt{6^2 + 6^2} = 6\\sqrt{2},(\\mathrm{cm})$$ $\\overline{\\mathrm{BF}}$는 밑면에 수직이므로 $\\triangle\\mathrm{BFH}$는 $\\angle\\mathrm{BFH}=90^\\circ$인 직각삼각형이고, 대각선 $\\overline{\\mathrm{BH}}$의 길이는 $$\\overline{\\mathrm{BH}} = \\sqrt{6^2 + (6\\sqrt{2})^2} = \\sqrt{36 + 72} = \\sqrt{108} = 6\\sqrt{3},(\\mathrm{cm})$$ $\\triangle\\mathrm{BFH}$의 넓이를 두 가지 방법으로 나타내면 $$\\frac{1}{2} \\times \\overline{\\mathrm{BF}} \\times \\overline{\\mathrm{FH}} = \\frac{1}{2} \\times \\overline{\\mathrm{BH}} \\times \\overline{\\mathrm{FM}}$$ $$6 \\times 6\\sqrt{2} = 6\\sqrt{3} \\times \\overline{\\mathrm{FM}} \\implies \\overline{\\mathrm{FM}} = \\frac{6\\sqrt{2}}{\\sqrt{3}} = 2\\sqrt{6},(\\mathrm{cm})$$",
+  "sourceConditions": [
+    {
+      "id": "q23_solution",
+      "condition": "정육면체의 한 모서리의 길이가 $6,\\mathrm{cm}$이므로 $\\overline{\\mathrm{BF}}=6,\\mathrm{cm}$이다. 밑면 $\\mathrm{EFGH}$의 대각선 $\\overline{\\mathrm{FH}}$의 길이는 $$\\overline{\\mathrm{FH}} = \\sqrt{6^2 + 6^2} = 6\\sqrt{2},(\\mathrm{cm})$$ $\\overline{\\mathrm{BF}}$는 밑면에 수직이므로 $\\triangle\\mathrm{BFH}$는 $\\angle\\mathrm{BFH}=90^\\circ$인 직각삼각형이고, 대각선 $\\overline{\\mathrm{BH}}$의 길이는 $$\\overline{\\mathrm{BH}} = \\sqrt{6^2 + (6\\sqrt{2})^2} = \\sqrt{36 + 72} = \\sqrt{108} = 6\\sqrt{3},(\\mathrm{cm})$$ $\\triangle\\mathrm{BFH}$의 넓이를 두 가지 방법으로 나타내면 $$\\frac{1}{2} \\times \\overline{\\mathrm{BF}} \\times \\overline{\\mathrm{FH}} = \\frac{1}{2} \\times \\overline{\\mathrm{BH}} \\times \\overline{\\mathrm{FM}}$$ $$6 \\times 6\\sqrt{2} = 6\\sqrt{3} \\times \\overline{\\mathrm{FM}} \\implies \\overline{\\mathrm{FM}} = \\frac{6\\sqrt{2}}{\\sqrt{3}} = 2\\sqrt{6},(\\mathrm{cm})$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}

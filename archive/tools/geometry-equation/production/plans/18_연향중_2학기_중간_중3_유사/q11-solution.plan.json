@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "D",
+    "B",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "de",
+        "ownerSegment": "sDE",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "ac",
+        "ownerSegment": "sAC",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "cd",
+        "ownerSegment": "sCD",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "bce",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "E"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "raD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "caption": "높이 16인 사다리꼴에서 두 넓이 30의 삼각형을 뺀 BCE",
+  "accessibilityDescription": "18년 연향중 11번 해설 그림. 높이 16인 사다리꼴에서 두 넓이 30의 삼각형을 뺀 BCE",
+  "newVisualInformation": [
+    "합동 대응변 AC=10, CD=6, BCE 영역 강조",
+    "렌더 필드: 점 5, 선분 7, 각도호 0, 직각 2, 입체 0"
+  ],
+  "sourceQuote": "두 직각삼각형 $\\mathrm{ACB}$와 $\\mathrm{DEC}$가 합동이므로 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{DE}}=10,\\mathrm{cm}$, $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AB}}=6,\\mathrm{cm}$이다. 따라서 $\\overline{\\mathrm{AD}} = 10 + 6 = 16,\\mathrm{cm}$이다. 사각형 $\\mathrm{ABED}$는 $\\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DE}}$인 사다리꼴이므로 넓이는 $$\\frac{1}{2} \\times (6 + 10) \\times 16 = 128,(\\mathrm{cm}^2)$$ 여기에서 두 직각삼각형 $\\mathrm{ACB, DEC}$의 넓이를 빼면 $$\\triangle\\mathrm{BCE} = 128 - 2 \\times \\left(\\frac{1}{2} \\times 6 \\times 10\\right) = 128 - 60 = 68,(\\mathrm{cm}^2)$$ 따라서 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q11_solution",
+      "condition": "두 직각삼각형 $\\mathrm{ACB}$와 $\\mathrm{DEC}$가 합동이므로 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{DE}}=10,\\mathrm{cm}$, $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AB}}=6,\\mathrm{cm}$이다. 따라서 $\\overline{\\mathrm{AD}} = 10 + 6 = 16,\\mathrm{cm}$이다. 사각형 $\\mathrm{ABED}$는 $\\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DE}}$인 사다리꼴이므로 넓이는 $$\\frac{1}{2} \\times (6 + 10) \\times 16 = 128,(\\mathrm{cm}^2)$$ 여기에서 두 직각삼각형 $\\mathrm{ACB, DEC}$의 넓이를 빼면 $$\\triangle\\mathrm{BCE} = 128 - 2 \\times \\left(\\frac{1}{2} \\times 6 \\times 10\\right) = 128 - 60 = 68,(\\mathrm{cm}^2)$$ 따라서 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}

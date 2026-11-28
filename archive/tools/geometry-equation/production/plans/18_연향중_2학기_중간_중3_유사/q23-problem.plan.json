@@ -1,0 +1,81 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "footOnLine": {
+              "from": "F",
+              "line": [
+                "B",
+                "H"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BF",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "F",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "한 변 6인 정육면체의 공간대각선 BH와 F에서 내린 수선 FM",
+  "accessibilityDescription": "18년 연향중 23번 문제 그림. 한 변 6인 정육면체의 공간대각선 BH와 F에서 내린 수선 FM",
+  "newVisualInformation": [
+    "정육면체 BF=6, BH 공간대각선, FM⊥BH 직각 표식",
+    "렌더 필드: 점 0, 선분 0, 각도호 0, 직각 0, 입체 1"
+  ],
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $6,\\mathrm{cm}$인 정육면체의 한 꼭짓점 $\\mathrm{F}$에서 대각선 $\\overline{\\mathrm{BH}}$에 내린 수선의 발을 $\\mathrm{M}$이라 할 때, $\\overline{\\mathrm{FM}}$의 길이를 구하여라. (단, 풀이 과정을 자세히 써라.)",
+  "sourceConditions": [
+    {
+      "id": "q23_problem",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $6,\\mathrm{cm}$인 정육면체의 한 꼭짓점 $\\mathrm{F}$에서 대각선 $\\overline{\\mathrm{BH}}$에 내린 수선의 발을 $\\mathrm{M}$이라 할 때, $\\overline{\\mathrm{FM}}$의 길이를 구하여라. (단, 풀이 과정을 자세히 써라.)",
+      "mappedTo": "solids"
+    }
+  ]
+}

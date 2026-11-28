@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "B에서 직각, A에서 30도, 변 AB가 8인 삼각형: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "19년 연향중 10번 해설 그림. B에서 직각, A에서 30도, 변 AB가 8인 삼각형: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 3, 선분 3, 각도호 1, 직각 1, 입체 0"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8√3/3",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "q10_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\angle\\text{A}=30^\\circ$이므로 $$\\tan 30^\\circ = \\frac{x}{8} = \\frac{1}{\\sqrt{3}} \\implies x = \\frac{8}{\\sqrt{3}} = \\frac{8\\sqrt{3}}{3}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\angle\\text{A}=30^\\circ$이므로 $$\\tan 30^\\circ = \\frac{x}{8} = \\frac{1}{\\sqrt{3}} \\implies x = \\frac{8}{\\sqrt{3}} = \\frac{8\\sqrt{3}}{3}$$ 따라서 정답은 ④이다."
+}

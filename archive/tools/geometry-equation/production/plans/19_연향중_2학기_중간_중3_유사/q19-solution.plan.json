@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "H",
+    "G",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHG",
+      "refs": [
+        "H",
+        "G"
+      ]
+    },
+    {
+      "id": "sGB",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "width",
+        "ownerSegment": "sBA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "sAH",
+        "text": "7",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "B",
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "caption": "CD를 기준으로 윗면과 옆면을 펼친 5×7 직사각형",
+  "accessibilityDescription": "19년 연향중 19번 해설 그림. CD를 기준으로 윗면과 옆면을 펼친 5×7 직사각형",
+  "newVisualInformation": [
+    "가로 5, 세로 4+3=7, 최단 대각선 BH",
+    "렌더 필드: 점 6, 선분 6, 각도호 0, 직각 1, 입체 0"
+  ],
+  "sourceQuote": "모서리 $\\overline{\\text{CD}}$를 경계로 윗면 $\\text{ABCD}$와 옆면 $\\text{CDHG}$를 평면으로 펼치면 가로가 $\\overline{\\text{CD}}=5\\text{ cm}$, 세로가 $\\overline{\\text{BC}}+\\overline{\\text{DH}}=4+3=7\\text{ cm}$인 직사각형이 된다. 최단 거리는 대각선 $\\overline{\\text{BH}}$의 길이이므로 $$\\sqrt{5^2 + 7^2} = \\sqrt{25 + 49} = \\sqrt{74}\\text{ (cm)}$$ 따라서 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q19_solution",
+      "condition": "모서리 $\\overline{\\text{CD}}$를 경계로 윗면 $\\text{ABCD}$와 옆면 $\\text{CDHG}$를 평면으로 펼치면 가로가 $\\overline{\\text{CD}}=5\\text{ cm}$, 세로가 $\\overline{\\text{BC}}+\\overline{\\text{DH}}=4+3=7\\text{ cm}$인 직사각형이 된다. 최단 거리는 대각선 $\\overline{\\text{BH}}$의 길이이므로 $$\\sqrt{5^2 + 7^2} = \\sqrt{25 + 49} = \\sqrt{74}\\text{ (cm)}$$ 따라서 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}

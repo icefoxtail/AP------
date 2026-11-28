@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C",
+          "lBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "C",
+    "D",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "7",
+        "side": "LEFT",
+        "style": "ARROW",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dCD",
+        "from": "D",
+        "to": "C",
+        "label": "5",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "16",
+        "side": "BELOW",
+        "style": "ARROW",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "길이 16의 BD와 같은 쪽에 높이 7, 5인 두 수선: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "18년 연향중 15번 해설 그림. 길이 16의 BD와 같은 쪽에 높이 7, 5인 두 수선: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 6, 선분 7, 각도호 0, 직각 2, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "직선 $\\mathrm{BD}$에 대하여 점 $\\mathrm{C}$와 대칭인 점을 $\\mathrm{C}'$라 하면 $\\overline{\\mathrm{PC}}=\\overline{\\mathrm{PC}'}$이므로 $$\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}}=\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}'}\\ge\\overline{\\mathrm{AC}'}$$ 등호는 점 $\\mathrm{P}$가 선분 $\\overline{\\mathrm{AC}'}$와 선분 $\\overline{\\mathrm{BD}}$의 교점일 때 성립한다. 가로 거리는 $\\overline{\\mathrm{BD}}=16,\\mathrm{cm}$, 세로 거리는 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{DC}'}=7+5=12,\\mathrm{cm}$이므로 $$\\overline{\\mathrm{AC}'} = \\sqrt{16^2 + 12^2} = \\sqrt{256 + 144} = \\sqrt{400} = 20,(\\mathrm{cm})$$ 따라서 최솟값은 $20$이므로 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "직선 $\\mathrm{BD}$에 대하여 점 $\\mathrm{C}$와 대칭인 점을 $\\mathrm{C}'$라 하면 $\\overline{\\mathrm{PC}}=\\overline{\\mathrm{PC}'}$이므로 $$\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}}=\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}'}\\ge\\overline{\\mathrm{AC}'}$$ 등호는 점 $\\mathrm{P}$가 선분 $\\overline{\\mathrm{AC}'}$와 선분 $\\overline{\\mathrm{BD}}$의 교점일 때 성립한다. 가로 거리는 $\\overline{\\mathrm{BD}}=16,\\mathrm{cm}$, 세로 거리는 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{DC}'}=7+5=12,\\mathrm{cm}$이므로 $$\\overline{\\mathrm{AC}'} = \\sqrt{16^2 + 12^2} = \\sqrt{256 + 144} = \\sqrt{400} = 20,(\\mathrm{cm})$$ 따라서 최솟값은 $20$이므로 정답은 ⑤이다."
+}

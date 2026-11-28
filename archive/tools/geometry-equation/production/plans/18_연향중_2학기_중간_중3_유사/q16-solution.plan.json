@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "90"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "90"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "9",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "eb",
+        "ownerSegment": "sAB",
+        "text": "9"
+      },
+      {
+        "id": "bd",
+        "ownerSegment": "sBC",
+        "text": "9"
+      }
+    ],
+    "regions": [
+      {
+        "id": "EBD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "E",
+              "B",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "밑변 BD가 삼등분으로 정해지는 직각이등변삼각형의 접기: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "18년 연향중 16번 해설 그림. 밑변 BD가 삼등분으로 정해지는 직각이등변삼각형의 접기: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 5, 선분 4, 각도호 0, 직각 1, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16_solution",
+      "condition": "$\\mathrm{D}$는 $\\overline{\\mathrm{BC}}$의 삼등분점 중 점 $\\mathrm{C}$에 가까운 점이므로 $\\overline{\\mathrm{BD}} = 9 \\times \\frac{2}{3} = 6,\\mathrm{cm}$이다. 접는 선과 $\\overline{\\mathrm{AB}}$의 교점을 $\\mathrm{E}$라 하면 접었을 때 $\\overline{\\mathrm{EA}}=\\overline{\\mathrm{ED}}$이다. $\\overline{\\mathrm{EB}}=x,\\mathrm{cm}$라 하면 $\\overline{\\mathrm{ED}}=9-x,\\mathrm{cm}$이고, 직각삼각형 $\\mathrm{EBD}$에서 피타고라스 정리에 의해 $$(9-x)^2 = x^2 + 6^2$$ $$81 - 18x + x^2 = x^2 + 36 \\implies 18x = 45 \\implies x = \\frac{5}{2}$$ 따라서 $\\triangle\\mathrm{EBD}$의 넓이는 $$\\frac{1}{2} \\times 6 \\times \\frac{5}{2} = \\frac{15}{2},(\\mathrm{cm}^2)$$ 이므로 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "$\\mathrm{D}$는 $\\overline{\\mathrm{BC}}$의 삼등분점 중 점 $\\mathrm{C}$에 가까운 점이므로 $\\overline{\\mathrm{BD}} = 9 \\times \\frac{2}{3} = 6,\\mathrm{cm}$이다. 접는 선과 $\\overline{\\mathrm{AB}}$의 교점을 $\\mathrm{E}$라 하면 접었을 때 $\\overline{\\mathrm{EA}}=\\overline{\\mathrm{ED}}$이다. $\\overline{\\mathrm{EB}}=x,\\mathrm{cm}$라 하면 $\\overline{\\mathrm{ED}}=9-x,\\mathrm{cm}$이고, 직각삼각형 $\\mathrm{EBD}$에서 피타고라스 정리에 의해 $$(9-x)^2 = x^2 + 6^2$$ $$81 - 18x + x^2 = x^2 + 36 \\implies 18x = 45 \\implies x = \\frac{5}{2}$$ 따라서 $\\triangle\\mathrm{EBD}$의 넓이는 $$\\frac{1}{2} \\times 6 \\times \\frac{5}{2} = \\frac{15}{2},(\\mathrm{cm}^2)$$ 이므로 정답은 ②이다."
+}
