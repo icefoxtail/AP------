@@ -1,0 +1,16 @@
+{
+  "capability":"composite-panels-v1",
+  "caption":"반지름 2 cm, 모선 6 cm인 원뿔과 같은 원뿔의 전개도를 함께 표시하여 겉넓이 계산에 필요한 밑면·옆면을 구분한다.",
+  "accessibilityDescription":"왼쪽은 모선 6센티미터와 밑면 반지름 2센티미터인 원뿔 입체로 밑면 뒤 호는 점선이다. 오른쪽은 같은 원뿔의 부채꼴과 밑면 원으로 펼친 전개도이며 길이 6센티미터와 2센티미터, 호 길이 4파이가 표시된다.",
+  "sourceQuote":"오른쪽 원뿔의 겉넓이는?",
+  "sourceConditions":[
+    {"id":"c1","condition":"원뿔 밑면 반지름은 2 cm이다.","mappedTo":["panels[0].plan.solids[0].radius","panels[1].plan.net.radius"]},
+    {"id":"c2","condition":"원뿔의 모선 길이는 6 cm이다.","mappedTo":["panels[0].plan.dims[1]","panels[1].plan.net.slant"]},
+    {"id":"c3","condition":"옆넓이는 부채꼴, 밑넓이는 밑면 원의 넓이다.","mappedTo":["panels[1].plan.net"]}
+  ],
+  "newVisualInformation":["원본의 원뿔 윤곽과 뒷쪽 점선이 기존 전개도 단독 해설에서 사라진 문제를 복원한다.","전개도의 모선·반지름·호 길이를 연결하며 불필요한 회색 면 채움을 두지 않는다."],
+  "panels":[
+    {"caption":{"text":"원뿔"},"plan":{"capability":"solid-figure-v1","unit":"cm","solids":[{"kind":"CONE","radius":2,"height":5.6568542495}],"dims":[{"radius":"bottom"},{"slant":true,"label":"6"}]}},
+    {"caption":{"text":"원뿔의 전개도"},"plan":{"capability":"solid-figure-v1","unit":"cm","net":{"kind":"CONE","radius":2,"slant":6,"dims":[{"part":"slant"},{"part":"radius"},{"part":"arc"}]}}}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "반지름 5 cm, 높이 12 cm인 원기둥과 전개도. 옆면의 가로는 밑면 원주 10π cm, 세로는 12 cm이다.",
+  "accessibilityDescription": "왼쪽에는 반지름 5센티미터와 높이 12센티미터인 원기둥, 오른쪽에는 원 두 개와 너비 10파이 센티미터 높이 12센티미터인 옆면 직사각형의 전개도가 있다. 접는 선과 치수를 구분한다.",
+  "sourceQuote": "다음 그림의 □ 안에 알맞은 수의 합은?",
+  "sourceConditions": [
+    {"id":"c1","condition":"원기둥의 반지름은 5 cm이다.","mappedTo":["panels[0].plan.solids[0].radius","panels[1].plan.net.radius"]},
+    {"id":"c2","condition":"원기둥과 옆면 직사각형의 높이는 12 cm이다.","mappedTo":["panels[0].plan.solids[0].height","panels[1].plan.net.height"]},
+    {"id":"c3","condition":"전개도의 두 원과 옆면 직사각형은 붙여진 면 관계를 보존한다.","mappedTo":["panels[1].plan.net"]}
+  ],
+  "newVisualInformation": ["실제 원기둥과 두 원·옆면 직사각형을 대응시키고, 반지름·둘레·높이를 전개도 치수선에 표시한다.", "원본의 회색 면 채움 없이 접는 모서리를 엔진의 점선으로 나타낸다."],
+  "panels": [
+    {"caption":{"text":"원기둥"},"plan":{"capability":"solid-figure-v1","unit":"cm","solids":[{"kind":"CYLINDER","radius":5,"height":12}],"dims":[{"radius":"top"},{"height":true}]}},
+    {"caption":{"text":"원기둥의 전개도"},"plan":{"capability":"solid-figure-v1","unit":"cm","net":{"kind":"CYLINDER","radius":5,"height":12,"dims":[{"part":"radius-top"},{"part":"rect-width"},{"part":"rect-height"}]}}}
+  ]
+}
