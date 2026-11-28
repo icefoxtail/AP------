@@ -1,0 +1,68 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "72",
+      "bSquared": "18",
+      "major": "Y"
+    },
+    {
+      "id": "p",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "3",
+      "axis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "x": "3",
+      "y": "6"
+    }
+  ],
+  "lines": [
+    {
+      "id": "te",
+      "tangent": true,
+      "at": "P",
+      "curve": "e"
+    },
+    {
+      "id": "tp",
+      "tangent": true,
+      "at": "P",
+      "curve": "p"
+    }
+  ],
+  "segments": [],
+  "polygons": [],
+  "caption": "Q13 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+  "accessibilityDescription": "발문에서 주어진 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$과 포물선 $y^2=12x$가 제1사분면의 점 $P(3,6)$에서 만난다. 이 점에서 두 곡선의 접선 기울기의 곱이 $-2$일 때, $a^2+b^2$의 값은? (단, $a,b>0$) [5.2점]",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원과 포물선이 공유하는 P 및 서로 다른 두 접선의 방향을 구분한다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$과 포물선 $y^2=12x$가 제1사분면의 점 $P(3,6)$에서 만난다. 이 점에서 두 곡선의 접선 기울기의 곱이 $-2$일 때, $a^2+b^2$의 값은? (단, $a,b>0$"
+}
