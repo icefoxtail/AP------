@@ -1,0 +1,190 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Z",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 3
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 4
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      },
+      {
+        "name": "g",
+        "from": "Y",
+        "to": "Z",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "원본의 세 집합 X와 함수 f, g의 5개 대응 화살표를 각각 모두 보존한다.",
+  "accessibilityDescription": "원본의 세 집합 X와 함수 f, g의 5개 대응 화살표를 각각 모두 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "문항 SVG의 f:1→3,2→5,3→1,4→2,5→4",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "g",
+      "condition": "문항 SVG의 g:1→2,2→4,3→5,4→1,5→3",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "labels",
+      "condition": "X 3열에 각각 1,2,3,4,5 원소",
+      "mappedTo": "diagram.columns"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P51-Q22-S2-R1 발문 원문: 그림과 같이 집합 $X = \\{1, 2, 3, 4, 5\\}$에서 $X$로의 두 일대일대응 $f, g$에 대하여 $(f^{-1} \\circ g^{-1})(5)$의 값은?",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 3개 열의 대응: 1→3, 2→5, 3→1, 4→2, 5→4, 1→2, 2→4, 3→5, 4→1, 5→3",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 없던 면 채움·기본 흰색 사각형 없이 3열 대응을 묘사한다.",
+    "해당 문제용 JS BV-BAKBAL-H-COM2-HA-P51-Q22-S2-R1와 대조한 정확한 기하/대응 목록: 3개 열의 대응: 1→3, 2→5, 3→1, 4→2, 5→4, 1→2, 2→4, 3→5, 4→1, 5→3"
+  ]
+}

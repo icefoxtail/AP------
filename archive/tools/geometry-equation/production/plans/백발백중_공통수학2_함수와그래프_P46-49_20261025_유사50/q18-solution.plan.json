@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          null,
+          "0"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      -3,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "7"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "4",
+        "7"
+      ]
+    }
+  },
+  "caption": "x<0에서 2x²−1, x≥0에서 −x+4. 경계 x=0에서 점프하며 f(−2)=7, f(3)=1.",
+  "accessibilityDescription": "x<0에서 2x²−1, x≥0에서 −x+4. 경계 x=0에서 점프하며 f(−2)=7, f(3)=1.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<0: f(x)=2x²−1",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x≥0: f(x)=−x+4",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "values",
+      "condition": "f(−2)=7, f(3)=1",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P47-Q02-S2-R1 발문 원문: 함수 $f(x) = \\begin{cases} 2x^2 - 1 & (x < 0) \\\\ -x + 4 & (x \\ge 0) \\end{cases}$ 에 대하여 $f(-2) + f(3)$의 값은?",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 구간별 그래프 [,0]: -1,0,2 (NONE/OPEN); [0,]: 4,-1 (CLOSED/NONE)",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다.",
+    "해당 해설용 JS BV-BAKBAL-H-COM2-HA-P47-Q02-S2-R1와 대조한 정확한 기하/대응 목록: 구간별 그래프 [,0]: -1,0,2 (NONE/OPEN); [0,]: 4,-1 (CLOSED/NONE)"
+  ]
+}

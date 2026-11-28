@@ -1,0 +1,94 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "b",
+          "c",
+          "d"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "c",
+          "d",
+          "e"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "b→c→d→e의 3단계 읽기.",
+  "accessibilityDescription": "b→c→d→e의 3단계 읽기.",
+  "sourceConditions": [
+    {
+      "id": "arrowMap",
+      "condition": "원본 기호 그래프에서 명시된 순서별 f(입력)=출력만 정확히 추출했다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "nodeLabels",
+      "condition": "각 집합의 원소·라벨을 정확히 보존한다.",
+      "mappedTo": "diagram.columns"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P50-Q17-S3-R1 발문 원문: 그림은 함수 $y = f(x)$의 그래프와 직선 $y = x$를 나타낸 것이다. $(f \\circ f \\circ f)(b)$의 값은? (단, 모든 점선은 좌표축에 평행하다)",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 2개 열의 대응: b→c, c→d, d→e",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "해당 해설용 JS BV-BAKBAL-H-COM2-HA-P50-Q17-S3-R1와 대조한 정확한 기하/대응 목록: 2개 열의 대응: b→c, c→d, d→e"
+  ]
+}

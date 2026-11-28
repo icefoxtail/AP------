@@ -1,0 +1,196 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      8,
+      -5,
+      8
+    ],
+    "curves": [
+      {
+        "id": "fl",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "fr",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "gl",
+        "kind": "LINE",
+        "coefficients": [
+          "-3/2",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "gr",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "2"
+        ],
+        "domain": [
+          "3",
+          "6"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "color": "GREEN",
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3",
+        "6"
+      ],
+      "y": [
+        "-3",
+        "3",
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-3",
+          "y": "-3"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "3"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "6",
+          "y": "6"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "s1",
+        "between": [
+          "fl",
+          "gl"
+        ],
+        "from": "-3",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "s2",
+        "between": [
+          "fr",
+          "gl"
+        ],
+        "from": "0",
+        "to": "3",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "s3",
+        "between": [
+          "fr",
+          "gr"
+        ],
+        "from": "3",
+        "to": "6",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "f와 g=f⁻¹는 y=x에 대칭이다. L(-3,-3), P(0,3), Q(3,0), R(6,6)의 닫힌 영역 넓이는 27.",
+  "accessibilityDescription": "f와 g=f⁻¹는 y=x에 대칭이다. L(-3,-3), P(0,3), Q(3,0), R(6,6)의 닫힌 영역 넓이는 27.",
+  "sourceConditions": [
+    {
+      "id": "fLeft",
+      "condition": "x<0: f(x)=2x+3",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "fRight",
+      "condition": "x≥0: f(x)=1/2x+3",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "inverse",
+      "condition": "g=f⁻¹; 역함수의 두 직선 조각과 y=x 대칭",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "corners",
+      "condition": "L,P,Q,R의 네 꼭짓점은 해설 계산과 정확히 일치",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "area",
+      "condition": "f와 g 사이의 영역을 3개 부구간으로 분리하여 표시",
+      "mappedTo": "graphPlan.regions"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P46-Q24-T1-R1 발문 원문: 실수 전체에서 정의된 함수 $f(x)=\\begin{cases} 2x+3 &(x<0) \\\\ \\frac{1}{2}x+3 &(x\\ge 0)\\end{cases}$의 역함수를 $g$라 할 때, 두 그래프 $y=f(x)$와 $y=g(x)$로 둘러싸인 부분의 넓이는?",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 곡선 fl(LINE; [\"3\",\"2\"]), fr(LINE; [\"3\",\"1/2\"]), gl(LINE; [\"-3/2\",\"1/2\"]), gr(LINE; [\"-6\",\"2\"]), sym(LINE; [\"0\",\"1\"])",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 영역 LPRQ는 y=x를 축으로 대칭인 두 삼각형이고, 세 구간별 정확한 경계만 면 채움한다.",
+    "해당 해설용 JS BV-BAKBAL-H-COM2-HA-P46-Q24-T1-R1와 대조한 정확한 기하/대응 목록: 곡선 fl(LINE; [\"3\",\"2\"]), fr(LINE; [\"3\",\"1/2\"]), gl(LINE; [\"-3/2\",\"1/2\"]), gr(LINE; [\"-6\",\"2\"]), sym(LINE; [\"0\",\"1\"])"
+  ]
+}

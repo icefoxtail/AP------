@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          null,
+          "2"
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "2",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "xWindow": [
+      -2,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "5"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "4",
+        "5"
+      ]
+    }
+  },
+  "caption": "x≤2의 포물선과 x>2의 직선은 (2,1)에서 이어진다. f(1)=4, f(4)=5.",
+  "accessibilityDescription": "x≤2의 포물선과 x>2의 직선은 (2,1)에서 이어진다. f(1)=4, f(4)=5.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x≤2: f(x)=−x²+5",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x>2: f(x)=2x−3",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "values",
+      "condition": "f(1)=4, f(4)=5",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P47-Q02-S1-R1 발문 원문: 함수 $f(x) = \\begin{cases} -x^2 + 5 & (x \\le 2) \\\\ 2x - 3 & (x > 2) \\end{cases}$ 에 대하여 $f(1) + f(4)$의 값은?",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 구간별 그래프 [,2]: 5,0,-1 (NONE/CLOSED); [2,]: -3,2 (OPEN/NONE)",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다.",
+    "해당 해설용 JS BV-BAKBAL-H-COM2-HA-P47-Q02-S1-R1와 대조한 정확한 기하/대응 목록: 구간별 그래프 [,2]: 5,0,-1 (NONE/CLOSED); [2,]: -3,2 (OPEN/NONE)"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "원본 그래프의 f(a)=b, f(b)=c, f(c)=d. 역방향으로 d→c→b→a를 따라간다.",
+  "accessibilityDescription": "원본 그래프의 f(a)=b, f(b)=c, f(c)=d. 역방향으로 d→c→b→a를 따라간다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "그래프에서 f(c)=d이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "mapping1",
+      "condition": "그래프에서 f(b)=c이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "mapping2",
+      "condition": "그래프에서 f(a)=b이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P46-Q23-T1-R1 발문 원문: 그림은 함수 $y = f(x)$의 그래프와 직선 $y = x$를 나타낸 것이다. $(f^{-1} \\circ f^{-1} \\circ f^{-1})(d)$의 값은? (단, 모든 점선은 좌표축에 평행하다)",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 2개 열의 대응: a→b, b→c, c→d",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "정방향 f의 화살표를 거꾸로 세 번 따라 f⁻³(d)=a를 읽는다.",
+    "해당 해설용 JS BV-BAKBAL-H-COM2-HA-P46-Q23-T1-R1와 대조한 정확한 기하/대응 목록: 2개 열의 대응: a→b, b→c, c→d"
+  ]
+}

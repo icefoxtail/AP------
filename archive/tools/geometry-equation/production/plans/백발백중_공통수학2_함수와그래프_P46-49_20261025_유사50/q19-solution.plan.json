@@ -1,0 +1,112 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "6",
+          "8",
+          "9",
+          "12",
+          "16"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "양의 약수 개수 함수의 치역은 {3,4,5,6}이다.",
+  "accessibilityDescription": "양의 약수 개수 함수의 치역은 {3,4,5,6}이다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "d(6)=4, d(8)=4, d(9)=3, d(12)=6, d(16)=5이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 BV-BAKBAL-H-COM2-HA-P47-Q03-T1-R1 발문 원문: 집합 $X=\\{6,8,9,12,16\\}$에 대하여 $X$에서 자연수 전체의 집합으로의 함수 $f(n)$을 $n$의 양의 약수의 개수로 정의한다. 함수 $f$의 치역은?",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: 2개 열의 대응: 6→4, 8→4, 9→3, 12→6, 16→5",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "입력 원소마다 정확한 출력 화살표 한 개를 표시한다.",
+    "해당 해설용 JS BV-BAKBAL-H-COM2-HA-P47-Q03-T1-R1와 대조한 정확한 기하/대응 목록: 2개 열의 대응: 6→4, 8→4, 9→3, 12→6, 16→5"
+  ]
+}

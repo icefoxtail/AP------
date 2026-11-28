@@ -1,0 +1,75 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "-9",
+      "3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -5.5,
+      3.5,
+      -10,
+      40
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": -3,
+        "y": 30
+      },
+      {
+        "id": "N",
+        "x": 1,
+        "y": -2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1"
+      ],
+      "y": [
+        "30",
+        "-2"
+      ]
+    }
+  },
+  "caption": "y=x³+3x²−9x+3은 x=−3에서 극대 30, x=1에서 극소 −2를 갖는다.",
+  "accessibilityDescription": "y=x³+3x²−9x+3은 x=−3에서 극대 30, x=1에서 극소 −2를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 3,-9,3,1 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "extrema",
+      "condition": "f′(x)=3(x+3)(x−1), (−3,30)·(1,−2)",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "source-js",
+      "condition": "시험지 JS의 17 발문 원문: 함수 $f(x)=x^3+ax^2+bx+3$이 $x=-3$에서 극댓값 $30$을 가질 때, 함수 $f(x)$의 극솟값을 구하시오. (단, $a, b$는 실수)",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "drawn-math",
+      "condition": "실제 Plan의 계산/대응 명세: f(x)의 상수항부터 차례로 계수 3, -9, 3, 1; 표시 점 M(-3,30), N(1,-2)",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다.",
+    "해당 해설용 JS 17와 대조한 정확한 기하/대응 목록: f(x)의 상수항부터 차례로 계수 3, -9, 3, 1; 표시 점 M(-3,30), N(1,-2)"
+  ]
+}
