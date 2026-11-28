@@ -1,0 +1,44 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": ["1", "3", "5"]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": ["1", "3", "5"]
+      },
+      {
+        "id": "X3",
+        "name": "X",
+        "elements": ["1", "3", "5"]
+      }
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 2}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 0}, "style": "SOLID"},
+      {"from": {"column": 1, "element": 0}, "to": {"column": 2, "element": 2}, "style": "SOLID"},
+      {"from": {"column": 1, "element": 1}, "to": {"column": 2, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 1, "element": 2}, "to": {"column": 2, "element": 0}, "style": "SOLID"}
+    ],
+    "arrowGroups": [
+      {"name": "f", "from": "X1", "to": "X2", "color": "BLUE"},
+      {"name": "g", "from": "X2", "to": "X3", "color": "BLUE"}
+    ]
+  },
+  "caption": "세 집합 X 사이의 함수 f와 g의 대응도",
+  "accessibilityDescription": "세 열의 집합 X는 모두 원소 1, 3, 5를 갖는다. 함수 f는 1을 3으로, 3을 5로, 5를 1로 보내며, 함수 g는 1을 5로, 3을 3으로, 5를 1로 보낸다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(1)=3, f(3)=5, f(5)=1", "mappedTo": "diagram"},
+    {"id": "c2", "condition": "g(1)=5, g(3)=3, g(5)=1", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": [
+    "원본 시험지 1쪽의 f와 g 화살표 여섯 개를 정확히 복원"
+  ]
+}
