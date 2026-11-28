@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["5","-4","1"],"sourceDomain":{"kind":"INTERVAL","range":[3,7],"states":["CLOSED","CLOSED"]},"domain":[3,7],"viewport":[1,8,-1,30],"requiredPoints":[{"id":"L","x":3,"y":2},{"id":"R","x":7,"y":26}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "대칭축 x=2의 오른쪽인 [3,7]에서는 증가하므로 x=7에서 최댓값 26을 갖는다.",
+  "accessibilityDescription": "x=3에서 7까지의 위로 열린 포물선 오른쪽 구간에 양 끝의 닫힌 점 (3,2),(7,26)이 표시된다.",
+  "sourceConditions": [{"id":"source","condition":"y=x²−4x+5=(x−2)²+1","mappedTo":"graphPlan.coefficients"},{"id":"range","condition":"x∈[3,k], 최대 26에서 k=7","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"values","condition":"f(3)=2, f(7)=26","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation": ["현행 해설 SVG가 보이는 닫힌 단조증가 구간과 양 끝값을 공식 그래프 입력으로 재현한다."]
+}

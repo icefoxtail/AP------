@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["7","-4","1"],"axisVariable":"t","sourceDomain":{"kind":"INTERVAL","range":[-1,8],"states":["CLOSED","CLOSED"]},"domain":[-1,8],"viewport":[-2,9,0,43],"requiredPoints":[{"id":"L","x":-1,"y":12},{"id":"V","x":2,"y":3},{"id":"R","x":8,"y":39}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "t=x²−2x의 치역은 [−1,8]이고 y=(t−2)²+3은 오른쪽 끝 t=8에서 39로 최대다.",
+  "accessibilityDescription": "t축의 닫힌 구간 −1에서 8까지 위로 열린 포물선에 양 끝점 (−1,12),(8,39)와 꼭짓점 (2,3)을 표시한다.",
+  "sourceConditions": [{"id":"range","condition":"−1≤x≤4에서 t=(x−1)²−1이므로 −1≤t≤8","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"function","condition":"y=t²−4t+7=(t−2)²+3","mappedTo":"graphPlan.coefficients"},{"id":"max","condition":"끝점 y(−1)=12, y(8)=39, 꼭짓점 y(2)=3","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation": ["치환 후 정의역과 꼭짓점·양 끝점 값을 모두 그림에 담아 최댓값을 검산한다."]
+}

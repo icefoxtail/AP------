@@ -1,0 +1,9 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {"family":"multi-curve","viewport":[1,8,-15,3],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["0","-7","1"],"domain":["1","8"],"color":"BLUE","label":"y=f(x)"}],"overlays":{"points":[{"id":"A","x":"5/2","y":"-45/4"},{"id":"B","x":"9/2","y":"-45/4"},{"id":"C","x":"13/2","y":"-13/4"},{"id":"H","x":"13/2","y":"-45/4"}],"segments":[{"id":"AB","from":"A","to":"B","length":true},{"id":"BC","from":"B","to":"C","color":"WARM"},{"id":"AC","from":"A","to":"C","color":"GREEN"},{"id":"BH","from":"B","to":"H","dashed":true},{"id":"CH","from":"C","to":"H","length":true}],"polygons":[{"id":"ABC","points":["A","B","C"],"fill":"LIGHT"}],"rightAngles":[{"at":"H","from":["B","C"]}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames": {"A":"A","B":"B","C":"C","H":"H"},
+  "caption": "a=5/2, b=9/2, c=13/2에서 AB=2, C에서 AB에 내린 높이 CH=8이므로 삼각형 넓이는 8이다. t=0인 대표 평행이동 그림이다.",
+  "accessibilityDescription": "포물선 위 세 점 A,B,C를 잇는 삼각형과 밑변 AB=2, 점 C에서 AB 연장선에 내린 높이 CH=8 및 H의 직각 표식을 보여 준다.",
+  "sourceConditions": [{"id":"ab","condition":"f(a)=f(b)에서 a+b=7, 기울기 조건에서 b+c=11, a+c=9, 따라서 a=5/2,b=9/2,c=13/2","mappedTo":["graphPlan.overlays.points[0]","graphPlan.overlays.points[1]","graphPlan.overlays.points[2]"]},{"id":"height","condition":"AB=2, f(c)−f(b)=(c−b)(b+c−7)=2×4=8","mappedTo":["graphPlan.overlays.segments[0]","graphPlan.overlays.segments[4]","graphPlan.overlays.rightAngles[0]"]},{"id":"area","condition":"ABC의 넓이=2×8/2=8","mappedTo":"graphPlan.overlays.polygons[0]"}],
+  "newVisualInformation": ["넓이에 필요한 밑변과 연장선·수선·높이·직각을 실제 표시한다. 계산에 무관한 t는 평행이동으로 정규화한다."]
+}

@@ -1,0 +1,9 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"variable":"x","rows":[{"kind":"POINTS","label":"k 양수","points":[{"id":"A","value":"-3+sqrt(7)"},{"id":"B","value":"3+sqrt(7)"}],"spans":[{"from":"A","to":"B","label":"6","style":"BRACE"}]},{"kind":"POINTS","label":"k 음수","points":[{"id":"C","value":"-3-sqrt(7)"},{"id":"D","value":"3-sqrt(7)"}],"spans":[{"from":"C","to":"D","label":"6","style":"BRACE"}]}]},
+  "numberLineCaption": {"text":"두 근 사이 거리 6"},
+  "caption": "k=2√7이면 근은 √7−3,√7+3이고 k=−2√7이면 근은 −√7−3,−√7+3이다. 두 경우 모두 차는 6이다.",
+  "accessibilityDescription": "위아래 두 수직선에는 k가 양수·음수일 때의 서로 다른 두 근과 각각의 간격 6이 표시된다.",
+  "sourceConditions": [{"id":"distance","condition":"두 근의 차 절댓값은 6이고 근의 곱은 −2이므로 k²+8=36, k=±2√7","mappedTo":["numberLine.rows[0].spans[0]","numberLine.rows[1].spans[0]"]},{"id":"positive","condition":"k=2√7이면 x=√7±3","mappedTo":"numberLine.rows[0].points"},{"id":"negative","condition":"k=−2√7이면 x=−√7±3","mappedTo":"numberLine.rows[1].points"}],
+  "newVisualInformation": ["부호가 다른 두 계수에서 근의 중심은 이동하지만 두 근의 차 6은 일정함을 선분 괄호로 보여 준다."]
+}

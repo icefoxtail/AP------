@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["18","-7","1"],"sourceDomain":{"kind":"INTERVAL","range":[0,3],"states":["CLOSED","CLOSED"]},"domain":[0,3],"viewport":[-1,5,2,21],"requiredPoints":[{"id":"M","x":0,"y":18},{"id":"m","x":3,"y":6}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "a=7/2, b=18이면 구간 [0,3]의 f(x)=x²−7x+18은 감소하여 M=f(0)=18, m=f(3)=6이며 M=3m이다.",
+  "accessibilityDescription": "0에서 3까지의 닫힌 구간에서 감소하는 포물선에 왼쪽 최댓점 (0,18)과 오른쪽 최솟점 (3,6)이 나타나 있다.",
+  "sourceConditions": [{"id":"function","condition":"a=7/2, b=18에서 f(x)=x²−7x+18","mappedTo":"graphPlan.coefficients"},{"id":"domain","condition":"문제의 정의역은 0≤x≤3이며 대칭축 x=7/2는 밖에 있음","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"extrema","condition":"M=18, m=6, M=3m","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation": ["현행 해설 SVG처럼 구간 안에서 꼭짓점 없이 감소하며 양 끝에서 최댓값·최솟값을 얻는 과정을 보여 준다."]
+}
