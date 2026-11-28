@@ -1,0 +1,360 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lnAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lnAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lnBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnDE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lnDE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O",
+    "S",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rR",
+        "refs": [
+          "O",
+          "R",
+          "D"
+        ],
+        "value": 90,
+        "label": "90"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "DS5",
+        "from": "D",
+        "to": "S",
+        "label": "5",
+        "side": "LEFT",
+        "style": "BAR"
+      },
+      {
+        "id": "EC",
+        "from": "E",
+        "to": "C",
+        "label": "16/5",
+        "side": "RIGHT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 560
+  },
+  "caption": "동산중 중3 2학기 기말 07번 해설: 6×8 직사각형과 반지름 3의 접원, D에서 그은 접선",
+  "accessibilityDescription": "동산중 7번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "6×8 직사각형과 반지름 3의 접원, D에서 그은 접선",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "6×8 직사각형과 반지름 3의 접원, D에서 그은 접선",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "LEN0",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "LEN1",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[1]"
+    }
+  ],
+  "sourceQuote": "원의 지름은 직사각형의 세로 길이 $\\overline{AB} = 6\\rm,cm$와 같으므로 원의 반지름은 $r = 3\\rm,cm$이다. 원과 변 $\\overline{AD}, \\overline{BC}$의 접점을 각각 $S, Q$라 하고 선분 $\\overline{DE}$와의 접점을 $R$이라 하자. $$\\overline{AS} = \\overline{BQ} = r = 3\\rm,cm$$ 점 $D$에서 원에 그은 두 접선의 길이는 같으므로 $$\\overline{DS} = \\overline{AD} - \\overline{AS} = 8 - 3 = 5\\rm,cm \\implies \\overline{DR} = \\overline{DS} = 5\\rm,cm$$ 구하는 선분 $\\overline{EC}$의 길이를 $x$라 하면 $$\\overline{QE} = \\overline{BC} - \\overline{BQ} - \\overline{EC} = 8 - 3 - x = 5 - x$$ 점 $E$에서 원에 그은 두 접선의 길이도 같으므로 $$\\overline{ER} = \\overline{QE} = 5 - x$$ 따라서 선분 $\\overline{DE}$의 길이는 $$\\overline{DE} = \\overline{DR} + \\overline{ER} = 5 + (5 - x) = 10 - x$$ 직각삼각형 $DCE$에서 $\\overline{DC} = \\overline{AB} = 6\\rm,cm$, $\\overline{CE} = x$이므로 피타고라스 정리에 의해 $$\\overline{DE}^2 = \\overline{DC}^2 + \\overline{CE}^2$$ $$(10 - x)^2 = 6^2 + x^2$$ $$100 - 20x + x^2 = 36 + x^2$$ $$20x = 64 \\implies x = \\dfrac{16}{5}\\rm,cm$$ 따라서 정답은 ⑤이다."
+}

@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "340"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "13"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radii",
+        "count": 1,
+        "segments": [
+          "OA",
+          "OP"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 100,
+        "label": "2α"
+      },
+      {
+        "id": "aAPB",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 50,
+        "label": "α"
+      }
+    ]
+  },
+  "caption": "금당중 중3 2학기 기말 04번 해설: 지름 PB의 연장선이 만드는 외각과 원주각의 반각 관계",
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "지름 PB의 연장선이 만드는 외각과 원주각의 반각 관계",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANGLE1",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "지름 PB의 연장선이 만드는 외각과 원주각의 반각 관계",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "accessibilityDescription": "금당중 4번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "sourceQuote": "삼각형 $OAP$에서 선분 $\\overline{PO}$의 연장선 위에 점 $B$가 있으므로 $\\angle AOB$는 삼각형 $OAP$의 꼭짓점 $O$에서의 외각이다. 삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같으므로 $$\\angle AOB = \\angle OAP + \\angle APO = 2\\angle APO$$ 따라서 (ㄱ)에는 '외각'이 들어가야 하므로, (ㄱ)에 '내각'이 들어간다는 ⑤의 설명은 알맞지 않다. 따라서 정답은 ⑤이다."
+}

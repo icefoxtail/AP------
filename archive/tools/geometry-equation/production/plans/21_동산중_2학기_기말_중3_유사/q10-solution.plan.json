@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "31"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAD",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCPD",
+        "refs": [
+          "C",
+          "P",
+          "D"
+        ],
+        "value": 75,
+        "label": "75"
+      },
+      {
+        "id": "aPBD",
+        "refs": [
+          "P",
+          "B",
+          "D"
+        ],
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "30"
+      },
+      {
+        "id": "arcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "120"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 10번 해설: 교차 현의 두 호 비 1:4와 교각 75°",
+  "accessibilityDescription": "동산중 10번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "교차 현의 두 호 비 1:4와 교각 75°",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "교차 현의 두 호 비 1:4와 교각 75°",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANGLE1",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "ARC0",
+      "condition": "비교하는 원호와 그 길이·중심각",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "ARC1",
+      "condition": "비교하는 원호와 그 길이·중심각",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "sourceQuote": "원 안에서 교차하는 두 현이 이루는 각 $\\angle CPD$의 크기는 마주 보는 두 호의 중심각의 합의 절반과 같다. $$\\angle CPD = \\dfrac{\\wideparen{AB} + \\wideparen{CD}}{2}$$ 호 $\\wideparen{CD} = 4\\wideparen{AB}$이므로 이를 대입하면 $$75^\\circ = \\dfrac{\\wideparen{AB} + 4\\wideparen{AB}}{2} = \\dfrac{5\\wideparen{AB}}{2}$$ $$5\\wideparen{AB} = 150^\\circ \\implies \\wideparen{AB} = 30^\\circ$$ 따라서 호 $\\wideparen{CD}$의 중심각의 크기는 $$\\wideparen{CD} = 4 \\times 30^\\circ = 120^\\circ$$ 구하는 각 $\\angle PBD$는 $\\angle CBD$와 같고, 이는 호 $\\wideparen{CD}$를 바라보는 원주각이므로 그 크기는 중심각의 절반이다. $$\\angle PBD = \\dfrac{1}{2}\\wideparen{CD} = \\dfrac{1}{2} \\times 120^\\circ = 60^\\circ$$ 따라서 정답은 ④이다."
+}

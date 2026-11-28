@@ -1,0 +1,349 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "55"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "32"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "55"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "P90",
+        "refs": [
+          "A",
+          "P",
+          "D"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "CD",
+        "text": "5",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB8",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT",
+        "style": "BAR"
+      },
+      {
+        "id": "AD5",
+        "from": "A",
+        "to": "D",
+        "label": "5",
+        "side": "ABOVE",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 08번 해설: 대각선이 직교하는 외접사각형의 피타고라스와 접선 길이",
+  "accessibilityDescription": "동산중 8번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "대각선이 직교하는 외접사각형의 피타고라스와 접선 길이",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "대각선이 직교하는 외접사각형의 피타고라스와 접선 길이",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "LEN0",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "LEN1",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[1]"
+    }
+  ],
+  "sourceQuote": "대각선이 직교하는 사각형 $ABCD$에서 대각선의 교점을 $P$라 하면 직각삼각형 피타고라스 정리에 의해 마주 보는 두 대변의 제곱의 합이 서로 같다. $$\\overline{AB}^2 + \\overline{CD}^2 = \\overline{BC}^2 + \\overline{DA}^2$$ $$\\overline{AB}^2 - \\overline{DA}^2 = \\overline{BC}^2 - \\overline{CD}^2 = 8^2 - 5^2 = 64 - 25 = 39$$ 한편 사각형 $ABCD$가 원 $O$에 외접하므로 마주 보는 두 대변의 길이의 합이 서로 같다. $$\\overline{AB} + \\overline{CD} = \\overline{BC} + \\overline{DA}$$ $$\\overline{AB} - \\overline{DA} = \\overline{BC} - \\overline{CD} = 8 - 5 = 3$$ 합차공식에 대입하면 $$(\\overline{AB} - \\overline{DA})(\\overline{AB} + \\overline{DA}) = \\overline{AB}^2 - \\overline{DA}^2 = 39$$ $$3(\\overline{AB} + \\overline{DA}) = 39 \\implies \\overline{AB} + \\overline{DA} = 13\\rm,cm$$ 따라서 $\\overline{AB} + \\overline{AD} = 13\\rm,cm$이다. 그러므로 정답은 ①이다."
+}

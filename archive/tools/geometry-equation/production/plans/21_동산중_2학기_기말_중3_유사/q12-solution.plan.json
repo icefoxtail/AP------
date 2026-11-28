@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "260"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAC",
+          "lBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCOD",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 60,
+        "label": "60"
+      },
+      {
+        "id": "aCPD",
+        "refs": [
+          "C",
+          "P",
+          "D"
+        ],
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "60"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 12번 해설: 지름 AB, 호 CD 60°와 외부 두 할선의 교각",
+  "accessibilityDescription": "동산중 12번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "지름 AB, 호 CD 60°와 외부 두 할선의 교각",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "지름 AB, 호 CD 60°와 외부 두 할선의 교각",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANGLE1",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "ARC0",
+      "condition": "비교하는 원호와 그 길이·중심각",
+      "mappedTo": "planeMarks.arcs[0]"
+    }
+  ],
+  "sourceQuote": "선분 $\\overline{AB}$가 원 $O$의 지름이므로 반원 호 $\\wideparen{AB}$의 중심각의 크기는 $180^\\circ$이다. 주어진 중심각 $\\angle COD = 60^\\circ$이므로 호 $\\wideparen{CD}$의 중심각의 크기는 $60^\\circ$이다. 원 밖의 점 $P$에서 만나는 두 할선이 이루는 각 $\\angle CPD$의 크기는 두 호의 중심각의 차의 절반과 같으므로 $$\\angle CPD = \\dfrac{\\wideparen{AB} - \\wideparen{CD}}{2}$$ $$\\angle CPD = \\dfrac{180^\\circ - 60^\\circ}{2} = \\dfrac{120^\\circ}{2} = 60^\\circ$$ 따라서 정답은 ④이다."
+}

@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "동산중 중3 2학기 기말 13번 문제: 같은 쪽의 세 원주각 50°·45°·50°",
+  "accessibilityDescription": "동산중 13번 문제에서 주어진 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "같은 쪽의 세 원주각 50°·45°·50°",
+    "발문의 구조적 조건만 표시하고 구하는 정답·풀이값은 제시하지 않음"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "171",
+              "denominator": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "26",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "233",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "197",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "A50",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 50,
+        "factRole": "GIVEN",
+        "color": "BLUE",
+        "labelPlacement": "LEADER"
+      },
+      {
+        "id": "D45",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 45,
+        "factRole": "GIVEN",
+        "color": "WARM",
+        "labelPlacement": "LEADER"
+      },
+      {
+        "id": "E50",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 50,
+        "factRole": "GIVEN",
+        "color": "BLUE",
+        "labelPlacement": "LEADER"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANGLE1",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "ANGLE2",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[2]"
+    }
+  ],
+  "sourceQuote": "선분 $\\overline{BC}$의 같은 쪽에 세 점 $A, D, E$가 놓여 있고 $\\angle BAC = 50^\\circ$, $\\angle BDC = 45^\\circ$, $\\angle BEC = 50^\\circ$이다. 다음 설명 중 옳지 않은 것은?"
+}

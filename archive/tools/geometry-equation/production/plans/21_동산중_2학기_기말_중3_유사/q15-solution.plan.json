@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "33"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "div",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "33"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "AC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "DE",
+        "text": "3",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AD6",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "RIGHT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 15번 해설: 각의 이등분선과 원주각 닮음으로 구하는 AD",
+  "accessibilityDescription": "동산중 15번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "각의 이등분선과 원주각 닮음으로 구하는 AD",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "각의 이등분선과 원주각 닮음으로 구하는 AD",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "LEN0",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    }
+  ],
+  "sourceQuote": "선분 $\\overline{AE}$가 원 $O$와 만나는 점이 $E$이므로 원주각의 성질에 의해 호 $\\wideparen{AC}$를 바라보는 원주각의 크기가 같다. $$\\angle ABD = \\angle AEC$$ 또한 선분 $\\overline{AE}$가 $\\angle A$의 이등분선이므로 $$\\angle BAD = \\angle EAC$$ 따라서 두 각의 크기가 각각 같으므로 삼각형 $ABD$와 삼각형 $AEC$는 닮음이다. $$\\triangle ABD \\sim \\triangle AEC\\ (\\text{AA 닮음})$$ 대응하는 변의 길이의 비가 일정하므로 $$\\overline{AB} : \\overline{AE} = \\overline{AD} : \\overline{AC}$$ $$\\overline{AB} \\times \\overline{AC} = \\overline{AD} \\times \\overline{AE}$$ 선분 $\\overline{AE} = \\overline{AD} + \\overline{DE}$이고 $\\overline{DE} = 3\\rm,cm$이므로 $$\\overline{AB} \\times \\overline{AC} = \\overline{AD}(\\overline{AD} + 3)$$ 주어진 수치 $\\overline{AB} = 9\\rm,cm$, $\\overline{AC} = 6\\rm,cm$를 대입하면 $$9 \\times 6 = \\overline{AD}^2 + 3\\overline{AD}$$ $$\\overline{AD}^2 + 3\\overline{AD} - 54 = 0$$ $$(\\overline{AD} - 6)(\\overline{AD} + 9) = 0$$ $\\overline{AD} > 0$이므로 $\\overline{AD} = 6\\rm,cm$이다. 따라서 정답은 ③이다."
+}

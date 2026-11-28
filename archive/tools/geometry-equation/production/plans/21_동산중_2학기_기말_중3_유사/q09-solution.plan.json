@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ",
+    "inner"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "H90",
+        "refs": [
+          "A",
+          "H",
+          "O"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "ring",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "H",
+              "steps": [
+                {
+                  "to": "H",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AH6",
+        "from": "A",
+        "to": "H",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "OH8",
+        "from": "O",
+        "to": "H",
+        "label": "8",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 09번 해설: 큰 원의 현이 작은 동심원에 접하는 고리 넓이",
+  "accessibilityDescription": "동산중 9번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "큰 원의 현이 작은 동심원에 접하는 고리 넓이",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "큰 원의 현이 작은 동심원에 접하는 고리 넓이",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "LEN0",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "LEN1",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[1]"
+    },
+    {
+      "id": "REGION0",
+      "condition": "고리 모양 넓이를 구하는 영역",
+      "mappedTo": "planeMarks.regions[0]"
+    }
+  ],
+  "sourceQuote": "큰 원의 반지름을 $R$, 작은 원의 반지름을 $r$라 하자. 선분 $\\overline{AB}$는 작은 원의 접선이므로 원의 중심 $O$에서 접점 $H$에 내린 선분 $\\overline{OH}$는 현 $\\overline{AB}$와 수직이고 그 길이는 작은 원의 반지름 $r$와 같다. $$\\overline{OH} = r$$ 또한 원의 중심에서 현에 내린 수선은 현을 이등분하므로 점 $H$는 선분 $\\overline{AB}$의 중점이다. $$\\overline{AH} = \\dfrac{1}{2}\\overline{AB} = \\dfrac{1}{2} \\times 12 = 6\\rm,cm$$ 직각삼각형 $OHA$에서 $\\overline{OA} = R$이므로 피타고라스 정리에 의해 $$R^2 = r^2 + 6^2 \\implies R^2 - r^2 = 36$$ 따라서 두 동심원 사이의 고리 모양 부분의 넓이는 큰 원의 넓이에서 작은 원의 넓이를 뺀 것이므로 $$\\pi R^2 - \\pi r^2 = \\pi(R^2 - r^2) = 36\\pi\\rm,cm^2$$ 그러므로 정답은 ②이다."
+}

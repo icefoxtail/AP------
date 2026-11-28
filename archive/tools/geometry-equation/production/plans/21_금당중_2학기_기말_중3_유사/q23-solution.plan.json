@@ -1,0 +1,329 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "11"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "95"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "167"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "239"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "311"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "23"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCAD",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 36,
+        "label": "36"
+      },
+      {
+        "id": "aCOD",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 72,
+        "label": "72"
+      }
+    ]
+  },
+  "caption": "금당중 중3 2학기 기말 23번 해설: 원에 내접한 정오각형과 별 모양 대각선의 중심각·원주각",
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "원에 내접한 정오각형과 별 모양 대각선의 중심각·원주각",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANGLE1",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원에 내접한 정오각형과 별 모양 대각선의 중심각·원주각",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "accessibilityDescription": "금당중 23번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "sourceQuote": "(1) [지우의 방법] 정오각형의 꼭짓점은 원둘레를 $5$등분하므로 호 $\\wideparen{CD}$에 대한 중심각은 $$\\angle COD = \\dfrac{360^\\circ}{5} = 72^\\circ$$ $\\angle CAD$는 호 $\\wideparen{CD}$에 대한 원주각이므로 그 크기는 중심각의 절반이다. $$\\angle CAD = \\dfrac{1}{2}\\angle COD = \\dfrac{1}{2} \\times 72^\\circ = 36^\\circ$$\n\n(2) [민호의 방법] 정오각형의 한 내각의 크기는 $$\\angle BAE = \\dfrac{(5 - 2) \\times 180^\\circ}{5} = \\dfrac{540^\\circ}{5} = 108^\\circ$$ 정오각형에서 세 변의 길이가 같으므로 세 현에 대한 호의 길이도 같다. $$\\overline{BC} = \\overline{CD} = \\overline{DE} \\implies \\wideparen{BC} = \\wideparen{CD} = \\wideparen{DE}$$ 길이가 같은 호에 대한 원주각의 크기는 서로 같으므로 $$\\angle BAC = \\angle CAD = \\angle DAE$$ 꼭짓점 $A$에서 세 원주각의 합은 정오각형의 한 내각 $\\angle BAE$와 같으므로 $$3\\angle CAD = 108^\\circ \\implies \\angle CAD = \\dfrac{108^\\circ}{3} = 36^\\circ$$ 따라서 두 방법 모두 구하는 각의 크기는 $36^\\circ$이다."
+}

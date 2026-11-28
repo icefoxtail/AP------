@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "remaining",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "remainingArcText",
+        "at": [
+          0,
+          13
+        ],
+        "text": "남은 원호",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 23번 문제: 깨진 원호의 세 점에서 그은 두 현의 수직이등분선",
+  "accessibilityDescription": "동산중 23번 문제에서 주어진 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "깨진 원호의 세 점에서 그은 두 현의 수직이등분선",
+    "발문의 구조적 조건만 표시하고 구하는 정답·풀이값은 제시하지 않음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ARC0",
+      "condition": "비교하는 원호와 그 길이·중심각",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "TEXT0",
+      "condition": "원호 부분을 설명하는 원문 식별 라벨",
+      "mappedTo": "planeMarks.textLabels[0]"
+    }
+  ],
+  "sourceQuote": "[서술형 1] 원 모양의 거울이 깨져 둘레의 일부인 곡선 부분만 남아 있다. 이 깨진 거울을 원래 원 모양으로 복원하기 위해 원의 중심을 찾으려고 한다. 작도 원리를 바탕으로 원의 중심을 찾는 방법을 구체적으로 서술하시오. (6점)"
+}
