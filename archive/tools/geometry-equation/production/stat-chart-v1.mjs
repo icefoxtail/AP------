@@ -1472,15 +1472,18 @@ function treePitch(m,fontPx){
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
 const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*Math.max(treeRowBase(m,fontPx),treePitch(m,fontPx).rowMin));
 const treeRowBase=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
-function treeCenters(m,rowH=TREE_ROW,colw=TREE_COLW,top=TREE_TOP){
+function treeCenters(m,rowH,colw,top,left){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
   const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,top+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
   place('n0');
-  return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*colw),y:r6(pos.get(n.id))}]));
+  return new Map(m.nodes.map(n=>[n.id,{x:r6(left+n.depth*colw),y:r6(pos.get(n.id))}]));
 }
 function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
-  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),{colw}=treePitch(m,fontPx),top=TREE_TOP+(ctx?.roomPad??0),c=treeCenters(m,rowH,colw,top),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*colw+(m.showPathProbability?190:80),height=top*2+(leaves-1)*rowH;   // roomPad: the label-room MARGIN step (label-room.mjs); absent for a figure that fits
+  const nodeSizes=treeNodeSizes(m,fontPx);
+  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),{colw}=treePitch(m,fontPx),top=TREE_TOP+(ctx?.roomPad??0);
+  const left=Math.ceil(Math.max(TREE_X0,...m.nodes.map(n=>SAFE+nodeSizes.get(n.id).width/2-n.depth*colw)));
+  const c=treeCenters(m,rowH,colw,top,left),leaves=m.leaves.length,width0=left+m.maxDepth*colw+(m.showPathProbability?190:80),height=top*2+(leaves-1)*rowH;   // roomPad: the label-room MARGIN step (label-room.mjs); absent for a figure that fits
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
   const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
   for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
@@ -1489,13 +1492,12 @@ function treeSpec(m,ctx){
   // a frame too narrow for a leaf's label and its path probability (a product of three fractions is wide) grows to hold them
   let need=0;
   // a name wider than the standard frame's right end (a large policy font, a long name) grows the frame to hold it: a tree whose names fit keeps its frame
-  const nodeSizes=treeNodeSizes(m,fontPx);
-  for(const n of m.nodes)need=Math.max(need,TREE_X0+n.depth*colw+nodeSizes.get(n.id).width/2+SAFE);
+  for(const n of m.nodes)need=Math.max(need,left+n.depth*colw+nodeSizes.get(n.id).width/2+SAFE);
   if(m.showPathProbability){
     const longTree=treeHasLongName(m),leafNodes=m.nodes.filter(x=>!x.children.length),nodeWidth=n=>n.label===null?0:longTree?nodeSizes.get(n.id).width:labelSize(/^[A-Za-z0-9]{1,3}$/.test(n.label)?{kind:'MATH',tex:n.label}:{kind:'TEXT',text:n.label},fontPx).width;
     const pathWidth=n=>labelSize({kind:'MATH',tex:pathTex(n)},fontPx).width;
-    if(m.pathColumn)need=Math.max(need,Math.max(...leafNodes.map(n=>TREE_X0+n.depth*colw+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE);
-    else for(const n of leafNodes)need=Math.max(need,TREE_X0+n.depth*colw+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
+    if(m.pathColumn)need=Math.max(need,Math.max(...leafNodes.map(n=>left+n.depth*colw+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE);
+    else for(const n of leafNodes)need=Math.max(need,left+n.depth*colw+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
   }
   const width=Math.max(width0,Math.ceil(need));
   for(const n of m.nodes){
