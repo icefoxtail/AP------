@@ -1,23 +1,25 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-(x - 3)^2 + 9",
-  "points": {
-    "A": [
-      2,
-      8
-    ],
-    "B": [
-      2,
-      0
-    ],
-    "C": [
-      4,
-      0
-    ],
-    "D": [
-      4,
-      8
-    ]
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial",
+    "coefficients":["0","6","-1"],
+    "sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-1,7],
+    "viewport":[-1.5,7.5,-2,11],
+    "overlays":{
+      "points":[
+        {"id":"A","x":"3/2","y":"27/4"},
+        {"id":"B","x":"3/2","y":"0"},
+        {"id":"C","x":"9/2","y":"0"},
+        {"id":"D","x":"9/2","y":"27/4"}
+      ],
+      "segments":[
+        {"id":"AB","from":"A","to":"B"},
+        {"id":"BC","from":"B","to":"C"},
+        {"id":"CD","from":"C","to":"D"},
+        {"id":"DA","from":"D","to":"A"}
+      ]
+    }
   },
-  "caption": "포물선 y=-(x-3)²+9와 x축 사이에 내접한 직사각형 ABCD"
+  "caption":"y=−(x−3)²+9와 x축 사이의 대칭 직사각형 ABCD이다. 최댓값을 주지 않는 예시 폭으로 표시하고 정답 좌표는 쓰지 않는다."
 }
