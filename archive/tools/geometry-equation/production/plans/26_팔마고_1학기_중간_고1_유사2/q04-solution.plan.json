@@ -1,0 +1,23 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$D$가 $0$보다 작아야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -11, 2],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["-9", "8", "-2"], "domain": ["0", "4"], "color": "BLUE", "label": "y=-2(x-2)^2-1"}
+    ],
+    "axisTickValues": {"x": ["2"], "y": ["-1", "-9"]},
+    "overlays": {"points": [{"id": "V", "x": "2", "y": "-1", "coordinates": true}]}
+  },
+  "caption": "해설: 최대 정수 k=-4를 넣으면 아래로 열린 포물선의 꼭짓점 V(2,-1)조차 x축 아래에 있다.",
+  "accessibilityDescription": "아래로 열린 포물선 y=-2(x-2)²-1의 꼭짓점은 (2,-1)이고 그래프 전체가 x축 아래에 놓여 교점이 없다.",
+  "sourceConditions": [
+    {"id": "q04-s1", "condition": "k<-3인 정수의 최댓값 k=-4로 y=-2x²+8x-9", "mappedTo": ["graphPlan.curves.0.coefficients"]},
+    {"id": "q04-s2", "condition": "꼭짓점 (2,-1)이 x축 아래에 위치", "mappedTo": ["graphPlan.overlays.points.0", "graphPlan.curves.0.domain"]}
+  ],
+  "newVisualInformation": [
+    "판별식이 음수인 경우를 꼭짓점조차 x축 아래인 포물선의 위치로 보여 준다.",
+    "교점이 없다는 조건을 함수의 최대값 -1로 확인하게 한다."
+  ]
+}

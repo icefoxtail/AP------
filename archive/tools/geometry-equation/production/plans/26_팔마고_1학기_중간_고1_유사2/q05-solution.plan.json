@@ -1,0 +1,33 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "따라서 가능한 기울기는 $m=0,-4$이고",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 4, -2, 11],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["2", "-2", "1"], "domain": ["-2", "3"], "color": "BLUE", "label": "y=x^2-2x+2"},
+      {"id": "flat", "kind": "LINE", "coefficients": ["1", "0"], "domain": ["-2", "3"], "style": "DASHED", "color": "GREEN", "label": "y=1"},
+      {"id": "steep", "kind": "LINE", "coefficients": ["1", "-4"], "domain": ["-2", "1/2"], "style": "DASHED", "color": "WARM", "label": "y=-4x+1"}
+    ],
+    "axisTickValues": {"x": ["-1", "1"], "y": ["1", "5"]},
+    "overlays": {
+      "points": [
+        {"id": "P", "x": "0", "y": "1", "coordinates": true},
+        {"id": "T", "x": "1", "y": "1", "coordinates": true},
+        {"id": "U", "x": "-1", "y": "5", "coordinates": true}
+      ]
+    }
+  },
+  "caption": "해설: 점 P(0,1)을 지나는 두 접선 y=1과 y=-4x+1은 각각 T(1,1), U(-1,5)에서 포물선에 접한다.",
+  "accessibilityDescription": "위로 열린 포물선에 수평 접선 y=1과 기울기 -4인 접선이 각각 T(1,1), U(-1,5)에서 닿는다. 두 직선은 모두 P(0,1)을 지난다.",
+  "sourceConditions": [
+    {"id": "q05-s1", "condition": "주어진 포물선 y=x²-2x+2", "mappedTo": ["graphPlan.curves.0.coefficients"]},
+    {"id": "q05-s2", "condition": "접선 y=1은 x=1에서 중근, 접점 T(1,1)", "mappedTo": ["graphPlan.curves.1.coefficients", "graphPlan.overlays.points.1"]},
+    {"id": "q05-s3", "condition": "접선 y=-4x+1은 x=-1에서 중근, 접점 U(-1,5)", "mappedTo": ["graphPlan.curves.2.coefficients", "graphPlan.overlays.points.2"]},
+    {"id": "q05-s4", "condition": "두 접선 모두 주어진 P(0,1)을 통과", "mappedTo": ["graphPlan.overlays.points.0"]}
+  ],
+  "newVisualInformation": [
+    "같은 외부 점 P를 지나는 접선이 두 개라는 사실과 각각 서로 다른 접점을 한눈에 보여 준다.",
+    "두 직선의 기울기가 0과 -4인 기하학적 차이를 비교한다."
+  ]
+}

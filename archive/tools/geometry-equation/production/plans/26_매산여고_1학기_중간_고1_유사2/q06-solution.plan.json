@@ -1,0 +1,23 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$x$축과 한 점에서 만나려면 꼭짓점의 $y$좌표가 $0$이어야 하므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -1, 10],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["4", "-4", "1"], "domain": ["-1", "5"], "color": "BLUE", "label": "y=(x-2)^2"}
+    ],
+    "axisTickValues": {"x": ["2"], "y": ["4"]},
+    "overlays": {"points": [{"id": "V", "x": "2", "y": "0", "coordinates": true}]}
+  },
+  "caption": "해설: k가 -2 또는 4일 때 같은 포물선 y=(x-2)²가 꼭짓점 V(2,0)에서 x축에 접한다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 V는 (2,0)이며 x축에 닿지만 가로지르지 않는다. 두 매개변수 값에서 같은 접점이 나온다.",
+  "sourceConditions": [
+    {"id": "q06-s1", "condition": "k=-2 또는 k=4이면 (k-1)²-5=4여서 y=x²-4x+4", "mappedTo": ["graphPlan.curves.0.coefficients"]},
+    {"id": "q06-s2", "condition": "판별식이 0일 때 꼭짓점은 (2,0)이고 x축에 접함", "mappedTo": ["graphPlan.curves.0.domain", "graphPlan.overlays.points.0"]}
+  ],
+  "newVisualInformation": [
+    "두 매개변수 값이 동일한 x축 접점 모양으로 귀착됨을 보인다.",
+    "x축을 가로지르는 두 교점이 아니라 꼭짓점에서 하나만 만난다는 판별식의 의미를 드러낸다."
+  ]
+}
