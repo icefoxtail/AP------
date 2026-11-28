@@ -1,0 +1,88 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 8
+      },
+      "height": 5.656854249492381,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "B",
+              "E"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "DE",
+      "label": "8"
+    },
+    {
+      "edge": "AB",
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "N"
+        ],
+        "arcs": 1,
+        "label": "x"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "밑면 8cm의 정사각뿔 A-BCDE"
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 3】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 3-①】** (4점) $30^\\circ$, $45^\\circ$, $60^\\circ$의 삼각비의 값을 구하여 다음 표의 빈칸을 채우시오.\n\n$$\\begin{array}{|c|c|c|c|} \\hline \\text{삼각비}\\backslash A & 30^\\circ & 45^\\circ & 60^\\circ \\\\ \\hline \\sin A & & & \\\\ \\hline \\cos A & & & \\\\ \\hline \\tan A & & & \\\\ \\hline \\end{array}$$\n\n**【수준별 3-②】** (5점) 오른쪽 그림과 같이 밑면이 정사각형이고, 옆면이 정삼각형인 사각뿔 $\\mathrm{A-BCDE}$의 한 모서리의 길이가 $8\\text{ cm}$이다. $\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{BE}}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라 하고 $\\angle\\mathrm{AMN} = x^\\circ$라 할 때, $\\tan x^\\circ$의 값을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 제공한 시각 조건과 도형 관계"
+  ],
+  "caption": "문항의 도형을 정확하게 나타낸 그림.",
+  "accessibilityDescription": "문항의 도형을 정확하게 나타낸 그림."
+}

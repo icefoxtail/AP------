@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7.5,
+      3.5,
+      -3,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "-2",
+          "-1/2"
+        ],
+        "domain": [
+          "-7",
+          "3"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "8"
+        },
+        {
+          "id": "B",
+          "x": "-6",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "6"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "OC",
+          "from": "O",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "수준 2-②의 꼭짓점 A와 좌표축 교점 B,C,O를 이은 사각형 ABOC.",
+  "accessibilityDescription": "수준 2-②의 꼭짓점 A와 좌표축 교점 B,C,O를 이은 사각형 ABOC.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 2】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 2-①】** (4점) $y$절편이 $-4$이고, 두 점 $(1, -1)$, $(2, -6)$을 지나는 이차함수의 그래프의 식을 $y = ax^2 + bx + c$의 꼴로 나타내는 풀이 과정과 답을 쓰시오.\n\n**【수준별 2-②】** (5점) 꼭짓점 $\\mathrm{A}$의 $x$좌표가 $-2$인 이차함수의 그래프가 $x$축과 점 $\\mathrm{B}(-6, 0)$, $y$축과 점 $\\mathrm{C}(0, 6)$에서 만날 때, 사각형 $\\mathrm{ABOC}$의 넓이를 구하는 풀이 과정과 답을 쓰시오. (단, $\\mathrm{O}$는 원점이다.)",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "**【수준별 2-①】** $y$절편이 $-4$이므로 $c = -4$이다. $y = ax^2 + bx - 4$에 두 점 $(1, -1)$, $(2, -6)$을 각각 대입하면 $$a + b - 4 = -1 \\implies a + b = 3$$ $$4a + 2b - 4 = -6 \\implies 2a + b = -1$$ 두 식을 연립하여 빼면 $a = -4$, $b = 7$이다. 따라서 구하는 식은 $y = -4x^2 + 7x - 4$이다.\n\n**【수준별 2-②】** 축이 $x = -2$이고 한 $x$절편이 $-6$이므로 대칭성에 의해 다른 $x$절편은 $2$이다. 따라서 이차함수의 식을 $y = a(x + 6)(x - 2)$라 두고 점 $\\mathrm{C}(0, 6)$을 대입하면 $$6 = a(6)(-2) = -12a \\implies a = -\\frac{1}{2}$$ 꼭짓점 $\\mathrm{A}$의 $y$좌표는 $x = -2$일 때 $y = -\\dfrac{1}{2}(4)(-4) = 8$이므로 $\\mathrm{A}(-2, 8)$이다. 사각형 $\\mathrm{ABOC}$를 대각선 $\\mathrm{AO}$로 두 삼각형 $\\triangle\\mathrm{ABO}$와 $\\triangle\\mathrm{AOC}$로 나누면 $$\\triangle\\mathrm{ABO} = \\frac{1}{2} \\times 6 \\times 8 = 24, \\quad \\triangle\\mathrm{AOC} = \\frac{1}{2} \\times 6 \\times 2 = 6$$ 따라서 사각형 $\\mathrm{ABOC}$의 넓이는 $24 + 6 = 30$이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

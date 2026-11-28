@@ -1,0 +1,64 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4.3,
+      4.3,
+      -8,
+      8
+    ],
+    "curves": [
+      {
+        "id": "a",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-3/7"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "f"
+      },
+      {
+        "id": "b",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3/7"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {}
+  },
+  "caption": "x축을 기준으로 서로 대칭인 두 이차함수 y=±3x²/7의 그래프.",
+  "accessibilityDescription": "x축을 기준으로 서로 대칭인 두 이차함수 y=±3x²/7의 그래프.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 이차함수 $y = -\\dfrac{3}{7}x^2$의 그래프와 $x$축에 서로 대칭인 그래프를 나타내는 이차함수의 식은?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "$x$축에 대하여 대칭인 그래프의 식은 $y$ 대신 $-y$를 대입하여 구한다. $$-y = -\\frac{3}{7}x^2 \\implies y = \\frac{3}{7}x^2$$ 따라서 정답은 ①이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "T",
+    "U"
+  ],
+  "displaySegments": [
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "OU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "PT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "PU",
+      "refs": [
+        "P",
+        "U"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "k",
+        "points": [
+          "T",
+          "U"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "rU",
+      "refs": [
+        "O",
+        "U",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "caption": "원 밖의 점 P에서 원에 그을 수 있는 두 접선 PT, PU의 구성.",
+  "accessibilityDescription": "문항의 점과 선분, 원과 기하 표식을 확인하는 그림.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 한 원에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "원 밖의 한 점에서 그 원에 그을 수 있는 접선은 오직 $2$개뿐이다. 따라서 ③이 옳지 않다. 정답은 ③이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}
