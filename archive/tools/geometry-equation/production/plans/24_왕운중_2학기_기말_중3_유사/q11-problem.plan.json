@@ -1,0 +1,434 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "190"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "350"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 600
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "Q"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sQA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aQ",
+        "refs": [
+          "A",
+          "Q",
+          "C"
+        ],
+        "value": 80,
+        "label": "a",
+        "labelKind": "MATH",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 80,
+        "label": "b",
+        "labelKind": "MATH",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원 O 위의 점 A, B, C, P와 호 AB, BC가 같은 길이임을 나타내는 호 표시가 있는 그림. 각 APB는 40도이고, 호 ABC에 대한 원주각을 a, 중심각 BOC를 b로 표시하였다.",
+  "accessibilityDescription": "원 O 위에 A, B, C, P와 이름 없는 점 하나가 보이고, 호 AB와 BC에 같은 색 호 표시가 있다. 점 P에서의 각 40, 이름 없는 점에서의 원주각 a, 중심 O에서의 각 b가 표시되어 있다.",
+  "newVisualInformation": [
+    "각 APB 40도",
+    "호 AB와 호 BC의 길이가 같음",
+    "원주각 a",
+    "중심각 b"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "O의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "circ의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f3",
+      "condition": "A의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f4",
+      "condition": "B의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f5",
+      "condition": "C의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f6",
+      "condition": "P의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f7",
+      "condition": "Q의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[7]"
+    },
+    {
+      "id": "f8",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f9",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f10",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f11",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f12",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f13",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 5",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f14",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f15",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f16",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f17",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f18",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f19",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 5",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "f20",
+      "condition": "displayCircles에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f21",
+      "condition": "angles의 원문에 대응하는 그리기 표식 aP",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "f22",
+      "condition": "angles의 원문에 대응하는 그리기 표식 aQ",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "f23",
+      "condition": "angles의 원문에 대응하는 그리기 표식 aO",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "f24",
+      "condition": "arcs의 원문에 대응하는 그리기 표식 arcAB",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "f25",
+      "condition": "arcs의 원문에 대응하는 그리기 표식 arcBC",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림의 원 $O$에서 원주각 $\\angle APB = 40^\\c"
+}

@@ -1,0 +1,197 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 4,
+        "y": 5
+      },
+      {
+        "x": 5,
+        "y": 6
+      },
+      {
+        "x": 6,
+        "y": 5
+      },
+      {
+        "x": 6,
+        "y": 7
+      },
+      {
+        "x": 7,
+        "y": 6
+      },
+      {
+        "x": 7,
+        "y": 7
+      },
+      {
+        "x": 7,
+        "y": 8
+      },
+      {
+        "x": 7,
+        "y": 8
+      },
+      {
+        "x": 8,
+        "y": 6
+      },
+      {
+        "x": 8,
+        "y": 7
+      },
+      {
+        "x": 8,
+        "y": 8
+      },
+      {
+        "x": 8,
+        "y": 9
+      },
+      {
+        "x": 9,
+        "y": 8
+      },
+      {
+        "x": 9,
+        "y": 9
+      },
+      {
+        "x": 10,
+        "y": 9
+      }
+    ],
+    "xRange": [
+      "3",
+      "11"
+    ],
+    "yRange": [
+      "4",
+      "10"
+    ],
+    "xStep": "1",
+    "yStep": "1",
+    "xTitle": "말하기 점수",
+    "yTitle": "쓰기 점수",
+    "grid": true,
+    "equalUnits": true,
+    "refLines": [
+      {
+        "type": "x=k",
+        "value": "8"
+      },
+      {
+        "type": "y=k",
+        "value": "8"
+      }
+    ],
+    "regions": [
+      {
+        "xMin": "8",
+        "yMin": "8",
+        "markPoints": true
+      }
+    ]
+  },
+  "caption": "말하기·쓰기 점수가 모두 8점 이상인 산점도의 우상단 영역을 강조한 해설 그림.",
+  "accessibilityDescription": "15명 학생의 산점도에서 x가 8 이상이고 y가 8 이상인 영역을 강조해 조건에 맞는 점을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "dot0",
+      "condition": "공통 산점도의 1번째 자료점 (4,5)",
+      "mappedTo": "chart.points[0]"
+    },
+    {
+      "id": "dot1",
+      "condition": "공통 산점도의 2번째 자료점 (5,6)",
+      "mappedTo": "chart.points[1]"
+    },
+    {
+      "id": "dot2",
+      "condition": "공통 산점도의 3번째 자료점 (6,5)",
+      "mappedTo": "chart.points[2]"
+    },
+    {
+      "id": "dot3",
+      "condition": "공통 산점도의 4번째 자료점 (6,7)",
+      "mappedTo": "chart.points[3]"
+    },
+    {
+      "id": "dot4",
+      "condition": "공통 산점도의 5번째 자료점 (7,6)",
+      "mappedTo": "chart.points[4]"
+    },
+    {
+      "id": "dot5",
+      "condition": "공통 산점도의 6번째 자료점 (7,7)",
+      "mappedTo": "chart.points[5]"
+    },
+    {
+      "id": "dot6",
+      "condition": "공통 산점도의 7번째 자료점 (7,8)",
+      "mappedTo": "chart.points[6]"
+    },
+    {
+      "id": "dot7",
+      "condition": "공통 산점도의 8번째 자료점 (7,8)",
+      "mappedTo": "chart.points[7]"
+    },
+    {
+      "id": "dot8",
+      "condition": "공통 산점도의 9번째 자료점 (8,6)",
+      "mappedTo": "chart.points[8]"
+    },
+    {
+      "id": "dot9",
+      "condition": "공통 산점도의 10번째 자료점 (8,7)",
+      "mappedTo": "chart.points[9]"
+    },
+    {
+      "id": "dot10",
+      "condition": "공통 산점도의 11번째 자료점 (8,8)",
+      "mappedTo": "chart.points[10]"
+    },
+    {
+      "id": "dot11",
+      "condition": "공통 산점도의 12번째 자료점 (8,9)",
+      "mappedTo": "chart.points[11]"
+    },
+    {
+      "id": "dot12",
+      "condition": "공통 산점도의 13번째 자료점 (9,8)",
+      "mappedTo": "chart.points[12]"
+    },
+    {
+      "id": "dot13",
+      "condition": "공통 산점도의 14번째 자료점 (9,9)",
+      "mappedTo": "chart.points[13]"
+    },
+    {
+      "id": "dot14",
+      "condition": "공통 산점도의 15번째 자료점 (10,9)",
+      "mappedTo": "chart.points[14]"
+    },
+    {
+      "id": "b1",
+      "condition": "말하기 점수 x≥8",
+      "mappedTo": "chart.refLines[0]"
+    },
+    {
+      "id": "b2",
+      "condition": "쓰기 점수 y≥8",
+      "mappedTo": "chart.refLines[1]"
+    },
+    {
+      "id": "b3",
+      "condition": "두 점수가 모두 8 이상인 영역",
+      "mappedTo": "chart.regions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "x=8, y=8 경계를 그리고 조건에 해당하는 우상단 자료점을 시각적으로 구별한다.",
+    "자료점 다섯 개의 개수 라벨을 선노출하지 않고 독자가 직접 셀 수 있게 한다."
+  ]
+}

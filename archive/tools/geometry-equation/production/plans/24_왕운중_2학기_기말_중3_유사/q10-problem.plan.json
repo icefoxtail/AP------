@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 90,
+        "label": "90",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "caption": "직각사다리꼴 ABCD에 원 O가 네 변에 접하도록 내접한 그림. AB는 10 cm, BC는 12 cm로 표시되어 있고, C와 D에 직각 표시가 있다.",
+  "accessibilityDescription": "사다리꼴 ABCD, 네 변에 접하는 원 O, AB 10 cm, BC 12 cm, C의 각 90 표시, D의 직각 표시가 보인다.",
+  "newVisualInformation": [
+    "네 변에 접하는 원 O",
+    "AB 10 cm",
+    "BC 12 cm",
+    "C의 각 90, D의 직각"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "C의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "circ의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f3",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f4",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f5",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f6",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f7",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f8",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f9",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f10",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f11",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f12",
+      "condition": "displayCircles에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f13",
+      "condition": "angles의 원문에 대응하는 그리기 표식 aC",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "f14",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lAB",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f15",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lBC",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 원 $O$가 직각사다리꼴 $ABCD$($\\angle"
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      6,
+      8,
+      9,
+      14,
+      16
+    ],
+    "xTitle": "자료 값",
+    "marks": {
+      "medianLine": {
+        "value": "9",
+        "label": "중앙값"
+      }
+    }
+  },
+  "caption": "풀이용: 조건 (가)의 변량 분포와 중앙값 9를 나타낸 점도표이다. 조건 (나)의 다섯 변량 3, 16, a, b, 15의 중앙값은 13이고 평균은 b-2이다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "통계 도식의 종류",
+      "mappedTo": "chart.kind"
+    },
+    {
+      "id": "f2",
+      "condition": "values의 원문 값/점 1",
+      "mappedTo": "chart.values[0]"
+    },
+    {
+      "id": "f3",
+      "condition": "values의 원문 값/점 2",
+      "mappedTo": "chart.values[1]"
+    },
+    {
+      "id": "f4",
+      "condition": "values의 원문 값/점 3",
+      "mappedTo": "chart.values[2]"
+    },
+    {
+      "id": "f5",
+      "condition": "values의 원문 값/점 4",
+      "mappedTo": "chart.values[3]"
+    },
+    {
+      "id": "f6",
+      "condition": "values의 원문 값/점 5",
+      "mappedTo": "chart.values[4]"
+    },
+    {
+      "id": "f7",
+      "condition": "marks의 원문 자료/표식",
+      "mappedTo": "chart.marks"
+    }
+  ],
+  "newVisualInformation": [
+    "조건 (가)의 다섯 변량을 점도표로 나타내고 중앙값 9의 위치를 세로선으로 표시하였다.",
+    "해설에서 계산해 확인한 수치를 도식으로 나타낸다."
+  ],
+  "accessibilityDescription": "풀이에서 확정한 값을 나타내는 조건 (가)의 변량 분포와 중앙값 9를 나타낸 점도표이다. 조건 (나)의 다섯 변량 3, 16, a, b, 15의 중앙값은 13이고 평균은 b-2이다."
+}

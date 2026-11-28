@@ -1,0 +1,315 @@
+{
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "14"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "B",
+          "lOP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayCircles": [
+    "cO"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "ra",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rb",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "r",
+        "ownerSegment": "sOB",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "hyp",
+        "ownerSegment": "sOP",
+        "text": "9",
+        "unit": "cm"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "A",
+        "tangent": "sPA"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "B",
+        "tangent": "sPB"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "반지름 5cm인 원에서 외부 점 P의 두 접선 PA, PB와 OP 9cm를 보여준다.",
+  "accessibilityDescription": "원의 중심 O, 접점 A와 B, 외부 점 P를 표시하고 접선이 반지름과 수직인 관계를 직각 기호로 나타낸다.",
+  "newVisualInformation": [
+    "반지름 OB=5cm와 OP=9cm가 실제 선분 옆에 표시된다.",
+    "두 접점 A,B에서의 직각 표식이 그려진다."
+  ],
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 두 선분",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "B 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "P 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "cO 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "c5",
+      "condition": "A 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "c6",
+      "condition": "원문에 제시된 도형 요소 displaySegments 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "c7",
+      "condition": "원문에 제시된 도형 요소 displaySegments 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "c8",
+      "condition": "원문에 제시된 도형 요소 displaySegments 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "c9",
+      "condition": "원문에 제시된 도형 요소 displaySegments 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "c10",
+      "condition": "원문에 제시된 도형 요소 displaySegments 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "c11",
+      "condition": "원문에 제시된 도형 요소 displayCircles 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "c12",
+      "condition": "원문의 expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "c13",
+      "condition": "원문의 expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "c14",
+      "condition": "원문의 facts 표시 1",
+      "mappedTo": "planeMarks.facts[0]"
+    },
+    {
+      "id": "c15",
+      "condition": "원문의 facts 표시 2",
+      "mappedTo": "planeMarks.facts[1]"
+    },
+    {
+      "id": "c16",
+      "condition": "접점의 직각 성질",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "c17",
+      "condition": "접점의 직각 성질",
+      "mappedTo": "rightAngles[1]"
+    }
+  ]
+}

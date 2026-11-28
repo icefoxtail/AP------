@@ -1,0 +1,344 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cI",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cI"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "20",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "∠C가 90°인 직각삼각형 ABC에 내접하는 원 I를 나타낸 그림이다. 원은 세 변 AB, BC, CA와 각각 D, E, F에서 접하고, AB는 20cm, AC는 12cm로 표시되어 있다.",
+  "accessibilityDescription": "직각삼각형 ABC의 빗변 AB가 왼쪽 위에서 오른쪽 아래로 향하고, 그 안에 원 I가 내접한다. 원과 각 변의 접점은 D, E, F이며, AB는 20cm, AC는 12cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "원 I는 직각삼각형 ABC의 내접원이다.",
+    "접점 D, E, F가 각각 변 AB, BC, CA 위에 있다.",
+    "AB는 20cm, AC는 12cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "C의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "A의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "B의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "I의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "F의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "E의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "D의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "cI의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[7]"
+    },
+    {
+      "id": "f9",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f10",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f11",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f12",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f13",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f14",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 5",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f15",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 6",
+      "mappedTo": "displayPoints[6]"
+    },
+    {
+      "id": "f16",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f17",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f18",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f19",
+      "condition": "displayCircles에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f20",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lAB",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f21",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lAC",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 원 $I$는 $\\angle C = 90^\\circ$인 "
+}

@@ -1,0 +1,432 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "11"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "57"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "11"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "57"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "11"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "57"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "11"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sAO",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "11",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "cO",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "D",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "C",
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "caption": "반지름이 4cm인 반원 O에 세 선분 AD, BC, CD가 접하고, 접점이 각각 A, B, E인 그림이다. CD의 길이는 11cm로 표시되어 있다.",
+  "accessibilityDescription": "세로로 놓인 지름 AB의 오른쪽에 반원이 있고, 중심 O가 AB 위에 있다. 위쪽 접선 AD, 아래쪽 접선 BC, 두 접선을 잇는 접선 CD가 반원과 각각 A, B, E에서 만난다. OA는 4cm, CD는 11cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "반원 O의 반지름은 4cm이다.",
+    "세 접선 AD, BC, CD의 접점은 각각 A, B, E이다.",
+    "CD의 길이는 11cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "O의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "A의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "B의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "D의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "C의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "E의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "cO의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f9",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f10",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f11",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f12",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f13",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 5",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f14",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f15",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f16",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f17",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f18",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f19",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lOA",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f20",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lCD",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "f21",
+      "condition": "arcs의 원문에 대응하는 그리기 표식 arcAB",
+      "mappedTo": "planeMarks.arcs[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 세 선분 $\\overline{AD}, \\overline"
+}

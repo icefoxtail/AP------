@@ -1,0 +1,294 @@
+{
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "minorAB",
+        "circle": "cO",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 460
+  },
+  "caption": "깨진 원의 호 AB, 현 AB의 중점 D, 현에 수직인 CD, AD=BD=6 cm, CD=2 cm의 원문 도형.",
+  "accessibilityDescription": "깨진 원의 호 AB, 현 AB의 중점 D, 현에 수직인 CD, AD=BD=6 cm, CD=2 cm의 원문 도형.",
+  "newVisualInformation": [
+    "깨진 원의 호 AB, 현 AB의 중점 D, 현에 수직인 CD, AD=BD=6 cm, CD=2 cm의 원문 도형."
+  ],
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 호 $\\wideparen{AB}$는 깨진 원의 일부분이",
+  "sourceConditions": [
+    {
+      "id": "displaySegments-0",
+      "condition": "원문 displaySegments 요소 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "displaySegments-1",
+      "condition": "원문 displaySegments 요소 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "displaySegments-2",
+      "condition": "원문 displaySegments 요소 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "displaySegments-3",
+      "condition": "원문 displaySegments 요소 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "rightAngles-0",
+      "condition": "원문 rightAngles 요소 1",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "expressionLabels-0",
+      "condition": "원문 expressionLabels 표기 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "expressionLabels-1",
+      "condition": "원문 expressionLabels 표기 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "expressionLabels-2",
+      "condition": "원문 expressionLabels 표기 3",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "arcs-0",
+      "condition": "원문 arcs 표기 1",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "node-0",
+      "condition": "원문의 작도 관계 A",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "node-1",
+      "condition": "원문의 작도 관계 B",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "node-2",
+      "condition": "원문의 작도 관계 D",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "node-3",
+      "condition": "원문의 작도 관계 C",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "node-4",
+      "condition": "원문의 작도 관계 O",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "node-5",
+      "condition": "원문의 작도 관계 cO",
+      "mappedTo": "mathPlan.nodes[5]"
+    }
+  ]
+}
