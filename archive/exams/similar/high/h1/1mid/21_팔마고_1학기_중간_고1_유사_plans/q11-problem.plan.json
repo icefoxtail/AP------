@@ -1,51 +1,56 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -1,
-      6
-    ],
+    "family": "multi-curve",
     "viewport": [
       -1,
       6,
       -2,
       18
     ],
-    "pieces": [
+    "curves": [
       {
-        "domain": [
-          -1,
-          6
-        ],
+        "id": "f",
+        "kind": "Y_OF_X",
         "coefficients": [
           "5",
           "-3",
           "1"
-        ]
-      }
-    ],
-    "referenceLines": [
-      {
-        "slope": "3",
-        "intercept": "0",
-        "label": "y=3x+n"
-      }
-    ],
-    "requiredPoints": [
-      {
-        "id": "A",
-        "x": "1",
-        "y": "3",
-        "label": "x=1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "hideLabel": true
       },
       {
-        "id": "B",
-        "x": "5",
-        "y": "15",
-        "label": "x=5"
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "hideLabel": true
       }
-    ]
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5"
+      ],
+      "y": []
+    }
   },
-  "caption": "이차함수 y=x^2+mx+5와 직선 y=3x+n의 두 교점 (x=1, x=5)"
+  "caption": "두 교점의 x좌표가 1과 5인 이차함수와 직선. 미지 계수 m,n과 교점의 y좌표는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "intersection-x",
+      "condition": "두 교점의 x좌표는 1,5",
+      "mappedTo": "graphPlan.axisTickValues.x"
+    }
+  ]
 }

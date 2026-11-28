@@ -1,15 +1,43 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "(x - 2)^2 - 3",
-  "points": {
-    "V": [
-      2,
-      -3
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -4,
+      9
     ],
-    "C": [
-      0,
-      1
-    ]
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-3"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "1"
+        }
+      ]
+    }
   },
-  "caption": "꼭짓점이 (2, -3)이고 y절편이 (0, 1)인 포물선"
+  "caption": "주어진 꼭짓점 (2,-3)과 y축 교점 (0,1)을 나타낸 포물선. 계수는 표시하지 않는다."
 }
