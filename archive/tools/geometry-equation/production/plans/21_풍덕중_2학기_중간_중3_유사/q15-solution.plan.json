@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 관계: 중심이 같은 두 원에서 큰 원의 현 AB가 작은 원에 접하고, 큰 원의 반지름이 제곱근 14 cm, 작은 원의 반지름이 3 cm인 것을 보여 준다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "large",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "M"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "large",
+    "small"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "sqrt(14)",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "right_0",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 중심이 같은 두 원에서 큰 원의 현 AB가 작은 원에 접하고, 큰 원의 반지름이 제곱근 14 cm, 작은 원의 반지름이 3 cm인 것을 보여 준다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sOM, sOA",
+    "원 large, small",
+    "expressionLabels 2개",
+    "angles 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q15s",
+      "condition": "현 $\\text{AB}$가 작은 원과 만나는 접점을 $\\text{M}$이라 하면 $\\overline{\\text{OM}}\\perp\\overline{\\text{AB}}$이고 $\\overline{\\text{OM}}=3\\text{ cm}$이다. 원의 중심에서 현에 내린 수선은 현을 이등분하므로 $\\overline{\\text{AM}}=t$라 하면 직각삼각형 $\\text{OAM}$에서 $$t^2 + 3^2 = (\\sqrt{14})^2 \\implies t^2 = 14 - 9 = 5 \\implies t = \\sqrt{5}\\text{ (cm)}$$ 따라서 현 $\\text{AB}$의 길이는 $$\\overline{\\text{AB}} = 2t = 2\\sqrt{5}\\text{ (cm)}$$ 이므로 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "오른쪽 그림과 같이 점 $\\text{O}$를 중심으로 하는 두 "
+}

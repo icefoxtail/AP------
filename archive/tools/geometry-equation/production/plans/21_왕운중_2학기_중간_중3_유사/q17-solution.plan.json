@@ -1,0 +1,48 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "6",
+      "-3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -20,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $f(x) = ax^2 + bx + c$의 그래프가 다",
+  "sourceConditions": [
+    {
+      "id": "q17s",
+      "condition": "(가)에서 $f(-2)=f(4)$이므로 축의 방정식은 $x = \\frac{-2 + 4}{2} = 1$이다. (나)에서 꼭짓점이 직선 $y = 2x + 3$ 위에 있으므로 꼭짓점의 $y$좌표는 $2(1) + 3 = 5$이다. 즉 꼭짓점은 $(1, 5)$이다. (다)에서 $y = -3x^2$을 평행이동하면 포개어지므로 $a = -3$이다. 따라서 $$f(x) = -3(x - 1)^2 + 5 = -3x^2 + 6x + 2$$ 이므로 $a=-3$, $b=6$, $c=2$이고 $a + b + c = -3 + 6 + 2 = 5$이다. 정답은 ③이다.",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "caption": "해설 관계: 이차함수 $f(x) = ax^2 + bx + c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은? - (가) $f(-2) = f(4)$ - (나) 꼭짓점은 직선 $y = 2x + 3$ 위에 있다. - (다) 이차함수 $y = -3x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다.",
+  "newVisualInformation": [
+    "그래프 계수 [\"2\",\"6\",\"-3\"]"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 이차함수 $f(x) = ax^2 + bx + c$의 그래프가 다음 조건을 모두 만족시킬 때, $a+b+c$의 값은? - (가) $f(-2) = f(4)$ - (나) 꼭짓점은 직선 $y = 2x + 3$ 위에 있다. - (다) 이차함수 $y = -3x^2$의 그래프를 평행이동하여 완전히 포갤 수 있다."
+}

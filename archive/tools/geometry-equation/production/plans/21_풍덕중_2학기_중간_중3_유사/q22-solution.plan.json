@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "2",
+        "side": "RIGHT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 15,
+        "label": "15",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "해설 관계: B, D, C가 한 직선 위에 있고 BD가 4 cm인 그림이다. 각 ABD는 15도, 각 ADC는 30도로 주어져 있다.",
+  "accessibilityDescription": "해설에 사용되는 해설 관계: B, D, C가 한 직선 위에 있고 BD가 4 cm인 그림이다. 각 ABD는 15도, 각 ADC는 30도로 주어져 있다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sAC, sBC, sAD",
+    "dimensions 2개",
+    "angles 3개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22s",
+      "condition": "$\\text{B}$, $\\text{D}$, $\\text{C}$가 이 순서로 한 직선 위에 있으므로 $\\angle\\text{ADB} = 180^\\circ - 30^\\circ = 150^\\circ$이다. $\\triangle\\text{ABD}$에서 $\\angle\\text{BAD} = 180^\\circ - 150^\\circ - 15^\\circ = 15^\\circ = \\angle\\text{ABD}$이므로 $\\triangle\\text{ABD}$는 이등변삼각형이고 $\\overline{\\text{AD}}=\\overline{\\text{BD}}=4\\text{ cm}$이다. 직각삼각형 $\\text{ACD}$에서 $$\\overline{\\text{AC}} = 4\\sin 30^\\circ = 4 \\times \\frac{1}{2} = 2\\text{ (cm)}, \\quad \\overline{\\text{DC}} = 4\\cos 30^\\circ = 4 \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}\\text{ (cm)}$$ 따라서 $\\overline{\\text{BC}} = \\overline{\\text{BD}} + \\overline{\\text{DC}} = 4 + 2\\sqrt{3}\\text{ (cm)}$이므로 $$\\tan 15^\\circ = \\frac{\\overline{\\text{AC}}}{\\overline{\\text{BC}}} = \\frac{2}{4 + 2\\sqrt{3}} = \\frac{1}{2 + \\sqrt{3}} = \\frac{2 - \\sqrt{3}}{(2+\\sqrt{3})(2-\\sqrt{3})} = 2 - \\sqrt{3}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 $\\angle\\text{C}=90^\\circ$인 직각삼각형"
+}
