@@ -182,8 +182,39 @@ node archive/tools/geometry-equation/production/render-plan.mjs \
 - **BLOCKED:** 연향 q09 P; 신흥 q16 P/S, q20 P → **4축**. 원본 JS/SVG를 변경하지 않았으므로 정상 제작 계획이 있어도 원본 결함을 해소한 것으로 판정하지 않는다.
 - **NOT_RUN:** 공식 SVG 렌더(실행 환경 중단), 실제 SVG 시각, 학생 화면, A4 검증. **시험지 전체 완료 선언 = 미완료/보류**, **큐 체크 = 보류**.
 - **Windows 큐:** **미접근 / 상태 미확인 / 체크·변경 없음**. 기출·고등학교·배정 외 시험지·원본 JS/SVG/이미지·레거시 계획 수정 **0개**.
-- **PR 번호·개별 병합 SHA·최종 원격 main SHA·변경 파일별 로컬 Git blob SHA 대 원격 Git blob SHA readback:** 정상 PR 병합 **후** 별도 보완 PR로 이 절에 실측값을 채운다. 아직 알려지지 않은 값은 추측하지 않는다. 문서 보완도 직접 main push가 아닌 정상 PR 병합만 허용한다.
+- **최초 제작 PR [#3514](https://github.com/icefoxtail/AP------/pull/3514) 정상 병합:** 병합 SHA **`5d228fcdd6e2162de1a0294a68f4071421b4a565`**. PR 변경 파일 15개(공식 plan 14 + 감사 문서 1). 병합 직후 원격 main의 각 파일을 한 건씩 `github_fetch_file(ref=main)` readback하고 로컬 작성본 Git blob SHA와 **15/15 일치, 0 불일치**를 확인했다. 보호 규칙 우회·직접 main 커밋은 하지 않았다.
+- **사후 증거 보완:** 이 표와 차기 선정 근거는 별도의 정상 감사 문서 전용 PR로 병합한다. 그 보완 PR 자체의 번호·병합 SHA 및 최종 원격 SHA는 병합 이후 최종 보고에 반영한다. 아래 첫 병합의 문서 blob은 보완 시 변경되므로 최종 readback에서 다시 대조한다.
+
+### 병합 후 파일별 원격 Git blob 독립 readback — 최초 PR #3514
+
+아래 `production/plans/...`는 실제 Git 경로 `archive/tools/geometry-equation/production/plans/...`를 축약했고 문서 행은 `docs/operations/...` 그대로다. 파일 **경로별 독립 GitHub API 조회 15회**이며 PR 성공 문구나 병합 commit SHA 하나를 파일별 증거로 간주하지 않았다.
+
+| 변경 파일 경로 | 로컬 작성본 blob SHA | 병합 후 원격 main blob SHA | 결과 |
+|---|---|---|---|
++| `production/plans/24_신흥중_1학기_기말_중3_유사/q19-problem.plan.json` | `b6aeb9f21790b2f84dd414e90312794087fba823` | `b6aeb9f21790b2f84dd414e90312794087fba823` | 일치 |
+| `production/plans/24_신흥중_1학기_기말_중3_유사/q19-solution.plan.json` | `a9221b19704b0093cd885d61505dec20a0260007` | `a9221b19704b0093cd885d61505dec20a0260007` | 일치 |
+| `production/plans/24_신흥중_1학기_기말_중3_유사/q20-problem.plan.json` | `9ed576696cd84c724813272055cfadbb0a21df28` | `9ed576696cd84c724813272055cfadbb0a21df28` | 일치 |
+| `production/plans/24_신흥중_1학기_기말_중3_유사/q20-solution.plan.json` | `3114f593ea974348b24b686215616c4775a41f3c` | `3114f593ea974348b24b686215616c4775a41f3c` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q09-problem.plan.json` | `e4284bc085888f7f7ca23e1a0d9e498aa12fd150` | `e4284bc085888f7f7ca23e1a0d9e498aa12fd150` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q09-solution.plan.json` | `9006fc57ea09bef90e8fe0a0cb6e0548719f0fa4` | `9006fc57ea09bef90e8fe0a0cb6e0548719f0fa4` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q10-problem.plan.json` | `7a5e86ff713949ebf958cc8c551eaa648a38e44e` | `7a5e86ff713949ebf958cc8c551eaa648a38e44e` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q10-solution.plan.json` | `083475ebbea83715a1fd7b017cdfa4f7dbe1dd92` | `083475ebbea83715a1fd7b017cdfa4f7dbe1dd92` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q12-problem.plan.json` | `06448d857d38882f875095601af40c077ab5c58b` | `06448d857d38882f875095601af40c077ab5c58b` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q12-solution.plan.json` | `9e751f326a4293216bb8d51b078ae05e288542d9` | `9e751f326a4293216bb8d51b078ae05e288542d9` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q14-problem.plan.json` | `017b983d8d03a434f79a9e2e2bade79e14a20a77` | `017b983d8d03a434f79a9e2e2bade79e14a20a77` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q19-problem.plan.json` | `9cee1a4cb264c6ed7ffa2a9a222e7d588cc7ccb1` | `9cee1a4cb264c6ed7ffa2a9a222e7d588cc7ccb1` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q19-solution.plan.json` | `b01e4a85ac92a9fe6f40a0f1fa744b8e8cd2b565` | `b01e4a85ac92a9fe6f40a0f1fa744b8e8cd2b565` | 일치 |
+| `production/plans/24_연향중_1학기_기말_중3_유사/q21-problem.plan.json` | `fcfccfee54ddbd5e282d7c812dd0e5101a2eb85f` | `fcfccfee54ddbd5e282d7c812dd0e5101a2eb85f` | 일치 |
+| `docs/operations/m3-sim-1final-24-yeonhyang-24-shinheung-visual-audit-20261129.md` | `c781a4999a515ec2b18736dd84b74765775a1f10` | `c781a4999a515ec2b18736dd84b74765775a1f10` | 일치 |
+| **합계** | **15개** | **15회 원격 readback** | **일치 15 / 불일치 0** |
 
 ## 8. 차기 1사이클 인수인계
 
-이번 두 시험지의 계획을 수정하거나 완료 체크하지 않은 상태에서, **새로 확인한 원격 main과 열린 PR 전체의 실제 변경 파일 경로로** 다음 2건을 안전하게 선정한다. 차기 대상과 그 선정 증거는 본 사이클 병합 이후 별도 보완 절에만 추가하며, 다음 두 건의 plan 제작은 **시작하지 않는다**.
+이번 두 시험지의 계획을 수정하거나 완료 체크하지 않은 상태에서, **첫 PR #3514 병합 후 원격 main `5d228fcdd6e2162de1a0294a68f4071421b4a565`** 및 열린 PR 파일 목록을 다시 검사하여 다음 **정확히 두 건만 선정**했다.
+
+1. `archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사.js` — 원격 Git tree에서 원본 존재; 실제 JS `window.questionBank` **24문항**; 공식 `production/plans/26_삼산중_1학기_기말_중3_유사/` **0개**; 열린 PR 관련 stem의 원본·SVG/이미지·레거시 plan·공식 plan 변경 경로 **0건**.
+2. `archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사.js` — 원격 Git tree에서 원본 존재; 실제 JS `window.questionBank` **23문항**; 공식 `production/plans/26_왕운중_1학기_기말_중3_유사/` **0개**; 열린 PR 관련 stem의 원본·SVG/이미지·레거시 plan·공식 plan 변경 경로 **0건**.
+
+선정 당시 열린 PR **88개 전부**의 **3,585개 실제 변경 경로**(고유 3,437)를 누락 0으로 다시 수집했고 두 stem에 대한 직접 충돌은 각 **0**이다. 지난 완료/배정 PR **#3506, #3505, #3502, #3499, #3494, #3491, #3489, #3487, #3486, #3480, #3476, #3473, #3469, #3467, #3464, #3460, #3450, #3447, #3442, #3441, #3436**의 실제 변경 파일 목록도 별도 21/21 조회해 두 stem 일치 **0건**을 확인했다. 원격 main에 두 stem의 공식 plan이 없고 고등학교·기출이 아닌 M3 유사시험지이며 이전 제작과 정확한 파일 경로가 다르다.
+
+**주의:** 이 선정은 위 SHA 시점의 증거일 뿐이다. 새 창 작업 시작 시 최신 origin/main과 **그때 열려 있는 모든 PR 실제 변경 경로를 다시 전수 검증**해야 한다. 두 차기 시험지의 계획 작성·문항 감사·렌더·PR 제작·완료 체크는 이 사이클에서 **전혀 시작하지 않았다**.
