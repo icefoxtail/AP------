@@ -1,0 +1,20 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"넓이가 최대인 직사각형 $BPDQ$의 둘레는?",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["B","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["B","A"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"5","denominator":"2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","P","Q"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sQD","refs":["Q","D"]},{"id":"sDP","refs":["D","P"]},{"id":"sBP","refs":["B","P"]},{"id":"sBQ","refs":["B","Q"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]},{"id":"rD","refs":["Q","D","P"]}],
+  "planeMarks":{"dimensions":[{"id":"lenAB","from":"A","to":"B","label":"2","side":"LEFT","factRole":"DERIVED_INTERMEDIATE"},{"id":"lenBC","from":"B","to":"C","label":"5","side":"BELOW","factRole":"DERIVED_INTERMEDIATE"},{"id":"lenBP","from":"B","to":"P","label":"5/2","side":"ABOVE","factRole":"CONCLUSION"},{"id":"lenBQ","from":"B","to":"Q","label":"1","side":"RIGHT","factRole":"CONCLUSION"}]},
+  "caption":"넓이 최대일 때 P는 BC의 중점, Q는 BA의 중점이고 BP=5/2, BQ=1로 둘레는 7이다.",
+  "accessibilityDescription":"직각삼각형 ABC에서 AB=2, BC=5이고 빗변 위 D를 둔 최대 넓이 직사각형 BPDQ의 두 변 BP=5/2와 BQ=1을 치수선으로 표시한다.",
+  "sourceConditions":[{"id":"triangle","condition":"x²−7x+10=0의 두 근 α=2, β=5","mappedTo":["mathPlan.nodes[1]","mathPlan.nodes[2]","planeMarks.dimensions[0]","planeMarks.dimensions[1]"]},{"id":"maximum","condition":"넓이 최대에서 BP=β/2, BQ=α/2","mappedTo":["mathPlan.nodes[3]","mathPlan.nodes[4]","planeMarks.dimensions[2]","planeMarks.dimensions[3]"]},{"id":"rectangle","condition":"BPDQ는 직사각형이고 D는 AC 위","mappedTo":["displaySegments[2]","displaySegments[3]","displaySegments[4]","rightAngles"]}],
+  "newVisualInformation":["두 절반 길이가 어디에 속하는지와 최대 넓이를 얻는 직사각형의 직각 위치를 실제 그리기 치수로 표시한다."]
+}

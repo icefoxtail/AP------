@@ -1,0 +1,9 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"k","rows":[{"kind":"SET","label":"실근 조건","pieces":[{"lo":{"value":"6/5","state":"OPEN"},"hi":{"value":"2","state":"OPEN"}},{"lo":{"value":"2","state":"OPEN"},"hi":null}]},{"kind":"POINTS","label":"최소 정수","points":[{"id":"A","value":"3","hideName":true,"showValue":true,"style":"FILLED"}]}]},
+  "numberLineCaption":{"text":"판별식과 이차식 조건"},
+  "caption":"5k−6>0에 k≠2를 함께 적용하여 가능한 가장 작은 정수는 3임을 표시한다.",
+  "accessibilityDescription":"수직선에서 k=6/5와 k=2는 열린 경계이고, k가 2보다 큰 쪽의 첫 정수 3이 표시되어 있다.",
+  "sourceConditions":[{"id":"discriminant","condition":"D/4=5k−6>0에서 k>6/5","mappedTo":["numberLine.rows[0]"]},{"id":"quadratic","condition":"최고차항 k−2≠0에 의해 k=2 제외","mappedTo":["numberLine.rows[0].pieces"]},{"id":"integer","condition":"가능한 정수 중 최솟값 3","mappedTo":["numberLine.rows[1].points"]}],
+  "newVisualInformation":["판별식 구간에 생긴 2의 구멍과 첫 허용 정수 3의 위치를 직접 보여 준다."]
+}

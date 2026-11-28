@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"두 구간에서 최댓값이 같고 이차함수의 축이",
+  "graphPlan":{"family":"polynomial","coefficients":["13/3","4","-1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,5],"viewport":[-1,6,-3,10],"overlays":{"points":[{"id":"V","curveX":"2","coordinates":true},{"id":"A","curveX":"0","coordinates":true},{"id":"B","curveX":"3","coordinates":true},{"id":"C","curveX":"5","coordinates":true}],"lines":[{"id":"L","x":"2","style":"DASHED"}]},"axisTickValues":{"x":[2,3,5],"y":[]}},
+  "caption":"f(x)=−(x−2)²+25/3의 축은 x=2이며, [0,3]의 왼쪽 끝과 [2,5]의 오른쪽 끝에서 각각 최솟값을 얻는다.",
+  "accessibilityDescription":"아래로 열린 포물선에서 꼭짓점 x=2와 두 구간 [0,3],[2,5]의 비교점 x=0,3,5가 실제 곡선 위에 표시된다.",
+  "sourceConditions":[{"id":"parabola","condition":"p=2, q=25/3에서 f=−x²+4x+13/3","mappedTo":["graphPlan.coefficients"]},{"id":"vertex","condition":"두 구간 공통 부분의 축 x=2","mappedTo":["graphPlan.overlays.lines[0]","graphPlan.overlays.points[0]"]},{"id":"ends","condition":"최솟값 위치 x=0과 x=5, 주어진 구간 오른쪽 끝 x=3","mappedTo":["graphPlan.overlays.points[1]","graphPlan.overlays.points[2]","graphPlan.overlays.points[3]"]}],
+  "newVisualInformation":["두 구간의 최댓값은 같은 꼭짓점, 최솟값은 서로 다른 먼 끝점이라는 풀이 핵심을 실제 포물선과 경계점으로 나타낸다."]
+}

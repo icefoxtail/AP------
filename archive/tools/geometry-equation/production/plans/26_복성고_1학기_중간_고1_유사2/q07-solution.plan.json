@@ -1,0 +1,8 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"k","rows":[{"kind":"SET","label":"두 실근 조건","pieces":[{"lo":{"value":"1","state":"CLOSED"},"hi":{"value":"17/4","state":"CLOSED"}}],"hideSetLabel":true},{"kind":"POINTS","label":"정수 네 값","points":[{"id":"A","value":"1","hideName":true,"showValue":true},{"id":"B","value":"2","hideName":true,"showValue":true},{"id":"C","value":"3","hideName":true,"showValue":true},{"id":"D","value":"4","hideName":true,"showValue":true}]}]},
+  "caption":"첫째 포물선의 교점 조건 k≥1과 둘째 포물선의 교점 조건 k≤17/4의 공통 정수는 1,2,3,4이다.",
+  "accessibilityDescription":"수직선에 1부터 17/4까지의 닫힌 구간과 그 안에 든 정수 1,2,3,4 네 점이 표시되어 있다.",
+  "sourceConditions":[{"id":"first","condition":"x²+4x+5−k=0의 실근 조건 k≥1","mappedTo":["numberLine.rows[0]"]},{"id":"second","condition":"−x²+3x+2−k=0의 실근 조건 k≤17/4","mappedTo":["numberLine.rows[0]"]},{"id":"integer","condition":"가능 정수 1,2,3,4","mappedTo":["numberLine.rows[1].points"]}],
+  "newVisualInformation":["두 포물선이 동시에 직선과 만나게 하는 매개변수 구간과 실제 정수점을 시각적으로 구분한다."]
+}
