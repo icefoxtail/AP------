@@ -1,34 +1,16 @@
 {
-  "capability": "SOURCE_STATISTICS_BAR_CHARTS_v1",
-  "values": [
-    1,
-    2,
-    3,
-    4,
-    5
-  ],
-  "series": {
-    "A": [
-      4,
-      2,
-      2,
-      2,
-      4
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "GROUPED_BAR",
+    "boundaries": ["1/2", "3/2", "5/2", "7/2", "9/2", "11/2"],
+    "xTickMode": "MIDPOINT",
+    "series": [
+      {"name": "A", "frequencies": [4, 2, 2, 2, 4]},
+      {"name": "B", "frequencies": [2, 3, 4, 3, 2]},
+      {"name": "C", "frequencies": [1, 2, 8, 2, 1]}
     ],
-    "B": [
-      2,
-      3,
-      4,
-      3,
-      2
-    ],
-    "C": [
-      1,
-      2,
-      8,
-      2,
-      1
-    ]
+    "xTitle": "공책(권)",
+    "yTitle": "학생(명)"
   },
-  "caption": "중앙값 3을 기준으로 좌우 대칭인 A, B, C 세 반의 공책 권수 분포 막대그래프"
+  "caption": "A, B, C 세 반의 공책 권수별 도수를 비교하는 막대그래프"
 }

@@ -1,14 +1,56 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "(x + 2)^2"
+  "capability": "composite-panels-v1",
+  "choiceGrid": true,
+  "panels": [
+    {
+      "caption": {"text": "①"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["4", "4", "1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
+    },
+    {
+      "caption": {"text": "②"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["4", "-4", "1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
+    },
+    {
+      "caption": {"text": "③"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["-4", "-4", "-1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
+    },
+    {
+      "caption": {"text": "④"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["-4", "4", "-1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
+    },
+    {
+      "caption": {"text": "⑤"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["-2", "0", "1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
+    }
   ],
-  "options": [
-    "① 아래로 볼록, 꼭짓점 x축 음의 부분",
-    "② 아래로 볼록, 꼭짓점 x축 양의 부분",
-    "③ 위로 볼록, 꼭짓점 x축 음의 부분",
-    "④ 위로 볼록, 꼭짓점 x축 양의 부분",
-    "⑤ 아래로 볼록, 꼭짓점 y축 음의 부분"
-  ],
-  "caption": "아래로 볼록하고 꼭짓점이 x축의 음의 부분 위에 있는 포물선"
+  "caption": "이차함수 그래프 선택지 ①~⑤",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "P(a,b)는 제4사분면의 점이고 a>0, b<0이다.", "mappedTo": "panels"},
+    {"id": "sc2", "condition": "y=a(x-b)^2의 그래프가 될 수 있는 것을 다섯 보기에서 고른다.", "mappedTo": "panels"}
+  ]
 }

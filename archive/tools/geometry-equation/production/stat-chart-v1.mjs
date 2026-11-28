@@ -19,6 +19,7 @@ export const FIGURE_CAPABILITY='stat-chart-figure-v1';
 // Korean accessible name of the figure (title and description, bound by aria-labelledby), the same ids the other figure engines write; fixed text per kind, so it never depends on plan prose.
 const ACCESSIBLE_NAMES={
   HISTOGRAM:['히스토그램','계급별 도수를 막대로 나타내 자료의 분포를 보여 주는 히스토그램이다.'],
+  GROUPED_BAR:['집단별 막대그래프','같은 자료값에서 여러 집단의 도수를 나란히 비교하는 막대그래프이다.'],
   FREQUENCY_POLYGON:['도수분포다각형','각 계급의 도수를 점으로 찍어 선분으로 이어 자료의 분포를 보여 주는 그래프이다.'],
   STEM_LEAF:['줄기와 잎 그림','자료를 줄기와 잎으로 나누어 분포를 나타낸 그림이다.'],
   BOX_PLOT:['상자그림','최솟값, 사분위수, 최댓값을 상자와 선으로 나타내 자료의 분포를 비교하는 그림이다.'],
@@ -88,7 +89,7 @@ export function solveStatChart(chart,opts={}){
   if(!isPlain(chart))bad('STAT_CHART_PLAN_INVALID');
   if(opts.compact===true&&chart.kind!=='DOT_PLOT'&&chart.kind!=='SCATTER'&&chart.kind!=='NORMAL_CURVE')bad('STAT_PANEL_KIND_UNSUPPORTED');   // a panel of a composite (G16) is a compact dot plot or scatter plot; a normal curve (G19) is drawn at its own size
   switch(chart.kind){
-    case 'HISTOGRAM':case 'FREQUENCY_POLYGON':return solveFreq(chart);
+    case 'HISTOGRAM':case 'FREQUENCY_POLYGON':case 'GROUPED_BAR':return solveFreq(chart);
     case 'STEM_LEAF':return solveStem(chart);
     case 'BOX_PLOT':return solveBox(chart);
     case 'SCATTER':return solveScatter(chart,opts);
@@ -108,8 +109,10 @@ export function solveStatChart(chart,opts={}){
 //  - unknownLabels: [{class,label,relHeight?}] a hidden class of a histogram drawn as a dotted outline carrying a symbol (2x), the outlines standing in the ratio of their relHeight (E34); showEndValues: a polygon's two end points write their 0;
 //  - a classSums label that is not a plain number (6명, 합계) is a stated fact: it is written as given and checked only where the engine can sum the bracket exactly.
 function solveFreq(c){
-  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues','unknownLabels','showEndValues'],'STAT_CHART_PLAN_INVALID');
+  onlyKeys(c,['kind','boundaries','series','yKind','polygon','xTitle','yTitle','grid','showValues','highlightClasses','total','highlightPoints','classSums','restoredClasses','showRestoredValues','hideValues','unknownLabels','showEndValues','xTickMode'],'STAT_CHART_PLAN_INVALID');
   const polygonKind=c.kind==='FREQUENCY_POLYGON';
+  const groupedKind=c.kind==='GROUPED_BAR';
+  if(c.xTickMode!==undefined&&(c.xTickMode!=='MIDPOINT'||!(polygonKind||groupedKind)))bad('STAT_X_TICK_MODE_INVALID');
   if(!Array.isArray(c.boundaries)||c.boundaries.length<3||c.boundaries.length>13)bad('STAT_BOUNDARIES_INVALID');
   const b=c.boundaries.map(x=>parseQ(x,'STAT_BOUNDARIES_INVALID'));
   if(qcmp(b[0],ZERO)<0)bad('STAT_BOUNDARY_NEGATIVE');
@@ -117,9 +120,11 @@ function solveFreq(c){
   if(qcmp(width,ZERO)<=0)bad('STAT_BOUNDARIES_INVALID');
   for(let i=1;i<b.length;i++){const step=qsub(b[i],b[i-1]);if(qcmp(step,ZERO)<=0)bad('STAT_BOUNDARIES_INVALID');if(qcmp(step,width)!==0)bad('STAT_CLASS_WIDTH_UNEQUAL');}
   const n=b.length-1;
-  if(!Array.isArray(c.series)||c.series.length<1||c.series.length>2)bad('STAT_SERIES_INVALID');
-  if(!polygonKind&&c.series.length!==1)bad('STAT_HISTOGRAM_ONE_SERIES');
-  if(polygonKind&&c.polygon!==undefined)bad('STAT_CHART_PLAN_INVALID');
+  // A common middle-school comparison graph carries three classes on the same axes.
+  // Histograms remain single-series; polygon lines have distinct observer-checked styles.
+  if(!Array.isArray(c.series)||c.series.length<1||c.series.length>(polygonKind||groupedKind?3:1))bad('STAT_SERIES_INVALID');
+  if(!polygonKind&&!groupedKind&&c.series.length!==1)bad('STAT_HISTOGRAM_ONE_SERIES');
+  if((polygonKind||groupedKind)&&c.polygon!==undefined)bad('STAT_CHART_PLAN_INVALID');
   const anyRelative=c.series.some(s=>isPlain(s)&&s.relativeFrequencies!==undefined);
   const yKind=c.yKind===undefined?(anyRelative?'RELATIVE':'FREQUENCY'):c.yKind;
   if(yKind!=='FREQUENCY'&&yKind!=='RELATIVE')bad('STAT_Y_KIND_INVALID');
@@ -167,6 +172,8 @@ function solveFreq(c){
     }
     return {name,frequencies:freq,total,values,hasTotal,hiddenSum};
   });
+  if(groupedKind&&(c.series.length<2||series.some(s=>s.values.some(v=>v===null))||c.showValues===true))bad('STAT_GROUPED_BAR_INVALID');
+  if(groupedKind&&['highlightClasses','highlightPoints','classSums','restoredClasses','unknownLabels','showEndValues','hideValues','showRestoredValues'].some(key=>c[key]!==undefined))bad('STAT_GROUPED_BAR_OPTION_UNSUPPORTED');
   const classes=[...Array(n).keys()].map(i=>({lo:b[i],hi:b[i+1],mid:qdiv(qadd(b[i],b[i+1]),Q(2n))}));
   const polygon=polygonKind||c.polygon===true;
   if(c.polygon!==undefined&&typeof c.polygon!=='boolean')bad('STAT_CHART_PLAN_INVALID');
@@ -303,6 +310,7 @@ function solveFreq(c){
   if(qcmp(top,maxV)===0)top=qadd(top,step);
   const ticks=[];for(let t=step;qcmp(t,top)<=0;t=qadd(t,step))ticks.push(qstr(t));
   return {schemaVersion:MODEL_VERSION,kind:c.kind,yKind,polygon,grid:c.grid===true,showValues:c.showValues===true,highlight,
+    ...(c.xTickMode==='MIDPOINT'?{xTickMode:'MIDPOINT'}:{}),
     ...(tone2.length?{highlightTone2:tone2}:{}),...(marks.length?{marks}:{}),...(restored.length?{restored,showRestoredValues:c.showRestoredValues===true}:{}),...(hidden.length?{hideValues:hidden}:{}),...(sums.length?{classSums:sums}:{}),...(unknown.length?{unknown:unknown.map(u=>({class:u.class,label:u.label,...(u.rel!==null?{relHeight:qstr(u.rel)}:{})}))}:{}),...(c.showEndValues===true?{showEndValues:true}:{}),
     xTitle:axisTitle(c.xTitle,'계급'),yTitle:axisTitle(c.yTitle,yKind==='FREQUENCY'?'도수(명)':'상대도수'),
     boundaries:b.map(qstr),width:qstr(width),classes:classes.map(k=>({lo:qstr(k.lo),hi:qstr(k.hi),mid:qstr(k.mid)})),
@@ -1076,12 +1084,13 @@ const DOT_GEO={digit:14.5,mapl:DOT_MAPL,mapr:DOT_MAPR,tip:ARROW_TIP},DOT_GEO_PAN
 const STYLE={
   axis:'stroke="#111" stroke-width="1.2" fill="none"',tick:'stroke="#111" stroke-width="1.2" fill="none"',grid:'stroke="#b4b4b4" stroke-width="0.8" fill="none" stroke-dasharray="3 3"',
   arrow:'fill="#111" stroke="none"',bar:'fill="#ececec" stroke="#111" stroke-width="1.2"',barHi:'fill="#b5b5b5" stroke="#111" stroke-width="1.2"',
-  poly0:'stroke="#111" stroke-width="2" fill="none"',poly1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',dot:'fill="#111" stroke="none"',
+  poly0:'stroke="#111" stroke-width="2" fill="none"',poly1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',poly2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',dot:'fill="#111" stroke="none"',
+  gbar0:'fill="#ececec" stroke="#111" stroke-width="1.2"',gbar1:'fill="#b5b5b5" stroke="#111" stroke-width="1.2"',gbar2:'fill="#8e8e8e" stroke="#111" stroke-width="1.2"',
   brk:'stroke="#111" stroke-width="1.2" fill="none"',frame:'fill="none" stroke="#111" stroke-width="1.2"',rule:'stroke="#111" stroke-width="1.2" fill="none"',
   mark:'fill="none" stroke="#111" stroke-width="1.8"',box:'fill="#ececec" stroke="#111" stroke-width="1.4"',median:'stroke="#111" stroke-width="3" fill="none"',
   whisker:'stroke="#111" stroke-width="1.4" fill="none"',cell:'fill="#fff" stroke="#111" stroke-width="1"',cellHi:'fill="#c9c9c9" stroke="#111" stroke-width="1"',
   cellHi2:'fill="#9b9b9b" stroke="#111" stroke-width="1"',head:'fill="#f1f1f1" stroke="#111" stroke-width="1"',diag:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',branch:'stroke="#111" stroke-width="1.4" fill="none"',branchHi:'stroke="#111" stroke-width="3" fill="none"',
-  legend0:'stroke="#111" stroke-width="2" fill="none"',legend1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',diagonal:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',
+  legend0:'stroke="#111" stroke-width="2" fill="none"',legend1:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="7 4"',legend2:'stroke="#111" stroke-width="2" fill="none" stroke-dasharray="2 4"',diagonal:'stroke="#555" stroke-width="1.2" fill="none" stroke-dasharray="6 4"',
   barHi2:'fill="#8e8e8e" stroke="#111" stroke-width="1.2"',barR:'fill="#ececec" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',barHiR:'fill="#b5b5b5" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',
   barHi2R:'fill="#8e8e8e" stroke="#111" stroke-width="1.2" stroke-dasharray="5 3"',markRing:'fill="none" stroke="#111" stroke-width="1.8"',markDisc:'fill="#111" stroke="none"',
   sum0:'stroke="#111" stroke-width="1.2" fill="none"',sum1:'stroke="#111" stroke-width="1.2" fill="none" stroke-dasharray="4 3"',
@@ -1154,6 +1163,13 @@ function freqSpec(m,ctx){
     const v=N(m.series[0].values[i]),tone=m.highlight.includes(i)?(tone2.includes(i)?2:1):0,rebuilt=restored.includes(i);
     prims.push(rect(`bar-s0-${i}`,'bar',['bar','barHi','barHi2'][tone]+(rebuilt?'R':''),px(N(k.lo)),py(v),px(N(k.hi))-px(N(k.lo)),BASE-py(v),{series:0,class:i,highlight:tone,...(rebuilt?{restored:1}:{})},40));
   }
+  if(m.kind==='GROUPED_BAR')for(const [i,k] of m.classes.entries()){
+    const lo=px(N(k.lo)),span=px(N(k.hi))-lo,groupWidth=span/m.series.length;
+    for(const [s,sr] of m.series.entries()){
+      const v=N(sr.values[i]),left=lo+groupWidth*s+groupWidth*.08,width=groupWidth*.84;
+      prims.push(rect(`bar-s${s}-${i}`,'bar','gbar'+s,left,py(v),width,BASE-py(v),{series:s,class:i},40));
+    }
+  }
   const maxRel=Math.max(...(m.unknown??[]).map(u=>u.relHeight===undefined?1:N(u.relHeight)),1e-9);
   for(const u of m.unknown??[]){ // a dotted outline in the hidden class's place with its symbol inside (never a bar: no value is drawn)
     const k=m.classes[u.class],x0=px(N(k.lo)),x1=px(N(k.hi)),h=u.relHeight===undefined?UNKNOWN_BAR_FRACTION*PLOT_H:UNKNOWN_BAR_FRACTION*PLOT_H*N(u.relHeight)/maxRel;
@@ -1162,7 +1178,8 @@ function freqSpec(m,ctx){
   }
   arrows(prims,{xStartPx:px(lowU),yAxisPx,base:BASE,tipY:top});
   if(breakU!==null)breakMark(prims,'x',px(breakU),BASE);
-  for(const [i,bb] of m.boundaries.entries()){
+  const xTicks=m.xTickMode==='MIDPOINT'?m.classes.map(c=>c.mid):m.boundaries;
+  for(const [i,bb] of xTicks.entries()){
     const x=px(N(bb));
     prims.push(L(`x-tick-${i}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',value:bb}));
     labels.push(math(`x-tick-${i}-label`,'x-tick',`x-tick-${i}`,DISPLAY+qtex(P(bb)),bb,'center','top',x,BASE+TICK+4,{value:bb}));
@@ -1210,7 +1227,8 @@ function freqSpec(m,ctx){
   const legendHeight=m.series.length>1?labelSize({kind:'TEXT',text:'수영'},fontPx).height:0,legendPitch=legendHeight<=30?30:Math.ceil(legendHeight)+1;
   if(m.series.length>1)for(const [s,sr] of m.series.entries()){
     const y=PT+14+s*legendPitch;
-    prims.push(L(`legend-line-${s}`,'legend-line','legend'+s,TITLE_X,y,TITLE_X+20,y,{series:s}));
+    if(m.kind==='GROUPED_BAR')prims.push(rect(`legend-line-${s}`,'legend-bar','gbar'+s,TITLE_X,y-6,20,12,{series:s}));
+    else prims.push(L(`legend-line-${s}`,'legend-line','legend'+s,TITLE_X,y,TITLE_X+20,y,{series:s}));
     labels.push(textLabel(`legend-${s}`,'legend',`legend-line-${s}`,sr.name,'start','middle',TITLE_X+27,y,{series:s}));
   }
   sums.forEach((sm,k)=>{ // a bracket under the axis labels from the left edge of class `from` to the right edge of class `to`; its sum is written beneath
@@ -1672,7 +1690,7 @@ function normalSpec(m,ctx){
   const H=Math.ceil((m.zAxis?zy:BASE+TICK+4+(stagger?lowerStep:0))+(m.zAxis?zRowH:xRowH)+SAFE+(ctx?.roomPad??0));
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
-const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
+const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,GROUPED_BAR:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
 // label-room MARGIN for a chart whose labels end a few px past the bottom or right edge: ctx.roomGrow {right, bottom} (px) makes the frame that much larger, nothing in it moves. Absent for a figure that fits.
 const grown=(size,ctx)=>ctx?.roomGrow?{width:size.width+(ctx.roomGrow.right??0),height:size.height+(ctx.roomGrow.bottom??0)}:size;
 export const statChartSize=(model,ctx)=>({...grown(SPEC_BY_KIND[model.kind](model,ctx).size,ctx)});

@@ -663,7 +663,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 | kind | 쓰는 곳 | 필요한 자료 |
 |---|---|---|
 | `HISTOGRAM` | 도수분포 히스토그램(`polygon:true`이면 도수분포다각형을 겹쳐 그림) | `boundaries`, `series:[{frequencies}]` |
-| `FREQUENCY_POLYGON` | 다각형만(상대도수 그래프, 두 집단 비교) | `boundaries`, `series` 1~2개(`name` 필수) |
+| `GROUPED_BAR` | 값마다 여러 집단의 막대 2~3개를 나란히 비교 | `boundaries`, `series` 2~3개(`name` 필수), `xTickMode:"MIDPOINT"` 권장 |
+| `FREQUENCY_POLYGON` | 다각형만(상대도수 그래프, 최대 세 집단 비교) | `boundaries`, `series` 1~3개(복수 계열이면 `name` 필수) |
 | `STEM_LEAF` | 줄기와 잎 그림(두 집단이면 등 맞댄 그림) | `values` 또는 `groups` |
 | `BOX_PLOT` | 상자그림 1~3개 | `values` 또는 `summary` |
 | `SCATTER` | 산점도 | `points`, `xRange`, `yRange` |
@@ -672,6 +673,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 | `SLOTS` | 자리·단계별 방법의 수를 칸에 적은 곱(합)의 법칙 그림 | `slots`, `join` |
 | `DOT_PLOT` | 점도표(자료를 값별로 점으로 쌓음) | `values`, `axisBreak` |
 | `NORMAL_CURVE` | 정규분포 곡선(평균 이동·σ 비교, 구간·꼬리 넓이 칠하기, 대칭, 표준화 z 줄) | `curves`, `ticks`, `shades`, `areaLabels` |
+
+`FREQUENCY_POLYGON`의 다중 계열은 3개까지 같은 축에 실선·긴 점선·짧은 점선으로 구분해 그린다. `GROUPED_BAR`는 한 값에서 2~3계열 막대를 가로로 나누어 흰색·중간 회색·진회색으로 구분한다. 각 점수가 계급의 중앙값인 자료(예: 점수 3·4·5·6·7점)는 `"xTickMode":"MIDPOINT"`를 쓰면 경계값 대신 실제 점수를 가로축 눈금으로 표시한다. 이 옵션은 다각형·집단별 막대그래프 전용이고 단일 히스토그램에는 쓸 수 없다.
 
 **히스토그램·다각형.** `boundaries`는 계급의 경계값 n+1개(문자열, 크기가 모두 같고 0 이상, 계급 12개 이하)이고 `frequencies`는 계급마다 정수 하나다. 상대도수 그래프는 도수를 주고 `"yKind":"RELATIVE"`로 쓰면 엔진이 총합으로 나누고, 상대도수가 문제에 직접 주어졌으면 `relativeFrequencies:["0.1","0.15",...]`(합이 정확히 1)로 쓴다. 도수의 합을 문제가 말하면 `total`로 적어 두면 엔진이 합과 대조한다. 가로축은 계급의 경계값에 눈금이 찍히고(0에서 시작하지 않으면 물결 표시와 O가 붙는다), 세로축 눈금은 엔진이 고른다. `xTitle`/`yTitle`은 짧은 한글(`"기록(회)"`, `"도수(명)"`, `"상대도수"`, 14자 이내)이다. `grid:true`는 점선 격자, `showValues:true`는 값을 막대·꼭짓점 위에 쓴다(풀이가 값을 읽는 그림에서만 쓴다; 값이 다각형 선·점에 닿으면 엔진이 그 값만 가까운 빈자리로 옮기고, 피할 자리가 없으면 `STAT_VALUE_LABEL_NO_ROOM`). `highlightClasses:[4]`는 계급(0부터)을 진하게 칠한다. 두 집단은 `FREQUENCY_POLYGON`에 `series:[{name:"A",...},{name:"B",...}]`를 쓰고 B는 점선으로 그려지며 범례가 붙는다(히스토그램은 한 집단만).
 
@@ -913,6 +916,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - **곡선 이름 자리와 축 변수** (G12-4): `graphPlan.nameLabel:{"at":"END","side":"BELOW"}`(`at`은 `START|MID|END`, `side`는 `BELOW`(기본)|`ABOVE`; `functionName`이 있어야 한다)는 f의 이름 `f(x)`를 곡선의 그 쪽 끝·가운데 곁에 쓴다(없으면 왼쪽 끝 아래). `graphPlan.axisVariable:"m"`(소문자 한 글자, `y`·함수 이름은 안 됨)은 가로축 글자와 함수 이름을 `m`, `g(m)`으로 쓴다(`INVALID_AXIS_VARIABLE`, `CURVE_NAME_LABEL_INVALID`). 관측기는 축 글자·이름 글리프와 이름의 자리(곡선의 그 쪽, 그 쪽 면)를 읽는다(`AXIS_VARIABLE_LABEL_MISMATCH`, `AXIS_VARIABLE_NAME_MISMATCH:<이름>`, `CURVE_NAME_LABEL_NOT_AT_PLACE`). 단일 함수와 `SHARED`에서만 되고 `STACKED`는 `PAIR_STACKED_CURVE_FIELDS_UNSUPPORTED`다. 색(`curveColor`, g의 `color`)과 지시선 라벨(`overlays.callouts`)은 3-14의 G12 절. SHARED 예(`ops/golden/item105g12`): y축 위 점 `ya`·`yf`에 `callouts:[{"id":"cl","point":"ya","text":"a","direction":"W"}]`.
 
 ### 3-16. 평면도형 여러 개를 한 그림에: `composite-panels-v1` 평면 패널 격자
+
+**그래프 5지선다 (문제용 별도 계약):** `"capability":"composite-panels-v1","choiceGrid":true`와 `panels` 정확히 5개를 쓴다. 각 패널은 `polynomial-spike-v1`의 2차 다항식(`graphPlan.family:"polynomial"`, `coefficients` 3개, 이차항 0 아님)이며 `{caption:{text:"①"},plan:{...}}`로 한 선택지를 쓴다. 엔진은 2열 3행에 배치하고, 문제에서 주지 않은 개별 포물선의 **계수·식은 보기에 표시하지 않는다**. 일차함수·세 개 이하의 비교·서로 다른 그래프 종류 혼합에는 이 옵션을 쓰지 않는다. 선택지의 위치·위로/아래로 볼록·꼭짓점 사분면은 시험지 JS와 각각 대조한다. 그래프는 정확한 다항식으로 모델링하고 `viewport`는 다섯 선택지에 같은 범위를 준다. 별도 렌더·시각검수는 여전히 필요하다.
 
 보기 ①~⑤의 서로 다른 사각형이나 서답형 ①·②의 두 도형처럼 **여러 평면도형을 나란히 비교**할 때, 각각을 지금까지와 같은 `PLANE_FIGURE_v1` plan으로 만든 뒤 `composite-panels-v1`의 패널로 묶는다. 각 패널은 3-8·3-9의 각·눈금·평행·식 라벨·호·영역·점선/화살촉을 그대로 쓰고, 엔진은 패널마다 같은 작도·표식·관측기 경로를 실행한다. 새 수학 primitive나 좌표 변환을 쓰지 않는다.
 

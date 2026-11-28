@@ -33,6 +33,7 @@ export const COMPOSITE_TOP_MARGIN=32;
 export const COMPOSITE_CAPTION_ROW=44;
 export const COMPOSITE_PANEL_GAP=8;
 const SIDE_MARGIN=32,CAPTION_GAP=4,FORMULA_GAP=16,MAX_PANELS=3;
+const MAX_CHOICE_GRAPH_PANELS=5;
 // A caption that does not fit in its row is not refused any more (E7): a plain-text caption wider than its cell breaks into two lines at a space, and a caption block
 // taller than COMPOSITE_CAPTION_ROW makes every caption row of that figure as tall as the block plus CAPTION_ROW_PAD (a figure whose captions fit keeps the 44 row).
 const CAPTION_LINE_GAP=2,CAPTION_ROW_PAD=4;
@@ -90,6 +91,14 @@ export function compositePanels(plan){
       bad('LINKED_EXP_LOG_DETAIL_SCOPE');
   }
   const linearStack=plan.linearStack===true;
+  // Five answer choices share one two-column graph grid. It is deliberately opt-in:
+  // ordinary graph comparisons remain two- or three-panel vertical stacks.
+  const choiceGrid=plan.choiceGrid===true;
+  if(plan.choiceGrid!==undefined&&!choiceGrid)bad('CHOICE_GRID_INVALID');
+  if(choiceGrid&&(plan.chain!==undefined||plan.columns!==undefined||plan.linkedExpLogDetail!==undefined||linearStack||plan.panels.length!==MAX_CHOICE_GRAPH_PANELS||!plan.panels.every(panel=>{
+    const g=panel?.plan?.graphPlan,c=g?.coefficients;
+    return panel?.plan?.capability==='polynomial-spike-v1'&&g?.family==='polynomial'&&Array.isArray(c)&&c.length===3&&c[2]!=='0'&&g?.plotCanvas===undefined;
+  })))bad('CHOICE_GRID_SCOPE');
   if(plan.linearStack!==undefined&&plan.linearStack!==true)bad('LINEAR_STACK_INVALID');
   if(linearStack&&(plan.chain!==undefined||plan.panels.length!==3||!plan.panels.every(p=>{
     const g=p?.plan?.graphPlan,c=g?.pieces?.[0]?.coefficients;
@@ -139,7 +148,7 @@ export function compositePanels(plan){
     // A plane or solid panel is never mixed into a graph/number-line stack: the layouts use different geometry units.
     if(planePanels.some(Boolean))bad('PANEL_PLANE_MIXED_'+planePanels.indexOf(true));
     if(!solidChain&&solidPanels.some(Boolean))bad('PANEL_SOLID_MIXED_'+solidPanels.indexOf(true));
-    if(plan.panels.length<(plan.chain==='number-line-figure-v1'||plan.chain===SOLID_CAPABILITY?1:2)||plan.panels.length>MAX_PANELS)bad('PANELS');
+    if(plan.panels.length<(plan.chain==='number-line-figure-v1'||plan.chain===SOLID_CAPABILITY?1:2)||plan.panels.length>(choiceGrid?MAX_CHOICE_GRAPH_PANELS:MAX_PANELS))bad('PANELS');
   }
   // columns (opt-in): 1 stacks plane or Venn panels in one column (each at its own width, the way graph panels stack); 2 is the default grid. Only a plane-figure or Venn composite takes it.
   if(plan.columns!==undefined){
@@ -220,12 +229,12 @@ export function compositePanels(plan){
     +(plan.coordinatePlacement==='PANEL'?(plan.graphPlan.requiredPoints??[]).length:(Array.isArray(plan.coordinatePanel)?plan.coordinatePanel.length:0)+(plan.pointNames&&typeof plan.pointNames==='object'?Object.keys(plan.pointNames).filter(id=>!(plan.coordinatePanel??[]).includes(id)).length:0));
   return checked.map(item=>{
     if(isNumberLinePanel(item.plan)||isSolidPanel(item.plan))return item;
-    const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));
-    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three&&!linearStack?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
+    const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three||choiceGrid?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));
+    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(choiceGrid?{compositeHeader:{formula:'CAPTION',sharedLines:[]}}:three&&!linearStack?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
 /** The stack or grid layout of the checked panels: graph/number-line stacks (and the one solid panel) and normal-curve panels (G19) stay one column; plane, solid, Venn, dot and scatter panels become a grid, unless the plan says columns:1 (plane or Venn panels stacked in one column). */
-export const compositePanelLayout=(checked,plan)=>checked.length>1&&checked.every(item=>isGridPanel(item.plan))&&!checked.every(item=>isStatNormalPanel(item.plan))&&plan?.columns!==1
+export const compositePanelLayout=(checked,plan)=>checked.length>1&&(plan?.choiceGrid===true||checked.every(item=>isGridPanel(item.plan)))&&!checked.every(item=>isStatNormalPanel(item.plan))&&plan?.columns!==1
   ?{kind:'GRID',columns:compositeGridColumns(checked.length),rows:Math.ceil(checked.length/compositeGridColumns(checked.length))}
   :{kind:'STACK',columns:1,rows:checked.length};
 /** The stacked/gridded size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
@@ -343,7 +352,9 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     }
     // Captions: the math part as MathJax, the text part in the Korean outline font, side by side at the policy base font. In a three-panel
     // stack the panel's formula follows in the same row, a little apart, and the shared line equations are rows above the first caption.
-    const typeset=typesetter(),captions=[],header=await compositeHeaderLabels(checked,panels.map(panel=>panel.model),identity.assetId);
+    // A problem's five graph choices must not print equations beside the curves:
+    // the coefficients are illustrative construction data, not a given in the stem.
+    const typeset=typesetter(),captions=[],header=plan.choiceGrid===true?null:await compositeHeaderLabels(checked,panels.map(panel=>panel.model),identity.assetId);
     for(const {panel} of parts){
       const fragments=[];
       for(const [kind,value] of [['MATH',panel.caption.math],['TEXT',panel.caption.text]]){

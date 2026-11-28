@@ -398,7 +398,7 @@ def audit_freq(chart, doc):
     if show_ends and (not polygon or len(series) != 1): fail('STAT_SHOW_END_VALUES_UNSUPPORTED')
     fx, _, xvals = doc.axis_map('x-tick', 'x')
     fy, _, yvals = doc.axis_map('y-tick', 'y')
-    if set(xvals) != set(b): doc.err('SC_X_TICKS_NOT_BOUNDARIES')
+    if set(xvals) != (set(mids) if chart.get('xTickMode') == 'MIDPOINT' else set(b)): doc.err('SC_X_TICKS_NOT_BOUNDARIES')
     top = max(v for s in series for v in s['values'] if v is not None)
     if max(yvals) <= top: doc.err('SC_Y_AXIS_DOES_NOT_REACH_DATA')
     steps = {yvals[i + 1] - yvals[i] for i in range(len(yvals) - 1)}
@@ -432,6 +432,21 @@ def audit_freq(chart, doc):
             dashed = bar.get('stroke-dasharray') is not None
             if dashed != (i in restored) or (bar.get('data-restored') == '1') != (i in restored): doc.err('SC_BAR_RESTORED:%d' % i)
         if {int(bar.get('data-class', -1)) for bar in bars} != shown_classes: doc.err('SC_BAR_CLASSES')
+    if kind == 'GROUPED_BAR':
+        expected = {(s, i) for s in range(len(series)) for i in range(n)}
+        found = {(int(bar.get('data-series', -1)), int(bar.get('data-class', -1))) for bar in bars}
+        if len(bars) != len(expected) or found != expected: doc.err('SC_GROUPED_BAR_SET')
+        grouped_shades = ('#ececec', '#b5b5b5', '#8e8e8e')
+        for bar in bars:
+            s, i = int(bar.get('data-series', -1)), int(bar.get('data-class', -1))
+            if (s, i) not in expected: continue
+            lo, hi = fx(b[i]), fx(b[i + 1])
+            group_width = (hi - lo) / len(series)
+            left = lo + group_width * s + group_width * .08
+            right = left + group_width * .84
+            if abs(num(bar, 'x') - left) > TOL or abs(num(bar, 'x') + num(bar, 'width') - right) > TOL: doc.err('SC_GROUPED_BAR_X:%d:%d' % (s, i))
+            if abs(num(bar, 'y') - fy(series[s]['values'][i])) > TOL or abs(num(bar, 'y') + num(bar, 'height') - base) > TOL: doc.err('SC_GROUPED_BAR_HEIGHT:%d:%d' % (s, i))
+            if (bar.get('fill') or '').lower() != grouped_shades[s]: doc.err('SC_GROUPED_BAR_STYLE:%d:%d' % (s, i))
     if kind == 'HISTOGRAM' or unknown:
         # the dotted outlines: exactly the planned classes, on their own x range, standing on the axis, UNKNOWN_BAR_FRACTION of the plot high, dotted and unfilled, each with its symbol centred inside
         outlines = {}
@@ -486,7 +501,9 @@ def audit_freq(chart, doc):
             for line in lines:
                 try: drawn.append([tuple(float(v) for v in pair.split(',')) for pair in line.get('points').split()])
                 except ValueError: doc.err('SC_POLYGON_POINTS_UNREADABLE'); drawn.append([])
-                if (line.get('stroke-dasharray') is not None) != (s == 1): doc.err('SC_POLYGON_STYLE:%d' % s)
+                # All three series must remain distinguishable even in grayscale.
+                want_dash = {0: None, 1: '7 4', 2: '2 4'}.get(s)
+                if line.get('stroke-dasharray') != want_dash: doc.err('SC_POLYGON_STYLE:%d' % s)
             drawn.sort(key=lambda pts: pts[0][0] if pts else 0)
             for pts, run in zip(drawn, sorted(runs, key=lambda r: r[0][1][0])):
                 if len(pts) != len(run): doc.err('SC_POLYGON_VERTEX_COUNT:%d' % s); continue
@@ -2330,7 +2347,7 @@ def audit_slots(chart, doc):
     return {'slots': len(slots), 'counts': [t for k, t, _ in slots if k == 'COUNT'], 'join': join}
 
 
-AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'SLOTS': audit_slots, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
+AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'GROUPED_BAR': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'SLOTS': audit_slots, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
 
 
 def audit(chart, svg, compact=False, accessibility_description=None):

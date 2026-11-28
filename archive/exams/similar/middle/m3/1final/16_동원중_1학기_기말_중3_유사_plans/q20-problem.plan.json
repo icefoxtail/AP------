@@ -1,51 +1,56 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
+  "capability": "composite-panels-v1",
+  "choiceGrid": true,
   "panels": [
     {
-      "label": "①",
-      "curve": "-(x - 2)^2 + 2",
-      "vertex": [
-        2,
-        2
-      ],
-      "desc": "제1사분면 꼭짓점, 위로 볼록"
+      "caption": {"text": "①"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["-2", "4", "-1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
     },
     {
-      "label": "②",
-      "curve": "(x + 2)^2 + 2",
-      "vertex": [
-        -2,
-        2
-      ],
-      "desc": "제2사분면 꼭짓점, 아래로 볼록"
+      "caption": {"text": "②"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["6", "4", "1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
     },
     {
-      "label": "③",
-      "curve": "-(x + 2)^2 - 2",
-      "vertex": [
-        -2,
-        -2
-      ],
-      "desc": "제3사분면 꼭짓점, 위로 볼록"
+      "caption": {"text": "③"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["-6", "-4", "-1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
     },
     {
-      "label": "④",
-      "curve": "(x - 2)^2 - 2",
-      "vertex": [
-        2,
-        -2
-      ],
-      "desc": "제4사분면 꼭짓점, 아래로 볼록"
+      "caption": {"text": "④"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["2", "-4", "1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
     },
     {
-      "label": "⑤",
-      "curve": "-(x + 2)^2 + 2",
-      "vertex": [
-        -2,
-        2
-      ],
-      "desc": "제2사분면 꼭짓점, 위로 볼록"
+      "caption": {"text": "⑤"},
+      "plan": {"capability": "polynomial-spike-v1", "graphPlan": {
+        "family": "polynomial", "coefficients": ["-2", "-4", "-1"],
+        "domain": [-5, 5], "viewport": [-5, 5, -8, 8],
+        "sourceDomain": {"kind": "ALL_REALS"}, "requiredPoints": [],
+        "axisTickValues": {"x": [], "y": []}
+      }}
     }
   ],
-  "caption": "표준형 y=a(x-p)²+q의 그래프 선택지 5개 (①~⑤)"
+  "caption": "이차함수 그래프 선택지 ①~⑤",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "보기 ①~⑤는 각각 이차함수 포물선의 그래프이다.", "mappedTo": "panels"},
+    {"id": "sc2", "condition": "a<0, p<0, q>0인 이차함수 y=a(x-p)^2+q의 그래프를 고른다.", "mappedTo": "panels"}
+  ]
 }
