@@ -1,0 +1,64 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "1",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0.5,
+        "y": 0.25
+      },
+      {
+        "id": "L",
+        "x": -1,
+        "y": -2
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1/2",
+        "1"
+      ],
+      "y": [
+        "-2",
+        "1/4"
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "해설의 치환함수 g(t)=−t²+t를 −1≤t≤1에서 그려 최대·최소 위치를 보였다.",
+  "accessibilityDescription": "아래로 열린 이차함수 g(t)=-t²+t가 -1부터 1까지의 구간에 그려져 있고 꼭짓점과 양 끝점이 표시되어 있다.",
+  "newVisualInformation": [
+    "치환함수의 정의역",
+    "꼭짓점과 최솟값 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < 2\\pi$에서 함수  \n$$f(x) = \\cos^2\\left(\\frac{7}{6}\\pi - 2x\\right) + \\cos\\left(2x - \\frac{2}{3}\\pi\\right) - 1$$  \n은 $x = \\alpha$일 때 최댓값을 갖고, $x = \\beta$일 때 최솟값을 갖는다. 다음 물음에 답하시오. (총 10점)\n\n(1) $\\sin\\left(2x - \\frac{\\pi}{6}\\right)$를 $t$로 치환하여 함수 $f(x)$를 $t$에 대한 함수 $g(t)$로 나타내시오. (단, $t$의 범위도 함께 구하시오.) (4점)  \n(2) $\\alpha$의 최솟값과 $\\beta$의 최댓값을 각각 구하시오. (4점)  \n(3) $\\frac{12}{\\pi}(\\beta - \\alpha)$의 최댓값을 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
