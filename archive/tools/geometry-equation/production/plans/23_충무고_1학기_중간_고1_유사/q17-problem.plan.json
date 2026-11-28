@@ -1,0 +1,58 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"expression","op":"sub","args":[
+          {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]},
+          {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"21"}]}]}
+        ]},{"kind":"integer","value":"3"}
+      ]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]},
+        {"kind":"integer","value":"0"}
+      ]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"expression","op":"sub","args":[
+          {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]},
+          {"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"21"}]}
+        ]},{"kind":"integer","value":"1"}
+      ]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"K","op":"PERPENDICULAR_FOOT","inputs":["I","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ci","op":"CIRCLE_CENTER_RADIUS","inputs":["I"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","I","K"],
+  "hiddenPointNames": ["K"],
+  "displayCircles": ["ci"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},
+    {"id":"sDE","refs":["D","E"]},{"id":"sAI","refs":["A","I"]},
+    {"id":"sIK","refs":["I","K"],"dashed":true}
+  ],
+  "rightAngles": [{"id":"rK","refs":["I","K","C"]}],
+  "planeMarks": {
+    "parallels": [{"id":"pDE","count":1,"segments":["sDE","sBC"]}],
+    "expressionLabels": [
+      {"id":"ai","ownerSegment":"sAI","text":"5"},
+      {"id":"radius","ownerSegment":"sIK","text":"1"}
+    ],
+    "regions": [{"id":"abc","fill":"LIGHT","shapes":[{"polygon":["A","B","C"]}]}]
+  },
+  "coordinateCanvas": {"width":720,"height":540},
+  "caption": "AI=5, 내접원의 반지름 1, △ABC의 넓이 6√6이며 I를 지나는 DE는 BC에 평행하다. 길이와 내접 조건을 만족하는 정확한 대표 배치이다.",
+  "accessibilityDescription": "삼각형 ABC 안쪽에 내접원과 내심 I가 있고, I를 지나는 DE가 밑변 BC에 평행하다. AI 길이 5와 내접 반지름 1을 선분에 표시한다.",
+  "sourceConditions": [
+    {"id":"triangle","condition":"△ABC의 넓이 6√6이고 내접원 반지름 1인 정확한 대표 좌표 A,B,C,I를 선택한다","mappedTo":["mathPlan.nodes[A,B,C,I]","planeMarks.regions[0]"]},
+    {"id":"radius","condition":"I에서 BC까지 수선 길이는 내접반지름 1","mappedTo":["mathPlan.nodes[K,ci]","displayCircles[0]","displaySegments[sIK]","rightAngles[0]","planeMarks.expressionLabels[1]"]},
+    {"id":"ai","condition":"AI=5","mappedTo":["displaySegments[sAI]","planeMarks.expressionLabels[0]"]},
+    {"id":"parallel","condition":"D∈AB, E∈AC, DE∥BC","mappedTo":["mathPlan.nodes[D,E]","displaySegments[sDE]","planeMarks.parallels[0]"]}
+  ],
+  "newVisualInformation": ["문제에 주어진 내접원·내심·평행선·길이·넓이의 관계를 한 그림으로 보이되 미지 넓이 ADE는 표시하지 않는다."]
+}

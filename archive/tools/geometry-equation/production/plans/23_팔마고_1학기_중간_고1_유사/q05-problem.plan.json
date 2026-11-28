@@ -1,0 +1,31 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["6", "-3"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "2"], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 2],
+    "viewport": [-0.5, 2.5, -0.5, 6.8],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "P", "curveX": "1/2"},
+        {"id": "Q", "axis": "x", "value": "1/2"},
+        {"id": "R", "axis": "y", "value": "9/2"}
+      ],
+      "polygons": [
+        {"id": "rect", "points": ["O", "Q", "P", "R"], "fill": "LIGHT", "label": "S"}
+      ]
+    }
+  },
+  "caption": "0<a<2에서 P는 직선 y=−3x+6 위를 움직인다. P에서 양 축으로 내린 수선과 직사각형 PQOR의 넓이 S를 나타낸 모식도이다.",
+  "accessibilityDescription": "제1사분면의 내려가는 직선 위 가변점 P, x축의 수선의 발 Q, y축의 수선의 발 R과 원점 O가 직사각형을 이룬다. 가변점의 수치 좌표는 표시하지 않는다.",
+  "sourceConditions": [
+    {"id": "line", "condition": "주어진 직선은 y=−3x+6, 0<a<2", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.sourceDomain"]},
+    {"id": "foot", "condition": "Q와 R은 P에서 각 좌표축에 내린 수선의 발", "mappedTo": ["graphPlan.overlays.points[1]", "graphPlan.overlays.points[2]", "graphPlan.overlays.points[3]"]},
+    {"id": "rectangle", "condition": "O, Q, P, R의 직사각형 넓이를 S라고 부른다. P는 위치 관계만 보여 주는 대표 위치이고 a=1/2은 주어진 수치가 아니다", "mappedTo": "graphPlan.overlays.polygons[0]"}
+  ],
+  "newVisualInformation": ["기존 SVG의 원문에 없는 a=1/2 숫자 라벨을 되풀이하지 않고 수선과 넓이의 기하 관계만 보여 준다."]
+}

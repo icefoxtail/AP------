@@ -1,0 +1,36 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "첫째 함수: 최댓값 M"},
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial", "coefficients": ["2", "-6", "-1"],
+          "sourceDomain": {"kind":"ALL_REALS"}, "domain": [-7, 1], "viewport": [-7, 1, -6, 14],
+          "requiredPoints": [{"id":"V","x":-3,"y":11}],
+          "axisTickValues": {"x":[],"y":[]}
+        }
+      }
+    },
+    {
+      "caption": {"text": "둘째 함수: 최솟값 m"},
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial", "coefficients": ["-3", "-4", "1"],
+          "sourceDomain": {"kind":"ALL_REALS"}, "domain": [-2, 6], "viewport": [-2, 6, -10, 12],
+          "requiredPoints": [{"id":"W","x":2,"y":-7}],
+          "axisTickValues": {"x":[],"y":[]}
+        }
+      }
+    }
+  ],
+  "caption": "첫 포물선 y=−(x+3)²+11의 꼭짓점은 최댓값 M=11이고, 둘째 포물선 y=(x−2)²−7의 꼭짓점은 최솟값 m=−7이다.",
+  "accessibilityDescription": "위 패널은 아래로 열린 포물선과 꼭짓점 (−3,11), 아래 패널은 위로 열린 포물선과 꼭짓점 (2,−7)을 비교한다.",
+  "sourceConditions": [
+    {"id":"maximum","condition":"y=−x²−6x+2=−(x+3)²+11의 최대 M=11","mappedTo":["panels[0].plan.graphPlan.coefficients","panels[0].plan.graphPlan.requiredPoints[0]"]},
+    {"id":"minimum","condition":"y=x²−4x−3=(x−2)²−7의 최소 m=−7","mappedTo":["panels[1].plan.graphPlan.coefficients","panels[1].plan.graphPlan.requiredPoints[0]"]}
+  ],
+  "newVisualInformation": ["최고차항의 부호가 반대인 두 포물선에서 꼭짓점 높이를 최댓값·최솟값으로 각각 읽는 방법을 비교한다."]
+}
