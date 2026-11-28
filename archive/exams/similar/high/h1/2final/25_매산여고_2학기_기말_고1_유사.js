@@ -398,7 +398,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "$0\\le x\\le1$에서 감소하는 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점]",
+    "content": "$0\\le x\\le1$에서 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점]",
     "choices": [
       "$2$",
       "$3$",

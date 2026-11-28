@@ -17,8 +17,8 @@
     "independentR3StructuralVisual": "NOT_RUN",
     "officialRpmResolver": "NOT_RUN",
     "directActivePtTplUnitBindingChecks": "SELF_CHECK_PASS",
-    "rpmCrosswalkExactCount": 9,
-    "rpmCrosswalkNonexactCount": 60,
+    "rpmCrosswalkExactCount": 8,
+    "rpmCrosswalkNonexactCount": 61,
     "rpmCrosswalkNonexactHandling": "ACTIVE unit binding + direct question PT/TPL classification observed; nonexact crosswalk is not by itself a type error. Official resolver certification pending."
   },
   "rows": [
@@ -747,7 +747,7 @@
       "decisiveCore": "제한구간 제곱근의 단조성과 양 끝값",
       "mode": "EXAM_FOLLOWUP",
       "followupKind": "CONFIRMATION",
-      "conditionStructure": "감소하는 제곱근함수의 왼쪽 끝 최댓값 4를 제시하고 오른쪽 끝 최솟값을 질문",
+      "conditionStructure": "근호 안의 −5 계수를 보고 단조 감소를 판단해야 하며 최대4에서 최소3을 구함",
       "solutionEntry": "감소 근호의 왼쪽 x=0에서 최대 4를 먼저 적용",
       "questionTarget": "최솟값",
       "trapSignature": "감소함수의 오른쪽 끝을 최대에 대입",
@@ -792,7 +792,7 @@
               "최댓값"
             ],
             "source": "EXACT_FINAL_STEM",
-            "quote": "$0\\le x\\le1$에서 감소하는 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점]"
+            "quote": "$0\\le x\\le1$에서 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점]"
           },
           "goal": {
             "termIds": [
@@ -802,7 +802,7 @@
               "최솟값"
             ],
             "source": "EXACT_FINAL_STEM",
-            "quote": "$0\\le x\\le1$에서 감소하는 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점]"
+            "quote": "$0\\le x\\le1$에서 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점]"
           },
           "method": {
             "termIds": [
@@ -828,7 +828,7 @@
               "정의역제한"
             ],
             "source": "EXACT_FINAL_STEM_AND_SOLUTION",
-            "quote": "$0\\le x\\le1$에서 감소하는 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점] | $-5x+a$는 $x$가 증가할 때 감소하므로 최댓값은 왼쪽 끝 $x=0$에서 얻는다. $\\sqrt a+1=4$에서 $a=9$이다. 따라서 오른쪽 끝 $x=1$에서 최솟값 $\\sqrt{9-5}+1=3$을 얻는다. 먼저 최대 조건을 해석한 뒤 반대쪽 끝에서 최소를 구해야 한다."
+            "quote": "$0\\le x\\le1$에서 무리함수 $y=\\sqrt{-5x+a}+1$의 최댓값이 $4$이다. 이 함수의 최솟값은? [3.8점] | $-5x+a$는 $x$가 증가할 때 감소하므로 최댓값은 왼쪽 끝 $x=0$에서 얻는다. $\\sqrt a+1=4$에서 $a=9$이다. 따라서 오른쪽 끝 $x=1$에서 최솟값 $\\sqrt{9-5}+1=3$을 얻는다. 먼저 최대 조건을 해석한 뒤 반대쪽 끝에서 최소를 구해야 한다."
           }
         },
         "fourSlotStatus": "AUTHOR_SELF_REJUDGED; INDEPENDENT_TERM_SEMANTIC_AUDIT_NOT_RUN",
@@ -3534,11 +3534,11 @@
       "decisiveCore": "제한구간 제곱근의 단조성과 양 끝값",
       "mode": "EXAM_FOLLOWUP",
       "followupKind": "CONFIRMATION",
-      "conditionStructure": "최댓값으로 a 확정",
-      "solutionEntry": "증가 근호에서 x=0의 최대값으로 a 복원",
-      "questionTarget": "최솟값",
-      "trapSignature": "x=−2와 x=0의 대입 순서 오류",
-      "solutionGraphSignature": "f(0)=4→a 결정→f(−2)",
+      "conditionStructure": "치역 [3,b]의 왼쪽 끝을 주고 근호 안 기울기 a를 역복원한 후 오른쪽 끝 b 산출",
+      "solutionEntry": "치역 왼끝 3에서 근호 안의 미지 기울기 a 복원",
+      "questionTarget": "치역 오른끝 b",
+      "trapSignature": "기울기 a를 원래 상수항으로 착각하거나 a와 b를 바꿈",
+      "solutionGraphSignature": "치역 [3,b]→x=1에서 a=6 복원→x=3에서 b=5",
       "semanticMetaEvidence": {
         "crossConceptKeys": [
           "CC_FUNCTION_MONOTONICITY"
@@ -3547,14 +3547,14 @@
           "COND_RESTRICTED_INTERVAL"
         ],
         "integrationPattern": "NONE",
-        "semanticBasis": "실제 문항의 결정 단계: f(0)=4→a 결정→f(−2)",
+        "semanticBasis": "실제 문항의 결정 단계: 치역 [3,b]→x=1에서 a=6 복원→x=3에서 b=5",
         "directPtTplJudgment": {
           "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
           "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
           "classificationMode": "DIRECT_FROM_FINAL_PROBLEM_AND_SOLUTION",
-          "decisiveStep": "f(0)=4→a 결정→f(−2)",
-          "ptReason": "닫힌 구간에서의 무리함수 극값을 구함 — 증가 근호에서 x=0의 최대값으로 a 복원",
-          "tplReason": "증가·감소 방향과 양 끝의 함수값으로 미지 계수 및 극값 결정 — f(0)=4→a 결정→f(−2)",
+          "decisiveStep": "치역 [3,b]→x=1에서 a=6 복원→x=3에서 b=5",
+          "ptReason": "닫힌 구간에서의 무리함수 극값을 구함 — 치역 왼끝 3에서 근호 안의 미지 기울기 a 복원",
+          "tplReason": "증가·감소 방향과 양 끝의 함수값으로 미지 계수 및 극값 결정 — 치역 [3,b]→x=1에서 a=6 복원→x=3에서 b=5",
           "registryChecks": {
             "ptStatus": "ACTIVE_VERIFIED",
             "tplStatus": "ACTIVE_VERIFIED",
@@ -3565,55 +3565,63 @@
           "independentReviewerStatus": "NOT_RUN",
           "officialResolverStatus": "NOT_RUN"
         },
-        "decisivePTTPLBasis": "실제 문항 풀이 분기: f(0)=4→a 결정→f(−2)",
+        "decisivePTTPLBasis": "실제 문항 풀이 분기: 치역 [3,b]→x=1에서 a=6 복원→x=3에서 b=5",
         "fourSlotEvidence": {
           "given": {
             "termIds": [
               93,
+              103,
               302,
-              127
+              396
             ],
             "termLabels": [
               "무리함수",
+              "치역",
               "정의역제한",
-              "최댓값"
+              "양수"
             ],
             "source": "EXACT_FINAL_STEM",
-            "quote": "$-2\\le x\\le0$에서 함수 $y=\\sqrt{8x+a}-1$의 최댓값이 $4$이다. 최솟값을 구하면? [3.8점]"
+            "quote": "실수 $a>2$에 대하여 $1\\le x\\le3$에서 정의된 무리함수 $y=\\sqrt{ax-2}+1$의 치역이 $[3,b]$이다. $b$의 값은? [3.8점]"
           },
           "goal": {
             "termIds": [
-              128
+              127
             ],
             "termLabels": [
-              "최솟값"
+              "최댓값"
             ],
             "source": "EXACT_FINAL_STEM",
-            "quote": "$-2\\le x\\le0$에서 함수 $y=\\sqrt{8x+a}-1$의 최댓값이 $4$이다. 최솟값을 구하면? [3.8점]"
+            "quote": "실수 $a>2$에 대하여 $1\\le x\\le3$에서 정의된 무리함수 $y=\\sqrt{ax-2}+1$의 치역이 $[3,b]$이다. $b$의 값은? [3.8점]"
           },
           "method": {
             "termIds": [
+              103,
               100,
+              128,
               127,
-              128
+              50
             ],
             "termLabels": [
+              "치역",
               "함숫값",
+              "최솟값",
               "최댓값",
-              "최솟값"
+              "계수"
             ],
             "source": "EXACT_FINAL_SOLUTION",
-            "quote": "제곱근 안의 $8x+a$는 증가하므로 최댓값은 $x=0$에서 얻는다. $\\sqrt a-1=4$에서 $a=25$. $x=-2$에서 최솟값은 $\\sqrt{25-16}-1=3-1=2$이다."
+            "quote": "$a>2$이므로 $ax-2$가 증가하고 함수도 $[1,3]$에서 증가한다. 치역의 왼쪽 끝 $3$은 $x=1$에서의 함숫값이므로 $\\sqrt{a-2}+1=3$, 따라서 $a=6$이다. 오른쪽 끝은 $x=3$의 값으로 $b=\\sqrt{3a-2}+1=\\sqrt{16}+1=5$이다. 처음부터 근호의 계수 $a$가 알려진 것이 아니므로 치역 끝점 조건에서 $a$를 역복원해야 반대 끝값을 구할 수 있다."
           },
           "condition": {
             "termIds": [
-              302
+              302,
+              396
             ],
             "termLabels": [
-              "정의역제한"
+              "정의역제한",
+              "양수"
             ],
             "source": "EXACT_FINAL_STEM_AND_SOLUTION",
-            "quote": "$-2\\le x\\le0$에서 함수 $y=\\sqrt{8x+a}-1$의 최댓값이 $4$이다. 최솟값을 구하면? [3.8점] | 제곱근 안의 $8x+a$는 증가하므로 최댓값은 $x=0$에서 얻는다. $\\sqrt a-1=4$에서 $a=25$. $x=-2$에서 최솟값은 $\\sqrt{25-16}-1=3-1=2$이다."
+            "quote": "실수 $a>2$에 대하여 $1\\le x\\le3$에서 정의된 무리함수 $y=\\sqrt{ax-2}+1$의 치역이 $[3,b]$이다. $b$의 값은? [3.8점] | $a>2$이므로 $ax-2$가 증가하고 함수도 $[1,3]$에서 증가한다. 치역의 왼쪽 끝 $3$은 $x=1$에서의 함숫값이므로 $\\sqrt{a-2}+1=3$, 따라서 $a=6$이다. 오른쪽 끝은 $x=3$의 값으로 $b=\\sqrt{3a-2}+1=\\sqrt{16}+1=5$이다. 처음부터 근호의 계수 $a$가 알려진 것이 아니므로 치역 끝점 조건에서 $a$를 역복원해야 반대 끝값을 구할 수 있다."
           }
         },
         "fourSlotStatus": "AUTHOR_SELF_REJUDGED; INDEPENDENT_TERM_SEMANTIC_AUDIT_NOT_RUN",
@@ -4041,7 +4049,7 @@
         "semanticBasis": "실제 문항의 결정 단계: x=−2에서 p=−2; q−p=1→q=−1; G(1)=1/3",
         "directPtTplJudgment": {
           "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
-          "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+          "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
           "classificationMode": "DIRECT_FROM_FINAL_PROBLEM_AND_SOLUTION",
           "decisiveStep": "x=−2에서 p=−2; q−p=1→q=−1; G(1)=1/3",
           "ptReason": "분수함수 점근선으로 그래프의 성질 판단 — 수직점근선과 양의 기울기 대칭축에서 (p,q) 역결정",
@@ -4119,9 +4127,9 @@
       "originalBucketBasis": "EVIDENCE_DEBT: AUTHOR_SOURCE_MATH_REASSESSMENT_UNREGISTERED; official source difficulty NOT_RUN",
       "newBucket": 3,
       "difficultyComparisonStatus": "EVIDENCE_DEBT_ORIGINAL_BUCKET_UNCONFIRMED",
-      "rpmDirectCrosswalkExact": true,
+      "rpmDirectCrosswalkExact": false,
       "rpmCrosswalkRecordStatus": "DIRECT_ACTIVE",
-      "rpmEvidence": "EXACT_CROSSWALK",
+      "rpmEvidence": "DIRECT_ACTIVE_PT_TPL_AND_UNIT_BINDING; official resolver NOT_RUN",
       "semanticDuplicateResult": "AUTHOR_4AXIS_COMPARISON_DONE; INDEPENDENT_SEMANTIC_REVIEW_NOT_RUN",
       "reason": "원본 발문·해설 스냅샷과 다른 유사세트의 조건/진입/목표/함정을 비교한 작성자 자가 판정. 독립 PASS 증거 없음."
     },
@@ -4147,11 +4155,11 @@
       "decisiveCore": "절댓값 두 조각 기울기로 전단사 조건 판단",
       "mode": "EXAM_FOLLOWUP",
       "followupKind": "CONFIRMATION",
-      "conditionStructure": "x=5/2에서 만나는 두 직선의 기울기 7∓2a만을 직접 제시",
-      "solutionEntry": "꺾임점과 양쪽 직선 기울기에서 절댓값 계수 a를 복원",
+      "conditionStructure": "두 직선의 기울기 9−4t, 5+4t에서 절댓값 계수 a=2t−1과 정수 제약 복원",
+      "solutionEntry": "실수 t가 든 양쪽 기울기 차에서 절댓값 계수 a=2t−1 역복원",
       "questionTarget": "전단사 정수 a의 개수",
-      "trapSignature": "기울기 0인 정수 경계까지 허용",
-      "solutionGraphSignature": "왼/오른 기울기7∓2a→a|2x−5|+7x+1→|a|<7/2→7개",
+      "trapSignature": "실수 t를 정수 a로 오인해 네 개로 잘못 셈",
+      "solutionGraphSignature": "왼쪽9−4t·오른쪽5+4t→a=2t−1→−7/2<a<7/2→7개",
       "semanticMetaEvidence": {
         "crossConceptKeys": [
           "CC_FUNCTION_MONOTONICITY"
@@ -4161,14 +4169,14 @@
           "COND_FUNCTION_BIJECTION"
         ],
         "integrationPattern": "CASE_BRANCH",
-        "semanticBasis": "실제 문항의 결정 단계: 왼/오른 기울기7∓2a→a|2x−5|+7x+1→|a|<7/2→7개",
+        "semanticBasis": "실제 문항의 결정 단계: 왼쪽9−4t·오른쪽5+4t→a=2t−1→−7/2<a<7/2→7개",
         "directPtTplJudgment": {
           "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
           "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
           "classificationMode": "DIRECT_FROM_FINAL_PROBLEM_AND_SOLUTION",
-          "decisiveStep": "왼/오른 기울기7∓2a→a|2x−5|+7x+1→|a|<7/2→7개",
-          "ptReason": "일대일대응이 되는 매개변수 범위를 판단 — 꺾임점과 양쪽 직선 기울기에서 절댓값 계수 a를 복원",
-          "tplReason": "절댓값 꺾임점 양쪽 직선 기울기의 엄격한 부호 비교 — 왼/오른 기울기7∓2a→a|2x−5|+7x+1→|a|<7/2→7개",
+          "decisiveStep": "왼쪽9−4t·오른쪽5+4t→a=2t−1→−7/2<a<7/2→7개",
+          "ptReason": "일대일대응이 되는 매개변수 범위를 판단 — 실수 t가 든 양쪽 기울기 차에서 절댓값 계수 a=2t−1 역복원",
+          "tplReason": "절댓값 꺾임점 양쪽 직선 기울기의 엄격한 부호 비교 — 왼쪽9−4t·오른쪽5+4t→a=2t−1→−7/2<a<7/2→7개",
           "registryChecks": {
             "ptStatus": "ACTIVE_VERIFIED",
             "tplStatus": "ACTIVE_VERIFIED",
@@ -4179,23 +4187,25 @@
           "independentReviewerStatus": "NOT_RUN",
           "officialResolverStatus": "NOT_RUN"
         },
-        "decisivePTTPLBasis": "실제 문항 풀이 분기: 왼/오른 기울기7∓2a→a|2x−5|+7x+1→|a|<7/2→7개",
+        "decisivePTTPLBasis": "실제 문항 풀이 분기: 왼쪽9−4t·오른쪽5+4t→a=2t−1→−7/2<a<7/2→7개",
         "fourSlotEvidence": {
           "given": {
             "termIds": [
               84,
               143,
               150,
+              24,
               105
             ],
             "termLabels": [
               "함수",
               "직선",
               "기울기",
+              "절댓값",
               "일대일대응"
             ],
             "source": "EXACT_FINAL_STEM",
-            "quote": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. $x<\\frac52$에서 기울기는 $7-2a$, $x\\ge\\frac52$에서 기울기는 $7+2a$이다. $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]"
+            "quote": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. 실수 $t$에 대하여 $x<\\frac52$에서 기울기는 $9-4t$, $x\\ge\\frac52$에서 기울기는 $5+4t$이다. 이 함수를 $f(x)=a|2x-5|+bx+c$로 나타낼 때 $a$가 정수이고 $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]"
           },
           "goal": {
             "termIds": [
@@ -4205,7 +4215,7 @@
               "개수"
             ],
             "source": "EXACT_FINAL_STEM",
-            "quote": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. $x<\\frac52$에서 기울기는 $7-2a$, $x\\ge\\frac52$에서 기울기는 $7+2a$이다. $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]"
+            "quote": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. 실수 $t$에 대하여 $x<\\frac52$에서 기울기는 $9-4t$, $x\\ge\\frac52$에서 기울기는 $5+4t$이다. 이 함수를 $f(x)=a|2x-5|+bx+c$로 나타낼 때 $a$가 정수이고 $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]"
           },
           "method": {
             "termIds": [
@@ -4213,17 +4223,19 @@
               150,
               104,
               105,
-              2
+              2,
+              50
             ],
             "termLabels": [
               "절댓값",
               "기울기",
               "일대일함수",
               "일대일대응",
-              "정수"
+              "정수",
+              "계수"
             ],
             "source": "EXACT_FINAL_SOLUTION",
-            "quote": "양쪽 직선의 기울기의 평균은 $7$, 차의 절반은 $2a$이므로 이 두 직선 조각은 절댓값 함수를 사용하면 $f(x)=a|2x-5|+7x+1$로 복원된다. 두 조각은 주어진 점에서 연속이다. 실수 전체에서 실수 전체로의 일대일대응이 되려면 양쪽 기울기가 모두 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수여야 하며 $7-2a>0$, $7+2a>0$, 즉 $-\\frac72<a<\\frac72$이다. 정수 $a$는 $-3,-2,-1,0,1,2,3$의 $7$개다."
+            "quote": "절댓값 식 $a|2x-5|+bx+c$의 왼쪽·오른쪽 기울기는 각각 $b-2a$, $b+2a$이다. 문제의 두 직선 기울기와 비교하면 $2b=(9-4t)+(5+4t)=14$이므로 $b=7$, $4a=(5+4t)-(9-4t)=8t-4$이므로 $a=2t-1$이다. 교점 조건에서 $c=1$로 복원되지만 전단사 개수 계산에는 $a$의 역복원이 핵심이다. 연속인 두 직선 조각이 $\\mathbb R$에서 $\\mathbb R$로 일대일대응이 되려면 양쪽 기울기가 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수이다. 따라서 $9-4t>0$, $5+4t>0$에서 $-\\frac54<t<\\frac94$, 이를 $a=2t-1$로 옮기면 $-\\frac72<a<\\frac72$이다. 허용 정수 $a=-3,-2,-1,0,1,2,3$으로 $7$개다. "
           },
           "condition": {
             "termIds": [
@@ -4235,7 +4247,7 @@
               "경계조건"
             ],
             "source": "EXACT_FINAL_STEM_AND_SOLUTION",
-            "quote": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. $x<\\frac52$에서 기울기는 $7-2a$, $x\\ge\\frac52$에서 기울기는 $7+2a$이다. $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점] | 직선 조각은 절댓값 함수를 사용하면 $f(x)=a|2x-5|+7x+1$로 복원된다. 두 조각은 주어진 점에서 연속이다. 실수 전체에서 실수 전체로의 일대일대응이 되려면 양쪽 기울기가 모두 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수여야 하며 $7-2a>0$, $7+2a>0$, 즉 $-\\frac72<a<\\frac72$이다. 정수 $a$는 $-3,-2,-1,0,1,2,3$의 $7$개다."
+            "quote": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. 실수 $t$에 대하여 $x<\\frac52$에서 기울기는 $9-4t$, $x\\ge\\frac52$에서 기울기는 $5+4t$이다. 이 함수를 $f(x)=a|2x-5|+bx+c$로 나타낼 때 $a$가 정수이고 $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점] | R$로 일대일대응이 되려면 양쪽 기울기가 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수이다. 따라서 $9-4t>0$, $5+4t>0$에서 $-\\frac54<t<\\frac94$, 이를 $a=2t-1$로 옮기면 $-\\frac72<a<\\frac72$이다. 허용 정수 $a=-3,-2,-1,0,1,2,3$으로 $7$개다. $t$를 곧바로 정수로 세면 $a$의 정수성 조건을 잘못 적용한 것이다."
           }
         },
         "fourSlotStatus": "AUTHOR_SELF_REJUDGED; INDEPENDENT_TERM_SEMANTIC_AUDIT_NOT_RUN",
@@ -8164,10 +8176,10 @@
       "mode": "EXAM_FOLLOWUP",
       "followupKind": "CONFIRMATION",
       "conditionStructure": "판별식 경계 등호 배제",
-      "solutionEntry": "전칭 엄격부등식에서 판별식 0 배제",
+      "solutionEntry": "존재명제의 부정으로 전칭 양수식을 만들고 완전제곱 최솟값 확인",
       "questionTarget": "정수 k와 경계 불포함 설명",
-      "trapSignature": "중근 최솟값 0 허용",
-      "solutionGraphSignature": "x²−4kx+36>0 ∀x→|k|<3",
+      "trapSignature": "최솟값 0을 엄격 양수로 허용",
+      "solutionGraphSignature": "(x−2k)²+36−4k²>0 ∀x→|k|<3",
       "semanticMetaEvidence": {
         "crossConceptKeys": [
           "CC_QUANTIFIER_NEGATION"
@@ -8177,14 +8189,14 @@
           "COND_UNIVERSAL_INPUTS"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "semanticBasis": "실제 문항의 결정 단계: x²−4kx+36>0 ∀x→|k|<3",
+        "semanticBasis": "실제 문항의 결정 단계: (x−2k)²+36−4k²>0 ∀x→|k|<3",
         "directPtTplJudgment": {
           "problemTypeKey": "PT_QUANTIFIER_NEGATION",
           "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
           "classificationMode": "DIRECT_FROM_FINAL_PROBLEM_AND_SOLUTION",
-          "decisiveStep": "x²−4kx+36>0 ∀x→|k|<3",
-          "ptReason": "전칭·존재명제의 부정과 진릿값을 판정 — 전칭 엄격부등식에서 판별식 0 배제",
-          "tplReason": "엄격 이차식 양수 조건을 양화사 전환과 최솟값으로 증명 — x²−4kx+36>0 ∀x→|k|<3",
+          "decisiveStep": "(x−2k)²+36−4k²>0 ∀x→|k|<3",
+          "ptReason": "전칭·존재명제의 부정과 진릿값을 판정 — 존재명제의 부정으로 전칭 양수식을 만들고 완전제곱 최솟값 확인",
+          "tplReason": "엄격 이차식 양수 조건을 양화사 전환과 최솟값으로 증명 — (x−2k)²+36−4k²>0 ∀x→|k|<3",
           "registryChecks": {
             "ptStatus": "ACTIVE_VERIFIED",
             "tplStatus": "ACTIVE_VERIFIED",
@@ -8195,7 +8207,7 @@
           "independentReviewerStatus": "NOT_RUN",
           "officialResolverStatus": "NOT_RUN"
         },
-        "decisivePTTPLBasis": "실제 문항 풀이 분기: x²−4kx+36>0 ∀x→|k|<3",
+        "decisivePTTPLBasis": "실제 문항 풀이 분기: (x−2k)²+36−4k²>0 ∀x→|k|<3",
         "fourSlotEvidence": {
           "given": {
             "termIds": [
@@ -8225,13 +8237,13 @@
             "termIds": [
               681,
               682,
-              55,
+              59,
               359
             ],
             "termLabels": [
               "전칭명제",
               "존재명제",
-              "판별식",
+              "완전제곱식",
               "경계조건"
             ],
             "source": "EXACT_FINAL_SOLUTION",

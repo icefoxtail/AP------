@@ -399,16 +399,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "$-2\\le x\\le0$에서 함수 $y=\\sqrt{8x+a}-1$의 최댓값이 $4$이다. 최솟값을 구하면? [3.8점]",
+    "content": "실수 $a>2$에 대하여 $1\\le x\\le3$에서 정의된 무리함수 $y=\\sqrt{ax-2}+1$의 치역이 $[3,b]$이다. $b$의 값은? [3.8점]",
     "choices": [
-      "$-2$",
-      "$2$",
       "$3$",
-      "$4$",
-      "$5$"
+      "$5$",
+      "$6$",
+      "$8$",
+      "$11$"
     ],
     "answer": "②",
-    "solution": "제곱근 안의 $8x+a$는 증가하므로 최댓값은 $x=0$에서 얻는다. $\\sqrt a-1=4$에서 $a=25$. $x=-2$에서 최솟값은 $\\sqrt{25-16}-1=3-1=2$이다.",
+    "solution": "$a>2$이므로 $ax-2$가 증가하고 함수도 $[1,3]$에서 증가한다. 치역의 왼쪽 끝 $3$은 $x=1$에서의 함숫값이므로 $\\sqrt{a-2}+1=3$, 따라서 $a=6$이다. 오른쪽 끝은 $x=3$의 값으로 $b=\\sqrt{3a-2}+1=\\sqrt{16}+1=5$이다. 처음부터 근호의 계수 $a$가 알려진 것이 아니므로 치역 끝점 조건에서 $a$를 역복원해야 반대 끝값을 구할 수 있다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 7,
@@ -674,7 +674,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-261",
     "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
-    "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+    "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -695,7 +695,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. $x<\\frac52$에서 기울기는 $7-2a$, $x\\ge\\frac52$에서 기울기는 $7+2a$이다. $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]",
+    "content": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. 실수 $t$에 대하여 $x<\\frac52$에서 기울기는 $9-4t$, $x\\ge\\frac52$에서 기울기는 $5+4t$이다. 이 함수를 $f(x)=a|2x-5|+bx+c$로 나타낼 때 $a$가 정수이고 $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]",
     "choices": [
       "$1$",
       "$3$",
@@ -704,7 +704,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "⑤",
-    "solution": "양쪽 직선의 기울기의 평균은 $7$, 차의 절반은 $2a$이므로 이 두 직선 조각은 절댓값 함수를 사용하면 $f(x)=a|2x-5|+7x+1$로 복원된다. 두 조각은 주어진 점에서 연속이다. 실수 전체에서 실수 전체로의 일대일대응이 되려면 양쪽 기울기가 모두 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수여야 하며 $7-2a>0$, $7+2a>0$, 즉 $-\\frac72<a<\\frac72$이다. 정수 $a$는 $-3,-2,-1,0,1,2,3$의 $7$개다.",
+    "solution": "절댓값 식 $a|2x-5|+bx+c$의 왼쪽·오른쪽 기울기는 각각 $b-2a$, $b+2a$이다. 문제의 두 직선 기울기와 비교하면 $2b=(9-4t)+(5+4t)=14$이므로 $b=7$, $4a=(5+4t)-(9-4t)=8t-4$이므로 $a=2t-1$이다. 교점 조건에서 $c=1$로 복원되지만 전단사 개수 계산에는 $a$의 역복원이 핵심이다. 연속인 두 직선 조각이 $\\mathbb R$에서 $\\mathbb R$로 일대일대응이 되려면 양쪽 기울기가 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수이다. 따라서 $9-4t>0$, $5+4t>0$에서 $-\\frac54<t<\\frac94$, 이를 $a=2t-1$로 옮기면 $-\\frac72<a<\\frac72$이다. 허용 정수 $a=-3,-2,-1,0,1,2,3$으로 $7$개다. $t$를 곧바로 정수로 세면 $a$의 정수성 조건을 잘못 적용한 것이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 12,
@@ -721,7 +721,7 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "x=5/2의 닫힌/열린 직선 조각, 기울기 7∓2a의 엄격한 동부호 조건"
+        "reason": "x=5/2의 두 직선 기울기 9−4t, 5+4t에서 a=2t−1 역복원 및 전단사 엄격 동부호 조건"
       }
     },
     "standardUnitKey": "H22-C2-07",
