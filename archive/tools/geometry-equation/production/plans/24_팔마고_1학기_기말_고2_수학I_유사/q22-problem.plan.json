@@ -1,0 +1,22 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "5", "denominator": "4" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "rational", "numerator": "5", "denominator": "4" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "15" }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "128", "denominator": "31" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "rational", "numerator": "32", "denominator": "31" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "15" }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "rational", "numerator": "8", "denominator": "15" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "15" }] }] }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "expression", "op": "mul", "args": [{ "kind": "rational", "numerator": "2", "denominator": "15" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "465" }] }] } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+  ] },
+  "displayPoints": ["A", "B", "C", "D", "O"], "hiddenPointNames": ["O"], "hiddenPointStyle": "NONE", "displayLines": [], "displayCircles": ["k"],
+  "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] }],
+  "planeMarks": { "facts": [{ "kind": "ON_CIRCLE", "circle": "k", "points": ["A", "B", "C", "D"] }], "expressionLabels": [
+    { "id": "ab", "ownerSegment": "sAB", "text": "4", "factRole": "GIVEN" }, { "id": "bc", "ownerSegment": "sBC", "text": "5", "factRole": "GIVEN" },
+    { "id": "cd", "ownerSegment": "sCD", "text": "3", "factRole": "GIVEN" }, { "id": "da", "ownerSegment": "sDA", "text": "4", "factRole": "GIVEN" }
+  ] },
+  "coordinateCanvas": { "width": 590, "height": 500 },
+  "caption": "한 원에 내접하는 사각형 ABCD와 네 변 AB=4, BC=5, CD=3, DA=4",
+  "accessibilityDescription": "원 위에 네 점 A B C D가 순서대로 있고 사각형의 네 변에 4, 5, 3, 4가 각각 표시되어 있다.",
+  "sourceConditions": [{ "id": "q22", "condition": "원에 내접하는 사각형 ABCD의 AB=4, BC=5, CD=3, DA=4이고 넓이를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["사각형의 네 꼭짓점은 하나의 원 위", "네 변의 길이 4, 5, 3, 4를 개별 표시"]
+}

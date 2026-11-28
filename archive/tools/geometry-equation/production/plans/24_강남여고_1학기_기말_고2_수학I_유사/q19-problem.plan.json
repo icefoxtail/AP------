@@ -1,0 +1,38 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "p00", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p10", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "1", "denominator": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p20", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "2", "denominator": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p30", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p01", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "rational", "numerator": "1", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p11", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "1", "denominator": "3" }, { "kind": "rational", "numerator": "1", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p21", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "2", "denominator": "3" }, { "kind": "rational", "numerator": "1", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p31", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "rational", "numerator": "1", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p02", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "rational", "numerator": "2", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p12", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "1", "denominator": "3" }, { "kind": "rational", "numerator": "2", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p22", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "2", "denominator": "3" }, { "kind": "rational", "numerator": "2", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p32", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "rational", "numerator": "2", "denominator": "3" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p03", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p13", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "1", "denominator": "3" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p23", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "2", "denominator": "3" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "p33", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+  ] },
+  "displayPoints": ["p00", "p10", "p20", "p30", "p01", "p11", "p21", "p31", "p02", "p12", "p22", "p32", "p03", "p13", "p23", "p33"], "displayLines": [], "displayCircles": [],
+  "hiddenPointNames": ["p00", "p10", "p20", "p30", "p01", "p11", "p21", "p31", "p02", "p12", "p22", "p32", "p03", "p13", "p23", "p33"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "h0", "refs": ["p00", "p30"] }, { "id": "h1", "refs": ["p01", "p31"] },
+    { "id": "h2", "refs": ["p02", "p32"] }, { "id": "h3", "refs": ["p03", "p33"] },
+    { "id": "v0", "refs": ["p00", "p03"] }, { "id": "v1", "refs": ["p10", "p13"] },
+    { "id": "v2", "refs": ["p20", "p23"] }, { "id": "v3", "refs": ["p30", "p33"] },
+    { "id": "c1", "refs": ["p11", "p21"] }, { "id": "c2", "refs": ["p21", "p22"] },
+    { "id": "c3", "refs": ["p22", "p12"] }, { "id": "c4", "refs": ["p12", "p11"] }
+  ],
+  "planeMarks": { "regions": [{ "id": "firstColor", "fill": "MEDIUM", "shapes": [{ "polygon": ["p11", "p21", "p22", "p12"] }] }], "textLabels": [{ "id": "stage", "at": [0.5, 1.15], "text": "R1", "labelKind": "MATH", "factRole": "GIVEN" }] },
+  "coordinateCanvas": { "width": 480, "height": 440 },
+  "caption": "정사각형을 3×3으로 나누고 가운데 한 칸을 색칠한 첫 단계 R₁",
+  "accessibilityDescription": "한 변의 길이가 같은 아홉 정사각형 중 가운데 정사각형 한 개만 회색으로 칠한 R₁의 예시다. 다음 단계에서는 남은 여덟 칸을 각각 다시 아홉 등분한다.",
+  "sourceConditions": [{ "id": "q19", "condition": "단위 정사각형을 9등분하여 1개를 색칠하고 나머지 여덟 칸에 반복하는 R_n의 구성", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["첫 번째 단계에서 서로 같은 9칸 중 정확히 1칸만 색칠된 구조", "다음 단계의 대상인 색칠하지 않은 8칸"]
+}

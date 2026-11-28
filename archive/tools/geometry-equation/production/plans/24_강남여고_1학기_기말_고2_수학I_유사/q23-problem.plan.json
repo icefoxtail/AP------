@@ -1,0 +1,15 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "POLAR_POINT", "inputs": ["A", "C"], "args": { "length": { "kind": "integer", "value": "5" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" }
+  ] },
+  "displayPoints": ["A", "B", "C"], "displayLines": [], "displayCircles": [], "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sBC", "refs": ["B", "C"] }],
+  "planeMarks": { "angles": [{ "id": "angleA", "refs": ["B", "A", "C"], "value": 60, "label": "60", "factRole": "GIVEN" }], "expressionLabels": [{ "id": "b", "ownerSegment": "sAC", "text": "10", "factRole": "GIVEN" }, { "id": "c", "ownerSegment": "sAB", "text": "5", "factRole": "GIVEN" }] },
+  "coordinateCanvas": { "width": 540, "height": 430 },
+  "caption": "삼각형 ABC에서 b=AC=10, c=AB=5, 사이각 A=60°",
+  "accessibilityDescription": "삼각형 ABC의 AC는 10, AB는 5이고 꼭짓점 A의 각이 60도로 표시되어 있다. 나머지 값은 표시하지 않는다.",
+  "sourceConditions": [{ "id": "q23", "condition": "b=10, c=5, 각 A=60°이고 a, 각 B, 각 C를 구하는 서술형 문제이다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["서로 붙은 두 변의 길이 10과 5", "포함각 A=60°를 호로 표시"]
+}

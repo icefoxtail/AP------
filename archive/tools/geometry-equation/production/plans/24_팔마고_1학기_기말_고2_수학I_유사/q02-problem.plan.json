@@ -1,0 +1,15 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "3" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }] }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "expression", "op": "add", "args": [{ "kind": "integer", "value": "3" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "3" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }] }] }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+  ] },
+  "displayPoints": ["A", "B", "C"], "displayLines": [], "displayCircles": [], "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] }],
+  "planeMarks": { "angles": [{ "id": "angleA", "refs": ["B", "A", "C"], "value": 45, "label": "45", "factRole": "GIVEN" }, { "id": "angleB", "refs": ["A", "B", "C"], "value": 30, "label": "30", "factRole": "GIVEN" }], "expressionLabels": [{ "id": "bc", "ownerSegment": "sBC", "text": "6", "factRole": "GIVEN" }] },
+  "coordinateCanvas": { "width": 530, "height": 440 },
+  "caption": "삼각형 ABC의 ∠A=45°, ∠B=30°, BC=6",
+  "accessibilityDescription": "삼각형 ABC의 꼭짓점 A와 B의 각에 각각 45도와 30도, 변 BC에 길이 6을 나타낸다.",
+  "sourceConditions": [{ "id": "q02", "condition": "삼각형 ABC에서 각 A=45°, 각 B=30°, BC=6이며 R×AC의 값을 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }],
+  "newVisualInformation": ["각 A=45°, 각 B=30°의 호", "변 BC=6의 표시"]
+}
