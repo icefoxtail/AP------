@@ -1,0 +1,33 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-2"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "P", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "rational", "numerator": "6", "denominator": "5"}, {"kind": "rational", "numerator": "8", "denominator": "5"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "rational", "numerator": "14", "denominator": "25"}, {"kind": "rational", "numerator": "-48", "denominator": "25"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "2"}}, "outputType": "CIRCLE", "factRole": "GIVEN"}
+    ]
+  },
+  "displayPoints": ["O", "A", "P", "Q"],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    {"id": "PA", "refs": ["P", "A"]},
+    {"id": "PQ", "refs": ["P", "Q"]},
+    {"id": "AQ", "refs": ["A", "Q"]},
+    {"id": "OP", "refs": ["O", "P"], "dashed": true},
+    {"id": "OA", "refs": ["O", "A"], "dashed": true},
+    {"id": "OQ", "refs": ["O", "Q"], "dashed": true}
+  ],
+  "planeMarks": {"equalLengths": [{"id": "ePA", "count": 1, "segments": ["PA", "PQ"]}], "angles": [{"id": "ang", "refs": ["A", "P", "Q"], "label": "θ", "arcs": 1, "factRole": "GIVEN"}]},
+  "caption": "반지름 2인 원 위 A,P,Q와 PA=PQ를 만족하는 한 대표 배치다. OP가 이등변삼각형 APQ를 두 합동 삼각형으로 나눈다.",
+  "accessibilityDescription": "A는 (-2,0), P는 제1사분면에 있고 Q는 같은 원 위의 다른 점이다. PA와 PQ에 같은 길이 표식을 넣고 원의 중심 O와 세 반지름을 점선으로 연결한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "중심이 원점이고 반지름이 2인 원 위 A(-2,0), P(제1사분면), Q가 놓인다.", "mappedTo": ["k", "A", "P", "Q"]},
+    {"id": "c2", "condition": "PA=PQ이며 Q는 A와 다른 점이다. 대표 배치의 두 거리 제곱은 각각 64/5이다.", "mappedTo": ["PA", "PQ", "ePA"]},
+    {"id": "c3", "condition": "OA=OP=OQ=2이므로 OP는 꼭짓각 APQ를 이등분한다.", "mappedTo": ["OP", "OA", "OQ"]}
+  ],
+  "newVisualInformation": ["원 위의 서로 다른 세 점과 두 같은 현", "중심 O를 잇는 세 반지름과 대칭 이등분 관계"]
+}

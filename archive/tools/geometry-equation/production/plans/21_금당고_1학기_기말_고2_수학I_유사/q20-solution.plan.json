@@ -1,0 +1,35 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "5"}]}, {"kind": "integer", "value": "2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "expression", "op": "add", "args": [{"kind": "integer", "value": "7"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "5"}]}]}, {"kind": "integer", "value": "2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "D", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "7"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "lA", "op": "ANGLE_BISECTOR", "inputs": ["D", "A", "B"], "args": {"mode": "INTERNAL"}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lB", "op": "ANGLE_BISECTOR", "inputs": ["A", "B", "C"], "args": {"mode": "INTERNAL"}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "P", "op": "LINE_INTERSECTION", "inputs": ["lA", "lB"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "E", "op": "LINE_INTERSECTION", "inputs": ["lA", "lBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "P", "E"],
+  "displaySegments": [
+    {"id": "AB", "refs": ["A", "B"]}, {"id": "BC", "refs": ["B", "C"]},
+    {"id": "CD", "refs": ["C", "D"]}, {"id": "DA", "refs": ["D", "A"]},
+    {"id": "AE", "refs": ["A", "E"], "emphasis": "BOLD"},
+    {"id": "BP", "refs": ["B", "P"], "emphasis": "BOLD"}
+  ],
+  "planeMarks": {"dimensions": [{"id": "dAB", "from": "A", "to": "B", "label": "3", "side": "LEFT", "value": "3"}, {"id": "dBC", "from": "B", "to": "C", "label": "7", "side": "ABOVE", "value": "7"}], "parallels": [{"id": "par1", "count": 1, "segments": ["AB", "CD"]}, {"id": "par2", "count": 2, "segments": ["BC", "DA"]}]},
+  "rightAngles": [{"id": "rP", "refs": ["A", "P", "B"]}],
+  "caption": "A의 이등분선과 BC의 교점 E, A·B 이등분선의 교점 P를 함께 표시한다. AP=PE와 ∠APB=90°를 이용하여 삼각형 ABP의 넓이를 구한다.",
+  "accessibilityDescription": "AB=3과 BC=7인 평행사변형에 A부터 E까지 굵은 이등분선을 그렸고, 그 중간 P에서 B로 연결되는 굵은 선분과 P의 직각 표식이 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB=3, BC=7, 넓이 14인 평행사변형을 같은 정확 배치로 사용한다.", "mappedTo": ["AB", "BC", "A", "B", "C", "D"]},
+    {"id": "c2", "condition": "A의 내각 이등분선이 BC와 만나는 점 E, B의 내각 이등분선과 만나는 점 P다.", "mappedTo": ["lA", "lB", "lBC", "E", "P"]},
+    {"id": "c3", "condition": "이웃한 각의 이등분선은 수직이므로 ∠APB=90°이다.", "mappedTo": ["rP"]}
+  ],
+  "newVisualInformation": ["넓이 비교에 쓰이는 삼각형 ABE와 ABP", "P에서 만나는 두 이등분선의 직각 관계"]
+}

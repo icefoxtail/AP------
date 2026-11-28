@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["2", "2", "-4"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "1"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [0, 1],
+    "viewport": [-0.15, 1.15, -0.2, 2.75],
+    "requiredPoints": [{"id": "A", "x": 0, "y": 2}, {"id": "M", "x": 0.25, "y": 2.25}, {"id": "B", "x": 1, "y": 0}],
+    "axisTickValues": {"x": ["1/4", "1"], "y": ["2", "9/4"]},
+    "overlays": {"lines": [{"id": "lo", "slope": "0", "intercept": "2", "style": "DASHED"}, {"id": "hi", "slope": "0", "intercept": "9/4", "style": "DASHED"}]}
+  },
+  "caption": "t=sin x로 바꾸면 k=2+2t-4t²의 꼭짓점 높이는 9/4이다. k=2부터 꼭짓점 직전까지 수평선이 두 t값과 만난다.",
+  "accessibilityDescription": "0≤t≤1에서 아래로 열린 포물선 k=2+2t-4t²가 (0,2), (1/4,9/4), (1,0)을 지난다. 높이 2와 9/4의 점선은 네 해가 되는 경계 범위를 설명한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "t=sin x는 0≤t≤1이고 k=2+2t-4t²이다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "t=0에서 2, 꼭짓점 t=1/4에서 9/4가 된다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.overlays.lines"]}
+  ],
+  "newVisualInformation": ["수평선 교점이 두 개가 되는 높이 범위", "꼭짓점과 두 끝점의 높이"]
+}

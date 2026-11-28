@@ -1,0 +1,28 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "6"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "H", "op": "POLAR_POINT", "inputs": ["A", "B"], "args": {"length": {"kind": "integer", "value": "1"}, "angleDeg": {"kind": "integer", "value": "60"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "K", "op": "POLAR_POINT", "inputs": ["B", "A"], "args": {"length": {"kind": "integer", "value": "1"}, "angleDeg": {"kind": "integer", "value": "75"}, "turn": "CW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lA", "op": "LINE_THROUGH", "inputs": ["A", "H"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lB", "op": "LINE_THROUGH", "inputs": ["B", "K"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "LINE_INTERSECTION", "inputs": ["lA", "lB"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_THROUGH_3", "inputs": ["A", "B", "C"], "args": {}, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C"],
+  "displayCircles": ["k"],
+  "displaySegments": [{"id": "AB", "refs": ["A", "B"]}, {"id": "BC", "refs": ["B", "C"]}, {"id": "CA", "refs": ["C", "A"]}],
+  "planeMarks": {"angles": [{"id": "aA", "refs": ["B", "A", "C"], "value": 60, "label": "60", "arcs": 1, "factRole": "GIVEN"}, {"id": "aB", "refs": ["A", "B", "C"], "value": 75, "label": "75", "arcs": 1, "factRole": "GIVEN"}], "dimensions": [{"id": "dAB", "from": "A", "to": "B", "label": "6", "side": "BELOW", "value": "6", "factRole": "GIVEN"}]},
+  "caption": "A의 각 60°, B의 각 75°, AB=6을 만족하는 삼각형 ABC다. 외접원 반지름의 값은 표시하지 않았다.",
+  "accessibilityDescription": "밑변 AB의 길이가 6인 삼각형에서 A에는 60도, B에는 75도의 각 호와 수치가 보인다. 점 C는 두 각에서 출발한 반직선의 교점으로 정확히 작도된다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB=6이다.", "mappedTo": ["AB", "planeMarks.dimensions"]},
+    {"id": "c2", "condition": "∠BAC=60°, ∠ABC=75°이다.", "mappedTo": ["aA", "aB", "C"]}
+  ],
+  "newVisualInformation": ["알려진 두 각의 실제 열림 방향", "두 반직선이 만나는 꼭짓점 C"]
+}

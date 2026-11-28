@@ -1,0 +1,20 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["1", "1", "0"],
+    "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["0", "6"], "states": ["OPEN", "OPEN"]},
+    "referenceLines": [{"id": "level", "y": "2/3", "intersectionCount": 6, "color": "BLUE"}],
+    "axisTickPi": true,
+    "axisTickValues": {"x": ["1", "2", "3", "4", "5"], "y": ["2/3", "1"]}
+  },
+  "caption": "n=6인 대표 경우에 0<x<6π의 사인곡선은 수평선 y=4/6=2/3과 여섯 번 만난다. 각 양의 반주기에서 두 근이 나온다.",
+  "accessibilityDescription": "세 개의 양의 사인 반주기에서 y=2/3 수평선과 각 두 번씩 교차한다. 0과 6π는 열린 구간 끝이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "n=6으로 대입한 대표 구간은 0<x<6π이다.", "mappedTo": ["graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "sin x=4/6=2/3은 양의 반주기 세 개에서 두 근씩 갖는다.", "mappedTo": ["graphPlan.referenceLines"]}
+  ],
+  "newVisualInformation": ["양의 반주기 세 개와 여섯 교점", "구간 양 끝의 열린 상태"]
+}
