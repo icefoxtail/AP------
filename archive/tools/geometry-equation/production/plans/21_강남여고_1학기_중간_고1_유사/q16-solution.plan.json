@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "30", "-1/2"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [0, 60], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 60], "viewport": [-4, 64, -20, 490],
+    "requiredPoints": [{"id": "V", "x": 30, "y": 450}],
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "axisTickValues": {"x": [10, 20, 30, 40, 50], "y": [100, 200, 300, 400]}
+  },
+  "caption": "철망 60m가 만드는 두 직각변을 x, 60−x로 두면 넓이 S(x)=−x²/2+30x는 x=30에서 450m²로 최대다.",
+  "accessibilityDescription": "양 끝 0과 60을 포함하지 않는 넓이 그래프가 꼭짓점 (30,450)을 가지며 양 끝에서 넓이는 0에 접근한다.",
+  "sourceConditions": [
+    {"id": "fence", "condition": "철망을 두 직각변에만 사용하여 x+y=60, x>0, y>0; 물리적으로 허용된 분석 구간은 0<x<60", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "area", "condition": "S=xy/2=x(60−x)/2", "mappedTo": "graphPlan.coefficients"},
+    {"id": "max", "condition": "S(x)=−(x−30)²/2+450", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["철망의 두 변을 균등하게 30m씩 나눌 때 포물선의 꼭짓점에서 넓이가 최대가 됨을 보인다."]
+}

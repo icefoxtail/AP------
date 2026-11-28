@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["16", "-8", "3"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 4], "viewport": [-0.7, 4.7, 8.8, 35],
+    "requiredPoints": [
+      {"id": "L", "x": 0, "y": 16},
+      {"id": "V", "x": 1.3333333333333333, "y": 10.666666666666666},
+      {"id": "R", "x": 4, "y": 32}
+    ],
+    "exactCoordinates": {"V": ["4/3", "32/3"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "x+y=4, x,y≥0에서 2x²+y²=3x²−8x+16은 x=4/3에서 32/3으로 최소, x=4에서 32로 최대다.",
+  "accessibilityDescription": "닫힌 구간 0부터 4까지의 위로 열린 포물선. 최솟점은 (4/3,32/3), 오른쪽 끝 최댓점은 (4,32)이다.",
+  "sourceConditions": [
+    {"id": "domain", "condition": "x≥0, y=4−x≥0 ⇔ 0≤x≤4", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "formula", "condition": "2x²+(4−x)²=3x²−8x+16", "mappedTo": "graphPlan.coefficients"},
+    {"id": "min", "condition": "x=4/3, y값 32/3", "mappedTo": ["graphPlan.requiredPoints[1]", "graphPlan.exactCoordinates.V"]},
+    {"id": "max", "condition": "f(4)=32>f(0)=16", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["구간 왼쪽 끝보다 오른쪽 끝에서 함수값이 크고, 꼭짓점이 내부에 있어 최소가 되는 관계를 구분한다."]
+}

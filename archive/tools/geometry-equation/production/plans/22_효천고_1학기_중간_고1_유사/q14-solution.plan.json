@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET", "label": "(가) x", "integerPoints": true,
+        "pieces": [{"lo": {"value": "-2", "state": "CLOSED"}, "hi": {"value": "3", "state": "OPEN"}}]
+      },
+      {
+        "kind": "SET", "label": "(나) y", "integerPoints": true,
+        "pieces": [{"lo": {"value": "2", "state": "CLOSED"}, "hi": {"value": "4", "state": "CLOSED"}}]
+      }
+    ]
+  },
+  "caption": "(가)의 정수 x는 −2부터 2까지 다섯 개이고 (나)의 정수 y는 2부터 4까지 세 개이다.",
+  "accessibilityDescription": "윗줄은 −2 이상 3 미만 구간의 정수 다섯 점을, 아랫줄은 2 이상 4 이하 구간의 정수 세 점을 표시한 두 수직선.",
+  "sourceConditions": [
+    {"id": "x", "condition": "복소수 제곱근의 주값을 취할 때 (가)는 −2≤x<3", "mappedTo": "numberLine.rows[0]"},
+    {"id": "y", "condition": "(나)는 2≤y≤4", "mappedTo": "numberLine.rows[1]"}
+  ],
+  "newVisualInformation": ["서로 다른 두 변수의 부등식 끝점의 포함 여부와 정수해의 개수를 실제 눈금과 점으로 구별한다."]
+}

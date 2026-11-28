@@ -1,0 +1,20 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["0", "0", "1"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-2, 8],
+    "viewport": [-2.8, 8.8, -8, 68], "functionName": "f",
+    "overlays": {"lines": [{"id": "g", "slope": "6", "intercept": "7", "label": "g(x)=6x+7", "labelAt": "END"}]},
+    "requiredPoints": [{"id": "A", "x": -1, "y": 1}, {"id": "O", "x": 0, "y": 0}, {"id": "B", "x": 7, "y": 49}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "y=x²과 y=6x+7의 교점은 A(−1,1), B(7,49)이고 두 x좌표의 합은 6이다.",
+  "accessibilityDescription": "위로 열린 포물선과 오른쪽 위로 향한 직선이 x좌표 −1과 7에서 교차한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "이차함수 y=x²", "mappedTo": "graphPlan.pieces[0]"},
+    {"id": "line", "condition": "일차함수 y=6x+7", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "intersections", "condition": "x²=6x+7의 두 근 −1,7, 교점 (−1,1),(7,49)", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "vertex", "condition": "y=x²의 꼭짓점은 원점", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["두 함수의 교점 두 개를 동시에 표시하여 근의 합을 교점의 x좌표 합으로 해석한다."]
+}
