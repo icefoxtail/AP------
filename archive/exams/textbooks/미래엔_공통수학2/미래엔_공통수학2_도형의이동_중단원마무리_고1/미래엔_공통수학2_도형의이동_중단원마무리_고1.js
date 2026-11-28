@@ -231,7 +231,11 @@ window.questionBank = [
     "content": "점 $\\mathrm{A}(2, 1)$을 원점에 대하여 대칭이동한 점을 $\\mathrm{B}$, 직선 $y=x$에 대하여 대칭이동한 점을 $\\mathrm{C}$라 할 때, 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$의 넓이를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
     "answer": "$3$",
-    "solution": "점 $\\mathrm{A}(2,\\ 1)$을 원점에 대하여 대칭이동하면 $\\mathrm{B}(-2,\\ -1)$\n직선 $y=x$에 대하여 대칭이동하면 $x$좌표와 $y$좌표가 서로 바뀌어 $\\mathrm{C}(1,\\ 2)$\n세 점 $\\mathrm{A}(2,\\ 1),\\ \\mathrm{B}(-2,\\ -1),\\ \\mathrm{C}(1,\\ 2)$를 꼭짓점으로 하는 삼각형의 넓이를 구한다.\n선분 $\\mathrm{AB}$는 원점 $\\mathrm{O}$를 지나므로 직선 $\\mathrm{AB}$의 방정식은 $y=\\frac{1}{2}x$, 즉 $x-2y=0$이다.\n$$\\overline{\\mathrm{AB}}=\\sqrt{(2-(-2))^2+(1-(-1))^2}=\\sqrt{16+4}=2\\sqrt{5}$$\n점 $\\mathrm{C}(1,\\ 2)$와 직선 $x-2y=0$ 사이의 거리는\n$$\\frac{|1-4|}{\\sqrt{1^2+(-2)^2}}=\\frac{3}{\\sqrt{5}}$$\n따라서 삼각형 $\\mathrm{ABC}$의 넓이는\n$$\\frac{1}{2}\\times 2\\sqrt{5}\\times\\frac{3}{\\sqrt{5}}=3$$"
+    "solution": "점 $\\mathrm{A}(2,\\ 1)$을 원점에 대하여 대칭이동하면 $\\mathrm{B}(-2,\\ -1)$\n직선 $y=x$에 대하여 대칭이동하면 $x$좌표와 $y$좌표가 서로 바뀌어 $\\mathrm{C}(1,\\ 2)$\n세 점 $\\mathrm{A}(2,\\ 1),\\ \\mathrm{B}(-2,\\ -1),\\ \\mathrm{C}(1,\\ 2)$를 꼭짓점으로 하는 삼각형의 넓이를 구한다.\n선분 $\\mathrm{AB}$는 원점 $\\mathrm{O}$를 지나므로 직선 $\\mathrm{AB}$의 방정식은 $y=\\frac{1}{2}x$, 즉 $x-2y=0$이다.\n$$\\overline{\\mathrm{AB}}=\\sqrt{(2-(-2))^2+(1-(-1))^2}=\\sqrt{16+4}=2\\sqrt{5}$$\n점 $\\mathrm{C}(1,\\ 2)$와 직선 $x-2y=0$ 사이의 거리는\n$$\\frac{|1-4|}{\\sqrt{1^2+(-2)^2}}=\\frac{3}{\\sqrt{5}}$$\n따라서 삼각형 $\\mathrm{ABC}$의 넓이는\n$$\\frac{1}{2}\\times 2\\sqrt{5}\\times\\frac{3}{\\sqrt{5}}=3$$",
+    "solutionImage": "assets/images/미래엔_공통수학2_도형의이동_중단원마무리_고1/q8-solution.svg",
+    "solutionImageAlt": "A(2,1), B(-2,-1), C(1,2)의 삼각형에서 AB에 내린 높이 CH를 표시한다. 발 H=(8/5,4/5), CH=3/√5, 넓이는 3이다.",
+    "solutionImageCaption": "A(2,1), B(-2,-1), C(1,2)의 삼각형에서 AB에 내린 높이 CH를 표시한다. 발 H=(8/5,4/5), CH=3/√5, 넓이는 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
