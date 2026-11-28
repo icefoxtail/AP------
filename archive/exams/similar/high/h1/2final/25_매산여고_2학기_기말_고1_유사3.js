@@ -147,8 +147,8 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q3",
-    "image": "",
-    "solutionImage": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사3/q3-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q3-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -215,7 +215,13 @@ window.questionBank = [
           1
         ]
       ]
-    }
+    },
+    "imageAlt": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+    "imageCaption": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageCaption": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -358,7 +364,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q6",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q6-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -388,7 +394,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "원래 중심 (-1,4)에서 최종 중심 (2,1)로 이동하므로 p=3, q=-3이다.",
+    "solutionImageCaption": "원래 중심 (-1,4)에서 최종 중심 (2,1)로 이동하므로 p=3, q=-3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -593,7 +602,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q10",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q10-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -626,7 +635,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageCaption": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -653,7 +665,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q11",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q11-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -684,7 +696,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "점근선 x=4, y=3과 기울기 -1 대칭축 y=-x+7을 확인한다.",
+    "solutionImageCaption": "점근선 x=4, y=3과 기울기 -1 대칭축 y=-x+7을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -711,7 +726,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q12",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q12-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -744,7 +759,10 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "a=2에서 꺾임점 왼쪽 조각이 수평이 되어 일대일대응이 실패하는 경계 사례이다.",
+    "solutionImageCaption": "a=2에서 꺾임점 왼쪽 조각이 수평이 되어 일대일대응이 실패하는 경계 사례이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -771,7 +789,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q13",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q13-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -801,7 +819,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageCaption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -827,8 +848,8 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q14",
-    "image": "",
-    "solutionImage": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사3/q14-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q14-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -861,7 +882,13 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "imageAlt": "발문에서 주어진 조각함수 F만 그린다. x=-4는 왼쪽 조각에 포함되고 오른쪽 조각에서는 제외된다. 미정인 k의 값과 교점은 표시하지 않는다.",
+    "imageCaption": "발문에서 주어진 조각함수 F만 그린다. x=-4는 왼쪽 조각에 포함되고 오른쪽 조각에서는 제외된다. 미정인 k의 값과 교점은 표시하지 않는다.",
+    "imageSize": "full",
+    "solutionImageAlt": "왼쪽 조각은 x=-4를 포함하고 오른쪽 조각은 제외하며, k=1일 때 두 끝점 x=-4,-1에서 각각 만난다.",
+    "solutionImageCaption": "왼쪽 조각은 x=-4를 포함하고 오른쪽 조각은 제외하며, k=1일 때 두 끝점 x=-4,-1에서 각각 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -887,8 +914,8 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q15",
-    "image": "",
-    "solutionImage": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사3/q15-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q15-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -947,7 +974,13 @@ window.questionBank = [
         ]
       ],
       "unusedGInput": 1
-    }
+    },
+    "imageAlt": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+    "imageCaption": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+    "solutionImageCaption": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -974,7 +1007,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q16",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q16-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1007,7 +1040,10 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "접합 높이 5를 오른쪽 조각에서 포함하고 왼쪽에서는 제외하여 두 치역이 겹치지 않고 이어진다.",
+    "solutionImageCaption": "접합 높이 5를 오른쪽 조각에서 포함하고 왼쪽에서는 제외하여 두 치역이 겹치지 않고 이어진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1034,7 +1070,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q17",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q17-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1067,7 +1103,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "k=3인 경우 f와 역함수가 y=x의 고정점 (2,2)에서 만나는 모습을 확인한다.",
+    "solutionImageCaption": "k=3인 경우 f와 역함수가 y=x의 고정점 (2,2)에서 만나는 모습을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1154,7 +1193,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q19",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q19-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1186,7 +1225,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "t=f(x)로 놓으면 가로선 y=3와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,3; 조각 경계 x=2의 원상은 중복 제거이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageCaption": "t=f(x)로 놓으면 가로선 y=3와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,3; 조각 경계 x=2의 원상은 중복 제거이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1213,7 +1255,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q20",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q20-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1246,7 +1288,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "k=1/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+    "solutionImageCaption": "k=1/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1322,7 +1367,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q22",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q22-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1355,7 +1400,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
-    "essayAnswer": "-1\\le k<2"
+    "essayAnswer": "-1\\le k<2",
+    "solutionImageAlt": "k=-1일 때 정의역 시작점 x=3과 나머지 교점 x=15를 모두 포함한다.",
+    "solutionImageCaption": "k=-1일 때 정의역 시작점 x=3과 나머지 교점 x=15를 모두 포함한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1376,7 +1424,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q23",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q23-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1412,6 +1460,9 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
-    "essayAnswer": "17"
+    "essayAnswer": "17",
+    "solutionImageAlt": "x=2는 극점, x=5는 원래 함수의 제거 가능한 구멍이며 두 양의 근은 x=1,3이다.",
+    "solutionImageCaption": "x=2는 극점, x=5는 원래 함수의 제거 가능한 구멍이며 두 양의 근은 x=1,3이다.",
+    "solutionImageSize": "full"
   }
 ];

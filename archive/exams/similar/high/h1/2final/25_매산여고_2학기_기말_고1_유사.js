@@ -147,8 +147,8 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q3",
-    "image": "",
-    "solutionImage": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사/q3-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q3-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -215,7 +215,13 @@ window.questionBank = [
           2
         ]
       ]
-    }
+    },
+    "imageAlt": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+    "imageCaption": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageCaption": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -358,7 +364,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q6",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q6-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -388,7 +394,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "원래 점근선 (-3,3)에서 이동 후 (2,5)로 옮겨진다.",
+    "solutionImageCaption": "원래 점근선 (-3,3)에서 이동 후 (2,5)로 옮겨진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -592,7 +601,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q10",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q10-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -625,7 +634,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "a=5를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageCaption": "a=5를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -652,7 +664,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q11",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q11-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -683,7 +695,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "점근선 x=1, y=2와 대칭축 y=x+1, 제3사분면을 지나는 가지를 확인한다.",
+    "solutionImageCaption": "점근선 x=1, y=2와 대칭축 y=x+1, 제3사분면을 지나는 가지를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -710,7 +725,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q12",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q12-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -742,7 +757,10 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "a=2인 대표 그래프는 두 기울기가 양수여서 끊어짐 없이 증가한다. 절댓값 꺾임점은 (1/2,0)이다.",
+    "solutionImageCaption": "a=2인 대표 그래프는 두 기울기가 양수여서 끊어짐 없이 증가한다. 절댓값 꺾임점은 (1/2,0)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -769,7 +787,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q13",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q13-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -799,7 +817,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageCaption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -826,7 +847,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q14",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q14-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -859,7 +880,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "닫힌 구간 오른쪽 끝 x=-4에서 교점이 생기고 그때 k=1이다.",
+    "solutionImageCaption": "닫힌 구간 오른쪽 끝 x=-4에서 교점이 생기고 그때 k=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -885,8 +909,8 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q15",
-    "image": "",
-    "solutionImage": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사/q15-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q15-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -945,7 +969,13 @@ window.questionBank = [
         ]
       ],
       "unusedGInput": 2
-    }
+    },
+    "imageAlt": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+    "imageCaption": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+    "solutionImageCaption": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -972,7 +1002,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q16",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q16-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1005,7 +1035,10 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "접합 높이 3에서 왼쪽 치역 [3,∞)와 오른쪽 치역 (-1,3)이 빈틈없이 만난다.",
+    "solutionImageCaption": "접합 높이 3에서 왼쪽 치역 [3,∞)와 오른쪽 치역 (-1,3)이 빈틈없이 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1032,7 +1065,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q17",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q17-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1065,7 +1098,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "k=0인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+    "solutionImageCaption": "k=0인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1092,7 +1128,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q18",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q18-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1125,7 +1161,10 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "두 곡선의 대응점은 (-3,3) 방향으로 옮겨지고 넓이 3·6=18이다.",
+    "solutionImageCaption": "두 곡선의 대응점은 (-3,3) 방향으로 옮겨지고 넓이 3·6=18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1152,7 +1191,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q19",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q19-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1184,7 +1223,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=1,2이며 t=4는 f의 치역에서 제외이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageCaption": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=1,2이며 t=4는 f의 치역에서 제외이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1211,7 +1253,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q20",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q20-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1244,7 +1286,10 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
-    "solutionStatus": "self_checked"
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "k=1를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+    "solutionImageCaption": "k=1를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1320,7 +1365,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q22",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q22-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1353,7 +1398,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
-    "essayAnswer": "0\\le k<1"
+    "essayAnswer": "0\\le k<1",
+    "solutionImageAlt": "k=0일 때 제곱근 시작점 x=1을 포함하여 직선과 두 점에서 만난다.",
+    "solutionImageCaption": "k=0일 때 제곱근 시작점 x=1을 포함하여 직선과 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1374,7 +1422,7 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q23",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사/q23-solution.svg",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
@@ -1410,6 +1458,9 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
-    "essayAnswer": "\\frac{55}{3}"
+    "essayAnswer": "\\frac{55}{3}",
+    "solutionImageAlt": "극점 x=2 양쪽의 양의 해 x=1, 10/3은 각각 y=-14, y=14를 만족한다.",
+    "solutionImageCaption": "극점 x=2 양쪽의 양의 해 x=1, 10/3은 각각 y=-14, y=14를 만족한다.",
+    "solutionImageSize": "full"
   }
 ];

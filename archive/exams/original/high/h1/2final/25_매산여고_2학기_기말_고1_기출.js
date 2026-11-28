@@ -122,8 +122,8 @@ window.questionBank = [
     "curriculum": "2022 개정 교육과정",
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
-    "image": "",
-    "solutionImage": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_기출/q3-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q3-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "REQUIRED",
@@ -182,7 +182,13 @@ window.questionBank = [
       ],
       "readFrom": "원본 1쪽 대응도 300dpi 확대 확인"
     },
-    "tags": []
+    "tags": [],
+    "imageAlt": "세 집합 X 사이의 함수 f와 g의 대응도",
+    "imageCaption": "세 집합 X 사이의 함수 f와 g의 대응도",
+    "imageSize": "full",
+    "solutionImageAlt": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageCaption": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -288,7 +294,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q6-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -299,7 +305,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "원래 점근선 (-2,3)에서 이동 후 (5,-1)로 옮겨져 이동량 (7,-4)이 된다.",
+    "solutionImageCaption": "원래 점근선 (-2,3)에서 이동 후 (5,-1)로 옮겨져 이동량 (7,-4)이 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -444,7 +453,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q10-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -455,7 +464,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageCaption": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -483,7 +495,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q11-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -494,7 +506,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "점근선 x=1, y=2와 대칭축 y=x+1을 확인한다.",
+    "solutionImageCaption": "점근선 x=1, y=2와 대칭축 y=x+1을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -561,7 +576,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q13-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -572,7 +587,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageCaption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -600,7 +618,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q14-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -611,7 +629,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "닫힌 구간 오른쪽 끝 x=-3에서 두 그래프가 만날 때 k의 최댓값을 얻는다.",
+    "solutionImageCaption": "닫힌 구간 오른쪽 끝 x=-3에서 두 그래프가 만날 때 k의 최댓값을 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -638,7 +659,7 @@ window.questionBank = [
     "curriculum": "2022 개정 교육과정",
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
-    "image": "",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_기출/q15-problem.svg",
     "solutionImage": "",
     "visualDisposition": {
       "problemVisual": {
@@ -685,7 +706,10 @@ window.questionBank = [
       ],
       "readFrom": "원본 4쪽 대응도 300dpi 확대 확인"
     },
-    "tags": []
+    "tags": [],
+    "imageAlt": "집합 X에서 X로 가는 함수 f의 대응도",
+    "imageCaption": "집합 X에서 X로 가는 함수 f의 대응도",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -713,7 +737,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q16-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -724,7 +748,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "왼쪽 무리함수 치역은 [2,∞), 오른쪽 유리함수 치역은 (-2,2)이다.",
+    "solutionImageCaption": "왼쪽 무리함수 치역은 [2,∞), 오른쪽 유리함수 치역은 (-2,2)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -752,7 +779,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q17-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -763,7 +790,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "k=-7인 경우 f와 역함수가 y=x의 고정점 (-1,-1)에서 만나는 모습을 확인한다.",
+    "solutionImageCaption": "k=-7인 경우 f와 역함수가 y=x의 고정점 (-1,-1)에서 만나는 모습을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -791,7 +821,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q18-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -802,7 +832,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "첫째 곡선을 (-2,2)만큼 평행이동하면 둘째 곡선이고 두 직선 절편 차 5에 대한 넓이는 2·5=10이다.",
+    "solutionImageCaption": "첫째 곡선을 (-2,2)만큼 평행이동하면 둘째 곡선이고 두 직선 절편 차 5에 대한 넓이는 2·5=10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -830,7 +863,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q19-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -841,7 +874,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,4이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageCaption": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,4이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -869,7 +905,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q20-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -880,7 +916,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "k=3/4를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+    "solutionImageCaption": "k=3/4를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -935,7 +974,7 @@ window.questionBank = [
     "metadataStatus": "PENDING_STAGE3",
     "reviewStatus": "STAGE2_SELF_CHECKED_R1_PENDING",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_기출/q22-solution.svg",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "NOT_ASSESSED",
@@ -946,7 +985,10 @@ window.questionBank = [
         "reason": "4단계에서 해설용 그림 판정"
       }
     },
-    "tags": []
+    "tags": [],
+    "solutionImageAlt": "k=2일 때 정의역 시작점 t=0과 다른 교점 t=2가 모두 포함된다.",
+    "solutionImageCaption": "k=2일 때 정의역 시작점 t=0과 다른 교점 t=2가 모두 포함된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
