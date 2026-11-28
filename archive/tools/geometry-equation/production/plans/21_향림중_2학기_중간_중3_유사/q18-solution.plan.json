@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-x^2+4x+12",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "16",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "16"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "P",
+            "Q"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "해설 관계: 위로 볼록한 이차함수의 그래프가 x축과 만나는 두 점 P, Q와 꼭짓점 A를 나타내고, 세 점을 이은 삼각형 APQ를 함께 보여 준다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 위로 볼록한 이차함수의 그래프가 x축과 만나는 두 점 P, Q와 꼭짓점 A를 나타내고, 세 점을 이은 삼각형 APQ를 함께 보여 준다.",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"12\",\"4\",\"-1\"]}]"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18_solution",
+      "condition": "$y = -x^2 + 4x + 12 = -(x-2)^2 + 16$이므로 꼭짓점 $\\text{A}$의 좌표는 $(2, 16)$이다. 또 $y=0$을 대입하면 $$x^2 - 4x - 12 = (x+2)(x-6) = 0 \\implies x = -2 \\text{ 또는 } x = 6$$ 이므로 두 교점은 $\\text{P}(-2, 0)$, $\\text{Q}(6, 0)$이고 $\\overline{\\text{PQ}} = 6 - (-2) = 8$이다. 따라서 $\\triangle\\text{APQ}$의 넓이는 $$\\frac{1}{2} \\times 8 \\times 16 = 64$$ 이므로 정답은 ③이다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "sourceQuote": "$y = -x^2 + 4x + 12 = -(x-2)^2 + 16$이므로 꼭짓점 $\\text{A}$의 좌표는 $(2, 16)$이다. 또 "
+}

@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 관계: 원 O 밖의 점 Q에서 원에 그은 두 접선이 C, D에서 접하는 그림이다. 두 접선 QC와 QD, 두 반지름 OC와 OD, 선분 QO가 보인다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 원 O 밖의 점 Q에서 원에 그은 두 접선이 C, D에서 접하는 그림이다. 두 접선 QC와 QD, 두 반지름 OC와 OD, 선분 QO가 보인다.",
+  "newVisualInformation": [
+    "그려진 선분 QC, QD, OC, OD, QO",
+    "angles 2개",
+    "equalLengths 1개",
+    "표시 원 c"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "QC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "QD",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "QO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightC",
+        "refs": [
+          "Q",
+          "C",
+          "O"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightD",
+        "refs": [
+          "Q",
+          "D",
+          "O"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [],
+    "equalLengths": [
+      {
+        "id": "tangents",
+        "count": 1,
+        "segments": [
+          "QC",
+          "QD"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "sourceConditions": [
+    {
+      "id": "q24_solution",
+      "condition": "① $\\overline{\\text{OC}}$와 $\\overline{\\text{OD}}$는 같은 원의 반지름이므로 $\\overline{\\text{OC}}=\\overline{\\text{OD}}$이다. ② 원의 반지름은 접점에서 접선과 수직이므로 $\\angle\\text{QCO}=\\angle\\text{QDO}=90^\\circ$이다. ③ $\\overline{\\text{QO}}$는 두 직각삼각형의 공통인 빗변이므로 $\\overline{\\text{QO}}=\\overline{\\text{QO}}$이다. ④ 한 쌍의 빗변과 한 쌍의 다른 변이 각각 같은 직각삼각형이므로 $\\text{RHS}$ 합동이다. ⑤ 합동인 삼각형의 대응변의 길이가 같으므로 $\\overline{\\text{QC}}=\\overline{\\text{QD}}$이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "① $\\overline{\\text{OC}}$와 $\\overline{\\text{OD}}$는 같은 원의 반지름이므로 $\\overline{\\"
+}

@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sDM",
+      "refs": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "sMA",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sMA",
+          "sDM",
+          "sCN",
+          "sND"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aMBN",
+        "refs": [
+          "M",
+          "B",
+          "N"
+        ],
+        "value": 36.87,
+        "label": "x",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "문제 조건: 정사각형 ABCD에서 변 AD의 중점 M과 변 CD의 중점 N을 잡고, B와 M, B와 N을 잇는 선분을 그린 그림이다. 한 변의 길이는 8 cm이고 각 MBN은 x로 표시되어 있다.",
+  "accessibilityDescription": "문제에 주어진 문제 조건: 정사각형 ABCD에서 변 AD의 중점 M과 변 CD의 중점 N을 잡고, B와 M, B와 N을 잇는 선분을 그린 그림이다. 한 변의 길이는 8 cm이고 각 MBN은 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sCN, sND, sDM, sMA, sBM, sBN",
+    "equalLengths 1개",
+    "angles 1개",
+    "dimensions 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q11_problem",
+      "condition": "한 변의 길이가 $8$인 정사각형 $\\text{ABCD}$의 두 변 $\\text{AD}$, $\\text{CD}$의 중점을 각각 $\\text{M}$, $\\text{N}$이라 하고 $\\angle\\text{MBN}=x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하면?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "한 변의 길이가 $8$인 정사각형 $\\text{ABCD}$의 두 변 $\\text{AD}$, $\\text{CD}$의 중점을 각각 $\\te"
+}

@@ -1,0 +1,295 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "961",
+              "denominator": "2500"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-31",
+                  "denominator": "2500"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "1539"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a52a",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 52,
+        "label": "52",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a52d",
+        "refs": [
+          "D",
+          "O",
+          "C"
+        ],
+        "value": 52,
+        "label": "52",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightB",
+        "refs": [
+          "O",
+          "B",
+          "A"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightD",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOD",
+        "ownerSegment": "OD",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "OB",
+        "text": "0.62",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "DC",
+        "text": "1.28",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAD",
+        "circle": "unit",
+        "center": "O",
+        "from": "A",
+        "to": "D",
+        "side": "CW"
+      }
+    ]
+  },
+  "sourceQuote": "$\\overline{\\text{OD}}=\\overline{\\text{OA}}=1$이다. 직각삼각형 $\\text{OCD}$에서 $$\\ta",
+  "sourceConditions": [
+    {
+      "id": "q14_solution",
+      "condition": "$\\overline{\\text{OD}}=\\overline{\\text{OA}}=1$이다. 직각삼각형 $\\text{OCD}$에서 $$\\tan 52^\\circ = \\frac{\\overline{\\text{CD}}}{\\overline{\\text{OD}}} = \\frac{1.28}{1} = 1.28$$ 직각삼각형 $\\text{OAB}$에서 $\\angle\\text{OAB} = 90^\\circ - 52^\\circ = 38^\\circ$이므로 $$\\sin 38^\\circ = \\frac{\\overline{\\text{OB}}}{\\overline{\\text{OA}}} = \\frac{0.62}{1} = 0.62$$ 따라서 $\\tan 52^\\circ - \\sin 38^\\circ = 1.28 - 0.62 = 0.66$이므로 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: $\\overline{\\text{OD}}=\\overline{\\text{OA}}=1$이다. 직각삼각형 $\\text{OCD}$에서 $$\\tan 52^\\circ = \\frac{\\overline{\\text{CD}}}{\\overline{\\text{OD}}} = \\frac{1.28}{1} ",
+  "newVisualInformation": [
+    "그려진 선분 OA, OB, BA, OD, DC, OC",
+    "angles 4개",
+    "expressionLabels 4개",
+    "arcs 1개"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: $\\overline{\\text{OD}}=\\overline{\\text{OA}}=1$이다. 직각삼각형 $\\text{OCD}$에서 $$\\tan 52^\\circ = \\frac{\\overline{\\text{CD}}}{\\overline{\\text{OD}}} = \\frac{1.28}{1} "
+}

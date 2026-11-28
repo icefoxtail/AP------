@@ -1,0 +1,358 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 관계: 선분 AB를 지름으로 하는 원 O에 세 선분 AD, BC, CD가 접하는 그림이다. AD는 4 cm, BC는 6 cm이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 선분 AB를 지름으로 하는 원 O에 세 선분 AD, BC, CD가 접하는 그림이다. AD는 4 cm, BC는 6 cm이다.",
+  "newVisualInformation": [
+    "그려진 선분 AD, AB, BC, CD, auditSegE",
+    "expressionLabels 4개",
+    "angles 3개",
+    "표시 원 c"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "auditLineE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "auditLineE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "auditSegE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "AD",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_AB",
+        "ownerSegment": "AB",
+        "text": "4sqrt(6)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sol_CD",
+        "ownerSegment": "CD",
+        "text": "10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rA",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right_E",
+        "refs": [
+          "B",
+          "E",
+          "D"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "sourceConditions": [
+    {
+      "id": "q20_solution",
+      "condition": "접선의 길이 성질에 의해 $\\overline{\\text{CD}} = \\overline{\\text{AD}} + \\overline{\\text{BC}} = 4 + 6 = 10\\text{ (cm)}$이다. 점 $\\text{D}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{E}$라 하면 $\\overline{\\text{DE}}=\\overline{\\text{AB}}$, $\\overline{\\text{EC}} = 6 - 4 = 2\\text{ (cm)}$이다. 직각삼각형 $\\text{DEC}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\overline{\\text{DE}} = \\sqrt{10^2 - 2^2} = \\sqrt{96} = 4\\sqrt{6}\\text{ (cm)}$$ 따라서 사다리꼴 $\\text{ABCD}$의 넓이는 $$\\frac{1}{2} \\times (4 + 6) \\times 4\\sqrt{6} = 20\\sqrt{6}\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "접선의 길이 성질에 의해 $\\overline{\\text{CD}} = \\overline{\\text{AD}} + \\overline{\\tex"
+}

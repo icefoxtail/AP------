@@ -1,0 +1,61 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -2,
+      16
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/3"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2/3"
+      },
+      {
+        "id": "g2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-2",
+          "1/3"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=(x-3)^2/3+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y = \\frac{1}{3}(x-3)^2 + 2$의 그래프는 $y = \\frac{1}{3}x^2$의 그래프를 $x$축의 방향으로 $3",
+  "sourceConditions": [
+    {
+      "id": "q04_solution",
+      "condition": "$y = \\frac{1}{3}(x-3)^2 + 2$의 그래프는 $y = \\frac{1}{3}x^2$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $2$만큼 평행이동한 것이므로 꼭짓점의 좌표는 $(3, 2)$이다. 이차항의 계수 $\\frac{1}{3}>0$이므로 아래로 볼록하고, $x=0$을 대입하면 $y = \\frac{1}{3}(-3)^2 + 2 = 5$이므로 점 $(0, 5)$를 지난다. 따라서 바른 것은 ②이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "caption": "해설 관계: $y = \\frac{1}{3}(x-3)^2 + 2$의 그래프는 $y = \\frac{1}{3}x^2$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $2$만큼 평행이동한 것이므로 꼭짓점의 좌표는 $(3, 2)$이다. 이차항의 계수 $\\frac{1}{3}>0$이므로",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"id\":\"g1\",\"kind\":\"Y_OF_X\",\"coefficients\":[\"0\",\"0\",\"1/3\"],\"domain\":[\"-1\",\"7\"],\"color\":\"BLUE\",\"label\":\"y=x^2/3\"},{\"id\":\"g2\",\"kind\":\"Y_OF_X\",\"coefficients\":[\"5\",\"-2\",\"1/3\"],\"domain\":[\"-1\",\"7\"],\"color\":\"WARM\",\"label\":\"y=(x-3)^2/3+2\"}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: $y = \\frac{1}{3}(x-3)^2 + 2$의 그래프는 $y = \\frac{1}{3}x^2$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $2$만큼 평행이동한 것이므로 꼭짓점의 좌표는 $(3, 2)$이다. 이차항의 계수 $\\frac{1}{3}>0$이므로"
+}

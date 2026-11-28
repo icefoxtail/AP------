@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "-x^2+4x+12",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "16",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "16"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "P",
+            "Q"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "문제 조건: 위로 볼록한 이차함수의 그래프가 x축과 만나는 두 점 P, Q와 꼭짓점 A를 나타내고, 세 점을 이은 삼각형 APQ를 함께 보여 준다.",
+  "accessibilityDescription": "문제에 주어진 문제 조건: 위로 볼록한 이차함수의 그래프가 x축과 만나는 두 점 P, Q와 꼭짓점 A를 나타내고, 세 점을 이은 삼각형 APQ를 함께 보여 준다.",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"12\",\"4\",\"-1\"]}]"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18_problem",
+      "condition": "다음 그림은 이차함수 $y=-x^2+4x+12$의 그래프이다. $x$축과의 교점을 $\\text{P}$와 $\\text{Q}$, 꼭짓점을 $\\text{A}$라고 할 때, $\\triangle\\text{APQ}$의 넓이는?",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "sourceQuote": "다음 그림은 이차함수 $y=-x^2+4x+12$의 그래프이다. $x$축과의 교점을 $\\text{P}$와 $\\text{Q}$, 꼭짓점을 "
+}

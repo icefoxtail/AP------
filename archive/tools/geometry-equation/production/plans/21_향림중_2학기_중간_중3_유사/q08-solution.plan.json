@@ -1,0 +1,48 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "-4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "-1",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": [
+        "-1"
+      ]
+    }
+  },
+  "caption": "해설 관계: 부호만 주어진 식의 대표 개형(a=-1,p=2,q=-1): 아래로 열리고 꼭짓점은 제3사분면에 있다.",
+  "sourceQuote": "그래프가 위로 볼록하므로 $a<0$이다. 꼭짓점의 좌표는 $(-p, q)$이고 제3사분면 위에 있으므로 $$-p < 0 \\implies",
+  "sourceConditions": [
+    {
+      "id": "q08_solution",
+      "condition": "그래프가 위로 볼록하므로 $a<0$이다. 꼭짓점의 좌표는 $(-p, q)$이고 제3사분면 위에 있으므로 $$-p < 0 \\implies p > 0, \\quad q < 0$$ 따라서 $a<0$, $p>0$, $q<0$이므로 정답은 ①이다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"-5\",\"-4\",\"-1\"]}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 부호만 주어진 식의 대표 개형(a=-1,p=2,q=-1): 아래로 열리고 꼭짓점은 제3사분면에 있다."
+}

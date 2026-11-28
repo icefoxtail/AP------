@@ -1,0 +1,46 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "4"
+      ]
+    }
+  },
+  "sourceQuote": "$y = 3x^2 + 4 = 3(x-0)^2 + 4$이므로 꼭짓점의 좌표는 $(0, 4)$이고 축의 방정식은 $x=0$($y$축)이다.",
+  "sourceConditions": [
+    {
+      "id": "q01_solution",
+      "condition": "$y = 3x^2 + 4 = 3(x-0)^2 + 4$이므로 꼭짓점의 좌표는 $(0, 4)$이고 축의 방정식은 $x=0$($y$축)이다. 이차항의 계수 $3>0$이므로 아래로 볼록하며, 모든 $x$에 대하여 $y \\ge 4 > 0$이므로 제1, 2사분면을 지나고 $x$축보다 항상 위쪽에 있다. 따라서 꼭짓점의 좌표가 $(4, 0)$이라는 ③이 옳지 않다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "caption": "해설 관계: $y = 3x^2 + 4 = 3(x-0)^2 + 4$이므로 꼭짓점의 좌표는 $(0, 4)$이고 축의 방정식은 $x=0$($y$축)이다. 이차항의 계수 $3>0$이므로 아래로 볼록하며, 모든 $x$에 대하여 $y \\ge 4 > 0$이므로 제1, 2사분면을 지나고 $x$축보다 항상",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"4\",\"0\",\"3\"]}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: $y = 3x^2 + 4 = 3(x-0)^2 + 4$이므로 꼭짓점의 좌표는 $(0, 4)$이고 축의 방정식은 $x=0$($y$축)이다. 이차항의 계수 $3>0$이므로 아래로 볼록하며, 모든 $x$에 대하여 $y \\ge 4 > 0$이므로 제1, 2사분면을 지나고 $x$축보다 항상"
+}

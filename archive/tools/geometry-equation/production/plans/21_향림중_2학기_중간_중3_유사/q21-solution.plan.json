@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -10,
+      16
+    ],
+    "curves": [
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "6",
+          "-3/2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=-3/2(x-2)^2+6"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=-3x+12"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "6"
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$y = ax^2 - 4ax + b = a(x-2)^2 + b - 4a$이므로 포물선의 꼭짓점의 좌표는 $(2, b-4a)$이다. 이 ",
+  "sourceConditions": [
+    {
+      "id": "q21_solution",
+      "condition": "$y = ax^2 - 4ax + b = a(x-2)^2 + b - 4a$이므로 포물선의 꼭짓점의 좌표는 $(2, b-4a)$이다. 이 꼭짓점이 직선 $y = -3x + 12$ 위에 있으므로 $x=2$를 대입하면 $$b - 4a = -3(2) + 12 = 6$$ 한편 두 그래프가 $x$축 위에서 만나므로 직선 $y=-3x+12$의 $x$절편 $(4, 0)$을 포물선도 지난다. $y = a(x-2)^2 + 6$에 $(4, 0)$을 대입하면 $$0 = a(4-2)^2 + 6 \\implies 4a + 6 = 0 \\implies a = -\\frac{3}{2}$$ 따라서 $b = 6 + 4\\left(-\\frac{3}{2}\\right) = 0$이므로 $a+b = -\\frac{3}{2}$이다. 정답은 ②이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "caption": "해설 관계: $y = ax^2 - 4ax + b = a(x-2)^2 + b - 4a$이므로 포물선의 꼭짓점의 좌표는 $(2, b-4a)$이다. 이 꼭짓점이 직선 $y = -3x + 12$ 위에 있으므로 $x=2$를 대입하면 $$b - 4a = -3(2) + 12 = 6$$ 한편 두 그래프가",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"id\":\"g\",\"kind\":\"Y_OF_X\",\"coefficients\":[\"0\",\"6\",\"-3/2\"],\"domain\":[\"-1\",\"5\"],\"color\":\"BLUE\",\"label\":\"y=-3/2(x-2)^2+6\"},{\"id\":\"l\",\"kind\":\"LINE\",\"coefficients\":[\"12\",\"-3\"],\"domain\":[\"-1\",\"5\"],\"color\":\"WARM\",\"label\":\"y=-3x+12\"}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: $y = ax^2 - 4ax + b = a(x-2)^2 + b - 4a$이므로 포물선의 꼭짓점의 좌표는 $(2, b-4a)$이다. 이 꼭짓점이 직선 $y = -3x + 12$ 위에 있으므로 $x=2$를 대입하면 $$b - 4a = -3(2) + 12 = 6$$ 한편 두 그래프가"
+}

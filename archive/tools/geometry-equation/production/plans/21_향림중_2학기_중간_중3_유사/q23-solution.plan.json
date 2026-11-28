@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-3",
+        "marker": "NONE"
+      },
+      {
+        "id": "P",
+        "x": "0",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-3",
+        "5"
+      ]
+    }
+  },
+  "caption": "해설 관계: 꼭짓점이 (2, -3)이고 y축과 (0, 5)에서 만나는 이차함수의 그래프를 나타낸 그림이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 꼭짓점이 (2, -3)이고 y축과 (0, 5)에서 만나는 이차함수의 그래프를 나타낸 그림이다.",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"5\",\"-8\",\"2\"]}]"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q23_solution",
+      "condition": "꼭짓점이 $(2, -3)$이므로 $$y = a(x-2)^2 - 3$$ 이 그래프가 점 $(0, 5)$를 지나므로 $x=0$, $y=5$를 대입하면 $$5 = 4a - 3 \\implies 4a = 8 \\implies a = 2$$ 따라서 $y = 2(x-2)^2 - 3 = 2x^2 - 8x + 5$이므로 $a=2$, $b=-8$, $c=5$이다. 그러므로 $a+b+c = 2 + (-8) + 5 = -1$이다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "sourceQuote": "꼭짓점이 $(2, -3)$이므로 $$y = a(x-2)^2 - 3$$ 이 그래프가 점 $(0, 5)$를 지나므로 $x=0$, $y=5$"
+}
