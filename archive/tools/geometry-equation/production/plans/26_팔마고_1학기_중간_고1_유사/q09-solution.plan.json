@@ -1,0 +1,37 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["4", "0", "-1/2"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "formula": "-x^2/2+4",
+    "referenceCurves": [{ "id": "g", "coefficients": ["-2", "0", "1"], "intersectionX": ["-2", "2"] }],
+    "requiredPoints": [
+      { "id": "Vf", "x": 0, "y": 4, "marker": "NONE" },
+      { "id": "Vg", "x": 0, "y": -2, "marker": "NONE" }
+    ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "2/3", "y": "34/9" },
+        { "id": "B", "x": "-2/3", "y": "34/9" },
+        { "id": "C", "x": "-2/3", "y": "-14/9" },
+        { "id": "D", "x": "2/3", "y": "-14/9" }
+      ],
+      "polygons": [{ "id": "R", "points": ["A", "B", "C", "D"], "fill": "NONE" }],
+      "segments": [
+        { "id": "width", "from": "A", "to": "B", "length": true },
+        { "id": "height", "from": "A", "to": "D", "length": true }
+      ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B", "C": "C", "D": "D" },
+  "caption": "둘레 P(t)=12+4t−3t²가 최대일 때 t=2/3, 가로 4/3, 세로 16/3인 직사각형을 보여 준다.",
+  "accessibilityDescription": "두 포물선 사이에 내접한 최적 직사각형 ABCD의 가로 길이 4/3, 세로 길이 16/3을 표시한다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "AB=2t, AD=6−3t²/2이고 P(t)=12+4t−3t²이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"] },
+    { "id": "S2", "condition": "P(t)=40/3−3(t−2/3)²의 최대는 t=2/3이다.", "mappedTo": ["graphPlan.overlays.polygons", "graphPlan.overlays.points"] }
+  ],
+  "newVisualInformation": ["최대값을 만드는 실제 비율의 직사각형, 수치가 있는 두 변, 두 포물선과의 접속 관계를 보여 준다."]
+}

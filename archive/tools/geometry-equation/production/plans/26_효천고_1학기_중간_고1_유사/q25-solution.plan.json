@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2+4",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "T",
+        "x": -2,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "-4",
+          "intercept": "0",
+          "label": "y=-4x"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "V": "V",
+    "T": "T"
+  },
+  "sampleNote": "k=0 예시",
+  "caption": "항상 접할 조건에서 a=4,b=−2를 얻는다. k=0일 때 y=x²+4와 y=−4x는 T(−2,8)에서 접한다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²+4와 직선 y=−4x가 한 점 T(−2,8)에서 접하고 꼭짓점 V(0,4)가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "D/4=(6b+12)k+b²−a가 모든 k에서 0이므로 b=−2,a=4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.lines"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "k=0일 때 두 그래프의 접점은 (−2,8)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "매개변수 한 사례에서 포물선과 직선의 접점이 하나뿐임을 실제 좌표계에서 보여 준다."
+  ]
+}

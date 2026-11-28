@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 0,
+        "y": -4
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        1
+      ],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "L": "L",
+    "V": "V",
+    "R": "R"
+  },
+  "caption": "주어진 세 구간에 따라 하나로 이어지는 y=h(x)의 그래프. 직선의 기울기나 정답 교점은 표시하지 않는다.",
+  "accessibilityDescription": "x≤−2, −2<x<1, x≥1에서 서로 다른 두 이차식으로 이루어진 연속 그래프이며 경계점 −2와 1을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "x≤−2 또는 x≥1에서 h=−x²−2x, −2<x<1에서 h=x²−4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "경계값은 h(−2)=0, h(1)=−3이며 가운데 곡선의 꼭짓점은 (0,−4)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.breakpoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계값 −2,1, 가운데 꼭짓점 (0,−4)와 세 구간의 서로 다른 포물선 방향을 그린다."
+  ]
+}
