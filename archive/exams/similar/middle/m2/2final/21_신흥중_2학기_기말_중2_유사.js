@@ -802,6 +802,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "image": "assets/images/21_신흥중_2학기_기말_중2_유사/q19-problem.svg",
     "category": "경우의 수와 확률",
     "standardCourse": "중2",
     "curriculum": "2015",

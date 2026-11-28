@@ -1,4 +1,62 @@
 {
-  "status": "EXEMPT",
-  "reason": "산점도 5명 학생의 변량 상대적 비율 비교 문항이다."
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 15,
+        "y": "13/2",
+        "name": "A"
+      },
+      {
+        "x": 20,
+        "y": 7,
+        "name": "B"
+      },
+      {
+        "x": 25,
+        "y": 6,
+        "name": "C"
+      },
+      {
+        "x": 30,
+        "y": "11/2",
+        "name": "D"
+      },
+      {
+        "x": 35,
+        "y": 4,
+        "name": "E"
+      }
+    ],
+    "xRange": [
+      "0",
+      "40"
+    ],
+    "yRange": [
+      "0",
+      "8"
+    ],
+    "xStep": "5",
+    "yStep": "1",
+    "xTitle": "사용시간",
+    "yTitle": "수면시간",
+    "grid": true
+  },
+  "caption": "학생 5명의 주당 스마트폰 사용 시간과 수면 시간을 나타낸 산점도",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "학생들의 주당 스마트폰 사용 시간($x$, 시간)과 수면 시간($y$, 시간)을 나타낸 $5$명의 순서쌍 $(x, y)$가 다음과 같을 때, 스마트폰 사용 시간에 비하여 수면 시간이 가장 짧은 학생은?\n\n$$A(15, 6.5),\\quad B(20, 7.0),\\quad C(25, 6.0),\\quad D(30, 5.5),\\quad E(35, 4.0)$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "스마트폰 사용 시간과 수면 시간을 나타낸 5명의 순서쌍 A(15, 6.5), B(20, 7.0), C(25, 6.0), D(30, 5.5), E(35, 4.0)",
+      "mappedTo": "chart.points"
+    }
+  ],
+  "newVisualInformation": [
+    "산점도에 다섯 학생 A, B, C, D, E의 위치가 점으로 표시되어 있다."
+  ]
 }

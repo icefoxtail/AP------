@@ -1,0 +1,84 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "elements": [
+          "A"
+        ],
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "elements": [
+          "B"
+        ],
+        "name": "B"
+      },
+      {
+        "id": "C",
+        "elements": [
+          "C"
+        ],
+        "name": "C"
+      },
+      {
+        "id": "D",
+        "elements": [
+          "D"
+        ],
+        "name": "D"
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "정오각형의 꼭짓점 A에서 시계 방향으로 변을 따라 B, C, D 순서로 이동하는 경로를 나타낸 대응도이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "시계 방향으로 꼭짓점 $A, B, C, D, E$ 순서로 배열된 한 변의 길이가 $1$인 정오각형 $ABCDE$가 있다. 꼭짓점 $A$에 놓인 말을 주사위를 던져서 나오는 눈의 수만큼 시계 방향으로 변을 따라 이동시킨다. 한 개의 주사위를 두 번 연속하여 던질 때, 말이 꼭짓점 $D$에 놓이게 될 확률은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "꼭짓점 A에서 시계 방향으로 변을 따라 이동하여 꼭짓점 D에 도달한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 A에서 시계 방향으로 B, C, D 순서로 이어지는 대응 관계를 보여준다."
+  ]
+}

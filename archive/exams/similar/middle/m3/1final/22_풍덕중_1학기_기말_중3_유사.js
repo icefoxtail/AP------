@@ -805,6 +805,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/22_풍덕중_1학기_기말_중3_유사/q18-problem.svg",
     "category": "이차함수의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

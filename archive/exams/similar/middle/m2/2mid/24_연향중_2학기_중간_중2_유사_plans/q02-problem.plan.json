@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "400",
+              "denominator": "69"
+            },
+            {
+              "kind": "rational",
+              "numerator": "400",
+              "denominator": "69"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "800",
+              "denominator": "23"
+            },
+            {
+              "kind": "rational",
+              "numerator": "400",
+              "denominator": "69"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "400",
+              "denominator": "69"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1420",
+              "denominator": "69"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "400",
+              "denominator": "69"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3160",
+              "denominator": "69"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 27,
+        "label": "27",
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 27,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 36,
+        "label": "x"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 400,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 각 B의 이등분선 BD가 변 AC와 만나는 모습을 나타낸 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC의 꼭짓점 C에 직각 표시가 있고 각 B의 이등분선 선분 BD가 그어져 있다. 각 DBC의 크기는 27도, 각 A의 크기는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 BD는 각 B의 이등분선이다.",
+    "각 DBC의 크기는 27도이다.",
+    "각 A의 크기는 x이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle B$의 이등분선이 변 $AC$와 만나는 점을 $D$라 하자. $\\angle DBC=27^\\circ$일 때, $\\angle A$의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

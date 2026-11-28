@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "0"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -5,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-3"
+      ]
+    },
+    "axisFold": false
+  },
+  "caption": "점 (0, -3)을 지나고 x축에 평행한 직선을 나타낸 그래프이다.",
+  "accessibilityDescription": "좌표평면에 y축과 -3에서 만나며 x축에 평행한 수평선이 그려져 있다.",
+  "newVisualInformation": [
+    "직선이 점 (0, -3)을 지남",
+    "직선이 x축에 평행함"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+by-9=0$의 그래프가 점 $(0, -3)$을 지나고 $x$축에 평행한 직선일 때, 두 상수 $a$, $b$에 대하여 $a+b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

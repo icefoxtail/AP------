@@ -1,162 +1,286 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1040",
+              "denominator": "41"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "rational",
+              "numerator": "300",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1040",
+              "denominator": "41"
+            },
+            {
+              "kind": "rational",
+              "numerator": "600",
+              "denominator": "41"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "D",
+    "A",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
     },
     {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": -6.928,
-        "y": 0
-      }
-    },
-    {
-      "id": "D",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 4
-      }
-    },
-    {
-      "id": "A",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": -6.928,
-        "y": 6.928
-      }
-    },
-    {
-      "id": "AC_line",
-      "op": "LINE_THROUGH",
-      "inputs": [
-        "A",
+      "id": "sHC",
+      "refs": [
+        "H",
         "C"
       ]
     },
     {
-      "id": "BD_line",
-      "op": "LINE_THROUGH",
-      "inputs": [
-        "B",
+      "id": "sCD",
+      "refs": [
+        "C",
         "D"
       ]
     },
     {
-      "id": "E",
-      "op": "INTERSECTION",
-      "inputs": [
-        "AC_line",
-        "BD_line"
-      ]
-    },
-    {
-      "id": "BC_line",
-      "op": "LINE_THROUGH",
-      "inputs": [
-        "B",
-        "C"
-      ]
-    },
-    {
-      "id": "H",
-      "op": "PERPENDICULAR_FOOT",
-      "inputs": [
-        "E",
-        "BC_line"
-      ]
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
-        "B",
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
         "C"
       ]
     },
     {
-      "id": "CA",
-      "op": "SEGMENT",
-      "inputs": [
-        "C",
-        "A"
-      ]
-    },
-    {
-      "id": "CD",
-      "op": "SEGMENT",
-      "inputs": [
-        "C",
-        "D"
-      ]
-    },
-    {
-      "id": "BD",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBE",
+      "refs": [
         "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
         "D"
       ]
     },
     {
-      "id": "EH",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sEH",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "raC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "raH",
+      "refs": [
         "E",
-        "H"
+        "H",
+        "C"
       ]
     }
   ],
   "planeMarks": {
-    "rightAngles": [
+    "angles": [
       {
-        "vertex": "C",
-        "ray1": "D",
-        "ray2": "B"
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1
       },
       {
-        "vertex": "H",
-        "ray1": "E",
-        "ray2": "C"
+        "id": "aD",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1
       }
     ],
-    "angleArcs": [
+    "dimensions": [
       {
-        "vertex": "C",
-        "ray1": "A",
-        "ray2": "B",
-        "label": "45°"
-      },
-      {
-        "vertex": "D",
-        "ray1": "B",
-        "ray2": "C",
-        "label": "60°"
-      }
-    ],
-    "segmentLabels": [
-      {
+        "id": "dCD",
         "from": "C",
         "to": "D",
-        "label": "8"
+        "label": "8",
+        "side": "RIGHT",
+        "style": "BRACE"
       }
     ]
   },
-  "caption": "교점 E에서 밑변 BC에 수선 EH를 내린 두 직각삼각형 ABC, DBC"
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "caption": "각 C가 직각인 두 직각삼각형 ABC와 DBC에서 선분 AC와 BD의 교점 E에서 밑변 BC에 내린 수선의 발이 H인 도형이다.",
+  "accessibilityDescription": "직각삼각형 ABC와 DBC가 밑변 BC를 공유하고 있고 각 A와 각 C는 직각이다. 선분 CD의 길이는 8이고 각 BDC는 60도, 각 ACB는 45도로 표시되어 있으며 선분 AC와 BD의 교점 E에서 변 BC에 수선 EH를 내렸다.",
+  "newVisualInformation": [
+    "선분 CD의 길이는 8이다.",
+    "각 BDC는 60도이다.",
+    "각 ACB는 45도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서술형 1】 다음 그림과 같이 $\\angle C = 90^\\circ$인 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DBC}$에서 $\\angle\\mathrm{ACB} = 45^\\circ$, $\\angle\\mathrm{BDC} = 60^\\circ$, $\\overline{\\mathrm{CD}} = 8$이고, $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 교점 $\\mathrm{E}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\overline{\\mathrm{EH}}$의 길이를 삼각비를 이용하여 구하여라.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

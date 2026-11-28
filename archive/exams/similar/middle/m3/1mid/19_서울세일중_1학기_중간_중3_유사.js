@@ -653,6 +653,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/19_서울세일중_1학기_중간_중3_유사/q15-problem.svg",
     "category": "인수분해",
     "standardCourse": "중3",
     "curriculum": "2015",

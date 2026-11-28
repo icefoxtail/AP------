@@ -1,38 +1,50 @@
 {
   "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      6,
-      14
-    ],
-    "viewport": [
-      6,
-      14,
-      -6,
-      12
-    ],
+    "family": "piecewise-polynomial",
     "pieces": [
       {
-        "domain": [
-          6,
-          14
-        ],
         "coefficients": [
-          "96",
-          "-20",
+          "4",
+          "8",
           "1"
         ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2+8*x+4",
+    "functionName": "f",
     "requiredPoints": [
       {
         "id": "V",
-        "x": "10",
-        "y": "-4",
-        "label": "꼭짓점(10, -4)"
+        "x": -4,
+        "y": -12,
+        "marker": "NONE"
       }
-    ]
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisFold": false
   },
-  "caption": "함수 y=(x+2a)(x+2b)=x^2-20x+96의 꼭짓점 (10, -4)에서의 최솟값 -4"
+  "caption": "좌표평면 위에 이차함수 y=f(x)의 그래프가 나타나 있다.",
+  "accessibilityDescription": "가로축은 x축, 세로축은 y축인 좌표평면이다. 아래로 볼록한 포물선 y=f(x)가 그려져 있다.",
+  "newVisualInformation": [
+    "이차함수 f(x)=x^2+8x+4의 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $f(x)=x^2+8x+4$와 서로 다른 두 실수 $a$, $b$ ($a<b$)가 $f(a)=2b$, $f(b)=2a$를 만족할 때, 함수 $y=(x+2a)(x+2b)$의 최솟값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,9 +1,98 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "NUMBER_LINE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
-  },
-  "caption": "수직선 위 점 D를 기준으로 좌우에 반지름 루트10을 옮긴 P, Q 사이의 거리 PQ=2루트10"
+  "capability": "number-line-figure-v1",
+  "caption": "모눈종이 위의 수직선에서 점 D를 중심으로 선분 CD와 선분 AD를 반지름으로 하는 호를 그려 수직선 위의 점 P와 Q를 작도한 그림이다.",
+  "accessibilityDescription": "수직선 위에 모눈이 있고 점 D를 중심으로 왼쪽으로 호를 그려 점 P를, 오른쪽으로 호를 그려 점 Q를 잡는 작도가 나타나 있다.",
+  "newVisualInformation": [
+    "점 D를 중심으로 선분 CD를 반지름으로 하는 호가 수직선의 왼쪽 점 P와 만나고, 선분 AD를 반지름으로 하는 호가 수직선의 오른쪽 점 Q와 만난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 눈금의 길이가 $1$인 모눈종이 위의 수직선에서, 점 $D$를 중심으로 가로의 길이가 $3$, 세로의 길이가 $1$인 직각삼각형의 빗변 $\\overline{CD}$를 반지름으로 하는 원을 그려 수직선의 왼쪽과 만나는 점을 $P$($\\overline{CD} = \\overline{PD}$), 가로의 길이가 $1$, 세로의 길이가 $3$인 직각삼각형의 빗변 $\\overline{AD}$를 반지름으로 하는 원을 그려 수직선의 오른쪽과 만나는 점을 $Q$($\\overline{AD} = \\overline{QD}$)라 할 때, $\\overline{PQ}$의 길이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "cP",
+        "center": "D",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            6,
+            1
+          ],
+          "toName": "C"
+        }
+      },
+      {
+        "id": "cQ",
+        "center": "D",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            4,
+            3
+          ],
+          "toName": "A"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "P",
+            "value": "3-sqrt(10)",
+            "showValue": false
+          },
+          {
+            "id": "D",
+            "value": "3"
+          },
+          {
+            "id": "Q",
+            "value": "3+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,9 +1,273 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "현의 절반 8cm와 활꼴 높이 4cm로부터 피타고라스 정리로 반지름 10cm 산출"
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "MC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r1",
+        "refs": [
+          "O",
+          "M",
+          "A"
+        ],
+        "value": 90,
+        "factRole": "GIVEN",
+        "label": "90"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l2",
+        "ownerSegment": "MC",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "OA",
+        "text": "r",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 2,
+        "segments": [
+          "AM",
+          "MB"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kOC",
+        "kind": "SEGMENT",
+        "path": [
+          "O",
+          "M",
+          "C"
+        ],
+        "at": "RIGHT",
+        "link": "ENDS",
+        "marks": {
+          "expressionLabels": [
+            {
+              "id": "cl1",
+              "segment": [
+                "O",
+                "M"
+              ],
+              "text": "d",
+              "unit": "cm"
+            },
+            {
+              "id": "cl2",
+              "segment": [
+                "M",
+                "C"
+              ],
+              "text": "4",
+              "unit": "cm"
+            }
+          ]
+        }
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dMB",
+        "from": "M",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "원 모양 접시의 일부분과 현 AB의 수직이등분선이 원의 가장자리와 만나는 점 C를 나타낸 그림이다.",
+  "accessibilityDescription": "원 위에 현 AB와 중점 M이 있고 점 M에서 수직이등분선이 원과 만나는 점 C가 있다. 선분 MB의 길이는 8cm, 선분 MC의 길이는 표시되어 있고 원의 중심 O와 반지름 r이 나타나 있다.",
+  "newVisualInformation": [
+    "현 AB의 중점 M, 수직이등분선과 원의 교점 C, 선분 MB의 길이 8cm 및 관련 선분들이 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 원 모양의 접시 조각을 복원하기 위해 접시 위의 현 $AB$의 중점 $M$에서 현의 수직이등분선을 그어 원의 가장자리와 만나는 점을 $C$라 하였다. $\\overline{AM} = \\overline{BM} = 8\\rm,cm$, $\\overline{CM} = 4\\rm,cm$일 때, 이 원 모양 접시의 반지름의 길이를 구하고 그 과정을 근거를 들어 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

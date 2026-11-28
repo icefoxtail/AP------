@@ -249,6 +249,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/24_연향중_1학기_기말_중2_유사/q06-problem.svg",
     "category": "연립일차방정식의 활용",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -691,6 +692,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/24_연향중_1학기_기말_중2_유사/q15-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",

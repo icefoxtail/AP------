@@ -1,4 +1,122 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "포물선 놀이기구 레일 실생활 그림은 SVG 엔진 기본 작도 지원 범위를 넘는다."
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "1/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      8
+    ],
+    "viewport": [
+      -7,
+      8,
+      -2,
+      19
+    ],
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": 0,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "6"
+      ],
+      "y": [
+        "7"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "S",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "3",
+          "y": "7"
+        },
+        {
+          "id": "T",
+          "x": "6",
+          "y": "16"
+        }
+      ],
+      "segments": [
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        },
+        {
+          "id": "ST",
+          "from": "S",
+          "to": "T"
+        },
+        {
+          "id": "OQ",
+          "from": "O",
+          "to": "Q"
+        },
+        {
+          "id": "QS",
+          "from": "Q",
+          "to": "S"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "S": "S",
+    "T": "T"
+  },
+  "caption": "좌표평면에 포물선 모양의 놀이 기구 레일과 지면 위의 지점 O, Q, S에서 레일 위의 점 P, R, T로 이어지는 기둥이 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 꼭짓점이 P(0, 4)인 아래로 볼록한 포물선이 그려져 있다. x축 위에 원점 O, 점 Q(3, 0), 점 S(6, 0)가 있고 포물선 위에 꼭짓점 P, 점 R(3, 7), 점 T가 있다. 선분 OP, QR, ST가 수직 기둥으로 연결되어 있으며 x축에는 눈금 3과 6이, y축에는 눈금 4와 7이 표시되어 있다.",
+  "newVisualInformation": [
+    "점 P는 포물선의 꼭짓점이고 점 R과 T는 포물선 위의 점이며 O, Q, S는 x축 위에 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "포물선 모양의 놀이 기구 레일의 일부분에서 지면 위의 기준점 $O$로부터 수직 위쪽 꼭짓점 $P$까지의 높이가 $4\\text{ m}$이고, $O$에서 수평으로 $3\\text{ m}$ 떨어진 지점 $Q$에서 레일 위의 점 $R$까지의 높이가 $7\\text{ m}$일 때, $O$에서 수평으로 $6\\text{ m}$ 떨어진 지점 $S$에서 레일 위의 점 $T$까지의 높이를 구하면? (단, 점 $P$는 포물선의 꼭짓점이다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

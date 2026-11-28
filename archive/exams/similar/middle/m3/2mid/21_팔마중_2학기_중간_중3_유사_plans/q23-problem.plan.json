@@ -1,35 +1,206 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3075",
+              "denominator": "497"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1640",
+              "denominator": "71"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16805",
+              "denominator": "497"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16805",
+              "denominator": "497"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16805",
+              "denominator": "497"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
-        "B",
-        "D"
-      ],
-      "rightAngle": "A"
+        "B"
+      ]
     },
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABD",
+        "refs": [
+          "D",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60"
+      },
+      {
+        "id": "aBDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 45,
+        "label": "45"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "3sqrt(2)"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
         "B",
         "C",
         "D"
-      ],
-      "rightAngle": "C"
-    },
+      ]
+    }
+  ],
+  "caption": "각 A와 각 C가 직각인 사각형 ABCD에서 대각선 BD에 의해 나누어진 두 직각삼각형을 나타낸 그림이다.",
+  "accessibilityDescription": "사각형 ABCD에서 각 A와 각 C는 직각이고, 선분 AB의 길이는 3루트2, 각 ABD는 60도, 각 BDC는 45도로 표시되어 있으며 대각선 BD가 그어져 있다.",
+  "newVisualInformation": [
+    "선분 AB의 길이는 3루트2",
+    "각 ABD의 크기는 60도",
+    "각 BDC의 크기는 45도"
+  ],
+  "sourceConditions": [
     {
-      "type": "quadrilateral",
-      "vertices": [
-        "A",
-        "B",
-        "C",
-        "D"
-      ],
-      "diagonals": true,
-      "angle": "60°",
-      "BD": "12"
+      "id": "source",
+      "condition": "아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.\n\n(1) 다음 그림에서 $\\angle\\text{A}=\\angle\\text{C}=90^\\circ$, $\\angle\\text{ABD}=60^\\circ$, $\\angle\\text{BDC}=45^\\circ$이고 $\\overline{\\text{AB}}=3\\sqrt{2}$일 때, $\\overline{\\text{BC}}$의 길이를 삼각비를 이용하여 구하시오. (2점) (2) 대각선의 교각이 $60^\\circ$이고 $\\overline{\\text{BD}}=12$인 $\\square\\text{ABCD}$의 넓이가 $36\\sqrt{3}$일 때, $\\overline{\\text{AC}}$의 길이를 구하시오. (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

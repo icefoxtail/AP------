@@ -1,0 +1,484 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "PtOrigin",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtXstart",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtXend",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtYstart",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtYend",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtC",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtP",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtLstart",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtLend",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtMstart",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PtMend",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "PtOrigin",
+    "PtXstart",
+    "PtXend",
+    "PtYstart",
+    "PtYend",
+    "PtA",
+    "PtB",
+    "PtC",
+    "PtD",
+    "PtP",
+    "PtLstart",
+    "PtLend",
+    "PtMstart",
+    "PtMend"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sXneg",
+      "refs": [
+        "PtXstart",
+        "PtOrigin"
+      ]
+    },
+    {
+      "id": "sX",
+      "refs": [
+        "PtOrigin",
+        "PtXend"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sYneg",
+      "refs": [
+        "PtYstart",
+        "PtOrigin"
+      ]
+    },
+    {
+      "id": "sY",
+      "refs": [
+        "PtOrigin",
+        "PtYend"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sL1",
+      "refs": [
+        "PtLstart",
+        "PtA"
+      ]
+    },
+    {
+      "id": "sL2",
+      "refs": [
+        "PtA",
+        "PtP"
+      ]
+    },
+    {
+      "id": "sL3",
+      "refs": [
+        "PtP",
+        "PtB"
+      ]
+    },
+    {
+      "id": "sL4",
+      "refs": [
+        "PtB",
+        "PtLend"
+      ]
+    },
+    {
+      "id": "sM1",
+      "refs": [
+        "PtMstart",
+        "PtC"
+      ]
+    },
+    {
+      "id": "sM2",
+      "refs": [
+        "PtC",
+        "PtD"
+      ]
+    },
+    {
+      "id": "sM3",
+      "refs": [
+        "PtD",
+        "PtP"
+      ]
+    },
+    {
+      "id": "sM4",
+      "refs": [
+        "PtP",
+        "PtMend"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOrigin",
+        "ownerSegment": "sX",
+        "text": "O",
+        "labelAt": "START"
+      },
+      {
+        "id": "lx",
+        "ownerSegment": "sX",
+        "text": "x",
+        "labelAt": "END"
+      },
+      {
+        "id": "ly",
+        "ownerSegment": "sY",
+        "text": "y",
+        "labelAt": "END"
+      },
+      {
+        "id": "ll",
+        "ownerSegment": "sL1",
+        "text": "l",
+        "labelAt": "START"
+      },
+      {
+        "id": "lm",
+        "ownerSegment": "sM4",
+        "text": "m",
+        "labelAt": "END"
+      },
+      {
+        "id": "lA",
+        "ownerSegment": "sL1",
+        "text": "4",
+        "labelAt": "END"
+      },
+      {
+        "id": "lB",
+        "ownerSegment": "sL3",
+        "text": "4",
+        "labelAt": "END"
+      },
+      {
+        "id": "lC",
+        "ownerSegment": "sM1",
+        "text": "-2",
+        "labelAt": "END"
+      },
+      {
+        "id": "lD",
+        "ownerSegment": "sM3",
+        "text": "2",
+        "labelAt": "START"
+      },
+      {
+        "id": "lP",
+        "ownerSegment": "sL2",
+        "text": "P(p, q)",
+        "labelAt": "END"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "PtOrigin",
+    "PtXstart",
+    "PtXend",
+    "PtYstart",
+    "PtYend",
+    "PtA",
+    "PtB",
+    "PtC",
+    "PtD",
+    "PtP",
+    "PtLstart",
+    "PtLend",
+    "PtMstart",
+    "PtMend"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "좌표평면 위에 두 점 (0, 4), (4, 0)을 지나는 직선 l과 두 점 (-2, 0), (0, 2)를 지나는 직선 m, 그리고 두 직선의 교점 P(p, q)를 나타낸 그림이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y가 원점 O에서 만나는 좌표평면이다. 직선 l은 y축의 4와 x축의 4를 지나고, 직선 m은 x축의 -2와 y축의 2를 지난다. 제1사분면에서 두 직선이 만나는 교점에 점 P(p, q)가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 l은 (0, 4)와 (4, 0)을 지난다.",
+    "직선 m은 (-2, 0)와 (0, 2)를 지난다.",
+    "교점은 P(p, q)이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $l$은 두 점 $(0, 4)$, $(4, 0)$을 지나고, 직선 $m$은 두 점 $(-2, 0)$, $(0, 2)$를 지난다. 두 직선 $l$, $m$이 만나는 점을 $P(p, q)$라 할 때, $p + q$의 값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,30 +1,90 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "x^2 - 3*x",
-    "x^2 - 3*x - 4"
-  ],
-  "points": {
-    "P1": [
-      -1,
-      4
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -8,
+      8
     ],
-    "O": [
-      0,
-      0
+    "curves": [
+      {
+        "id": "B",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-3/2",
+          "4"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "A",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-4",
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-3/2",
+          "9/2"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
     ],
-    "P2": [
-      3,
-      0
-    ],
-    "Q1": [
-      0,
-      -4
-    ],
-    "Q2": [
-      3,
-      -4
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "-1",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "0",
+          "y": "-4",
+          "unnamed": true
+        }
+      ]
+    }
   },
-  "caption": "세 점 (-1,4), (0,0), (3,0)을 지나는 포물선 B와 y축으로 -4 평행이동한 포물선 A"
+  "caption": "단면도를 단순화한 좌표평면 위에 두 포물선 A와 B가 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 두 포물선 A와 B가 있고, 포물선 B는 점 (-1, 4), (0, 0), (3, 0)을 지나며 포물선 A는 점 (0, -4), (3, -4)를 지난다.",
+  "newVisualInformation": [
+    "포물선 B가 점 (-1, 4), (0, 0), (3, 0)을 지나고 포물선 A가 두 점 (0, -4), (3, -4)를 지남"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 롤러 보드를 타는 장소의 단면도를 좌표평면에 단순화하여 그려 놓은 것이다. 포물선 $\\mathrm{A}$는 무대이고, 포물선 $\\mathrm{B}$는 보드 판의 곡선이다. 포물선 $\\mathrm{B}$가 세 점 $(-1, 4),\\ (0, 0),\\ (3, 0)$을 지나고, 포물선 $\\mathrm{A}$는 $\\mathrm{B}$와 폭이 같으며 두 점 $(0, -4),\\ (3, -4)$를 지날 때, 두 곡선 $\\mathrm{A},\\ \\mathrm{B}$에 해당하는 이차함수의 식을 각각 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

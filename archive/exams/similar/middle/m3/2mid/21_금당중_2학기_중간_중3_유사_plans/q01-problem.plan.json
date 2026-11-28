@@ -1,29 +1,167 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "arcs": 1,
+        "noLabel": true
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "C",
+        "to": "B",
+        "label": "x",
+        "side": "RIGHT",
+        "style": "BRACE"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "y",
+        "side": "BELOW",
+        "style": "BRACE"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "z",
+        "side": "ABOVE",
+        "style": "BRACE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
         "B",
-        "C"
-      ],
-      "rightAngle": "C"
-    },
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 변 BC의 길이는 x, 변 AC의 길이는 y, 빗변 AB의 길이는 z로 나타낸 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC의 꼭짓점 C에 직각 기호가 표시되어 있고 꼭짓점 A에 각 표시가 되어 있다. 밑변 AC의 길이는 y, 높이 BC의 길이는 x, 빗변 AB의 길이는 z로 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 각 C는 90도이다.",
+    "변 BC는 x, 변 AC는 y, 변 AB는 z이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "label",
-      "target": "BC",
-      "text": "x"
-    },
-    {
-      "type": "label",
-      "target": "AC",
-      "text": "y"
-    },
-    {
-      "type": "label",
-      "target": "AB",
-      "text": "z"
+      "id": "source",
+      "condition": "아래 그림과 같은 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{BC}}=x$, $\\overline{\\text{AC}}=y$, $\\overline{\\text{AB}}=z$일 때, $\\sin A$, $\\cos A$, $\\tan A$가 순서대로 바르게 짝지어진 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

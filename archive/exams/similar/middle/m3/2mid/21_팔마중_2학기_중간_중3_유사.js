@@ -1050,6 +1050,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/21_팔마중_2학기_중간_중3_유사/q23-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

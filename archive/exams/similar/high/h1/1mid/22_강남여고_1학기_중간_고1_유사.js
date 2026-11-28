@@ -455,6 +455,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/22_강남여고_1학기_중간_고1_유사/q11-problem.svg",
     "category": "이차방정식과 이차함수의 관계",
     "standardCourse": "수학(상)",
     "curriculum": "2015",

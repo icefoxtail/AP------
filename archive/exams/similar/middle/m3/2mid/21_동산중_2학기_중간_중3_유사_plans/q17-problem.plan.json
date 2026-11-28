@@ -1,28 +1,148 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1600",
+              "denominator": "99"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
-        "B",
-        "C"
-      ],
-      "rightAngle": "C"
+        "B"
+      ]
     },
     {
-      "type": "label",
-      "target": "AB",
-      "text": "100"
+      "id": "sBC",
+      "refs": [
+        "C",
+        "B"
+      ]
     },
     {
-      "type": "angle",
-      "at": "B",
-      "arms": [
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 68,
+        "label": "68"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "100"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
         "A",
-        "C"
-      ],
-      "text": "68°"
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 빗변 AB의 길이가 100이고 각 B의 크기가 68도인 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 꼭짓점 C는 직각이고 꼭짓점 B의 내각은 68도로 표시되어 있으며 빗변 AB의 길이는 100이다.",
+  "newVisualInformation": [
+    "빗변 AB의 길이가 100이고 각 B의 크기가 68도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=100$, $\\angle\\text{B}=68^\\circ$이다. 다음 삼각비의 표를 이용하여 $\\overline{\\text{AC}}$의 길이를 구하면?\n\n| 각도 | $\\sin$ | $\\cos$ | $\\tan$ |\n| :---: | :---: | :---: | :---: |\n| $68^\\circ$ | $0.9272$ | $0.3746$ | $2.4751$ |\n| $69^\\circ$ | $0.9336$ | $0.3584$ | $2.6051$ |\n| $70^\\circ$ | $0.9397$ | $0.3420$ | $2.7475$ |",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

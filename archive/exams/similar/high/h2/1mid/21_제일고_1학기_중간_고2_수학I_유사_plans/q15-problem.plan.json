@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8/3",
+          "-1/3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1,
+      9
+    ],
+    "viewport": [
+      -1,
+      9,
+      -2,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "16/3",
+        "marker": "NONE"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "8"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "-2",
+          "label": "y=x-2",
+          "labelAt": "END"
+        }
+      ],
+      "points": [
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "4",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "R8",
+          "x": "8",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "이차함수 y=f(x)의 그래프와 직선 y=x-2를 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선 y=f(x)가 원점과 x축 위의 8을 지나고, 직선 y=x-2가 x축 위의 2를 지나며 포물선과 만난다.",
+  "newVisualInformation": [
+    "이차함수의 x절편은 0과 8이고 직선의 x절편은 2이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=f(x)$가 $f(0)=f(8)=0$, $f(2)=4$를 만족시킬 때, 부등식  \n$$\\log_3 f(x) \\le \\log_3(x-2)$$  \n를 만족시키는 모든 자연수 $x$의 개수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
