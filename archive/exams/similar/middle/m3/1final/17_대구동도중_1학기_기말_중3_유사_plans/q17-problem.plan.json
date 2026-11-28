@@ -1,19 +1,18 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-2*x^2 + 4*x - 1",
-  "points": {
-    "A": [
-      1,
-      1
-    ],
-    "C": [
-      0,
-      -1
-    ],
-    "E": [
-      2,
-      -1
-    ]
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve", "viewport":[-1,3,-3,3],
+    "curves":[{"id":"f","kind":"Y_OF_X","coefficients":["-1","4","-2"],"domain":["-1","3"],"label":"y=-2x^2+4x-1"}],
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays":{
+      "points":[{"id":"A","x":"1","y":"1"},{"id":"C","x":"0","y":"-1"},{"id":"E","x":"2","y":"-1"}],
+      "segments":[{"id":"CE","from":"C","to":"E"}]
+    }
   },
-  "caption": "포물선 y=-2x²+4x-1의 꼭짓점 A, y절편 C, 대칭점 E와 x축 교점 B, D"
+  "caption":"포물선의 꼭짓점 A, y축 교점 C, 같은 높이의 점 E와 수평선 CE. x축 교점 B,D는 곡선의 두 교차 위치이다.",
+  "sourceConditions":[
+    {"id":"curve","condition":"y=-2x²+4x-1","mappedTo":"graphPlan.curves[0]"},
+    {"id":"points","condition":"꼭짓점 A, C와 E의 y좌표가 같음","mappedTo":"graphPlan.overlays"}
+  ],
+  "newVisualInformation":["기존 소수점 좌표 대신 함수값으로 확인한 정확한 점과 CE 수평선을 사용한다."]
 }

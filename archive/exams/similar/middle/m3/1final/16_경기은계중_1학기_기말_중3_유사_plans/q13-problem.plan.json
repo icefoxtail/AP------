@@ -1,5 +1,12 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "line": "-x + 2",
-  "caption": "기울기가 음수이고 y절편이 양수인 일차함수 y=ax+b의 그래프"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve", "viewport":[-3,5,-4,6],
+    "curves":[{"id":"line","kind":"LINE","coefficients":["2","-1"],"domain":["-3","5"],"hideLabel":true}],
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays":{"points":[{"id":"J","x":"0","y":"2","unnamed":true}]}
+  },
+  "caption":"기울기가 음수이고 y절편이 양수인 일차함수의 개형 예시. 숫자는 예시 배치용이며 표시하지 않는다.",
+  "sourceConditions":[{"id":"signs","condition":"a<0, b>0인 일차함수 y=ax+b의 그래프","mappedTo":"graphPlan.curves[0]"}],
+  "newVisualInformation":["문제의 주어진 직선 방향과 양의 y절편만 시각화하고 정답인 이차함수 개형은 그리지 않는다."]
 }

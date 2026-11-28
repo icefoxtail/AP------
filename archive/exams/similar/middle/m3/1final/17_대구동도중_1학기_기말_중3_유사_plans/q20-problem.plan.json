@@ -1,26 +1,26 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "0.5*x^2",
-    "-x^2"
-  ],
-  "points": {
-    "A": [
-      1.33,
-      0.89
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve", "viewport":[-3,3,-3,3],
+    "curves":[
+      {"id":"upper","kind":"Y_OF_X","coefficients":["0","0","1/2"],"domain":["-2","2"],"hideLabel":true,"color":"BLUE"},
+      {"id":"lower","kind":"Y_OF_X","coefficients":["0","0","-1"],"domain":["-2","2"],"label":"y=-x^2","color":"WARM"}
     ],
-    "B": [
-      -1.33,
-      0.89
-    ],
-    "C": [
-      -1.33,
-      -1.78
-    ],
-    "D": [
-      1.33,
-      -1.78
-    ]
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays":{
+      "points":[
+        {"id":"A","x":"4/3","y":"8/9"},{"id":"B","x":"-4/3","y":"8/9"},
+        {"id":"C","x":"-4/3","y":"-16/9"},{"id":"D","x":"4/3","y":"-16/9"},
+        {"id":"E","x":"4/3","y":"0"}
+      ],
+      "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}]
+    }
   },
-  "caption": "두 포물선 y=ax²과 y=-x² 사이에 내접한 정사각형 ABCD"
+  "caption":"두 포물선 사이의 정사각형 ABCD와 AD의 x축 교점 E. 미지 계수 a와 정사각형의 넓이는 쓰지 않는다.",
+  "sourceConditions":[
+    {"id":"parabolas","condition":"A,B는 y=ax², C,D는 y=-x², a>0","mappedTo":"graphPlan.curves"},
+    {"id":"square","condition":"AB∥CD∥x축, BC∥AD∥y축, ABCD는 정사각형","mappedTo":"graphPlan.overlays.segments"},
+    {"id":"ratio","condition":"E=AD와 x축의 교점, AE:ED=1:2","mappedTo":"graphPlan.overlays.points[4]"}
+  ],
+  "newVisualInformation":["소수점 근삿값 대신 4/3, 8/9, -16/9의 정확한 내부 점 좌표를 사용하되 문제에 정답은 노출하지 않는다."]
 }
