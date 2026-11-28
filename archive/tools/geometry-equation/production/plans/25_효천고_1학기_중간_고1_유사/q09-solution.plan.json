@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"이 삼각형의 둘레의 길이가 $18$일 때",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","H"],"hiddenPointNames":["H"],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sCH","refs":["C","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["C","H","B"]}],
+  "planeMarks":{"equalLengths":[{"id":"eSides","count":1,"segments":["sAB","sAC","sBC"]}],"dimensions":[{"id":"dAB","from":"A","to":"B","label":"6","side":"BELOW","factRole":"DERIVED_INTERMEDIATE"}],"expressionLabels":[{"id":"h","ownerSegment":"sCH","text":"3sqrt(3)"}]},
+  "caption":"세 변이 같은 정삼각형에서 한 변 6, 높이 3√3, 넓이 9√3을 나타낸다.",
+  "accessibilityDescription":"세 변이 서로 같은 길이인 정삼각형 ABC에서 밑변 AB가 6이고 C에서 AB의 중점으로 내린 높이는 3√3이며 직각 표시가 있다.",
+  "sourceConditions":[{"id":"equal","condition":"a³+b³+c³=3abc와 둘레 양수에서 a=b=c","mappedTo":["planeMarks.equalLengths"]},{"id":"perimeter","condition":"둘레 18이므로 각 변 6","mappedTo":["planeMarks.dimensions"]},{"id":"altitude","condition":"높이 3√3과 직각","mappedTo":["displaySegments[3]","rightAngles","planeMarks.expressionLabels"]}],
+  "newVisualInformation":["삼차식 항등식으로 얻은 세 변의 동등성과 넓이에 쓰이는 수선 높이를 실제 선·표식으로 보여 준다."]
+}

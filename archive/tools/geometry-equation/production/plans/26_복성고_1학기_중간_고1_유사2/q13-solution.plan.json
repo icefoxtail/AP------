@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"두 영점의 중점이 축이므로",
+  "graphPlan":{"family":"polynomial","coefficients":["48","-16","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[2,14],"viewport":[1,15,-20,25],"requiredPoints":[{"id":"V","x":8,"y":-16},{"id":"A","x":4,"y":0},{"id":"B","x":12,"y":0},{"id":"C","x":3,"y":9}],"axisTickValues":{"x":[3,4,8,12],"y":[-16,9]}},
+  "caption":"y=(x−8)²−16은 양의 두 영점 4,12를 갖고 f(3)=9이므로 두 근의 합은 16이다.",
+  "accessibilityDescription":"꼭짓점 (8,−16)과 x절편 (4,0),(12,0), 주어진 함수값을 갖는 점 (3,9)을 실제 포물선 위에 표시하였다.",
+  "sourceConditions":[{"id":"minimum","condition":"두 영점 중점에서 함숫값 −16","mappedTo":["graphPlan.coefficients","graphPlan.requiredPoints[0]"]},{"id":"f3","condition":"f(3)=9","mappedTo":["graphPlan.requiredPoints[3]"]},{"id":"positive","condition":"두 영점 4,12가 양수","mappedTo":["graphPlan.requiredPoints[1]","graphPlan.requiredPoints[2]"]}],
+  "newVisualInformation":["m=−2 후보의 음수 영점을 배제하는 이유를 실제 양의 두 절편과 축 x=8의 관계로 확인한다."]
+}

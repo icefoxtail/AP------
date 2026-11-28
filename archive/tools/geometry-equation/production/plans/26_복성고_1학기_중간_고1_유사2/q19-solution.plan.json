@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"원이 두 변 $AB$, $AD$에 접하고",
+  "conic":{"kind":"CIRCLE","center":["9-2*sqrt(10)","2*sqrt(10)-4"],"rSquared":"121-36*sqrt(10)"},
+  "points":[{"id":"A","kind":"POINT","x":"0","y":"5"},{"id":"B","kind":"POINT","x":"0","y":"0"},{"id":"C","kind":"POINT","x":"5","y":"0"},{"id":"D","kind":"POINT","x":"5","y":"5"},{"id":"P","kind":"ON_CONIC","y":"0","branch":"NEG"},{"id":"Q","kind":"ON_CONIC","y":"0","branch":"POS"},{"id":"M","kind":"CENTER","label":false},{"id":"T","kind":"ON_CONIC","x":"9-2*sqrt(10)","branch":"POS","label":false}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A","label":"5"},{"id":"BQ","from":"B","to":"Q","label":"4"},{"id":"MT","from":"M","to":"T","label":"r","dashed":true}],
+  "caption":"원 중심 (r,5−r), BQ=4에서 r=9−2√10이므로 원과 정사각형의 접점·교점이 정해진다.",
+  "accessibilityDescription":"한 변 5인 정사각형과 두 변 AB,AD에 접하는 원에서 중심의 위치, 반지름 9−2√10, BC 위 두 교점 P,Q 및 BQ=4가 표시된다.",
+  "sourceConditions":[{"id":"square","condition":"한 변 5인 정사각형과 BC 위 Q(4,0)","mappedTo":["points[0]","points[1]","points[2]","points[3]","points[5]","segments[4]"]},{"id":"center","condition":"두 변 접선 조건에서 중심 (r,5−r)","mappedTo":["conic","points[6]","points[7]"]},{"id":"r","condition":"Q가 원 위이고 0<r<5에서 r=9−2√10","mappedTo":["conic.rSquared","segments[5]"]}],
+  "newVisualInformation":["원 중심과 접점, 제곱식으로 구한 반지름의 실제 값, BQ=4를 하나의 기하로 검산한다."]
+}
