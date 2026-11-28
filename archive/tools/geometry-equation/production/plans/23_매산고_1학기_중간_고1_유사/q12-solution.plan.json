@@ -1,0 +1,7 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["5","-4","1"],"axisVariable":"t","sourceDomain":{"kind":"INTERVAL","range":["1","5"],"states":["CLOSED","CLOSED"]},"domain":[1,5],"viewport":[0,6,0,12],"requiredPoints":[{"id":"L","x":1,"y":2},{"id":"V","x":2,"y":1},{"id":"R","x":5,"y":10}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"t=(x−1)²+1의 실제 치역은 [1,5]이고 y=(t−2)²+1은 t=2에서 최솟값 1, t=5에서 최댓값 10이다.",
+  "sourceConditions":[{"id":"substitution","condition":"−1≤x≤3에서 1≤t=(x−1)²+1≤5","mappedTo":"graphPlan.sourceDomain"},{"id":"quadratic","condition":"y=t²−4t+5","mappedTo":["graphPlan.coefficients","graphPlan.axisVariable"]},{"id":"extrema","condition":"(t,y)=(1,2),(2,1),(5,10)","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["기존 해설 SVG에서 x로 잘못 읽히는 가로축을 실제 치환 변수 t로 그린다."]
+}

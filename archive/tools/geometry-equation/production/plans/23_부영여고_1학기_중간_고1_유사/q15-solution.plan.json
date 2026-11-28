@@ -1,0 +1,7 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,5,-1,52],"curves":[{"id":"E","kind":"Y_OF_X","coefficients":["48","-12","3"],"domain":["0","4"],"color":"BLUE"}],"overlays":{"points":[{"id":"L","x":"0","y":"48"},{"id":"V","x":"2","y":"36"},{"id":"R","x":"4","y":"48"}]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"P가 움직일 수 있는 a∈[0,4]에서 3a²+6b=3(a−2)²+36은 a=2에서 최솟값 36을 갖는다.",
+  "sourceConditions":[{"id":"domain","condition":"P가 A부터 B까지 이동: 0≤a≤4","mappedTo":"graphPlan.curves[0].domain"},{"id":"function","condition":"b=−2a+8 ⇒ 3a²+6b=3a²−12a+48","mappedTo":"graphPlan.curves[0].coefficients"},{"id":"minimum","condition":"최소점 (a,y)=(2,36), 끝점에서 값48","mappedTo":"graphPlan.overlays.points"}],
+  "newVisualInformation":["P의 이동 구간에 대응하는 목적함수의 닫힌 정의역과 꼭짓점 최솟값을 그린다."]
+}

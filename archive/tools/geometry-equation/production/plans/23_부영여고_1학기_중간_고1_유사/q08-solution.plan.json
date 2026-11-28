@@ -1,0 +1,7 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-2","-4","1"],"sourceDomain":{"kind":"INTERVAL","range":["0","5"],"states":["CLOSED","CLOSED"]},"domain":[0,5],"viewport":[-1,6,-8,5],"requiredPoints":[{"id":"L","x":0,"y":-2},{"id":"V","x":2,"y":-6},{"id":"R","x":5,"y":3}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"0≤x≤5에서 y=(x−2)²−6의 최솟값은 꼭짓점 −6, 최댓값은 오른쪽 끝점의 3이다.",
+  "sourceConditions":[{"id":"given","condition":"y=x²−4x−2, 정의역 [0,5]","mappedTo":["graphPlan.coefficients","graphPlan.sourceDomain"]},{"id":"extrema","condition":"(0,−2),(2,−6),(5,3), 최소−6 최대3","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["꼭짓점과 두 닫힌 끝점을 같은 좌표축에 놓아 구간 최댓값의 위치를 보여 준다."]
+}

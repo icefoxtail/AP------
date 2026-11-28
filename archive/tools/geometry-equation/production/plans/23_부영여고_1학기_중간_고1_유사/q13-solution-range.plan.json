@@ -1,0 +1,8 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"k","rows":[{"kind":"SET","label":"교점 조건의 공통범위","pieces":[{"lo":{"value":"-2","state":"CLOSED"},"hi":{"value":"2","state":"OPEN"}}],"integerPoints":true}]},
+  "numberLineCaption":{"text":"−2≤k<2의 정수 4개"},
+  "caption":"첫 포물선과는 만나고 둘째 포물선과는 만나지 않는 범위는 −2≤k<2이다. −2는 포함하고 2는 제외한다.",
+  "sourceConditions":[{"id":"boundary","condition":"k≥−2와 k<2의 교집합 [−2,2)","mappedTo":"numberLine.rows[0].pieces[0]"},{"id":"integers","condition":"정수 k는 −2,−1,0,1의 네 개","mappedTo":"numberLine.rows[0].integerPoints"}],
+  "newVisualInformation":["두 경계의 개폐와 그 안의 정수 네 개를 같은 수직선에 그린다."]
+}

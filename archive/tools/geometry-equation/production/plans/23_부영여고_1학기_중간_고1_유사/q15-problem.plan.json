@@ -1,0 +1,8 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,5,-1,9],"curves":[{"id":"segment","kind":"LINE","coefficients":["8","-2"],"domain":["0","4"],"label":"y=-2x+8"}],"overlays":{"points":[{"id":"A","x":"0","y":"8"},{"id":"B","x":"4","y":"0"},{"id":"P","x":"1","y":"6"}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames":{"A":"A","B":"B","P":"P"},
+  "caption":"주어진 선분 A(0,8)~B(4,0) 위를 움직이는 P의 모식도이다. P의 내부 위치는 임의이며 최솟값을 주는 a값을 표시하지 않는다.",
+  "sourceConditions":[{"id":"segment","condition":"A(0,8), B(4,0)을 잇는 y=−2x+8의 닫힌 선분","mappedTo":["graphPlan.curves[0]","graphPlan.overlays.points[0]","graphPlan.overlays.points[1]"]},{"id":"moving","condition":"P(a,b)는 선분 내부 임의점; 예시 화면 위치 (1,6)은 해를 뜻하지 않는다","mappedTo":"graphPlan.overlays.points[2]"}],
+  "newVisualInformation":["움직임의 시작·끝과 P의 소속 선분만 그리며 a=2와 정답 36은 숨긴다."]
+}
