@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "36",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "T"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "PT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A"
+  ],
+  "hiddenPointStyle": "DOT",
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcBA",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lPT",
+        "ownerSegment": "PT",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBP",
+        "ownerSegment": "BP",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "반원의 지름과 그 연장선 위의 한 점에서 반원에 그은 접선이 있고, 접선의 길이 12센티미터와 연장선 바깥 부분 6센티미터가 표시되어 있다.",
+  "accessibilityDescription": "반원의 지름이 가로로 그려져 있고, 지름을 연장한 선 위에 한 점이 있다. 그 점에서 반원에 접선을 그었고 접점에 직각 표시가 있으며, 접선의 길이 12센티미터와 연장 부분 6센티미터가 적혀 있다.",
+  "newVisualInformation": [
+    "반원과 지름",
+    "접선과 직각 표시",
+    "길이 12센티미터, 6센티미터"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "원문 도형 O의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "원문 도형 A의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "원문 도형 B의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "원문 도형 P의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "원문 도형 T의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "원문 도형 circ의 CIRCLE_CENTER_RADIUS 기하 작도",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "원문 displayPoints 표식 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f8",
+      "condition": "원문 displayPoints 표식 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f9",
+      "condition": "원문 displayPoints 표식 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f10",
+      "condition": "원문 displayPoints 표식 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f11",
+      "condition": "원문 displayPoints 표식 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f12",
+      "condition": "원문 displaySegments 표식 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f13",
+      "condition": "원문 displaySegments 표식 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f14",
+      "condition": "원문 displaySegments 표식 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f15",
+      "condition": "원문 displaySegments 표식 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f16",
+      "condition": "원문 rightAngles 표식 1",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "f17",
+      "condition": "원문 기하 arcs 표시 1",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "f18",
+      "condition": "원문 기하 expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f19",
+      "condition": "원문 기하 expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "sourceQuote": "[서술형 1] 다음 그림과 같이 선분 $PT$는 반원 $O$의 접"
+}
