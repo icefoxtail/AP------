@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["25/4", "5", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-6, 1],
+    "viewport": [-6, 1, -2, 8],
+    "requiredPoints": [{"id": "T", "x": -2.5, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "해설에서 k=7/6을 구한 뒤 a=1을 대입한 예시로, 포물선 y=(x+5/2)²이 x축에 한 점에서 접한다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 T는 x축의 -5/2 지점에 있고, 이 점에서 x축과 접한다. a=1인 예시다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "모든 a에서 접한다는 조건으로 7-6k=0, 따라서 k=7/6", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c2", "condition": "k=7/6, a=1인 사례에서 y=x²+5x+25/4=(x+5/2)²", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c3", "condition": "x축과의 접점은 (-5/2,0)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["매개변수 a의 한 사례를 통해 판별식이 0일 때 꼭짓점이 x축에 닿는 이유를 시각화한다. 이 예시 하나가 모든 a에 대한 증명은 아니다."]
+}

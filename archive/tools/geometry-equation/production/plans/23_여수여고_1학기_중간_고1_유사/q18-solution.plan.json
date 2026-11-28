@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {"kind": "SET", "label": "실근 조건", "pieces": [{"lo": {"value": "3", "state": "CLOSED"}, "hi": null}]},
+      {"kind": "POINTS", "label": "대칭축 비교", "band": false, "points": [
+        {"id": "V", "value": "3/2", "hideName": true},
+        {"id": "E", "value": "3", "hideName": true}
+      ]}
+    ]
+  },
+  "numberLineCaption": {"text": "허용 구간과 대칭축"},
+  "caption": "실근 조건으로 k≥3이고, 이차식 12(k−3/2)²−27의 대칭축 k=3/2는 허용 구간 왼쪽에 있다. 따라서 왼쪽 경계 k=3에서 최솟값을 얻는다.",
+  "accessibilityDescription": "수직선 위에서 k≥3인 구간은 오른쪽으로 뻗고, 이차식의 대칭축 위치 3/2은 구간의 시작 3보다 왼쪽에 있다.",
+  "sourceConditions": [
+    {"id": "domain", "condition": "판별식 D/4=k−3≥0에서 k≥3", "mappedTo": "numberLine.rows[0].pieces[0]"},
+    {"id": "vertex", "condition": "12k²−36k=12(k−3/2)²−27의 대칭축 k=3/2", "mappedTo": "numberLine.rows[1].points[0]"},
+    {"id": "boundary", "condition": "허용 구간 시작 k=3", "mappedTo": "numberLine.rows[1].points[1]"}
+  ],
+  "newVisualInformation": ["포물선의 대칭축이 실근 조건의 허용 구간 밖에 있어 구간 왼쪽 경계에서 최소가 발생함을 위치 관계로 설명한다."]
+}

@@ -1,0 +1,31 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["-6", "-1", "1"]},
+      {"coefficients": ["6", "1", "-1"]},
+      {"coefficients": ["-6", "-1", "1"]}
+    ],
+    "breakpoints": [{"x": "-2", "y": "0"}, {"x": "3", "y": "0"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "requiredPoints": [
+      {"id": "L", "x": "-2", "y": "0", "marker": "NONE"},
+      {"id": "R", "x": "3", "y": "0", "marker": "NONE"},
+      {"id": "V", "x": "1/2", "y": "25/4", "marker": "NONE"}
+    ],
+    "referenceLines": [
+      {"id": "sample", "slope": "1", "intercept": "4", "intersectionX": ["1-sqrt(11)", "-sqrt(2)", "sqrt(2)", "1+sqrt(11)"]}
+    ],
+    "axisTickValues": {"x": ["-2", "3"], "y": []}
+  },
+  "caption": "2<k<6의 내부 사례인 k=4에서 직선 y=x+4는 세 포물선 조각과 서로 다른 네 점에서 만난다.",
+  "accessibilityDescription": "바깥쪽은 위로, 가운데는 아래로 휘는 세 포물선 조각과 기울기 1인 직선 y=x+4가 교차한다. 바깥쪽 각각 한 점과 가운데 두 점에서 총 네 교점이 보인다.",
+  "sourceConditions": [
+    {"id": "piecewise", "condition": "x<-2 또는 x>3에서 f(x)=x²-x-6, -2≤x≤3에서 f(x)=-x²+x+6", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"]},
+    {"id": "sample", "condition": "풀이의 범위 2<k<6에서 k=4를 표본으로 택해 y=x+4를 그린다", "mappedTo": "graphPlan.referenceLines[0]"},
+    {"id": "intersections", "condition": "바깥쪽 x=1±sqrt(11), 안쪽 x=±sqrt(2)가 각각 허용 조각에 속한다", "mappedTo": "graphPlan.referenceLines[0].intersectionX"}
+  ],
+  "newVisualInformation": ["k=4일 때 왼쪽·오른쪽 바깥 구간에서 하나씩, 가운데 구간에서 둘의 총 네 교점이 생기는 구조를 보여 준다."]
+}
