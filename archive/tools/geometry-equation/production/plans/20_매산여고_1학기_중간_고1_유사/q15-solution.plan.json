@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "양의 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "a≤29/8",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "29/8",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "자연수 후보",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "판별식이 0 이상인 a의 자연수 범위"
+  },
+  "caption": "D=29−8a≥0에서 a≤29/8이다. a는 자연수이므로 0을 제외하고 1,2,3의 세 값이다.",
+  "accessibilityDescription": "수직선에서 0은 열린 끝점이고 29/8은 포함되는 오른쪽 끝점이다. 그 사이 자연수 1,2,3이 점으로 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "limit",
+      "condition": "D=5²−4(2a−1)=29−8a≥0에서 a≤29/8",
+      "mappedTo": "numberLine.rows[1].pieces[0].hi"
+    },
+    {
+      "id": "natural",
+      "condition": "a는 양의 자연수이므로 0 제외",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "three",
+      "condition": "가능한 자연수는 1,2,3",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "실수 판별식의 상한 29/8과 자연수 조건에서 살아남는 세 정수점을 구별한다."
+  ]
+}

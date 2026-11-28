@@ -1,0 +1,81 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "10",
+      "-5/8"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        16
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      16
+    ],
+    "viewport": [
+      0,
+      16,
+      0,
+      45
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 8,
+        "y": 40
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "y": [
+        10,
+        20,
+        30,
+        40
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "x"
+  },
+  "caption": "닮음비 y/(16−x)=5/8에서 넓이는 S(x)=−(5/8)x²+10x, 0<x<16이다. 꼭짓점 (8,40)에서 최대이며 높이 y=5여서 둘레는 26이다.",
+  "accessibilityDescription": "가로축은 직사각형 가로 x(길이), 세로축은 넓이 S이다. 열린 정의역 0<x<16의 아래로 열린 포물선이 x=8에서 높이 40을 찍는다.",
+  "sourceConditions": [
+    {
+      "id": "parabola",
+      "condition": "S=x(10−5x/8)=−(5/8)x²+10x",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "직사각형이 삼각형 내부에 있으므로 0<x<16",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "maximum",
+      "condition": "S=−(5/8)(x−8)²+40의 꼭짓점은 (8,40)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "내접한 직사각형의 가로 폭과 면적 사이의 이차함수 및 최댓점을 축 단위와 함께 표시한다."
+  ]
+}

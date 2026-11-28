@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "h",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "LEFT"
+      },
+      {
+        "id": "w",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "B",
+        "to": "C",
+        "label": "16",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 550,
+    "height": 375
+  },
+  "caption": "밑변 16, 높이 10인 직각삼각형 ABC 안에 직사각형 EBFD가 내접한 개념도이다. 내부 직사각형은 최대 넓이 위치가 아닌 임의의 배치이며 해답 치수는 표시하지 않았다.",
+  "accessibilityDescription": "B가 직각인 삼각형 ABC의 밑변 BC=16, 높이 AB=10이다. 직사각형 EBFD는 B를 공유하며 D가 빗변 AC 위에 있지만 내부 길이와 최적값은 표시하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "triangle",
+      "condition": "원문 직각삼각형 ABC의 밑변 BC=16, 높이 AB=10",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]",
+        "planeMarks.dimensions"
+      ]
+    },
+    {
+      "id": "rectangle",
+      "condition": "E는 AB 위, F는 BC 위, D는 빗변 AC 위이고 EBFD는 직사각형",
+      "mappedTo": [
+        "mathPlan.nodes[3]",
+        "mathPlan.nodes[4]",
+        "mathPlan.nodes[5]",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "noleak",
+      "condition": "임의의 예시 F(4,0), E(0,15/2), D(4,15/2)는 AC 위에 있으나 최대 넓이의 x=8인 점이 아님",
+      "mappedTo": "mathPlan.nodes[5]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문이 전제한 내접 직사각형의 꼭짓점 대응과 삼각형의 두 치수를 시각화한다. 최댓값을 암시하는 중점 배치는 쓰지 않는다."
+  ]
+}

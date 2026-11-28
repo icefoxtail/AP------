@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "하한",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "상한",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "정수 후보",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "첫째 부등식의 정수 범위"
+  },
+  "caption": "kp=−3, α=6, β=−3이므로 첫째 부등식은 −3<x<6이다. 정수 후보 −2부터 5까지 8개 중 두 번째 부등식이 n+1 한 개를 제외해야 7개가 된다.",
+  "accessibilityDescription": "수직선의 열린 경계 −3과 6 사이에 −2, −1, 0, 1, 2, 3, 4, 5 여덟 정수점이 표시된다. 두 번째 부등식은 그중 n+1 한 점을 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "range",
+      "condition": "근 α=6,β=−3과 kp=−3으로 −3(x−6)(x+3)>0, 즉 −3<x<6",
+      "mappedTo": ["numberLine.rows[0].pieces[0].lo", "numberLine.rows[1].pieces[0].hi"]
+    },
+    {
+      "id": "eight",
+      "condition": "첫째 부등식의 정수 후보 x=−2,…,5는 8개",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    },
+    {
+      "id": "remove",
+      "condition": "둘째 부등식 (x−n)(x−n−2)≥0이 x=n+1 하나를 제외함; 도식은 제외 전 후보만 표시",
+      "mappedTo": "numberLine.rows[2].label"
+    }
+  ],
+  "newVisualInformation": [
+    "세 근으로 환원한 첫 부등식의 열린 양 끝과 제외 전 여덟 정수 후보를 시각적으로 구분한다."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "6",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -6,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "k=5에서 둘째 포물선은 y=−x²+6x−5=−(x−1)(x−5)이며 x축과 1, 5에서 서로 다르게 만난다.",
+  "accessibilityDescription": "아래로 열린 포물선이 x축과 (1,0), (5,0)에서 만나고 꼭짓점은 (3,4)이다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "둘째 함수에 k=5를 대입하면 −x²+6x−5",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "cross",
+      "condition": "D₂/4=k−1=4>0이고 서로 다른 두 근은 1과 5",
+      "mappedTo": [
+        "graphPlan.requiredPoints[0]",
+        "graphPlan.requiredPoints[2]"
+      ]
+    },
+    {
+      "id": "vertex",
+      "condition": "y=−(x−3)²+4",
+      "mappedTo": "graphPlan.requiredPoints[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 곡선의 접함과 대비되는 둘째 곡선의 서로 다른 두 x절편을 보여 준다."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "하한",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "상한",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "14",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "가능한 정수 a",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "2<a<14의 정수해"
+  },
+  "caption": "(a−2)(a−14)<0이므로 2<a<14이다. 2와 14는 포함하지 않고 정수 3부터 13까지이며 최댓값은 13이다.",
+  "accessibilityDescription": "수직선에서 2와 14가 열린 끝점으로 표시되고, 그 안의 정수 3, 4, …, 13이 정수점으로 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "range",
+      "condition": "3x²+(a−2)x+a−2>0가 모든 x에서 성립하려면 D=(a−2)(a−14)<0",
+      "mappedTo": ["numberLine.rows[0].pieces[0].lo", "numberLine.rows[1].pieces[0].hi"]
+    },
+    {
+      "id": "integers",
+      "condition": "정수 a는 3부터 13까지",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식의 두 경계값을 열린 점으로, 가능한 정수들의 범위를 분리하여 표시한다."
+  ]
+}

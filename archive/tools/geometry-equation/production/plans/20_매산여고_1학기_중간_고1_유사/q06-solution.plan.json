@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "a",
+        "ownerSegment": "sBC",
+        "text": "a"
+      },
+      {
+        "id": "b",
+        "ownerSegment": "sCA",
+        "text": "b"
+      },
+      {
+        "id": "c",
+        "ownerSegment": "sAB",
+        "text": "c"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 510,
+    "height": 360
+  },
+  "caption": "주어진 항등식을 (b−c)[a²+(b+c)a+b²+bc+c²]=0으로 인수분해하면 b=c이다. 그림의 좌표는 이등변 관계의 예시이며 실제 변 길이는 주어지지 않았다.",
+  "accessibilityDescription": "A를 꼭대기로 둔 이등변삼각형 ABC에서 밑변 BC는 a, 양옆 변 CA와 AB는 각각 b, c로 표시되고 b=c이다.",
+  "sourceConditions": [
+    {
+      "id": "factor",
+      "condition": "a,b,c>0에서 양수 인수에 의해 b−c=0",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "example",
+      "condition": "대표 좌표 A(0,4),B(−3,0),C(3,0)는 b=c를 만족하지만 원문이 정한 수치 길이가 아니다",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "b와 c가 두 빗변에 대응하여 같은 길이라는 이등변 구조를 보여 준다."
+  ]
+}

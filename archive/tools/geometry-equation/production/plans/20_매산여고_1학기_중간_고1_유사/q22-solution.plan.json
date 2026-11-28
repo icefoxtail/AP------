@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "16",
+      "-2"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        8
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      0,
+      8,
+      0,
+      36
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 32
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "y": [
+        10,
+        20,
+        30
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "x"
+  },
+  "caption": "높이 x에서 폭은 16−2x이고 면적 S=x(16−2x)=−2(x−4)²+32이다. 0<x<8에서 x=4cm일 때 최대 32cm²이다.",
+  "accessibilityDescription": "가로축은 물받이 높이 x(cm), 세로축은 단면 넓이 S(cm²)이며 열린 구간 0<x<8의 포물선이 (4,32)에서 최고다.",
+  "sourceConditions": [
+    {
+      "id": "area",
+      "condition": "S=x(16−2x)=−2x²+16x",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "두 측면 높이가 양수이고 바닥 폭도 양수이므로 0<x<8",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "vertex",
+      "condition": "S=−2(x−4)²+32의 꼭짓점 (4,32)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "물받이 높이와 단면적이 서로 다른 단위임을 축으로 표시하고 최대 면적을 만드는 높이를 점으로 표시한다."
+  ]
+}

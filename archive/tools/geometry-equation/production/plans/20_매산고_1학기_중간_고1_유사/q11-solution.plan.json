@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "la",
+        "ownerSegment": "sAB",
+        "text": "a"
+      },
+      {
+        "id": "lb",
+        "ownerSegment": "sBC",
+        "text": "b"
+      },
+      {
+        "id": "lc",
+        "ownerSegment": "sCA",
+        "text": "c"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 390
+  },
+  "caption": "등식에서 a²+b²=c²를 얻으므로 c가 빗변이다. 직각이등변삼각형의 넓이가 18이어서 a=b=6, c=6√2이다.",
+  "accessibilityDescription": "B가 직각인 이등변삼각형 ABC에서 AB=a=6, BC=b=6, CA=c=6√2이다.",
+  "sourceConditions": [
+    {
+      "id": "legs",
+      "condition": "원문의 등식으로 a²+b²=c², 직각이등변의 두 직각변 a=b",
+      "mappedTo": [
+        "planeMarks.expressionLabels",
+        "rightAngles[0]"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "(1/2)ab=18, a=b=6",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "hypotenuse",
+      "condition": "c=√(6²+6²)=6√2",
+      "mappedTo": "displaySegments[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "등식에서 추론한 빗변과 서로 같은 두 직각변의 역할을 라벨 및 직각 기호로 표시한다."
+  ]
+}

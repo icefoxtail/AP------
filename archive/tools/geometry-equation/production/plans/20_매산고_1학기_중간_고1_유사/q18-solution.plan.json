@@ -1,0 +1,163 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "base",
+        "ownerSegment": "sOB",
+        "text": "6"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "sBC",
+        "text": "12"
+      },
+      {
+        "id": "slope",
+        "ownerSegment": "sCO",
+        "text": "y=2x"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 410
+  },
+  "caption": "공통 접선은 y=0과 y=2x이다. 여기에 x=6을 더하면 O(0,0), B(6,0), C(6,12)의 직각삼각형이 생겨 넓이는 36이다.",
+  "accessibilityDescription": "두 직선 y=0, y=2x와 세로선 x=6으로 둘러싸인 직각삼각형의 밑변 6, 높이 12가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "lines",
+      "condition": "k에 무관한 접선 조건에서 기울기 m=0 또는 2, 절편 b=0",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "vertical",
+      "condition": "수직 경계 x=6에서 y=2x의 높이는 12",
+      "mappedTo": [
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "직각삼각형의 넓이는 6·12/2=36",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 공통 접선과 수직 경계가 만드는 닫힌 삼각형의 밑변·높이 관계를 나타낸다."
+  ]
+}

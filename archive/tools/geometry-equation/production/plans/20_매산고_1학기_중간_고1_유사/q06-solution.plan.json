@@ -1,0 +1,76 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      3
+    ],
+    "viewport": [
+      -5,
+      4,
+      -5,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 0,
+        "y": -3
+      },
+      {
+        "id": "V",
+        "x": -1,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "-3"
+        }
+      ]
+    }
+  },
+  "caption": "k에 무관한 접선 조건에서 a=0, b=3이다. k=0을 대표로 택하면 포물선 y=x²+2x−3은 직선 y=2x−3에 T(0,−3)에서 접한다.",
+  "accessibilityDescription": "k=0인 포물선과 고정된 직선이 점 T(0,−3)에서 접하며 포물선 꼭짓점은 (−1,−4)이다.",
+  "sourceConditions": [
+    {
+      "id": "coeff",
+      "condition": "D=4ak+a²+4b−12=0이 모든 k에 대해 성립하여 a=0,b=3; 대표 k=0에서 y=x²+2x−3",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "line",
+      "condition": "발문의 고정 직선은 y=2x−3",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "contact",
+      "condition": "k=0을 택한 예시 접점은 (0,−3)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "vertex",
+      "condition": "대표 포물선의 꼭짓점은 (−1,−4)",
+      "mappedTo": "graphPlan.requiredPoints[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "임의의 k에서 유지되는 접선 관계를 k=0의 검산 가능한 대표 포물선으로 시각화한다."
+  ]
+}

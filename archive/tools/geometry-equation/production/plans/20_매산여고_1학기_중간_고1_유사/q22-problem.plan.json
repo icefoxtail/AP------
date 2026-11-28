@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "height",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "B",
+        "label": "x",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "width",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "B",
+        "to": "C",
+        "label": "16-2x",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 320
+  },
+  "caption": "폭 16cm인 철판의 양끝을 같은 높이 x만큼 굽힌 물받이 단면의 개념도이다. 세 변은 높이 x, 바닥 폭 16−2x, 높이 x이고 최대 넓이를 만드는 수치는 표시하지 않았다.",
+  "accessibilityDescription": "윗면이 열린 U자 모양 물받이 단면에서 왼쪽 세로 높이 x와 가로 바닥 폭 16−2x를 치수선으로 나타낸다. 두 아래 모서리는 직각이다.",
+  "sourceConditions": [
+    {
+      "id": "sheet",
+      "condition": "가로 폭 16cm인 철판에서 양쪽을 각각 x만큼 굽히므로 남은 바닥 폭은 16−2x",
+      "mappedTo": "planeMarks.dimensions[1]"
+    },
+    {
+      "id": "height",
+      "condition": "두 측면의 높이는 동일한 x, 미정이므로 수치 표시하지 않음",
+      "mappedTo": [
+        "planeMarks.dimensions[0]",
+        "mathPlan.nodes"
+      ]
+    },
+    {
+      "id": "cross",
+      "condition": "원문 단면은 윗면이 열려 있고 아래 두 각은 직각",
+      "mappedTo": [
+        "displaySegments",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "철판 16cm가 두 측면 x와 바닥 폭 16−2x로 나누어진다는 단면 구조를 표시한다. 미지 최적 높이는 노출하지 않는다."
+  ]
+}
