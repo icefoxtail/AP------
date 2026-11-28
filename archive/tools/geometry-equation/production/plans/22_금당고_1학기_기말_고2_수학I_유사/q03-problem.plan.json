@@ -1,0 +1,22 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "6"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "expression", "op": "mul", "args": [{"kind": "rational", "numerator": "10", "denominator": "3"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "2"}]}]}, {"kind": "rational", "numerator": "5", "denominator": "3"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C"],
+  "displaySegments": [{"id": "AB", "refs": ["A", "B"]}, {"id": "BC", "refs": ["B", "C"]}, {"id": "CA", "refs": ["C", "A"]}],
+  "planeMarks": {"dimensions": [{"id": "dAB", "from": "A", "to": "B", "label": "6", "side": "BELOW", "value": "6", "factRole": "GIVEN"}, {"id": "dAC", "from": "A", "to": "C", "label": "5", "side": "LEFT", "value": "5", "factRole": "GIVEN"}], "angles": [{"id": "aA", "refs": ["B", "A", "C"], "label": "θ", "arcs": 1, "factRole": "GIVEN"}]},
+  "caption": "AB=6, AC=5, sin∠BAC=1/3인 삼각형 ABC의 한 가능한 배치다. 구하려는 넓이는 표시하지 않았다.",
+  "accessibilityDescription": "밑변 AB는 6, 기울어진 변 AC는 5이며 A에서 두 변이 이루는 각에 θ가 표시되어 있다. 세 꼭짓점이 있는 삼각형은 원문의 사인 조건을 만족한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB=6과 AC=5이다.", "mappedTo": ["AB", "CA", "planeMarks.dimensions"]},
+    {"id": "c2", "condition": "sin∠BAC=1/3이며 θ는 A의 끼인각이다. 예시 배치는 예각 θ를 택했다.", "mappedTo": ["aA", "A", "B", "C"]}
+  ],
+  "newVisualInformation": ["두 알려진 변의 위치", "끼인각 θ와 넓이 계산의 관계"]
+}

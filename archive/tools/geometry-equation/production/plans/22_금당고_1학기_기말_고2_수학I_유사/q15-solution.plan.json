@@ -1,0 +1,20 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["1", "1", "0"],
+    "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["0", "2"], "states": ["CLOSED", "OPEN"]},
+    "referenceLines": [{"id": "half", "y": "1/2", "intersectionCount": 2, "color": "BLUE"}],
+    "axisTickPi": true,
+    "axisTickValues": {"x": ["1/6", "5/6", "1"], "y": ["1/2", "1"]}
+  },
+  "caption": "t=πx/2^n으로 치환하면 한 주기에서 sin t≥1/2인 부분은 π/6≤t≤5π/6이다. 그 구간을 정수 x의 범위로 되돌린다.",
+  "accessibilityDescription": "0≤t<2π의 사인곡선과 y=1/2 수평선이 t=π/6과 5π/6에서 만나고, 그 사이가 부등식을 만족한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "t=πx/2^n이면 0≤t<2π이다.", "mappedTo": ["graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "sin t≥1/2의 경계는 π/6과 5π/6이다.", "mappedTo": ["graphPlan.referenceLines", "graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation": ["한 주기의 사인곡선에서 높이 1/2 이상인 호", "두 경계각의 위치"]
+}

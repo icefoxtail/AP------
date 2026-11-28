@@ -1,0 +1,30 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "O", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "rational", "numerator": "1", "denominator": "3"}, {"kind": "expression", "op": "mul", "args": [{"kind": "rational", "numerator": "4", "denominator": "3"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "5"}]}]}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "3"}}, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "O"],
+  "hiddenPointNames": ["O"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [{"id": "AB", "refs": ["A", "B"]}, {"id": "AC", "refs": ["A", "C"]}, {"id": "BC", "refs": ["B", "C"]}],
+  "planeMarks": {
+    "arcs": [{"id": "arcAB", "circle": "k", "center": "O", "from": "B", "to": "A", "side": "CCW", "highlight": false}],
+    "angles": [{"id": "aA", "refs": ["B", "A", "C"], "label": "α", "arcs": 1, "factRole": "GIVEN"}, {"id": "aB", "refs": ["A", "B", "C"], "label": "β", "arcs": 1, "factRole": "GIVEN"}],
+    "dimensions": [{"id": "dAB", "from": "A", "to": "B", "label": "6", "side": "BELOW", "value": "6", "factRole": "GIVEN"}]
+  },
+  "caption": "지름 AB=6인 윗반원 위 점 C와 두 밑각 α,β를 표시한다. 문제에서 구하는 삼각함수값은 드러내지 않는다.",
+  "accessibilityDescription": "윗반원의 양끝 A,B 사이 지름 길이는 6이고 원호 위 C에서 A,B로 두 현을 잇는다. 각 CAB에는 α, 각 CBA에는 β가 표시되어 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB는 길이 6인 반원의 지름이며 C는 그 위에 있다.", "mappedTo": ["AB", "arcAB", "AC", "BC"]},
+    {"id": "c2", "condition": "두 밑각은 각각 α,β이고 sin(α-β)=-1/9이다.", "mappedTo": ["aA", "aB", "C"]}
+  ],
+  "newVisualInformation": ["윗반원만 그린 원호와 두 현", "α와 β가 각각 어느 밑각에 속하는지"]
+}

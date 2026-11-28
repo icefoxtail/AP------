@@ -1,0 +1,29 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "O", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "rational", "numerator": "1", "denominator": "3"}, {"kind": "expression", "op": "mul", "args": [{"kind": "rational", "numerator": "4", "denominator": "3"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "5"}]}]}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "3"}}, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "O"],
+  "displaySegments": [{"id": "AB", "refs": ["A", "B"]}, {"id": "AC", "refs": ["A", "C"]}, {"id": "BC", "refs": ["B", "C"]}, {"id": "OA", "refs": ["O", "A"], "dashed": true}, {"id": "OB", "refs": ["O", "B"], "dashed": true}, {"id": "OC", "refs": ["O", "C"], "dashed": true}],
+  "planeMarks": {
+    "arcs": [{"id": "arcAB", "circle": "k", "center": "O", "from": "B", "to": "A", "side": "CCW", "highlight": false}],
+    "angles": [{"id": "aA", "refs": ["B", "A", "C"], "label": "α", "arcs": 1}, {"id": "aB", "refs": ["A", "B", "C"], "label": "β", "arcs": 1}],
+    "dimensions": [{"id": "dAB", "from": "A", "to": "B", "label": "6", "side": "BELOW", "value": "6"}]
+  },
+  "rightAngles": [{"id": "rC", "refs": ["A", "C", "B"]}],
+  "caption": "지름 AB=6의 중점 O를 표시한다. 원주각 ACB는 직각이고 OA=OB=OC=3이므로 중심각과 두 밑각을 연결해 코사인법칙을 적용한다.",
+  "accessibilityDescription": "반원 위 삼각형 ABC의 꼭짓점 C에 직각 표시가 있고, 지름 중점 O로부터 세 점에 이어진 반지름이 보인다. 두 밑각 α,β의 위치는 원문과 같다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB=6인 반원의 지름과 C의 위치를 보존한다.", "mappedTo": ["AB", "arcAB", "AC", "BC"]},
+    {"id": "c2", "condition": "O가 지름의 중점이고 OA=OB=OC=3, ∠ACB=90°이다.", "mappedTo": ["O", "OA", "OB", "OC", "rC"]}
+  ],
+  "newVisualInformation": ["지름 중점 O와 세 반지름", "반원에서 생기는 C의 직각 표식"]
+}

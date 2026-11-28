@@ -1,0 +1,20 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["2", "1/3", "0"],
+    "phasePi": "-1/3",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["0", "8"], "states": ["CLOSED", "CLOSED"]},
+    "referenceLines": [{"id": "base", "y": "1", "intersectionCount": 3, "color": "BLUE"}],
+    "axisTickPi": true,
+    "axisTickValues": {"x": ["3/2", "7/2", "15/2"], "y": ["-2", "1", "2"]}
+  },
+  "caption": "y=2sin((x-π)/3)과 y=1의 세 교점 중 양끝 두 점을 밑변으로 택하면 길이 6π이며, 곡선의 최솟값 -2에서 수직 거리가 3이다.",
+  "accessibilityDescription": "0부터 8π까지의 사인곡선과 높이 1인 수평선이 세 점에서 만난다. 양끝 교점은 3π/2와 15π/2이며 곡선의 최저 높이는 -2이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "정의역 0≤x≤8π에서 y=2sin((x-π)/3)이다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.phasePi", "graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "수평선 y=1과 교점은 3π/2, 7π/2, 15π/2의 세 곳이다.", "mappedTo": ["graphPlan.referenceLines", "graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation": ["세 교점의 수평 배치", "극솟값과 수평선 사이 최대 거리"]
+}
