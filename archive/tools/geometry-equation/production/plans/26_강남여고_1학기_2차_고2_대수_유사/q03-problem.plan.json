@@ -1,0 +1,33 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCA","refs":["C","A"]}
+  ],
+  "coordinateCanvas": {"width":640,"height":390},
+  "planeMarks": {
+    "angles":[{"id":"aB","refs":["A","B","C"],"value":150,"label":"5pi/6","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"lAB","ownerSegment":"sAB","text":"6","factRole":"GIVEN"},
+      {"id":"lBC","ownerSegment":"sBC","text":"8","factRole":"GIVEN"}
+    ]
+  },
+  "caption":"AB=6, BC=8, ∠ABC=5π/6인 둔각삼각형이다. 각 표시는 면을 칠하지 않은 호로만 나타낸다.",
+  "accessibilityDescription":"왼쪽 위 A에서 B로 내려오는 길이 6의 변, 오른쪽으로 이어진 길이 8의 BC, B의 150도 호와 세 꼭짓점 라벨을 표시한 무채움 삼각형.",
+  "sourceConditions":[
+    {"id":"S1","condition":"AB=6, BC=8","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels"]},
+    {"id":"S2","condition":"∠ABC=5π/6=150°","mappedTo":["mathPlan.nodes","planeMarks.angles"]}
+  ],
+  "newVisualInformation":["회색 각 영역을 제거하고 두 변의 길이, 실제 150° 호, A/B/C 세 점 이름을 1:1 재구성한다."]
+}

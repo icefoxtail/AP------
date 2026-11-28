@@ -1,0 +1,33 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"integer","value":"2"},
+        {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"15"}]}]}
+      ]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["B","C","D"],
+  "displaySegments":[{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDB","refs":["D","B"]}],
+  "coordinateCanvas":{"width":620,"height":425},
+  "planeMarks":{
+    "angles":[{"id":"aBCD","refs":["B","C","D"],"label":"cos(C)=1/4","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"lenBC","ownerSegment":"sBC","text":"7","factRole":"GIVEN"},
+      {"id":"lenCD","ownerSegment":"sCD","text":"8","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lenBD","ownerSegment":"sDB","text":"sqrt(85)","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption":"사인법칙의 외접원 반지름 비로 CD=8을 얻고, cos∠BCD=1/4를 코사인법칙에 넣으면 BD=√85이다.",
+  "accessibilityDescription":"두 변 BC=7, CD=8과 그 사이각의 코사인값 1/4, 맞은편 변 BD=√85를 각각 지시 라벨로 표시한 무채움 삼각형 BCD.",
+  "sourceConditions":[
+    {"id":"S1","condition":"BC=7, CD=8, cos∠BCD=1/4","mappedTo":["mathPlan.nodes","planeMarks.angles","planeMarks.expressionLabels"]},
+    {"id":"S2","condition":"BD²=7²+8²−2·7·8·1/4=85","mappedTo":["planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["원본 원내접사각형 해설에서 필요한 삼각형 BCD를 분리해 파생 길이 8과 √85를 정확히 표시한다."]
+}

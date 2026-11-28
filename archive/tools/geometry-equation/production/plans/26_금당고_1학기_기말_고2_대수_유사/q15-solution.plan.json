@@ -1,0 +1,30 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "coordinateCanvas":{"width":640,"height":420},
+  "planeMarks":{
+    "angles":[{"id":"aA","refs":["B","A","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],
+    "equalLengths":[{"id":"eqbc","count":1,"segments":["sAB","sCA"]}],
+    "expressionLabels":[
+      {"id":"sideb","ownerSegment":"sCA","text":"4sqrt(3)","factRole":"CONCLUSION"},
+      {"id":"sidec","ownerSegment":"sAB","text":"4sqrt(3)","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption":"bc=48일 때 b+c≥2√48=8√3이며, 등호는 b=c=4√3에서 성립한다. 두 대응변에 같은 길이 표식을 넣었다.",
+  "accessibilityDescription":"A의 60도 호와 길이가 모두 4√3인 변 AC·AB, 두 변의 같은 길이 눈금, 무채움 삼각형.",
+  "sourceConditions":[
+    {"id":"S1","condition":"넓이=(√3/4)bc=12√3이므로 bc=48","mappedTo":["mathPlan.nodes"]},
+    {"id":"S2","condition":"최솟값 b+c=8√3은 b=c=4√3일 때","mappedTo":["planeMarks.equalLengths","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["문제 그림의 일반적인 b,c를 등호 성립 그림의 두 같은 변과 눈금으로 대응시킨다."]
+}

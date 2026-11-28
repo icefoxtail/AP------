@@ -1,0 +1,35 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"POLAR_POINT","inputs":["E","X"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"75"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"POLAR_POINT","inputs":["E","X"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"105"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["E","X"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"255"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"POLAR_POINT","inputs":["E","X"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"285"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","X"],
+  "hiddenPointNames":["X"],
+  "hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAC","refs":["A","C"]},{"id":"sBD","refs":["B","D"]}
+  ],
+  "coordinateCanvas":{"width":640,"height":490},
+  "planeMarks":{
+    "angles":[{"id":"aAED","refs":["A","E","D"],"value":150,"label":"150","style":"ARC","factRole":"GIVEN"}],
+    "equalLengths":[{"id":"eqDiagonals","count":1,"segments":["sAC","sBD"]}],
+    "expressionLabels":[{"id":"diag8","ownerSegment":"sAC","text":"8","factRole":"CONCLUSION"}]
+  },
+  "caption":"등변사다리꼴의 두 대각선은 각각 8로 같고, 끼인각 150°이므로 넓이는 8²sin150°/2=16이다.",
+  "accessibilityDescription":"윗변 AB와 아랫변 CD가 평행한 등변사다리꼴, 교차하는 대각선 AC·BD에 동일 눈금, 교점 E의 150도 호, 한 대각선의 길이 8.",
+  "sourceConditions":[
+    {"id":"S1","condition":"등변사다리꼴의 두 대각선 길이는 같다.","mappedTo":["mathPlan.nodes","planeMarks.equalLengths"]},
+    {"id":"S2","condition":"두 대각선의 끼인각 150°, 넓이 16, 대각선 길이 8.","mappedTo":["planeMarks.angles","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["같은 길이의 대각선 눈금과 교차각 150° 호를 분리하여 면 채움 없이 넓이 공식을 설명한다."]
+}
