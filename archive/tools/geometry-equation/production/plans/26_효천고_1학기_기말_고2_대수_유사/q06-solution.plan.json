@@ -1,0 +1,59 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "-1/2",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "3/4",
+        "1",
+        "7/4"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "threshold",
+          "slope": "0",
+          "intercept": "1",
+          "label": "y=1"
+        }
+      ]
+    }
+  },
+  "caption": "0<x<2π에서 tan(x−π/2)의 두 가지 및 점선 점근선 x=0,π,2π와 기준선 y=1. 교점 경계 3π/4, 7π/4를 표시하며 해는 (0,3π/4]∪(π,7π/4]이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "0≤x≤2π, tan(x−π/2)≤1. 점근선에서는 정의되지 않는다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "엔진의 TAN 점근선은 점선이며, y=1 기준선은 보조 직선으로 표시한다.",
+    "면 채움 없음."
+  ]
+}

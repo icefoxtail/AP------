@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 36.86989764584402,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ch",
+        "ownerSegment": "sCH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "sinB",
+        "at": [
+          1,
+          0.5
+        ],
+        "text": "sin B = 3/5",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "AB=8, BC=5, sin∠B=3/5인 삼각형의 한 정확한 실현. 높이 CH=3과 H의 직각 표시로 넓이 12를 확인한다.",
+  "accessibilityDescription": "AB=8, BC=5, sin∠B=3/5인 삼각형의 한 정확한 실현. 높이 CH=3과 H의 직각 표시로 넓이 12를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "AB=8, BC=5, sin B=3/5, 삼각형 넓이=12.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 수학 조건에 대응하는 선·각·지시선·길이·점선만 표시하며 도형 면 채움과 흰색 배경은 없다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

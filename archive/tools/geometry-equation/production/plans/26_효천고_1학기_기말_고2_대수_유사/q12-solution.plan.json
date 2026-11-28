@@ -1,0 +1,60 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "1/2",
+    "coefficients": [
+      "4",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "unit",
+        "y": "1",
+        "intersectionCount": 8,
+        "color": "BLUE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "6"
+      ],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "keyPoints": true,
+    "displaySize": "full"
+  },
+  "caption": "0≤x≤8에서 y=|4cos(πx/2)|와 y=1의 교점을 모두 표시한다. 반복되는 네 반주기 구간마다 두 교점씩 총 8개이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "|4cos(πx/2)|=1의 0≤x≤8에서 실근 개수를 센다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 한 조각 코사인 그래프 대신 네 구간에 걸친 실제 절댓값 코사인을 그리고 수평 기준선·교점을 1:1 표시한다.",
+    "배경 면 채움 없음."
+  ]
+}

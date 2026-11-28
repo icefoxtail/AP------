@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circum",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [
+    "circum"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lengthBC",
+        "ownerSegment": "BC",
+        "text": "10sqrt(2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radius",
+        "ownerSegment": "OA",
+        "text": "10",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "외접원에서 BC=10√2, 반지름 OA=10, 원주각 ∠BAC=45°를 각각 현·반지름·각 호에 직접 표시한다.",
+  "accessibilityDescription": "반지름이 10인 원에 내접한 삼각형 ABC, 현 BC=10√2, 반지름 OA=10, A의 45도 각 표시.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "BC=10√2, 외접원의 반지름 R=10, A는 예각. 좌표 길이는 실제 길이의 1/10배로 정규화한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "circum"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "예각이라는 조건에 따라 A의 두 가능한 사인 역각 중 45도만 채택하는 위치를 보인다."
+  ],
+  "sourceQuote": "확장된 사인법칙에 의하여"
+}

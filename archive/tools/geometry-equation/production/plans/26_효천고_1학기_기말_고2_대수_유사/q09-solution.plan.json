@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "axisX",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": { "a": { "kind": "integer", "value": "0" }, "b": { "kind": "integer", "value": "1" }, "c": { "kind": "integer", "value": "0" } },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "axisY",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": { "a": { "kind": "integer", "value": "1" }, "b": { "kind": "integer", "value": "0" }, "c": { "kind": "integer", "value": "0" } },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "refLine",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": { "a": { "kind": "integer", "value": "1" }, "b": { "kind": "integer", "value": "-2" }, "c": { "kind": "integer", "value": "0" } },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "perpLine",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": { "a": { "kind": "integer", "value": "2" }, "b": { "kind": "integer", "value": "1" }, "c": { "kind": "integer", "value": "0" } },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "R"
+  ],
+  "displayLines": ["axisX","axisY","refLine","perpLine"],
+  "lineLabels": [{ "nodeId": "refLine", "form": "SLOPE_INTERCEPT" }, { "nodeId": "perpLine", "form": "SLOPE_INTERCEPT" }],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "sOP",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "quadrant",
+        "at": [
+          2,
+          -1.5
+        ],
+        "text": "제4사분면",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원 x²+y²=5에서 기울기 1/2의 보조선에 수직인 직선 y=−2x가 제4사분면의 P(1,−2)를 지나며, OP=√5이다.",
+  "accessibilityDescription": "원 x²+y²=5에서 기울기 1/2의 보조선에 수직인 직선 y=−2x가 제4사분면의 P(1,−2)를 지나며, OP=√5이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "원 x²+y²=5, 원점 O를 지나는 y=x/2와 수직인 직선, P는 제4사분면, sinθcosθ=−2/5.",
+      "mappedTo": [
+        "O",
+        "P",
+        "R",
+        "circle",
+        "refLine",
+        "perpLine",
+        "axisX",
+        "axisY"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 x·y 좌표축, 직선 y=x/2·y=−2x와 직각 표식, 원·제4사분면 P 및 √5 반지름을 표시한다. 불필요한 면 채움 없음."
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "rightAngles": [
+    {
+      "id": "perp",
+      "refs": [
+        "P",
+        "O",
+        "R"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}
