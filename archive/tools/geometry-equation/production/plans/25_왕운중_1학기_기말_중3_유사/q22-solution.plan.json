@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "M",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "비례식 2:x=x:(x+2)의 수학적 선분",
+  "accessibilityDescription": "22번의 구하려는 길이와 선분을 작도한다.",
+  "newVisualInformation": [
+    "원문에 명시된 선분·길이 관계를 좌표와 실제 선분에 결속"
+  ],
+  "sourceConditions": [
+    {
+      "id": "pt1",
+      "condition": "원문 작도 기준점 A",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "pt2",
+      "condition": "원문 작도 기준점 M",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "pt3",
+      "condition": "원문 작도 기준점 B",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "seg1",
+      "condition": "선분 AM",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "seg2",
+      "condition": "선분 MB",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "seg3",
+      "condition": "선분 AB",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "lab1",
+      "condition": "선분 AM의 표시 길이 2",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "lab2",
+      "condition": "선분 MB의 표시 길이 x",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "short",
+        "ownerSegment": "AM",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "long",
+        "ownerSegment": "MB",
+        "text": "x",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림의 선분을 두 부분으로 나눌 때, 다음과 같은 비율을 황금비라고 한다.\n\n(짧은 "
+}

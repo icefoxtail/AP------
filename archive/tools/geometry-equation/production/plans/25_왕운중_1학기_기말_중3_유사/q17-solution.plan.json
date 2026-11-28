@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "2",
+        "y": "-5"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-5",
+          "coordinates": true,
+          "unnamed": false
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "-3",
+          "unnamed": false,
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "17번의 포물선과 주어진 점의 관계",
+  "accessibilityDescription": "17번의 포물선 위 꼭짓점 및 지정된 점을 확인한다.",
+  "newVisualInformation": [
+    "함수 계수로 그린 포물선",
+    "필수 꼭짓점과 지정된 실제 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문 이차함수의 실제 계수",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "함수에서 독립 계산한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "point1",
+      "condition": "기하 점 Y=0,-3",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    }
+  ],
+  "sourceQuote": "이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이 이차함"
+}

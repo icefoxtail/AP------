@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "2",
+        "y": "-1"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": false
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "18번의 포물선과 주어진 점의 관계",
+  "accessibilityDescription": "18번의 포물선 위 꼭짓점 및 지정된 점을 확인한다.",
+  "newVisualInformation": [
+    "함수 계수로 그린 포물선",
+    "필수 꼭짓점과 지정된 실제 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문 이차함수의 실제 계수",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "함수에서 독립 계산한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "sourceQuote": "다음 중 이차함수 $y = -2x^2 + 8x - 9$의 그래프가 지나지 않는 사분면을 모"
+}

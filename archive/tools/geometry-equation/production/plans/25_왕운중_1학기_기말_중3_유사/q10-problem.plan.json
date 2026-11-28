@@ -1,0 +1,353 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "integer",
+              "value": "19"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "19"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "넓이 합 410이고 한 변의 차가 12인 두 정사각형",
+  "accessibilityDescription": "10번의 구하려는 길이와 선분을 작도한다.",
+  "newVisualInformation": [
+    "원문에 명시된 선분·길이 관계를 좌표와 실제 선분에 결속"
+  ],
+  "sourceConditions": [
+    {
+      "id": "pt1",
+      "condition": "원문 작도 기준점 A",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "pt2",
+      "condition": "원문 작도 기준점 B",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "pt3",
+      "condition": "원문 작도 기준점 C",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "pt4",
+      "condition": "원문 작도 기준점 D",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "pt5",
+      "condition": "원문 작도 기준점 E",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "pt6",
+      "condition": "원문 작도 기준점 F",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "pt7",
+      "condition": "원문 작도 기준점 G",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "pt8",
+      "condition": "원문 작도 기준점 H",
+      "mappedTo": "mathPlan.nodes[7]"
+    },
+    {
+      "id": "seg1",
+      "condition": "선분 AB",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "seg2",
+      "condition": "선분 BC",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "seg3",
+      "condition": "선분 CD",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "seg4",
+      "condition": "선분 DA",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "seg5",
+      "condition": "선분 EF",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "seg6",
+      "condition": "선분 FG",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "seg7",
+      "condition": "선분 GH",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "seg8",
+      "condition": "선분 HE",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "lab1",
+      "condition": "선분 AB의 표시 길이 x",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "lab2",
+      "condition": "선분 EF의 표시 길이 x-12",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "large",
+        "ownerSegment": "AB",
+        "text": "x",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small",
+        "ownerSegment": "EF",
+        "text": "x-12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "크고 작은 두 개의 정사각형이 있다. 두 정사각형의 넓이의 합은 $410\\text{ cm}"
+}

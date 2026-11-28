@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-18",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "3",
+        "y": "-18"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "3",
+          "y": "-18",
+          "coordinates": true,
+          "unnamed": false
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "9",
+          "unnamed": false,
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-6",
+          "unnamed": true,
+          "coordinates": false
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "-6",
+          "unnamed": true,
+          "coordinates": false
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "24번의 포물선과 주어진 점의 관계",
+  "accessibilityDescription": "24번의 포물선 위 꼭짓점 및 지정된 점을 확인한다.",
+  "newVisualInformation": [
+    "함수 계수로 그린 포물선",
+    "필수 꼭짓점과 지정된 실제 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문 이차함수의 실제 계수",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "함수에서 독립 계산한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "point1",
+      "condition": "기하 점 Y=0,9",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "point2",
+      "condition": "기하 점 P=1,-6",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "point3",
+      "condition": "기하 점 Q=5,-6",
+      "mappedTo": "graphPlan.overlays.points[3]"
+    }
+  ],
+  "sourceQuote": "이차함수 $f(x) = ax^2 + bx + c$가 다음 세 조건을 만족시킬 때, $f(x"
+}
