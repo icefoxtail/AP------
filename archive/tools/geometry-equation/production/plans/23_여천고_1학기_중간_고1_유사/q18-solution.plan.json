@@ -1,0 +1,17 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family":"piecewise-polynomial", "pieces":[{"coefficients":["0","0","1"]}],"breakpoints":[],
+    "sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,3],"viewport":[-3,3,-1,8],
+    "requiredPoints":[{"id":"T","x":"0","y":"0"},{"id":"V","x":"0","y":"4"}],
+    "referenceCurves":[{"id":"g","name":"g","coefficients":["4","0","-1"],"intersectionX":["-sqrt(2)","sqrt(2)"]}],
+    "axisTickValues":{"x":[],"y":[]},"sampleNote":"a=b=c=0 d=-4"
+  },
+  "caption":"계수의 예시 f(x)=x², g(x)=4−x²는 각각 x축 접함과 제1·2사분면의 두 교점을 보여 준다. 실제 문항의 매개변수 값은 지정되지 않았다.",
+  "accessibilityDescription":"위로 열린 포물선은 원점에서 x축에 접하고 아래로 열린 포물선과는 좌우 양쪽 위에서 한 번씩 만나는 예시 그림이다.",
+  "sourceConditions":[
+    {"id":"tangent","condition":"f=x²−ax+b가 x축에 접함, 예시 a=b=0","mappedTo":["graphPlan.pieces[0]","graphPlan.requiredPoints[0]"]},
+    {"id":"opposite","condition":"g=−x²+cx−d, 예시 c=0,d=−4로 두 교점 x=±√2, y=2가 양 사분면에 존재","mappedTo":["graphPlan.referenceCurves[0]","graphPlan.referenceCurves[0].intersectionX"]}
+  ],
+  "newVisualInformation":["두 교점의 x좌표 부호가 달라 교점방정식의 두 근 곱이 음수라는 논증을 예시 도형으로 설명한다."]
+}

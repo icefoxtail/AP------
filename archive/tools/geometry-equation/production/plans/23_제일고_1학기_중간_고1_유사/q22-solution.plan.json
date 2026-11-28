@@ -1,0 +1,32 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"DIVISION_POINT","inputs":["A","D"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"DIVISION_POINT","inputs":["A","E"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"G","op":"CENTROID","inputs":["A","B","C"],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"MIDPOINT","inputs":["D","E"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","E","G","M","H"],
+  "displaySegments":[
+    {"id":"sAD","refs":["A","D"]},{"id":"sAE","refs":["A","E"]},
+    {"id":"sBC","refs":["B","C"]},{"id":"sDE","refs":["D","E"]},
+    {"id":"sAH","refs":["A","H"],"dashed":true},
+    {"id":"sAG","refs":["A","G"],"emphasis":"ACCENT"}
+  ],
+  "rightAngles":[{"id":"rH","refs":["D","H","A"]}],
+  "planeMarks":{"equalLengths":[{"id":"eq","count":1,"segments":["sAD","sAE"]}],"expressionLabels":[{"id":"ag","ownerSegment":"sAG","text":"2sqrt(2)/3"}]},
+  "coordinateLabels":["A","D","E","H"],"coordinateCanvas":{"width":720,"height":540},
+  "caption":"A(6,6), D(1,5), E(5,1). AD=AE이므로 AH는 DE의 수직이등분선이며 AH=3AG=3√2이다.",
+  "accessibilityDescription":"D와 E의 바깥 삼각형, 안쪽 삼각형 ABC, 무게중심 G, 중점 M과 H, 같은 길이 AD·AE, 수선 AH가 표시된다.",
+  "sourceConditions":[
+    {"id":"given","condition":"D(1,5), E(5,1), AB=AC, AG=2√2/3","mappedTo":["mathPlan.nodes[D,E]","planeMarks.equalLengths","planeMarks.expressionLabels[0]"]},
+    {"id":"external","condition":"D는 AB, E는 AC를 3:2로 외분하므로 B=(D+2A)/3, C=(E+2A)/3","mappedTo":"mathPlan.nodes[B,C]"},
+    {"id":"centroid","condition":"G는 ABC 무게중심, M은 BC 중점, H는 DE 중점","mappedTo":"mathPlan.nodes[G,M,H]"},
+    {"id":"locus","condition":"A는 DE 수직이등분선 y=x 위이고 AH=3√2여서 제1사분면에서 A(6,6)","mappedTo":["mathPlan.nodes[A]","rightAngles[0]","displaySegments[sAH]"]}
+  ],
+  "newVisualInformation":["외분으로 확장된 삼각형 ADE와 안쪽 ABC, 무게중심 및 수직이등분선 관계를 한 그림에서 연결한다."]
+}

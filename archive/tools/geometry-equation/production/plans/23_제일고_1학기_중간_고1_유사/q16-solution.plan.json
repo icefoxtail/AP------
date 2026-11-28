@@ -1,0 +1,24 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","P"],
+  "displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sAP","refs":["A","P"]},{"id":"sPB","refs":["P","B"]},{"id":"sOP","refs":["O","P"]}],
+  "planeMarks":{
+    "expressionLabels":[{"id":"lOA","ownerSegment":"sOA","text":"5"},{"id":"lOB","ownerSegment":"sOB","text":"10"}],
+    "angles":[{"id":"a1","refs":["A","O","P"],"value":45,"arcs":1,"noLabel":true,"equalGroup":1,"style":"ARC"},{"id":"a2","refs":["P","O","B"],"value":45,"arcs":1,"noLabel":true,"equalGroup":1,"style":"ARC"}]
+  },
+  "coordinateLabels":["A","B","P"],"coordinateCanvas":{"width":690,"height":520},
+  "caption":"OA=5, OB=10이므로 내각 이등분선 OP는 AP:PB=1:2로 나누며 P=(14/3,2/3)이다.",
+  "accessibilityDescription":"원점 O, A(3,4), B(8,−6)의 삼각형에서 OP가 각 AOB를 이등분하고 P는 AB를 1 대 2로 나눈다.",
+  "sourceConditions":[
+    {"id":"given","condition":"A(3,4), B(8,−6), O=(0,0)","mappedTo":"mathPlan.nodes[O,A,B]"},
+    {"id":"angle","condition":"OP는 각 AOB 이등분선이며 두 각은 45°","mappedTo":["displaySegments[sOP]","planeMarks.angles"]},
+    {"id":"ratio","condition":"OA=5, OB=10, AP:PB=1:2, P=(14/3,2/3)","mappedTo":["mathPlan.nodes[P]","planeMarks.expressionLabels","coordinateLabels"]}
+  ],
+  "newVisualInformation":["각의 이등분선 정리에서 꼭짓점에 닿는 두 길이와 맞은편 변의 내분비가 연결됨을 보여 준다."]
+}

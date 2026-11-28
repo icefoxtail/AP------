@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"3"},"b":{"kind":"integer","value":"-4"},"c":{"kind":"integer","value":"12"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"K","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"4"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"-12"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"X","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"0"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"LINE_INTERSECTION","inputs":["L","X"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"LINE_INTERSECTION","inputs":["K","X"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"LINE_INTERSECTION","inputs":["L","K"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C"],"hiddenPointNames":["A","B","C"],"displayLines":["L","K"],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]}],
+  "coordinateCanvas":{"width":690,"height":490},
+  "caption":"서로 수직인 두 직선 l, m과 x축이 이루는 삼각형의 예시 배치이며 넓이를 이등분하는 선은 아직 표시하지 않는다.",
+  "accessibilityDescription":"좌표평면에서 수직인 두 직선과 x축이 닫힌 삼각형을 만들고 두 직선의 교점에 직각 표시가 있다.",
+  "sourceConditions":[
+    {"id":"l","condition":"l:3x−4y+12=0","mappedTo":"mathPlan.nodes[L]"},
+    {"id":"m","condition":"m:ax+3y−12=0은 l에 수직이므로 a=4인 위치로 그린다. 해의 이등분선은 보여 주지 않는다.","mappedTo":"mathPlan.nodes[K]"},
+    {"id":"triangle","condition":"두 직선과 x축이 삼각형을 이룸","mappedTo":["mathPlan.nodes[X,A,B,C]","displayLines","rightAngles[0]"]}
+  ],
+  "newVisualInformation":["문제에서 말하는 삼각형의 범위를 두 직선과 x축에서 식별하게 한다. 해답인 이등분선은 숨긴다."]
+}

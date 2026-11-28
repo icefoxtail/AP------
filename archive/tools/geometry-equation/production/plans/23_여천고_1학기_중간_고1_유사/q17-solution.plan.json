@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["1", "-4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 5], "viewport": [-1, 5, -5, 6],
+    "requiredPoints": [{"id": "V", "x": 2, "y": -3}, {"id": "F", "x": 3, "y": -2}],
+    "axisTickValues": {"x": ["2", "3"], "y": []},
+    "overlays": {"lines": [{"id": "l", "slope": "2", "intercept": "-7", "label": "y=2x-7"}]}
+  },
+  "caption": "근의 평균에서 대칭축 x=2, 직선과의 관계에서 꼭짓점 V(2,−3), 따라서 f(3)=−2이다.",
+  "accessibilityDescription": "꼭짓점 V(2,−3)에서 직선 y=2x−7과 만나는 포물선, 그리고 함수값을 읽는 F(3,−2)가 표시된다.",
+  "sourceConditions": [
+    {"id": "axis", "condition": "α+β=4이므로 축은 x=2", "mappedTo": "graphPlan.requiredPoints[0]"},
+    {"id": "line", "condition": "꼭짓점은 y=2x−7 위", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "function", "condition": "f(x)=(x−2)²−3, f(3)=−2", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation": ["근의 평균, 꼭짓점의 직선 소속, 함수값 대입을 한 좌표계에서 연결한다."]
+}
