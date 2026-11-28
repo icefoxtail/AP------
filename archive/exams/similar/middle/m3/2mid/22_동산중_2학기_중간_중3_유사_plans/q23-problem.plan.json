@@ -20,38 +20,20 @@
       -5,
       36
     ],
-    "requiredPoints": [
-      {
-        "id": "A",
-        "x": 2,
-        "y": 32,
-        "label": "A"
-      },
-      {
-        "id": "B",
-        "x": -2,
-        "y": 0,
-        "label": "B"
-      },
-      {
-        "id": "C",
-        "x": 6,
-        "y": 0,
-        "label": "C"
-      }
-    ],
+    "requiredPoints": [],
     "overlays": {
-      "polygons": [
-        {
-          "id": "T",
-          "points": [
-            "A",
-            "B",
-            "C"
-          ]
-        }
+      "points": [
+        {"id": "A", "x": "2", "y": "32"},
+        {"id": "B", "x": "-2", "y": "0"},
+        {"id": "C", "x": "6", "y": "0"}
+      ],
+      "segments": [
+        {"id": "AB", "from": "A", "to": "B"},
+        {"id": "BC", "from": "B", "to": "C"},
+        {"id": "CA", "from": "C", "to": "A"}
       ]
     }
   },
+  "pointNames": {"A": "A", "B": "B", "C": "C"},
   "caption": "포물선 y=-2x^2+8x+24의 꼭짓점 A와 x축 교점 B, C로 이루어진 삼각형 ABC"
 }

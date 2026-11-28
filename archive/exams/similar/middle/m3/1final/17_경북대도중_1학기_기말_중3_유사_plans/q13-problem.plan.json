@@ -1,19 +1,23 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 + 6*x + 3",
-  "points": {
-    "A": [
-      3,
-      12
-    ],
-    "B": [
-      0,
-      3
-    ],
-    "O": [
-      0,
-      0
-    ]
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["3", "6", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 7],
+    "viewport": [-2, 8, -1, 14],
+    "overlays": {
+      "points": [
+        {"id":"A","x":"3","y":"12"},
+        {"id":"B","x":"0","y":"3"},
+        {"id":"O","x":"0","y":"0"}
+      ],
+      "segments": [
+        {"id":"AB","from":"A","to":"B"},
+        {"id":"BO","from":"B","to":"O"},
+        {"id":"OA","from":"O","to":"A"}
+      ]
+    }
   },
-  "caption": "포물선 y=-x²+6x+3의 꼭짓점 A(3, 12), y절편 B(0, 3), 원점 O로 이루어진 삼각형 ABO"
+  "caption": "주어진 포물선과 그 꼭짓점 A, y축 교점 B, 원점 O를 연결한 삼각형이다. 유도된 좌표와 넓이는 문제 그림에 기재하지 않는다."
 }
