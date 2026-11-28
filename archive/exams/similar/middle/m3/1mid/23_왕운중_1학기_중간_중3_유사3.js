@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_유사3/q3-solution.svg",
+    "solutionImageAlt": "서로 다른 두 주사위의 36개 순서쌍 중 √(12ab)가 유리수인 6칸을 구분한다.",
+    "solutionImageCaption": "서로 다른 두 주사위의 36개 순서쌍 중 √(12ab)가 유리수인 6칸을 구분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -255,7 +259,15 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/23_왕운중_1학기_중간_중3_유사3/q9-problem.svg",
+    "imageAlt": "수직선 위의 주어진 두 점 A(1−√3)와 B(5+√3) 사이의 범위를 나타낸다.",
+    "imageCaption": "수직선 위의 주어진 두 점 A(1−√3)와 B(5+√3) 사이의 범위를 나타낸다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_유사3/q9-solution.svg",
+    "solutionImageAlt": "1−√3과 5+√3 사이의 정수는 0, 1, 2, 3, 4, 5, 6으로 모두 7개이다.",
+    "solutionImageCaption": "1−√3과 5+√3 사이의 정수는 0, 1, 2, 3, 4, 5, 6으로 모두 7개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

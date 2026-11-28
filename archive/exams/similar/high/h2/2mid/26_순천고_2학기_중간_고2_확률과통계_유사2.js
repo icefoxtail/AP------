@@ -587,9 +587,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$A$에서 $B$까지 최단 경로는 오른쪽 다섯 번과 위쪽 다섯 번을 배열하므로 $\\binom{10}{5}=252$개다. $C=(2,2)$를 지나는 경로는 $A\\to C$에서 오른쪽 2번·위 2번의 배열 $\\binom42=6$개와 $C\\to B$에서 오른쪽 3번·위 3번의 배열 $\\binom63=20$개를 곱한 $120$개다. 따라서 $C$를 지나지 않는 최단 경로는 $252-120=132$개다. 정답은 ①이다.",
-    "solutionImageAlt": "해설 그림: A에서 C까지 위로 5칸, C에서 B까지 오른쪽으로 5칸 가는 유일한 최단경로를 5×5 도로망 위에 빨간 굵은 선으로 보여 준다.",
-    "solutionImageCaption": "C를 지나는 최단경로는 위로 5칸 후 오른쪽으로 5칸 가는 1가지뿐이므로 전체 C(10,5)=252가지에서 1가지를 빼 251가지이다. 정답 ⑤",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "C=(2,2)로 들어가는 두 최단 방향을 막아 각 교점까지의 누적 경로 수를 표시한다. 전체 252개에서 C를 통과하는 6×20=120개를 빼서 132개다.",
+    "solutionImageCaption": "C=(2,2)로 들어가는 두 최단 방향을 막아 각 교점까지의 누적 경로 수를 표시한다. 전체 252개에서 C를 통과하는 6×20=120개를 빼서 132개다.",
+    "solutionImageSize": "full",
     "curriculum": "2022",
     "courseKey": "확률과통계",
     "conceptClusterKey": "H22-PS-01-CORE",
@@ -605,7 +605,12 @@ window.questionBank = [
     "sourceQid": 14,
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q14",
-    "solutionPlanRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q14-solution.plan.json",
+    "image": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사2/q14-problem.svg",
+    "imageAlt": "5×5 도로망의 시작점 A와 끝점 B, 통과해서는 안 되는 내부 교점 C=(2,2)의 위치만 표시한다. 경로 수·정답은 문제 그림에 쓰지 않는다.",
+    "imageCaption": "5×5 도로망의 시작점 A와 끝점 B, 통과해서는 안 되는 내부 교점 C=(2,2)의 위치만 표시한다. 경로 수·정답은 문제 그림에 쓰지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사2/q14-solution.svg"
   },
   {
     "id": 15,
@@ -828,7 +833,11 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q19",
-    "solutionPlanRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사2/q19-solution.svg",
+    "solutionImageAlt": "E는 세 카드의 합이 3의 배수, F는 곱이 3의 배수라는 사건이다. 정확히 하나만 참인 영역은 E와 F의 대칭차다. 전체 504개에서 합집합 396, 교집합 168을 계산하면 대칭차 228개이므로 19/42이다.",
+    "solutionImageCaption": "E는 세 카드의 합이 3의 배수, F는 곱이 3의 배수라는 사건이다. 정확히 하나만 참인 영역은 E와 F의 대칭차다. 전체 504개에서 합집합 396, 교집합 168을 계산하면 대칭차 228개이므로 19/42이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -857,9 +866,9 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "삼각형이 되려면 $a,b$는 1~5이고 $a+b\\ne6$이므로 주사위 눈의 순서쌍은 $5^2-5=20$가지다. 꼭짓점 $A$를 고정한 서로 다른 삼각형 자체는 나머지 다섯 점 중 두 점을 택하는 $\\binom52=10$개이고, 각 삼각형은 $P,Q$를 정하는 두 순서에 대응한다. 원에 내접한 삼각형에서 한 변이 지름일 때 직각이다. $AD$를 포함한 삼각형 4개와 $BE$, $CF$를 포함한 삼각형 각 1개로 직각삼각형은 6개다. 세 점이 한 점씩 건너뛰는 $ACE$ 한 개만 예각삼각형이다. 따라서 둔각삼각형은 $10-6-1=3$개이고 조건부확률은 $\\dfrac3{10}$이다. 실제 둔각삼각형은 $ABC,ABF,AEF$이다. 정답은 ③이다.",
-    "solutionImageAlt": "해설 그림: 원 위 여섯 점 중 A, C, E를 꼭짓점으로 하는 정삼각형을 색칠하고 세 호의 간격이 모두 2칸임을 표시한다.",
-    "solutionImageCaption": "호의 간격이 모두 2칸인 정삼각형 ACE만 예각삼각형이며 (a, b)=(2, 2), (4, 4)의 두 쌍이므로 분모 20에서 확률은 1/10이다. 정답 ②",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "정육각형 ABCDEF의 A·B·C에서 ∠ABC=120°인 둔각 예시를 표시했다. A가 고정된 10개 삼각형 중 직각 6개, 예각 ACE 1개를 제외하면 둔각 3개이므로 확률은 3/10이다.",
+    "solutionImageCaption": "정육각형 ABCDEF의 A·B·C에서 ∠ABC=120°인 둔각 예시를 표시했다. A가 고정된 10개 삼각형 중 직각 6개, 예각 ACE 1개를 제외하면 둔각 3개이므로 확률은 3/10이다.",
+    "solutionImageSize": "full",
     "curriculum": "2022",
     "courseKey": "확률과통계",
     "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
@@ -876,7 +885,8 @@ window.questionBank = [
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q20",
     "image": "assets/images/26_순천고_2학기_중간_고2_확률과통계/q20.png",
-    "solutionPlanRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사2/q20-solution.svg"
   },
   {
     "id": 21,

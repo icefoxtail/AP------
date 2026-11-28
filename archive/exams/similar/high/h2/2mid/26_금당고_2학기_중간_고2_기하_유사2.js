@@ -803,7 +803,11 @@ window.questionBank = [
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q16-problem.svg",
     "imageAlt": "Q16 발문 관계도",
     "imageCaption": "Q16 발문 관계도",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q16-solution.svg",
+    "solutionImageAlt": "Q16 해설 관계도",
+    "solutionImageCaption": "Q16 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -845,7 +849,15 @@ window.questionBank = [
     "score": 5,
     "sourceQid": 17,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q17"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q17",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q17-problem.svg",
+    "imageAlt": "Q17 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q17 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q17-solution.svg",
+    "solutionImageAlt": "Q17 해설 관계도",
+    "solutionImageCaption": "Q17 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -887,7 +899,15 @@ window.questionBank = [
     "score": 5,
     "sourceQid": 18,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q18"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q18",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q18-problem.svg",
+    "imageAlt": "Q18 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q18 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q18-solution.svg",
+    "solutionImageAlt": "Q18 해설 관계도: 접선·준선·수평선이 만드는 직각삼각형에서 AB=6√2, AC=BC=6이며 초점에서 준선까지의 거리는 6이다.",
+    "solutionImageCaption": "Q18 해설 관계도: 접선·준선·수평선이 만드는 직각삼각형에서 AB=6√2, AC=BC=6이며 초점에서 준선까지의 거리는 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -925,7 +945,15 @@ window.questionBank = [
     "score": 9,
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q19"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q19",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q19-problem.svg",
+    "imageAlt": "Q19 발문 관계도",
+    "imageCaption": "Q19 발문 관계도",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q19-solution.svg",
+    "solutionImageAlt": "Q19 해설 관계도",
+    "solutionImageCaption": "Q19 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -968,6 +996,14 @@ window.questionBank = [
     "score": 11,
     "sourceQid": 20,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q20"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q20",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q20-problem.svg",
+    "imageAlt": "Q20 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q20 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q20-solution.svg",
+    "solutionImageAlt": "Q20 해설 관계도",
+    "solutionImageCaption": "Q20 해설 관계도",
+    "solutionImageSize": "full"
   }
 ];
