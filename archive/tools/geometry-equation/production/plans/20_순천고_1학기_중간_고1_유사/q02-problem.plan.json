@@ -1,0 +1,52 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1.4285714285714286,
+        "depth": 0.8571428571428571
+      },
+      "height": 4.714285714285714,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체와 공간대각선"
+  },
+  "caption": "원문의 직육면체 ABCDEFGH와 공간대각선 AG이다. 모든 모서리 합 28cm·겉넓이 24cm²를 만족하는 한 모델을 축척으로 택했으나 미지 세 변의 수치와 AG 길이는 표시하지 않았다.",
+  "accessibilityDescription": "직육면체의 꼭짓점 A부터 반대편 G까지 상자 내부로 지나는 점선 공간대각선 AG가 표시된다. 모서리 길이는 라벨링되지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "모서리의 합 4(a+b+c)=28, 겉넓이 2(ab+bc+ca)=24",
+      "mappedTo": [
+        "solids[0].base",
+        "solids[0].height"
+      ]
+    },
+    {
+      "id": "diagonal",
+      "condition": "발문이 구하도록 한 공간대각선은 A와 G를 이음",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "representative",
+      "condition": "모델의 예시 치수 10/7,6/7,33/7은 합 7, ab+bc+ca=12를 만족하지만 문제에 값으로 표시하지 않음",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 빠진 상자 그림에서 꼭짓점 A와 G가 마주 보는 공간대각선임을 보여 준다."
+  ]
+}

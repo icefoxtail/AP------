@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "25",
+      "-10",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      9,
+      36
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": 12.5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x+y=5에서 x²+y²=x²+(5−x)²=2(x−5/2)²+25/2로 최소 25/2이다. 따라서 k−2≥25/2이고 자연수 k의 최솟값은 15이다.",
+  "accessibilityDescription": "위로 열린 포물선 x²+(5−x)²의 최솟점은 (5/2,25/2)로 모든 실수 x에 대해 제곱합의 하한을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "sum",
+      "condition": "x+y=5에서 y=5−x를 대입하면 x²+y²=2x²−10x+25",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "minimum",
+      "condition": "완전제곱 2(x−5/2)²+25/2",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "연립식의 실수해 존재를 결정하는 제곱합의 하한을 꼭짓점으로 보여 준다."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "왼쪽 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "오른쪽 범위",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "정수해",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 공통 범위"
+  },
+  "caption": "절댓값을 구간별로 풀면 −3<x<5이고 정수해는 −2,−1,0,1,2,3,4이다. 최소 a=−2, 최대 b=4이다.",
+  "accessibilityDescription": "수직선에서 −3과 5는 빈 원이며 그 사이 일곱 정수점 −2부터 4까지 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<−2인 구간에서 −2x+2<8 ⇒ x>−3",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "right",
+      "condition": "x>4인 구간에서 2x−2<8 ⇒ x<5",
+      "mappedTo": "numberLine.rows[1].pieces[0].hi"
+    },
+    {
+      "id": "integers",
+      "condition": "−2부터 4까지 일곱 정수",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 부등식의 열린 경계와 정수해의 최솟점·최댓점을 시각적으로 분리한다."
+  ]
+}

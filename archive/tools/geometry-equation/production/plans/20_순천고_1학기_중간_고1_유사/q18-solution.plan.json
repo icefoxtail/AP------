@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4/3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 공통 범위"
+  },
+  "caption": "√((2x−1)²)=|2x−1|이므로 |2x−1|<x+5는 −4/3<x<6이다.",
+  "accessibilityDescription": "수직선의 −4/3과 6 사이만 포함하고 양 끝은 모두 빈 원으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "lower",
+      "condition": "−(x+5)<2x−1에서 x>−4/3",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "upper",
+      "condition": "2x−1<x+5에서 x<6",
+      "mappedTo": "numberLine.rows[0].pieces[0].hi"
+    }
+  ],
+  "newVisualInformation": [
+    "근호가 절댓값으로 바뀌어 생긴 두 엄격 경계의 공통 구간을 표현한다."
+  ]
+}

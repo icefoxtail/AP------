@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "n",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "6대 생산",
+        "pieces": [
+          {
+            "lo": {
+              "value": "204",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "210",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "8대 생산",
+        "pieces": [
+          {
+            "lo": {
+              "value": "200",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "208",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "계약량",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 공통 범위"
+  },
+  "caption": "수직선의 n은 본문 계약량 N을 뜻한다. 하루 6대씩 35일이면 204<N≤210, 8대씩 26일이면 200<N≤208이다. 교집합 정수 205~208대는 모두 하루 10대 생산 시 21일 걸린다.",
+  "accessibilityDescription": "두 계약량 구간의 공통범위에 자연수 205, 206, 207, 208이 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "six",
+      "condition": "6×34<N≤6×35",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    },
+    {
+      "id": "eight",
+      "condition": "8×25<N≤8×26",
+      "mappedTo": "numberLine.rows[1].pieces[0]"
+    },
+    {
+      "id": "result",
+      "condition": "계약량 N=205,206,207,208",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 생산 속도로 얻는 두 대수적 구간의 정수 교집합을 표시한다."
+  ]
+}

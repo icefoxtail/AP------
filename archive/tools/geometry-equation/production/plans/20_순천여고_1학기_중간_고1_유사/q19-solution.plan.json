@@ -1,0 +1,64 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "0",
+      "2",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -6,
+      26
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -4
+      },
+      {
+        "id": "A",
+        "x": -1,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x=3−y²를 대입하면 목표식은 y⁴+2y²−4이다. y²≥0이므로 y=0에서 최솟값 −4이고 좌우로 대칭 증가한다.",
+  "accessibilityDescription": "좌우 대칭인 사차곡선 y⁴+2y²−4가 원점 위 x값 0에서 −4로 최솟값을 가진다.",
+  "sourceConditions": [
+    {
+      "id": "quartic",
+      "condition": "x=3−y²를 대입하여 목표식 y⁴+2y²−4",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "min",
+      "condition": "y=0일 때 −4, y=±1일 때 −1",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "짝함수의 중앙 최솟값과 양쪽 증가 형태를 실제 곡선으로 보여 준다."
+  ]
+}

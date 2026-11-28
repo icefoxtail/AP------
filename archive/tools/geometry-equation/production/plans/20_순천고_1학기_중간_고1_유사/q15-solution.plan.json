@@ -1,0 +1,89 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "22",
+      "-24",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        2,
+        6
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      2,
+      6
+    ],
+    "viewport": [
+      1,
+      7,
+      -43,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": -14
+      },
+      {
+        "id": "V",
+        "x": 4,
+        "y": -26
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": -14
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "-6",
+          "intercept": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "교점의 x좌표 2,4와 최솟값 −26에서 a=3이다. f(x)=3(x−4)²−26, 직선 y=−6x−2와는 x=2,4에서 만나고 제한 구간의 최솟점은 (4,−26)이다.",
+  "accessibilityDescription": "닫힌 구간 2≤x≤6에서 포물선의 최솟점 V(4,−26)가 표시되고 직선 y=−6x−2가 A(2,−14)와 V(4,−26)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "quadratic",
+      "condition": "a=3에서 f(x)=3x²−24x+22",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "segment",
+      "condition": "원문에서 2≤x≤6의 최솟값",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "line",
+      "condition": "a=3에서 y=−2ax−2=−6x−2",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "meeting",
+      "condition": "교점의 x좌표 2,4, (2,−14),(4,−26)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점과 구간 내 꼭짓점이 서로 어떻게 배치되어 최솟값을 정하는지 표시한다."
+  ]
+}

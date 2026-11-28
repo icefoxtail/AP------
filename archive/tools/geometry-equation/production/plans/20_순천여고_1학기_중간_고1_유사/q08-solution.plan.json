@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -4,
+      5,
+      -8,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 1,
+        "y": -2
+      },
+      {
+        "id": "V",
+        "x": -1,
+        "y": -6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "4",
+          "intercept": "-6"
+        }
+      ]
+    }
+  },
+  "caption": "판별식이 0인 경계 k=6에서 y=x²+2x−5와 직선 y=4x−6은 T(1,−2)에서 접한다.",
+  "accessibilityDescription": "포물선 y=x²+2x−5와 기울기 4의 직선 y=4x−6이 T(1,−2)에서 접한다. 포물선 꼭짓점은 (−1,−6)이다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "원문 포물선 y=x²+2x−5",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "line",
+      "condition": "D/4=6−k=0에서 k=6이므로 y=4x−6",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "touch",
+      "condition": "x²−2x+1=0에서 접점 (1,−2)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식의 중근 조건을 두 곡선이 한 점에서 만나는 모습으로 설명한다."
+  ]
+}

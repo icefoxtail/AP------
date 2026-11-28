@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "-4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -2,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 실근의 경계 a=4에서는 y=(x−2)²이 x축에 T(2,0)에서 접한다. 서로 다른 두 점에서 만나려면 a<4이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=(x−2)²이 x축에 T(2,0)에서 접하는 경계 경우다.",
+  "sourceConditions": [
+    {
+      "id": "boundary",
+      "condition": "D/4=4−a이고 서로 다른 두 교점의 조건은 a<4",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "tangent",
+      "condition": "경계 a=4의 중근 x=2",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 교점 조건에서 접함이 제외되는 경계 사례를 표시한다."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-8",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-4",
+        "y": "-8"
+      },
+      {
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      5
+    ],
+    "viewport": [
+      -8,
+      6,
+      -12,
+      18
+    ],
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -4,
+        "y": -8
+      },
+      {
+        "id": "V",
+        "x": 0,
+        "y": 8
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "lower",
+          "slope": "0",
+          "intercept": "4"
+        },
+        {
+          "id": "upper",
+          "slope": "0",
+          "intercept": "8"
+        }
+      ]
+    }
+  },
+  "caption": "교점 조건을 k=h(x)=|x²+2x−8|+2x로 바꾸면, 경계 x=−4,2 사이에서 h(x)=−x²+8이다. 두 바깥 구간의 교점 각각 하나와 가운데 두 교점을 얻으려면 4<k<8이다.",
+  "accessibilityDescription": "세 조각으로 이어지는 곡선 h(x)의 경계 L(−4,−8), R(2,4)와 가운데 꼭짓점 V(0,8), 수평선 y=4와 y=8이 표시된다. 두 선 사이 높이가 네 교점을 만드는 구간이다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "x²+2x−8의 부호가 바뀌는 x=−4,2에서 세 구간 h(x)=x²+4x−8,−x²+8,x²+4x−8",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "break",
+      "condition": "구간 경계에서 h(−4)=−8,h(2)=4",
+      "mappedTo": "graphPlan.breakpoints"
+    },
+    {
+      "id": "limits",
+      "condition": "가운데 봉우리 최대 8과 오른쪽 접속 높이 4",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "threshold",
+      "condition": "서로 다른 네 점에서 만나는 수평 높이는 4<k<8",
+      "mappedTo": "graphPlan.overlays.lines"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 그래프와 움직이는 직선의 교점 개수를 수평 높이 k의 세 구간별 변화로 정리한다."
+  ]
+}

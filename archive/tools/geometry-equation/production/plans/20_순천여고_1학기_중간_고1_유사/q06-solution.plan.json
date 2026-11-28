@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "6",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        5
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      0,
+      5,
+      0,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 11
+      },
+      {
+        "id": "R",
+        "x": 5,
+        "y": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "닫힌 구간 0≤x≤5에서 f(x)=−(x−3)²+11의 꼭짓점은 최대점이고 최솟값은 양 끝점 f(0)=2, f(5)=7 가운데 더 작은 2이다.",
+  "accessibilityDescription": "구간 양 끝 (0,2),(5,7)과 위쪽 꼭짓점 (3,11)이 표시되어 최솟값이 왼쪽 끝에 있음을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "quadratic",
+      "condition": "f(x)=−x²+6x+2",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "0≤x≤5",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "end",
+      "condition": "f(0)=2, f(5)=7",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "vertex",
+      "condition": "꼭짓점 (3,11)은 최댓점",
+      "mappedTo": "graphPlan.requiredPoints[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "아래로 열린 포물선의 꼭짓점은 최대점이므로 구간 최솟값을 양 끝점에서 비교하는 이유를 보인다."
+  ]
+}

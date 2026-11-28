@@ -1,0 +1,75 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9",
+      "4",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        -3,
+        3
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -15,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -3,
+        "y": -12
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 13
+      },
+      {
+        "id": "R",
+        "x": 3,
+        "y": 12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x²+y²=9에서 −3≤x≤3, y²=9−x²이다. 목표식 h(x)=−x²+4x+9의 최대는 V(2,13), 최소는 왼쪽 끝 L(−3,−12)이다.",
+  "accessibilityDescription": "닫힌 구간 −3≤x≤3의 아래로 열린 포물선에서 왼쪽 끝 L(−3,−12), 꼭짓점 V(2,13), 오른쪽 끝 R(3,12)가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "transform",
+      "condition": "4x+y²=−x²+4x+9",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "x²+y²=9에서 −3≤x≤3",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "extreme",
+      "condition": "M=13은 V(2,13), m=−12는 L(−3,−12)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역 끝점과 꼭짓점의 함수값을 동시에 비교하여 최댓값·최솟값의 위치 차이를 보인다."
+  ]
+}

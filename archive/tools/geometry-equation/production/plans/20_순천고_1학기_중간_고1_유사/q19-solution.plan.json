@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "교집합"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 공통 범위"
+  },
+  "caption": "첫째 x>−2와 둘째 −3≤x≤−1의 공통부분은 −2<x≤−1이다. 따라서 a=−2,b=−1이다.",
+  "accessibilityDescription": "첫째 수직선은 −2 초과, 둘째는 닫힌 구간 −3부터 −1, 최종 교집합은 −2 제외·−1 포함이다.",
+  "sourceConditions": [
+    {
+      "id": "first",
+      "condition": "−3x<6 ⇒ x>−2",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "second",
+      "condition": "(x+3)(x+1)≤0 ⇒ −3≤x≤−1",
+      "mappedTo": "numberLine.rows[1].pieces[0]"
+    },
+    {
+      "id": "intersect",
+      "condition": "공통부분 −2<x≤−1",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 끝점과 닫힌 끝점이 섞인 연립부등식의 실제 교집합을 시각화한다."
+  ]
+}

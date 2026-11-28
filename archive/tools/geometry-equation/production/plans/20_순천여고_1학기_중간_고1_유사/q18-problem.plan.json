@@ -1,0 +1,345 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sPS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "R"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rR",
+      "refs": [
+        "Q",
+        "R",
+        "S"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "base",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW"
+      },
+      {
+        "id": "height",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "H",
+        "label": "6",
+        "side": "LEFT"
+      },
+      {
+        "id": "width",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "P",
+        "to": "S",
+        "label": "x",
+        "side": "ABOVE"
+      },
+      {
+        "id": "depth",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "P",
+        "to": "Q",
+        "label": "y",
+        "side": "LEFT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 430
+  },
+  "caption": "밑변 8·높이 6인 삼각형 ABC에 직사각형 PQRS가 내접한 문제의 개념도다. 가로 PS=QR=x, 세로 PQ=SR=y만 표시하며 x=2의 임의 배치는 최대 넓이 위치 x=4가 아니다.",
+  "accessibilityDescription": "A가 위쪽이고 BC가 밑변인 삼각형에 네 꼭짓점 P,Q,R,S의 직사각형이 들어 있다. 밑변 8, 높이 6, 직사각형의 위쪽 가로 x와 왼쪽 세로 y가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "tri",
+      "condition": "발문의 △ABC 밑변 BC=8, 높이 AH=6",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]",
+        "planeMarks.dimensions[0]",
+        "planeMarks.dimensions[1]"
+      ]
+    },
+    {
+      "id": "rect",
+      "condition": "P는 AB, S는 AC 위에 있고 PQRS가 직사각형, QR=PS=x,PQ=SR=y",
+      "mappedTo": [
+        "mathPlan.nodes[3]",
+        "mathPlan.nodes[4]",
+        "mathPlan.nodes[5]",
+        "mathPlan.nodes[6]",
+        "displaySegments",
+        "planeMarks.dimensions[2]",
+        "planeMarks.dimensions[3]"
+      ]
+    },
+    {
+      "id": "no_leak",
+      "condition": "원문 미지 최적 x=4 대신 x=2, y=9/2로 대표 좌표를 사용",
+      "mappedTo": "mathPlan.nodes[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 APS가 ABC와 닮게 대응하는 두 가로선·높이 및 내접 직사각형의 문자 치수를 표시한다. 최적값은 표기하지 않는다."
+  ]
+}
