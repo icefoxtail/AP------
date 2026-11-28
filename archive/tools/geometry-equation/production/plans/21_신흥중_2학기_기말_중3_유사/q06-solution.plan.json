@@ -1,0 +1,450 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MAB",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBC",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MCD",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MDA",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circMAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAB"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circMBC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MBC"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circMCD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MCD"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circMDA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MDA"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "MAB",
+    "MBC",
+    "MCD",
+    "MDA"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 90,
+        "label": "90"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "sideB",
+        "ownerSegment": "sAB",
+        "text": "b",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "outerAB",
+        "circle": "circMAB",
+        "center": "MAB",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "outerBC",
+        "circle": "circMBC",
+        "center": "MBC",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "outerCD",
+        "circle": "circMCD",
+        "center": "MCD",
+        "from": "C",
+        "to": "D",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "outerDA",
+        "circle": "circMDA",
+        "center": "MDA",
+        "from": "D",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "MAB",
+    "MBC",
+    "MCD",
+    "MDA"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "신흥중 중3 2학기 기말 06번 해설: 정사각형 네 변을 지름으로 하는 바깥쪽 반원 자취",
+  "accessibilityDescription": "신흥중 6번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 정사각형 네 변을 지름으로 하는 바깥쪽 반원 자취.",
+  "newVisualInformation": [
+    "정사각형 네 변을 지름으로 하는 바깥쪽 반원 자취",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "POINT5",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "POINT6",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[6]"
+    },
+    {
+      "id": "POINT7",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[7]"
+    },
+    {
+      "id": "POINT8",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[8]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "SEG3",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "SEG4",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "SEG5",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "ANG0",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ARC0",
+      "condition": "원호의 길이·방향",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "ARC1",
+      "condition": "원호의 길이·방향",
+      "mappedTo": "planeMarks.arcs[1]"
+    },
+    {
+      "id": "ARC2",
+      "condition": "원호의 길이·방향",
+      "mappedTo": "planeMarks.arcs[2]"
+    },
+    {
+      "id": "ARC3",
+      "condition": "원호의 길이·방향",
+      "mappedTo": "planeMarks.arcs[3]"
+    },
+    {
+      "id": "EXP0",
+      "condition": "수치 및 변수 길이",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    }
+  ],
+  "sourceQuote": "정사각형의 이웃하는 두 꼭짓점을 연결한 변을 선분 $UV$라 하자. 점 $P$에 대하여 $\\angle UPV = 90^\\circ$를 만족하므로, 원주각의 성질(탈레스 정리)에 의하여 점 $P$는 선분 $UV$를 지름으로 하는 원 위에 존재한다. 점 $P$는 정사각형의 외부에서만 움직이므로, 각 변에 대하여 정사각형 바깥쪽에 형성되는 점 $P$의 자취는 선분 $UV$를 지름으로 하는 반원의 호이다. 정사각형의 한 변의 길이가 $b$이므로 반원의 지름은 $b$이고 반지름은 $r = \\dfrac{b}{2}$이다. 따라서 반원 하나의 호의 길이는 $$\\pi r = \\pi \\times \\dfrac{b}{2} = \\dfrac{\\pi b}{2}$$ 정사각형에는 네 변이 존재하므로 네 변 바깥쪽에 각각 하나씩 총 $4$개의 반원이 생긴다. 따라서 점 $P$가 움직인 전체 자취의 길이는 $$4 \\times \\dfrac{\\pi b}{2} = 2\\pi b$$ 그러므로 정답은 ⑤이다."
+}

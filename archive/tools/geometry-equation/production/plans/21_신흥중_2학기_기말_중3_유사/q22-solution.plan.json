@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "H",
+    "U",
+    "V"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "l",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAH",
+        "ownerSegment": "AH",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ll",
+        "ownerSegment": "l",
+        "text": "l"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "AB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "AH"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "answerCH",
+        "from": "C",
+        "to": "H",
+        "label": "4",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "신흥중 중3 2학기 기말 22번 해설: 지름 AB10cm·접선 l·수선 AH8cm의 닮은 직각삼각형",
+  "accessibilityDescription": "신흥중 22번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 지름 AB10cm·접선 l·수선 AH8cm의 닮은 직각삼각형.",
+  "newVisualInformation": [
+    "지름 AB10cm·접선 l·수선 AH8cm의 닮은 직각삼각형",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "POINT5",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "POINT6",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[6]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "SEG3",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "SEG4",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "SEG5",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "DIM0",
+      "condition": "선분 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "EXP0",
+      "condition": "수치 및 변수 길이",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "EXP1",
+      "condition": "수치 및 변수 길이",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "EXP2",
+      "condition": "수치 및 변수 길이",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "RIGHT0",
+      "condition": "직각 표식",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "RIGHT1",
+      "condition": "직각 표식",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "(1) 선분 $AB$가 원 $O$의 지름이므로 반원에 대한 원주각의 크기는 $90^\\circ$이다. $$\\angle ACB = 90^\\circ$$ 또한 점 $A$에서 접선 $l$에 내린 수선의 발이 $H$이므로 $$\\angle AHC = 90^\\circ$$ 한편 접선과 현이 이루는 각의 성질에 의하여 접선 $l$과 현 $AC$가 이루는 각 $\\angle ACH$의 크기는 호 $\\wideparen{AC}$에 대한 원주각 $\\angle ABC$의 크기와 같다. $$\\angle ACH = \\angle ABC$$ 따라서 두 삼각형 $\\triangle ABC$와 $\\triangle ACH$는 직각을 포함하여 두 쌍의 내각의 크기가 각각 같으므로 $$\\triangle ABC \\sim \\triangle ACH \\quad (\\text{AA 닮음})$$\n\n(2) 두 직각삼각형의 닮음에 의하여 대응변의 길이의 비가 일정하므로 $$\\dfrac{\\overline{AB}}{\\overline{AC}} = \\dfrac{\\overline{AC}}{\\overline{AH}}$$ $$\\overline{AC}^2 = \\overline{AB} \\times \\overline{AH}$$ 주어진 값 $\\overline{AB} = 10\\rm,cm$, $\\overline{AH} = 8\\rm,cm$를 대입하면 $$\\overline{AC}^2 = 10 \\times 8 = 80$$ 직각삼각형 $ACH$에서 피타고라스 정리에 의하여 $$\\overline{CH}^2 = \\overline{AC}^2 - \\overline{AH}^2$$ $$\\overline{CH}^2 = 80 - 8^2 = 80 - 64 = 16$$ $\\overline{CH} > 0$이므로 $$\\overline{CH} = 4\\rm,cm$$\n\n답: (1) $\\triangle ABC \\sim \\triangle ACH$ (AA 닮음), (2) $4\\rm,cm$"
+}
