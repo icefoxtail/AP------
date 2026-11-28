@@ -1,0 +1,33 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "axisTitles": {"x": "k", "y": "g(k)"},
+    "pieces": [
+      {"coefficients": ["4", "-2", "1"]},
+      {"coefficients": ["3", "-4"]},
+      {"coefficients": ["4", "-6", "1"]}
+    ],
+    "breakpoints": [{"x": "-1", "y": "7"}, {"x": "1", "y": "-1"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 7],
+    "viewport": [-3, 7, -7, 26],
+    "requiredPoints": [
+      {"id": "A", "x": -1, "y": 7},
+      {"id": "B", "x": 1, "y": -1},
+      {"id": "V", "x": 3, "y": -5}
+    ],
+    "referenceLines": [
+      {"id": "t", "y": "-5", "intersectionX": ["3"]}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "가로축은 k, 세로축은 g(k)=m(k)−4k이다. 그래프가 k=−1,1에서 이어지고 k=3에서 최솟값 −5이며 수평선 y=−5와 한 번 만난다.",
+  "accessibilityDescription": "왼쪽 이차곡선, 가운데 일차선, 오른쪽 이차곡선이 A(−1,7), B(1,−1)에서 이어진다. 오른쪽 꼭짓점 V(3,−5)에 수평선 y=−5가 접한다.",
+  "sourceConditions": [
+    {"id": "pieces", "condition": "g(k)=m(k)−4k의 세 구간 식은 k²−2k+4, 3−4k, k²−6k+4", "mappedTo": "graphPlan.pieces"},
+    {"id": "join", "condition": "구간 분기 k=−1,1에서 g값은 7,−1", "mappedTo": ["graphPlan.breakpoints", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]"]},
+    {"id": "tangent", "condition": "오직 하나의 교점을 갖는 수평선은 t=−5이고 교점은 (3,−5)", "mappedTo": ["graphPlan.referenceLines[0]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["구간별 경계와 마지막 포물선의 꼭짓점을 함께 보여 주어 교점이 하나만 생기는 유일한 높이를 설명한다."]
+}

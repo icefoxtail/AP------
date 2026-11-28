@@ -1,0 +1,25 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["5", "4", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 6],
+    "viewport": [-2, 6, -3, 11],
+    "requiredPoints": [
+      {"id": "A", "x": -1, "y": 0},
+      {"id": "B", "x": 5, "y": 0},
+      {"id": "C", "x": 0, "y": 5},
+      {"id": "V", "x": 2, "y": 9}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "y=−(x−2)²+9의 꼭짓점은 (2,9), x절편은 −1과 5, y절편은 5이다. 0≤x≤5에서는 최댓값 9, 최솟값 0이다.",
+  "accessibilityDescription": "아래로 열린 포물선의 두 x절편 A(−1,0), B(5,0), y절편 C(0,5), 꼭짓점 V(2,9)를 표시한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "원문 이차함수 y=−x²+4x+5", "mappedTo": "graphPlan.coefficients"},
+    {"id": "intercepts", "condition": "x절편 −1과 5, y절편 5", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[2]"]},
+    {"id": "vertex", "condition": "꼭짓점 (2,9), 0≤x≤5에서 최대 9·최소 0", "mappedTo": "graphPlan.requiredPoints[3]"}
+  ],
+  "newVisualInformation": ["그래프를 직접 그리라는 서술형의 해설축에서 모든 절편·꼭짓점 및 구간 극값을 실제 좌표로 제공한다."]
+}

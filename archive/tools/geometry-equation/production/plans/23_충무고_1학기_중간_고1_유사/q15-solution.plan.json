@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"36"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"-36"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"M","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["M","A"],"args":{
+        "length":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"36"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},
+        "angleDeg":{"kind":"integer","value":"90"},"turn":"CW"
+      },"outputType":"POINT","factRole":"CONCLUSION"}
+    ]
+  },
+  "displayPoints": ["A","B","C","M"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sMC","refs":["M","C"],"dashed":true}
+  ],
+  "rightAngles": [{"id":"rM","refs":["A","M","C"]}],
+  "planeMarks": {
+    "equalLengths": [{"id":"equilateral","count":1,"segments":["sAB","sAC","sBC"]}],
+    "expressionLabels": [
+      {"id":"base","ownerSegment":"sAB","text":"72"},
+      {"id":"height","ownerSegment":"sMC","text":"36sqrt(3)"}
+    ]
+  },
+  "coordinateCanvas": {"width":720,"height":540},
+  "caption": "두 곡선에서 A와 B의 세로 중점이 x축 위에 오려면 공통 가로좌표는 −6이다. AB=72, 정삼각형 높이 MC=36√3이므로 C의 가로좌표는 −6+36√3이다.",
+  "accessibilityDescription": "정삼각형 ABC의 세 변에 같은 길이 표식이 있다. 세로 변 AB의 중점 M에서 꼭짓점 C까지 점선 수평 높이와 직각 표시, AB의 길이 72, MC의 길이 36√3을 표시한다.",
+  "sourceConditions": [
+    {"id":"intersection","condition":"x=t에서 A=(t,t²), B=(t,−t²/2+3t), 두 점의 세로 중점이 x축 위에 있어 t=−6","mappedTo":["mathPlan.nodes[A,B]","mathPlan.nodes[M]"]},
+    {"id":"side","condition":"A(−6,36), B(−6,−36)으로 AB=72이고 정삼각형이다","mappedTo":["planeMarks.equalLengths[0]","planeMarks.expressionLabels[0]"]},
+    {"id":"altitude","condition":"정삼각형의 높이 MC=AB√3/2=36√3, MC는 AB에 수직이다","mappedTo":["mathPlan.nodes[C]","displaySegments[sMC]","rightAngles[0]","planeMarks.expressionLabels[1]"]}
+  ],
+  "newVisualInformation": ["두 함수값의 합이 0인 x에서 AB의 중점이 x축에 놓이며, 정삼각형의 높이가 C의 가로좌표를 결정함을 보여 준다."]
+}

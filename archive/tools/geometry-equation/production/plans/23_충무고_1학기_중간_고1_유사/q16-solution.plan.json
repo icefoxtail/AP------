@@ -1,0 +1,25 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["5", "-1", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 2],
+    "viewport": [-2, 2, 0, 7],
+    "requiredPoints": [
+      {"id": "V", "x": -0.5, "y": 5.25},
+      {"id": "L", "x": 0, "y": 5},
+      {"id": "R", "x": 1, "y": 3}
+    ],
+    "exactCoordinates": {"V": ["-1/2", "21/4"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a+b가 최소인 a=−1/2, b=21/4의 경우에 f(x)=−x²−x+5이다. 구간 0≤x≤1에서 최대는 왼쪽 끝 5이다.",
+  "accessibilityDescription": "아래로 열린 포물선의 꼭짓점 V(−1/2,21/4)는 구간 0≤x≤1 밖에 있다. 구간 왼쪽 끝 L(0,5)와 오른쪽 끝 R(1,3)을 표시한다.",
+  "sourceConditions": [
+    {"id": "case", "condition": "a<0인 경우 b=a²+5, a+b 최소는 a=−1/2에서 19/4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "a=−1/2인 포물선의 꼭짓점은 (−1/2,21/4)", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.exactCoordinates"]},
+    {"id": "range", "condition": "0≤x≤1에서 f(0)=5, f(1)=3", "mappedTo": ["graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["최적 a가 주어진 구간 왼쪽에 있어 함수의 최대가 x=0에서 발생하는 경우를 보여 준다."]
+}

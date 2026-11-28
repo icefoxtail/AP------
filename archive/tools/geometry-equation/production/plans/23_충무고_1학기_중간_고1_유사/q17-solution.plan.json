@@ -1,0 +1,74 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"expression","op":"sub","args":[
+          {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]},
+          {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"21"}]}]}
+        ]},{"kind":"integer","value":"3"}
+      ]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]},
+        {"kind":"integer","value":"0"}
+      ]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"expression","op":"sub","args":[
+          {"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]},
+          {"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"21"}]}
+        ]},{"kind":"integer","value":"1"}
+      ]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"K","op":"PERPENDICULAR_FOOT","inputs":["I","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"F","op":"PERPENDICULAR_FOOT","inputs":["I","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ci","op":"CIRCLE_CENTER_RADIUS","inputs":["I"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","I","K","F","H"],
+  "hiddenPointNames": ["K","H"],
+  "displayCircles": ["ci"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]}, {"id":"sBC","refs":["B","C"]}, {"id":"sCA","refs":["C","A"]},
+    {"id":"sDE","refs":["D","E"],"emphasis":"ACCENT"},
+    {"id":"sAI","refs":["A","I"],"dashed":true},
+    {"id":"sIK","refs":["I","K"],"dashed":true},
+    {"id":"sIF","refs":["I","F"],"dashed":true},
+    {"id":"sAH","refs":["A","H"],"dashed":true},
+    {"id":"sBH","refs":["B","H"],"dashed":true}
+  ],
+  "rightAngles": [
+    {"id":"rK","refs":["I","K","C"]},
+    {"id":"rF","refs":["I","F","A"]},
+    {"id":"rH","refs":["A","H","B"]}
+  ],
+  "planeMarks": {
+    "parallels": [{"id":"pDE","count":1,"segments":["sDE","sBC"]}],
+    "expressionLabels": [
+      {"id":"ai","ownerSegment":"sAI","text":"5"},
+      {"id":"radius","ownerSegment":"sIK","text":"1"},
+      {"id":"height","ownerSegment":"sAH","text":"3"}
+    ],
+    "dimensions": [
+      {"id":"af","from":"A","to":"F","label":"2sqrt(6)","side":"LEFT"},
+      {"id":"bc","from":"B","to":"C","label":"4sqrt(6)","side":"BELOW"}
+    ],
+    "regions": [{"id":"ade","fill":"LIGHT","shapes":[{"polygon":["A","D","E"]}]}]
+  },
+  "coordinateCanvas": {"width":720,"height":570},
+  "caption": "IF=1, AI=5이므로 AF=2√6. BC=4√6, 높이 AH=3이며 DE∥BC이므로 △ADE:△ABC의 넓이비는 4:9, △ADE의 넓이는 (8/3)√6이다.",
+  "accessibilityDescription": "내접원과 삼각형 ABC에서 A,I,F의 직각삼각형, 길이 AI=5·IF=1·AF=2√6, 밑변 BC=4√6, 높이 AH=3, 평행한 DE와 색칠된 위쪽 삼각형 ADE를 보인다.",
+  "sourceConditions": [
+    {"id":"incircle","condition":"AI=5, 내접원 반지름 IF=IK=1이며 AF=√(25−1)=2√6","mappedTo":["mathPlan.nodes[ci,F,K]","displayCircles[0]","rightAngles[0]","rightAngles[1]","planeMarks.dimensions[0]","planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]"]},
+    {"id":"base","condition":"S_ABC=r s=6√6, AF=2√6이므로 BC=4√6","mappedTo":["mathPlan.nodes[B,C]","planeMarks.dimensions[1]"]},
+    {"id":"height","condition":"△ABC의 넓이 6√6과 BC=4√6으로 높이 AH=3","mappedTo":["mathPlan.nodes[H]","displaySegments[sAH]","rightAngles[2]","planeMarks.expressionLabels[2]"]},
+    {"id":"ratio","condition":"DE∥BC이고 I가 BC에서 거리1이므로 A에서 DE까지 거리2, 닮음비2:3, 목표 넓이비4:9","mappedTo":["mathPlan.nodes[D,E]","planeMarks.parallels[0]","displaySegments[sDE]","planeMarks.regions[0]"]}
+  ],
+  "newVisualInformation": ["원에 그은 접선 길이, 수선과 높이, 내심을 지나는 평행선이 만드는 닮음비를 실제 선·직각·치수·색칠 영역으로 연결한다."]
+}

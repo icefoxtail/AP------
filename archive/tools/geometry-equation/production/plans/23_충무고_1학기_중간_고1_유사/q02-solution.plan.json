@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-8", "-2", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-4, 6],
+    "viewport": [-4, 6, -12, 12],
+    "requiredPoints": [
+      {"id": "A", "x": -2, "y": 0},
+      {"id": "B", "x": 4, "y": 0},
+      {"id": "V", "x": 1, "y": -9}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "두 근 −2, 4가 x절편인 이차함수 y=x²−2x−8과 대칭축 x=1을 나타낸 해설 그림.",
+  "accessibilityDescription": "위로 열린 포물선이 x축의 A(−2,0), B(4,0)을 지나고 꼭짓점 V(1,−9)를 갖는다.",
+  "sourceConditions": [
+    {"id": "roots", "condition": "주어진 x절편은 −2와 4이므로 두 근의 합은 2, 곱은 −8", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]"]},
+    {"id": "vertex", "condition": "완전제곱식 (x−1)²−9의 꼭짓점은 (1,−9)", "mappedTo": "graphPlan.requiredPoints[2]"}
+  ],
+  "newVisualInformation": ["근의 합이 대칭축의 두 배가 되는 관계와 두 x절편을 하나의 그래프로 보인다."]
+}

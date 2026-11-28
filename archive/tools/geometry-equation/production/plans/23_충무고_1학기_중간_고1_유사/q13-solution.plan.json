@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-2", "8", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 9],
+    "viewport": [-1, 9, -4, 17],
+    "requiredPoints": [
+      {"id": "V", "x": 4, "y": 14},
+      {"id": "Y", "x": 0, "y": -2}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "역수로 바뀐 두 근의 합이 8이고 곱이 2이므로 f(x)=−(x−4)²+14, 최댓값은 꼭짓점의 높이 14이다.",
+  "accessibilityDescription": "아래로 열린 포물선 f(x)=−x²+8x−2의 꼭짓점 V(4,14)와 y절편 Y(0,−2)를 표시한다.",
+  "sourceConditions": [
+    {"id": "new-roots", "condition": "새 두 근의 합 8과 곱 2, x²계수 −1에서 f(x)=−x²+8x−2", "mappedTo": "graphPlan.coefficients"},
+    {"id": "extremum", "condition": "f(x)=−(x−4)²+14의 꼭짓점 (4,14)", "mappedTo": "graphPlan.requiredPoints[0]"},
+    {"id": "intercept", "condition": "f(0)=−2", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["최댓값이 두 근의 역수로 구성된 새 포물선의 꼭짓점에서 발생함을 보여 준다."]
+}

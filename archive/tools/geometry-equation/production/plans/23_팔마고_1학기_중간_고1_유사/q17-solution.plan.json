@@ -1,0 +1,26 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "-3", "1/2"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["2", "4"], "states": ["CLOSED", "CLOSED"]},
+    "axisFold": false,
+    "domain": [2, 4],
+    "viewport": [-0.5, 4.7, -5.5, 0.8],
+    "requiredPoints": [
+      {"id": "L", "x": 2, "y": -4},
+      {"id": "V", "x": 3, "y": -4.5},
+      {"id": "R", "x": 4, "y": -4}
+    ],
+    "exactCoordinates": {"V": ["3", "-9/2"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "g(p)의 최솟값 −4는 포물선의 축 x=3을 가운데 둔 길이 2의 구간 [2,4]에서 얻어진다.",
+  "accessibilityDescription": "함수 f(x)=x²/2−3x의 구간 [2,4]에서 두 끝점 L(2,−4), R(4,−4)가 같은 높이이며 꼭짓점 V(3,−9/2)가 아래에 있다.",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "f(0)=0, 축 x=3으로부터 f(x)=1/2 x²−3x", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "길이 2 구간의 최대값이 최소가 될 때 구간은 [2,4]", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "values", "condition": "f(2)=f(4)=−4, f(3)=−9/2", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.exactCoordinates"]}
+  ],
+  "newVisualInformation": ["대칭축을 중심으로 끝점 높이가 같을 때 구간 최대가 가장 작아지는 이유를 보인다."]
+}

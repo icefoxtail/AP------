@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","M"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCA","refs":["C","A"]},
+    {"id":"sAM","refs":["A","M"],"dashed":true}
+  ],
+  "rightAngles": [{"id":"rM","refs":["A","M","C"]}],
+  "planeMarks": {
+    "equalLengths": [{"id":"equal","count":1,"segments":["sAB","sBC","sCA"]}],
+    "expressionLabels": [
+      {"id":"p","ownerSegment":"sAB","text":"p"},
+      {"id":"q","ownerSegment":"sBC","text":"q"},
+      {"id":"r","ownerSegment":"sCA","text":"r"},
+      {"id":"h","ownerSegment":"sAM","text":"sqrt(3)*p/2"}
+    ],
+    "regions": [{"id":"area","fill":"LIGHT","label":"S","shapes":[{"polygon":["A","B","C"]}]}]
+  },
+  "coordinateCanvas": {"width":690,"height":510},
+  "caption": "p³+q³+r³=3pqr이므로 p=q=r이다. 정삼각형에서 높이는 √3p/2, 둘레는 3p, 넓이는 √3p²/4이고 l²/(2S)=6√3이다.",
+  "accessibilityDescription": "세 변 AB·BC·CA에 같은 길이 표식과 각각 p·q·r 라벨이 있는 정삼각형이다. 꼭짓점 A에서 밑변 BC의 중점 M까지 수선이 있으며 높이와 넓이 S를 표시한다.",
+  "sourceConditions": [
+    {"id":"equal","condition":"p³+q³+r³−3pqr=(p+q+r)((p−q)²+(q−r)²+(r−p)²)/2=0이므로 p=q=r>0","mappedTo":["planeMarks.equalLengths[0]","planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]","planeMarks.expressionLabels[2]"]},
+    {"id":"height","condition":"정삼각형 높이는 √3p/2, 밑변 중점의 수선이다","mappedTo":["mathPlan.nodes[M]","displaySegments[sAM]","rightAngles[0]","planeMarks.expressionLabels[3]"]},
+    {"id":"area","condition":"정삼각형 넓이 S=√3 p²/4","mappedTo":"planeMarks.regions[0]"}
+  ],
+  "newVisualInformation": ["삼차 항등식의 등호 조건을 세 변의 같음 표식으로 나타내고, 넓이 공식에 쓰이는 수선·높이·영역을 함께 보인다."]
+}
