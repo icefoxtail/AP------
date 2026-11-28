@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sDB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sCD_2",
+        "ownerSegment": "sCD",
+        "text": "10",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "sol_sAB_3",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "D",
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 520
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 13번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 13번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q13_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q13_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q13_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q13_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 D–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q13_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sAC의 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q13_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sDB의 표시 8",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q13_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sCD의 표시 10",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q13_solution_planeMarks_expressionLabels_3",
+      "condition": "선분 sAB의 표시 8",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q13_solution_planeMarks_arcs_0",
+      "condition": "호 B–A의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q13_solution_rightAngles_0",
+      "condition": "직각 표식 C–A–B",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q13_solution_rightAngles_1",
+      "condition": "직각 표식 D–B–A",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "점 $C, D$에서 원 $O$에 그은 두 접선의 길이는 각각 같으므로 $\\overline{CD}$와 원의 접점을 $E$라 하면 $$\\overline{CE} = \\overline{CA} = 2\\text{ cm}, \\quad \\overline{DE} = \\overline{DB} = 8\\text{ cm}$$ $$\\overline{CD} = \\overline{CE} + \\overline{ED} = 2 + 8 = 10\\text{ cm}$$ 점 $C$에서 $\\overline{BD}$에 내린 수선의 발을 $F$라 하면 사각형 $ABFC$는 직사각형이므로 $\\overline{CF} = \\overline{AB} = 2r$ (단, $r$는 반지름), $\\overline{DF} = \\overline{BD} - \\overline{AC} = 8 - 2 = 6\\text{ cm}$이다. 직각삼각형 $CFD$에서 피타고라스 정리에 의하여 $$(2r)^2 = \\overline{CD}^2 - \\overline{DF}^2 = 10^2 - 6^2 = 100 - 36 = 64$$ $$2r = 8 \\implies r = 4\\text{ cm}$$ 따라서 정답은 ②이다."
+}

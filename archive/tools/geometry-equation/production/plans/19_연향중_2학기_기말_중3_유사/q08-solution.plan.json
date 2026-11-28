@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8sqrt(3)",
+        "unit": "cm",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "sol_sAB_0",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 8번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 8번 해설의 수학적 도출 관계를 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q08_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q08_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q08_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q08_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sAB의 표시 8",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q08_solution_planeMarks_angles_0",
+      "condition": "각 A–B–C의 30 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q08_solution_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 꼭짓점 $A$에서 밑변 $BC$에 내린 수선의 발을 $D$라 하면 $D$는 $\\overline{BC}$의 중점이므로 $\\overline{BD} = 4\\sqrt{3}\\text{ cm}$이다. 직각삼각형 $ABD$에서 $\\angle B = 30^\\circ$이므로 $$\\overline{AD} = \\overline{BD} \\tan 30^\\circ = 4\\sqrt{3} \\times \\dfrac{1}{\\sqrt{3}} = 4\\text{ cm}$$ $$\\overline{AB} = \\dfrac{\\overline{BD}}{\\cos 30^\\circ} = 4\\sqrt{3} \\div \\dfrac{\\sqrt{3}}{2} = 8\\text{ cm}$$ $\\triangle ABC$의 넓이는 $\\dfrac{1}{2} \\times 8\\sqrt{3} \\times 4 = 16\\sqrt{3}\\text{ cm}^2$이고, 내접원 $I$의 반지름을 $r\\text{ cm}$라 하면 $$\\dfrac{1}{2} r (\\overline{AB} + \\overline{BC} + \\overline{AC}) = \\dfrac{1}{2} r (8 + 8\\sqrt{3} + 8) = r(8 + 4\\sqrt{3}) = 16\\sqrt{3}$$ $$r = \\dfrac{16\\sqrt{3}}{8 + 4\\sqrt{3}} = \\dfrac{4\\sqrt{3}}{2 + \\sqrt{3}} = 4\\sqrt{3}(2 - \\sqrt{3}) = 8\\sqrt{3} - 12\\text{ cm}$$ 따라서 정답은 ②이다."
+}

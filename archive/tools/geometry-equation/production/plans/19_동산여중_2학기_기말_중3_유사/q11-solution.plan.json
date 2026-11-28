@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "19_동산여중_2학기_기말_중3_유사 11번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 11번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "200"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "200"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "200"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "200"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "600"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "200"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN",
+        "color": "VIOLET"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "h"
+      },
+      {
+        "id": "sol_sCH_1",
+        "ownerSegment": "sCH",
+        "text": "200(sqrt(3)+1)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "400",
+        "unit": "m",
+        "side": "BELOW",
+        "offset": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "q11_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–H",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q11_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 C–H",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q11_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q11_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q11_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sCH의 표시 h",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q11_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sCH의 표시 200(sqrt(3)+1)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q11_solution_planeMarks_angles_0",
+      "condition": "각 C–A–H의 30 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q11_solution_planeMarks_angles_1",
+      "condition": "각 C–B–H의 45 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "산의 높이를 $\\overline{CH} = h\\rm,m$라 하자. 직각삼각형 $BCH$에서 $\\angle CBH = 45^\\circ$이므로 $$\\tan 45^\\circ = \\dfrac{\\overline{CH}}{\\overline{BH}} = 1 \\implies \\overline{BH} = h\\rm,m$$ 따라서 $\\overline{AH} = \\overline{AB} + \\overline{BH} = (400 + h)\\rm,m$이다. 직각삼각형 $ACH$에서 $\\angle CAH = 30^\\circ$이므로 $$\\tan 30^\\circ = \\dfrac{\\overline{CH}}{\\overline{AH}} = \\dfrac{h}{400 + h} = \\dfrac{1}{\\sqrt{3}}$$ $$\\sqrt{3}h = 400 + h \\implies (\\sqrt{3} - 1)h = 400$$ $$h = \\dfrac{400}{\\sqrt{3} - 1} = \\dfrac{400(\\sqrt{3} + 1)}{3 - 1} = 200(\\sqrt{3} + 1)\\rm,m$$ 따라서 정답은 ①이다."
+}

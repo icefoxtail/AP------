@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "19_연향중_2학기_기말_중3_유사 6번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 6번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 37,
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "20",
+        "unit": "m"
+      },
+      {
+        "id": "sol_sAB_1",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "sol_sAC_2",
+        "ownerSegment": "sAC",
+        "text": "25",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "sourceConditions": [
+    {
+      "id": "q06_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q06_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q06_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q06_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sBC의 표시 20",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q06_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAB의 표시 15",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q06_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sAC의 표시 25",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q06_solution_planeMarks_angles_0",
+      "condition": "각 A–C–B의 undefined 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q06_solution_rightAngles_0",
+      "condition": "직각 표식 A–B–C",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "나무의 밑동을 $B$, 부러진 지점을 $A$, 나무 꼭대기가 지면에 닿은 지점을 $C$라 하면 $\\angle B = 90^\\circ$, $\\angle C = 37^\\circ$, $\\overline{BC} = 20\\text{ m}$이다. 직각삼각형 $ABC$에서 $$\\cos 37^\\circ = \\dfrac{\\overline{BC}}{\\overline{AC}} = 0.8 \\implies \\overline{AC} = \\dfrac{20}{0.8} = 25\\text{ m}$$ $$\\tan 37^\\circ = \\dfrac{\\overline{AB}}{\\overline{BC}} = 0.75 \\implies \\overline{AB} = 20 \\times 0.75 = 15\\text{ m}$$ 따라서 부러지기 전 나무의 높이는 $$\\overline{AB} + \\overline{AC} = 15 + 25 = 40\\text{ m}$$ 이므로 정답은 ⑤이다."
+}

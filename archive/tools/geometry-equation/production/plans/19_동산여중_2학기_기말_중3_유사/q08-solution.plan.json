@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBH",
+        "ownerSegment": "sBH",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sAH_1",
+        "ownerSegment": "sAH",
+        "text": "6sqrt(3)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAH"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 8번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 8번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q08_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 B–H",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q08_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 H–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q08_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q08_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q08_solution_displaySegments_4",
+      "condition": "실제 그리는 선분 A–H",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q08_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sBH의 표시 6",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q08_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAH의 표시 6sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q08_solution_planeMarks_angles_0",
+      "condition": "각 A–B–H의 60 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q08_solution_planeMarks_angles_1",
+      "condition": "각 A–C–H의 60 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q08_solution_rightAngles_0",
+      "condition": "직각 표식 B–H–A",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABH$에서 $\\angle B = 60^\\circ, \\overline{BH} = 6\\rm,cm$이므로 $$\\overline{AH} = \\overline{BH} \\times \\tan 60^\\circ = 6\\sqrt{3}\\rm,cm$$ 직각삼각형 $AHC$에서 $\\angle C = 60^\\circ$이므로 $$\\overline{HC} = \\dfrac{\\overline{AH}}{\\tan 60^\\circ} = \\dfrac{6\\sqrt{3}}{\\sqrt{3}} = 6\\rm,cm$$ 따라서 밑변의 길이는 $\\overline{BC} = \\overline{BH} + \\overline{HC} = 6 + 6 = 12\\rm,cm$이므로 $\\triangle ABC$의 넓이는 $$\\triangle ABC = \\dfrac{1}{2} \\times \\overline{BC} \\times \\overline{AH} = \\dfrac{1}{2} \\times 12 \\times 6\\sqrt{3} = 36\\sqrt{3}\\rm,cm^2$$ 그러므로 정답은 ③이다."
+}

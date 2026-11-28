@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "19_동산여중_2학기_기말_중3_유사 11번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 11번 문제의 조건을 나타내는 도형",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "200"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "200"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "200"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "200"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "600"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "200"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN",
+        "color": "VIOLET"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "h"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "400",
+        "unit": "m",
+        "side": "BELOW",
+        "offset": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "q11_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–H",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q11_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 C–H",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q11_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q11_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q11_problem_planeMarks_expressionLabels_0",
+      "condition": "선분 sCH의 표시 h",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q11_problem_planeMarks_angles_0",
+      "condition": "각 C–A–H의 30 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q11_problem_planeMarks_angles_1",
+      "condition": "각 C–B–H의 45 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "수평선 위의 세 지점 $A, B, H$가 이 순서로 한 직선 위에 있고, 지점 $H$에서 수직으로 서 있는 산의 꼭대기를 $C$라 하자. $\\overline{AB} = 400\\rm,m$, $\\angle CAH = 30^\\circ, \\angle CBH = 45^\\circ$일 때, 산의 높이 $\\overline{CH}$는?"
+}

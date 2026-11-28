@@ -1,0 +1,375 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "42"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ray",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tangent",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ray",
+          "tangent"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "Y",
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointNames": [
+    "T",
+    "Y",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "OY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "circle",
+        "center": "O",
+        "from": "T",
+        "to": "Y",
+        "side": "MINOR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "o",
+        "refs": [
+          "T",
+          "O",
+          "A"
+        ],
+        "value": 42,
+        "label": "42",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sol_BOA",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 42,
+        "label": "42",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "h1",
+        "ownerSegment": "AB",
+        "text": "≈0.67",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h2",
+        "ownerSegment": "OB",
+        "text": "≈0.74",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h3",
+        "ownerSegment": "TC",
+        "text": "≈0.90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "b",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "t",
+      "refs": [
+        "O",
+        "T",
+        "C"
+      ]
+    }
+  ],
+  "caption": "19_동산여중_2학기_기말_중3_유사 23번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 23번 해설의 수학적 도출 관계를 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q23_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 O–T",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q23_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 O–Y",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q23_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q23_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q23_solution_displaySegments_4",
+      "condition": "실제 그리는 선분 T–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q23_solution_displaySegments_5",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q23_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 AB의 표시 ≈0.67",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q23_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 OB의 표시 ≈0.74",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q23_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 TC의 표시 ≈0.90",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q23_solution_planeMarks_angles_0",
+      "condition": "각 T–O–A의 42 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q23_solution_planeMarks_angles_1",
+      "condition": "각 B–O–A의 42 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q23_solution_planeMarks_arcs_0",
+      "condition": "호 T–Y의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q23_solution_rightAngles_0",
+      "condition": "직각 표식 O–B–A",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q23_solution_rightAngles_1",
+      "condition": "직각 표식 O–T–C",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "반지름의 길이가 $1$인 사분원에서 중심각 $42^\\circ$에 대응하는 호 위의 점 $A$의 $x$좌표는 $\\cos 42^\\circ$, $y$좌표는 $\\sin 42^\\circ$를 나타낸다. 따라서 점 $A$의 좌표 $(0.74, 0.67)$에서 $$\\sin 42^\\circ \\approx 0.67,\\quad \\cos 42^\\circ \\approx 0.74$$ 또한 밑변의 길이가 $1$인 직각삼각형에서 직선 $x = 1$ 위의 교점의 높이($y$좌표)가 $\\tan 42^\\circ$를 나타내므로 $$\\tan 42^\\circ \\approx 0.90$$ (이미 반올림된 근삿값이므로 $0.67 \\div 0.74$로 다시 계산하지 않고 그림에서 읽은 높이를 그대로 사용한다.) 따라서 구하는 값은 순서대로 $\\sin 42^\\circ \\approx 0.67, \\cos 42^\\circ \\approx 0.74, \\tan 42^\\circ \\approx 0.90$이다."
+}

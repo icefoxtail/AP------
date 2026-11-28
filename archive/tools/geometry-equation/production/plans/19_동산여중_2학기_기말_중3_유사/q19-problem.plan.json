@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "W"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "66"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "W"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "294"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tA",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "lOA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tB",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "lOB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tA",
+          "tB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 48,
+        "label": "48",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 132,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "P",
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 19번: 원문의 삼각형, 원 및 측정 조건",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 19번 문제의 조건을 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q19_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 P–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q19_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q19_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q19_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q19_problem_planeMarks_angles_0",
+      "condition": "각 A–P–B의 48 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q19_problem_planeMarks_angles_1",
+      "condition": "각 A–O–B의 x 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q19_problem_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q19_problem_rightAngles_0",
+      "condition": "직각 표식 P–A–O",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q19_problem_rightAngles_1",
+      "condition": "직각 표식 P–B–O",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "원 $O$ 외부의 한 점 $P$에서 원에 그은 두 접선의 접점을 각각 $A, B$라 하자. $\\angle APB = 48^\\circ$일 때, 중심각 $x = \\angle AOB$의 크기는?"
+}

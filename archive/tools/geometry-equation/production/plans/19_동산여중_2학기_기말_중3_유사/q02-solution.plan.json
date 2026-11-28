@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "sol_angle_C",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "24"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "25"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "7"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 340
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 2번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 2번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q02_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q02_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q02_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q02_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sAC의 표시 24",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q02_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAB의 표시 25",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q02_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sBC의 표시 7",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q02_solution_planeMarks_angles_0",
+      "condition": "피타고라스 정리로 독립 확인한 ∠ACB=90°",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q02_solution_rightAngles_0",
+      "condition": "직각 표식 A–C–B",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "세 변의 길이에 대하여 $$\\overline{AC}^2 + \\overline{BC}^2 = 24^2 + 7^2 = 576 + 49 = 625 = 25^2 = \\overline{AB}^2$$ 이므로 $\\angle C = 90^\\circ$이고 빗변은 $\\overline{AB}$인 직각삼각형이다. 각 $A$에 대하여 이웃한 변은 $\\overline{AC} = 24$, 빗변은 $\\overline{AB} = 25$이므로 $$\\cos A = \\dfrac{\\overline{AC}}{\\overline{AB}} = \\dfrac{24}{25}$$ 따라서 옳은 것은 ②이다."
+}

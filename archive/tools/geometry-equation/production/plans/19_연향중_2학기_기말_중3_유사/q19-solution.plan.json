@@ -1,0 +1,354 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "19_연향중_2학기_기말_중3_유사 19번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 19번 해설의 수학적 도출 관계를 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q19_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–O",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q19_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 O–Op",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q19_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 Op–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q19_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 A–Q",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q19_solution_displaySegments_4",
+      "condition": "실제 그리는 선분 P–B",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q19_solution_displaySegments_5",
+      "condition": "실제 그리는 선분 Op–P",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q19_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sOOp의 표시 6",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q19_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sPB의 표시 4sqrt(6)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q19_solution_displayCircles_0",
+      "condition": "원의 테두리 big",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q19_solution_displayCircles_1",
+      "condition": "원의 테두리 small",
+      "mappedTo": "displayCircles[1]"
+    },
+    {
+      "id": "q19_solution_rightAngles_0",
+      "condition": "직각 표식 Q–P–Op",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Op",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "16"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Op"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "Op",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "big",
+    "small"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOOp",
+      "refs": [
+        "O",
+        "Op"
+      ]
+    },
+    {
+      "id": "sOpB",
+      "refs": [
+        "Op",
+        "B"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOpP",
+      "refs": [
+        "Op",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOOp",
+        "ownerSegment": "sOOp",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sPB_1",
+        "ownerSegment": "sPB",
+        "text": "4sqrt(6)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "Q",
+        "P",
+        "Op"
+      ]
+    }
+  ],
+  "pointNames": {
+    "Op": "O'"
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "sourceQuote": "중심 $O$가 작은 원 $O'$ 위에 있으므로 작은 원의 반지름은 $\\overline{OO'} = \\overline{O'B} = 6\\text{ cm}$이고, 큰 원의 반지름은 $\\overline{OB} = \\overline{OO'} + \\overline{O'B} = 12\\text{ cm}$이다. 따라서 $\\overline{AO'} = \\overline{AO} + \\overline{OO'} = 12 + 6 = 18\\text{ cm}$이다. $\\overline{AP}$가 원 $O'$의 접선이므로 $\\overline{O'P} \\perp \\overline{AP}$이고 $\\overline{O'P} = 6\\text{ cm}$이다. 직각삼각형 $AO'P$에서 $$\\overline{AP} = \\sqrt{18^2 - 6^2} = \\sqrt{288} = 12\\sqrt{2}\\text{ cm}$$ 점 $P$에서 $\\overline{AB}$에 내린 수선의 발을 $H$라 하면 $\\triangle O'PA \\sim \\triangle O'HP$ (AA 닮음)이므로 $$\\overline{O'H} : 6 = 6 : 18 \\implies \\overline{O'H} = 2\\text{ cm}$$ $$\\overline{PH} : 12\\sqrt{2} = 6 : 18 \\implies \\overline{PH} = 4\\sqrt{2}\\text{ cm}$$ $\\overline{HB} = \\overline{HO'} + \\overline{O'B} = 2 + 6 = 8\\text{ cm}$이므로 직각삼각형 $PHB$에서 $$\\overline{BP} = \\sqrt{\\overline{PH}^2 + \\overline{HB}^2} = \\sqrt{(4\\sqrt{2})^2 + 8^2} = \\sqrt{32 + 64} = \\sqrt{96} = 4\\sqrt{6}\\text{ cm}$$ 따라서 정답은 ②이다."
+}

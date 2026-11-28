@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "220"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "350"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 65,
+        "factRole": "GIVEN",
+        "label": "65"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 50,
+        "factRole": "GIVEN",
+        "label": "x"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sOM",
+          "sON"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "N",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 10번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 10번 문제의 조건을 나타내는 도형",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q10_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q10_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q10_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q10_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q10_problem_displaySegments_4",
+      "condition": "실제 그리는 선분 O–N",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q10_problem_planeMarks_angles_0",
+      "condition": "각 B–A–C의 65 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q10_problem_planeMarks_angles_1",
+      "condition": "각 A–C–B의 x 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q10_problem_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q10_problem_rightAngles_0",
+      "condition": "직각 표식 O–M–B",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q10_problem_rightAngles_1",
+      "condition": "직각 표식 O–N–A",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같은 원 $O$에서 $\\overline{OM} \\perp \\overline{BC}$, $\\overline{ON} \\perp \\overline{AC}$이고 $\\overline{OM} = \\overline{ON}$이다. $\\angle BAC = 65^\\circ$일 때, $x$의 값은? (단, $x^\\circ = \\angle ACB$)"
+}

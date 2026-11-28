@@ -1,0 +1,336 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "260"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "350"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ab",
+          "cd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 20,
+        "factRole": "GIVEN",
+        "label": "20"
+      },
+      {
+        "id": "aP",
+        "refs": [
+          "D",
+          "P",
+          "B"
+        ],
+        "value": 65,
+        "factRole": "GIVEN",
+        "label": "65"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcDB",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "B",
+        "side": "MINOR",
+        "color": "WARM",
+        "label": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcAC",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "A",
+        "side": "MINOR",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 17번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 17번 문제의 조건을 나타내는 도형",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q17_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q17_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q17_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 A–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q17_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 C–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q17_problem_planeMarks_angles_0",
+      "condition": "각 A–D–C의 20 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q17_problem_planeMarks_angles_1",
+      "condition": "각 D–P–B의 65 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q17_problem_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q17_problem_planeMarks_arcs_0",
+      "condition": "호 D–B의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q17_problem_planeMarks_arcs_1",
+      "condition": "호 C–A의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 점 $P$는 원 내부에서 만나는 두 현 $AB, CD$의 교점이다. $\\\\overgroup{BD} = 5\\text{ cm}$, $\\angle ADC = 20^\\circ$, $\\angle DPB = 65^\\circ$일 때, 이 원의 둘레의 길이는?"
+}

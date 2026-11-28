@@ -1,0 +1,359 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "42"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ray",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tangent",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ray",
+          "tangent"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "Y",
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointNames": [
+    "T",
+    "Y",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "OY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "circle",
+        "center": "O",
+        "from": "T",
+        "to": "Y",
+        "side": "MINOR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "o",
+        "refs": [
+          "T",
+          "O",
+          "A"
+        ],
+        "value": 42,
+        "label": "42",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "h1",
+        "ownerSegment": "AB",
+        "text": "≈0.67",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h2",
+        "ownerSegment": "OB",
+        "text": "≈0.74",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h3",
+        "ownerSegment": "TC",
+        "text": "≈0.90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "b",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "t",
+      "refs": [
+        "O",
+        "T",
+        "C"
+      ]
+    }
+  ],
+  "caption": "19_동산여중_2학기_기말_중3_유사 23번: 원문의 삼각형, 원 및 측정 조건",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 23번 문제의 조건을 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q23_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 O–T",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q23_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 O–Y",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q23_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q23_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q23_problem_displaySegments_4",
+      "condition": "실제 그리는 선분 T–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q23_problem_displaySegments_5",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q23_problem_planeMarks_expressionLabels_0",
+      "condition": "선분 AB의 표시 ≈0.67",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q23_problem_planeMarks_expressionLabels_1",
+      "condition": "선분 OB의 표시 ≈0.74",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q23_problem_planeMarks_expressionLabels_2",
+      "condition": "선분 TC의 표시 ≈0.90",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q23_problem_planeMarks_angles_0",
+      "condition": "각 T–O–A의 42 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q23_problem_planeMarks_arcs_0",
+      "condition": "호 T–Y의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q23_problem_rightAngles_0",
+      "condition": "직각 표식 O–B–A",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q23_problem_rightAngles_1",
+      "condition": "직각 표식 O–T–C",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "[서술형 2] 반지름의 길이가 $1$인 사분원에서 중심각이 $42^\\circ$인 반직선이 사분원의 호와 만나는 점 $A$의 좌표가 약 $(0.74, 0.67)$이고, 직선 $x = 1$과 만나는 점의 $y$좌표가 약 $0.90$일 때, $\\sin 42^\\circ, \\cos 42^\\circ, \\tan 42^\\circ$의 값을 순서대로 구하고 그 과정을 서술하시오."
+}

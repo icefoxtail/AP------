@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lBA",
+        "ownerSegment": "sBA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lCB",
+        "ownerSegment": "sCB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sAC_2",
+        "ownerSegment": "sAC",
+        "text": "13",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 22번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 22번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 B–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q22_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q22_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 C–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q22_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sBA의 표시 5",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q22_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sCB의 표시 12",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q22_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sAC의 표시 13",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q22_solution_rightAngles_0",
+      "condition": "직각 표식 A–B–C",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\angle B = 90^\\circ$이므로 피타고라스 정리에 의하여 $$\\overline{AC} = \\sqrt{\\overline{AB}^2 + \\overline{BC}^2} = \\sqrt{5^2 + 12^2} = \\sqrt{169} = 13\\rm,cm$$ $\\angle C$에 대하여 맞은편 변은 $\\overline{AB} = 5\\rm,cm$, 이웃한 변은 $\\overline{BC} = 12\\rm,cm$, 빗변은 $\\overline{AC} = 13\\rm,cm$이므로 $$\\sin C = \\dfrac{\\overline{AB}}{\\overline{AC}} = \\dfrac{5}{13}$$ $$\\cos C = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\dfrac{12}{13}$$ $$\\tan C = \\dfrac{\\overline{AB}}{\\overline{BC}} = \\dfrac{5}{12}$$"
+}

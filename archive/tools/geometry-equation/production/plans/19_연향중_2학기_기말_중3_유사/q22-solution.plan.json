@@ -1,0 +1,250 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "24",
+        "unit": "cm"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "18",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sAB_2",
+        "ownerSegment": "sAB",
+        "text": "50",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAD"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 22번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 22번 해설의 수학적 도출 관계를 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q22_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 B–D",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q22_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 D–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q22_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 A–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q22_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q22_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sBD의 표시 24",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q22_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAD의 표시 18",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q22_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sAB의 표시 50",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q22_solution_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q22_solution_rightAngles_0",
+      "condition": "직각 표식 B–D–A",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceQuote": "원의 반지름의 길이를 $r\\text{ cm}$라 하자. $\\overline{AD} \\perp \\overline{BC}$이고 $\\overline{BD} = \\overline{CD} = 24\\text{ cm}$이므로 직선 $AD$는 현 $BC$의 수직이등분선이며 원의 중심 $O$는 직선 $AD$ 위에 있다. 따라서 $\\overline{OB} = r\\text{ cm}$, $\\overline{OD} = (r - 18)\\text{ cm}$이다. 직각삼각형 $ODB$에서 피타고라스 정리에 의하여 $$r^2 = (r - 18)^2 + 24^2$$ $$r^2 = r^2 - 36r + 324 + 576$$ $$36r = 900 \\implies r = 25\\text{ cm}$$ 그러므로 통나무의 지름의 길이는 $2r = 50\\text{ cm}$이다."
+}

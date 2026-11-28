@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "32"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAQ",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAT",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pT",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T",
+          "lAT"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAQ",
+          "pT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "T",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "T",
+          "A",
+          "P"
+        ],
+        "value": 32,
+        "label": "32",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sol_APT",
+        "refs": [
+          "A",
+          "P",
+          "T"
+        ],
+        "value": 58,
+        "label": "58",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 440
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 21번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 21번 해설의 수학적 도출 관계를 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q21_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–O",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q21_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 O–T",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q21_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 A–P",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q21_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 T–P",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q21_solution_planeMarks_angles_0",
+      "condition": "각 T–A–P의 32 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q21_solution_planeMarks_angles_1",
+      "condition": "각 A–P–T의 58 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q21_solution_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q21_solution_rightAngles_0",
+      "condition": "직각 표식 A–T–P",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "반지름 $\\overline{OT}$와 접점 $T$에서의 접선 $PT$는 서로 수직이므로 $$\\angle OTP = 90^\\circ$$ 세 점 $A, O, T$가 지름 위의 한 직선에 놓여 있으므로 $\\angle ATP = 90^\\circ$이다. 직각삼각형 $APT$의 내각의 합은 $180^\\circ$이므로 $$\\angle APT = 180^\\circ - 90^\\circ - 32^\\circ = 58^\\circ$$ 따라서 정답은 ①이다."
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 6
+      },
+      "height": 3,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G"
+    },
+    {
+      "from": "A",
+      "to": "G"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AD",
+      "label": "6"
+    },
+    {
+      "edge": "GH",
+      "label": "2"
+    },
+    {
+      "edge": "DH",
+      "label": "3"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체 A B C D - E F G H"
+  },
+  "caption": "가로 2, 세로 6, 높이 3인 직육면체와 공간대각선 AG, 밑면대각선 EG",
+  "sourceQuote": "오른쪽 그림과 같은 직육면체 $ABCD\\text{-}EFGH$에서 $\\overline{AD} = 6$, $\\overline{GH} = 2$, $\\overline{DH} = 3$이고 $\\angle AGE = x$일 때, $\\sin x - \\cos x$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "q03_problem_solids_0",
+      "condition": "실제 그리는 PRISM 입체",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "q03_problem_segments_0",
+      "condition": "실제 공간 선분 E–G",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "q03_problem_segments_1",
+      "condition": "실제 공간 선분 A–G",
+      "mappedTo": "segments[1]"
+    },
+    {
+      "id": "q03_problem_dims_0",
+      "condition": "입체 모서리 치수 AD: 6",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "q03_problem_dims_1",
+      "condition": "입체 모서리 치수 GH: 2",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "q03_problem_dims_2",
+      "condition": "입체 모서리 치수 DH: 3",
+      "mappedTo": "dims[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 3번 문제의 조건을 나타내는 도형"
+}

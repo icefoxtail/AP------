@@ -1,0 +1,249 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6sqrt(2)",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sBC_1",
+        "ownerSegment": "sBC",
+        "text": "3sqrt(2)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 380
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 5번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 5번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q05_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sAB의 표시 6sqrt(2)",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q05_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sBC의 표시 3sqrt(2)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q05_solution_planeMarks_angles_0",
+      "condition": "각 C–A–B의 30 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q05_solution_rightAngles_0",
+      "condition": "직각 표식 A–C–B",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$에서 빗변은 $\\overline{AB}$이고 $\\angle A$의 맞은편 변은 $\\overline{BC}$이므로 $$\\sin 30^\\circ = \\dfrac{\\overline{BC}}{\\overline{AB}}$$ $$\\overline{BC} = \\overline{AB} \\times \\sin 30^\\circ = 6\\sqrt{2} \\times \\dfrac{1}{2} = 3\\sqrt{2}\\rm,cm$$ 따라서 정답은 ⑤이다."
+}

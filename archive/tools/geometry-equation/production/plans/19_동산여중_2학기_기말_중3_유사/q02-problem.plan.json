@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "24"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "25"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "7"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 340
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 2번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 2번 문제의 조건을 나타내는 도형",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q02_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q02_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q02_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q02_problem_planeMarks_expressionLabels_0",
+      "condition": "선분 sAC의 표시 24",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q02_problem_planeMarks_expressionLabels_1",
+      "condition": "선분 sAB의 표시 25",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q02_problem_planeMarks_expressionLabels_2",
+      "condition": "선분 sBC의 표시 7",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q02_problem_rightAngles_0",
+      "condition": "직각 표식 A–C–B",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\overline{AC} = 24$, $\\overline{AB} = 25$, $\\overline{BC} = 7$일 때, 다음 중 옳은 것은?"
+}
