@@ -1,0 +1,30 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["8", "0"],
+    "denominator": ["-1", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [1.5, 5.5],
+    "viewport": [0.5, 6.5, -0.5, 9.5],
+    "axisTickValues": {"x": ["2", "5"], "y": ["2", "8"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "curveX": "2"},
+        {"id": "B", "curveX": "5"}
+      ]
+    }
+  },
+  "pointNames": {"A": "A", "B": "B"},
+  "caption": "구간 [2,5]에서 감소하는 유리함수 y=8/(x-1)과 양 끝점 A, B의 위치를 비교한 해설 그래프.",
+  "accessibilityDescription": "제1사분면에서 오른쪽으로 갈수록 낮아지는 유리함수 곡선에 x=2, x=5인 두 점 A, B가 표시되어 있다. A의 높이는 8, B의 높이는 2이다.",
+  "newVisualInformation": [
+    "기출 해설의 y=6/(x-2), [3,5] 변형을 현행 유사 JS의 y=8/(x-1), [2,5]로 정정",
+    "구간 양 끝점의 높이를 그래프에서 직접 비교",
+    "해설의 최댓값·최솟값 계산과 곡선의 감소 방향을 일치시킴"
+  ],
+  "sourceConditions": [
+    {"id": "c1", "condition": "함수 f(x)=8/(x-1)과 폐구간 [2,5]가 주어져 있다.", "mappedTo": ["graphPlan.numerator", "graphPlan.denominator", "graphPlan.overlays.points"]},
+    {"id": "c2", "condition": "해설에서 f(2)=8, f(5)=2이며 구간에서 감소함을 확인한다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.domain"]}
+  ]
+}
