@@ -541,11 +541,11 @@ export function solveNumberLineFigure(numberLine){
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
 // (the chain module and this one import each other: nothing of it may be read while this module is evaluated)
 const WIDTH=512,SAFE=12,AXIS_LEFT=32,ARROW_TIP=WIDTH-32-20,MAP_LEFT=AXIS_LEFT+14,MAP_RIGHT=ARROW_TIP-22;
-const DISPLAY='\\displaystyle ',END_RADIUS=5,DOT_RADIUS=3.2,TICK_HALF=6,LABEL_GAP=5,ZERO_TICK_CLEARANCE=56,NOTE_ROW=36,ROW_GAP=8;
+const DISPLAY='\\displaystyle ',END_RADIUS=5,DOT_RADIUS=3.2,TICK_HALF=6,LABEL_GAP=5,ZERO_TICK_CLEARANCE=56,NOTE_ROW=44,ROW_GAP=8;
 const HEAD_TALL=52,HEAD_SHORT=38,BELOW_TALL=48,BELOW_SHORT=34,POINT_HEAD=36,INTEGER_ZONE=64,PLAIN_ZONE=24,INTEGER_LABEL_ROW=26;
 const NAME_ROW=30,NAME_ROW_JAMO=34,VALUE_STACK_GAP=2,MINOR_TICK_HALF=3.5;
 // Row labels (E30): a short Korean word at the left of a row's axis; with any label the axes start further right, by room for the longest (an estimate per character).
-const ROW_LABEL_CHAR_PX=22,ROW_LABEL_GAP=10,ROW_LABEL_MAX_CHARS=16,ROW_LABEL_ROW_HEIGHT=34;
+const ROW_LABEL_CHAR_PX=22,ROW_LABEL_GAP=10,ROW_LABEL_MAX_CHARS=16,ROW_LABEL_ROW_HEIGHT=44;
 // A label of up to ROW_LABEL_SHORT characters keeps the estimate of 22 px per character it always had (figures drawn that way stay as they were); a longer one is estimated by the kind of character
 // (a Hangul syllable 22 px, any other glyph 14 px, a space 7 px). The room it takes may not exceed ROW_LABEL_MAX_LEFT (the axes need the rest of the 512 px); its real width is measured when it is placed (NUMBER_LINE_ROW_LABEL_TOO_WIDE).
 const ROW_LABEL_SHORT=6,ROW_LABEL_NARROW_PX=14,ROW_LABEL_SPACE_PX=7,ROW_LABEL_MAX_LEFT=240;
@@ -556,7 +556,7 @@ const POINT_STYLES=['FILLED','HOLLOW','CROSS','TICK'],CROSS_HALF=4.2,RING_RADIUS
 // Spans and the side of a point's value (E34): a brace or an arrow between two points of a POINTS row sits in a band of its own under (or above) the row's labels.
 const VALUE_SIDES=['ABOVE','BELOW'],SPAN_STYLES=['BRACE','ARROW','DOUBLE_ARROW'],SPAN_SIDES=['ABOVE','BELOW'],MAX_SPANS=6;
 const SPAN_LABEL_TEXT=/^[\uAC00-\uD7A3][\uAC00-\uD7A3 ]{0,8}$/u,SPAN_LABEL_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,12}$/;
-const SPAN_PAD=4,SPAN_HALF=6,SPAN_LABEL_GAP=3,SPAN_LABEL_ROW=30,SPAN_BAND=SPAN_PAD+2*SPAN_HALF+SPAN_LABEL_GAP+SPAN_LABEL_ROW+2,SPAN_STROKE=1.4,SPAN_HEAD=9,SPAN_HEAD_HALF=3.6,SPAN_MIN_WIDTH=4*SPAN_HALF;
+const SPAN_PAD=4,SPAN_HALF=6,SPAN_LABEL_GAP=3,SPAN_LABEL_ROW=38,SPAN_BAND=SPAN_PAD+2*SPAN_HALF+SPAN_LABEL_GAP+SPAN_LABEL_ROW+2,SPAN_STROKE=1.4,SPAN_HEAD=9,SPAN_HEAD_HALF=3.6,SPAN_MIN_WIDTH=4*SPAN_HALF;
 const HEAD_HIDDEN=8;      // a SET row whose inequality label is hidden keeps only the margin above its integer points
 // Compass arcs (E35): an arc leaves the line at its hit point and rises at most ARC_RISE_MAX px (along at most ARC_SPAN_DEG degrees); the row's head keeps that room (plus the dot's margin).
 const ARC_RISE_MAX=72,ARC_SPAN_DEG=32,ARC_MIN_RADIUS=14,ARC_HEAD=ARC_RISE_MAX+8,ARC_STROKE=1.2,ARC_LABEL_CLEAR=1.2,ARC_SAMPLES=32,HIT_NAME_GAP=3,SYMBOL_DOT_GAP=14;
@@ -575,7 +575,7 @@ function pieceTex(variable,piece){
   return {tex:variable+rel(piece.hi)+piece.hi.tex,plain:variable+relText(piece.hi)+piece.hi.text};
 }
 /** The shared unit-to-px map of a figure: the values shown, padded (a source grid's end too); unitPx is px per unit (compass arcs and source grids are drawn at true scale). */
-function figureMap(model){
+function figureMap(model,axisLeft=axisLeftOf(model)){
   const finite=[];
   for(const row of model.rows){
     if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx),...(row.scale?.integers??[]).map(Number),...(row.constructions??[]).flatMap(construction=>construction.source?.to?[construction.source.to[0]]:[]));
@@ -586,7 +586,7 @@ function figureMap(model){
   const span=hi-lo,pad=span===0?2:Math.max(.8,.12*span);
   lo-=pad;hi+=pad;
   if(intsAll.length){lo=Math.min(lo,Math.min(...intsAll)-.75);hi=Math.max(hi,Math.max(...intsAll)+.75);}
-  const AXL=axisLeftOf(model),MAPL=AXL+(MAP_LEFT-AXIS_LEFT);     // a row label moves every axis start (and the map) right by the room it needs
+  const AXL=axisLeft,MAPL=AXL+(MAP_LEFT-AXIS_LEFT);     // a row label moves every axis start (and the map) right by the room it needs
   return {lo,hi,AXL,MAPL,unitPx:(MAP_RIGHT-MAPL)/(hi-lo)};
 }
 /** Row tops, axis heights and the total height; known before any label is typeset. */
@@ -639,13 +639,13 @@ export const figurePanelSize=model=>({width:WIDTH,height:figureLayout(model).hei
  */
 /** plan.pointNames checked against the POINTS rows of the solved figure (an unknown target or an invalid display name is an explicit error). */
 export const figurePointNames=(plan,model)=>pointNameModel(plan,model.rows.flatMap(row=>row.kind==='POINTS'?row.points.map(point=>point.id).filter(id=>CAPITAL.test(id)):[]));
-export function numberLineFigureSpec(plan,model){
+export function numberLineFigureSpec(plan,model,axisLeft){
   if(plan?.capability!==NUMBER_LINE_CAPABILITY||!plan.numberLine)bad('NUMBER_LINE_PLAN_INVALID');
   if(objectSha(solveNumberLineFigure(plan.numberLine))!==objectSha(model))bad('NUMBER_LINE_MODEL_MISMATCH');
-  return buildSpec(model,figurePointNames(plan,model),staggerRows(model));
+  return buildSpec(model,figurePointNames(plan,model),staggerRows(model),axisLeft);
 }
-function buildSpec(model,names,stagger){
-  const {lo,hi,AXL,MAPL,unitPx}=figureMap(model);
+function buildSpec(model,names,stagger,axisLeft){
+  const {lo,hi,AXL,MAPL,unitPx}=figureMap(model,axisLeft);
   const px=u=>r6(MAPL+(u-lo)/(hi-lo)*(MAP_RIGHT-MAPL)),layout=layoutOf(model,stagger),v=model.variable;
   const rows=[],labels=[];
   if(model.parameter&&!model.parameter.hideNote){
@@ -962,6 +962,18 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
     let spec;
     try{spec=numberLineFigureSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='NUMBER_LINE_MODEL_MISMATCH'?error.message:'NUMBER_LINE_SPEC_ERROR',{code:error.message});}
+    const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[],rowFragments=new Map();
+    let axisLeft=axisLeftOf(model);
+    for(const label of spec.labels.filter(label=>label.role==='row-label')){
+      let fragment;
+      try{fragment=typeset({id:label.id,owner:label.owner,factRole:'DERIVED_INTERMEDIATE',fontPx:font,panelId:'number-line',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
+      catch(error){if(!isDomainCode(error))throw error;throw new Stop('NUMBER_LINE_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+      const width=fragment.intrinsic.width,required=Math.ceil(SAFE+width+ROW_LABEL_GAP);
+      if(required>ROW_LABEL_MAX_LEFT)throw new Stop('NUMBER_LINE_ROW_LABEL_TOO_WIDE',{labelId:label.id,width});
+      axisLeft=Math.max(axisLeft,required);
+      rowFragments.set(label.id,fragment);
+    }
+    if(axisLeft>axisLeftOf(model))spec=numberLineFigureSpec(plan,model,axisLeft);
     lineage.specSha256=objectSha(spec);
     for(const row of spec.rows){const xs=row.ticks.map(tick=>tick.x).sort((a,b)=>a-b);if(xs.some((x,i)=>i&&x-xs[i-1]<MIN_TICK_GAP))throw new Stop('NUMBER_LINE_TICKS_TOO_DENSE',{row:row.n});}
     for(const row of spec.rows)for(const span of row.spans??[])if(Math.abs(span.x2-span.x1)<SPAN_MIN_WIDTH)throw new Stop('NUMBER_LINE_SPAN_TOO_SHORT',{span:span.id});
@@ -970,10 +982,9 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       const dotsOf=row.dots.filter(dot=>dot.role==='point');
       if(dotsOf.some(dot=>dot.symbol))for(const a of dotsOf)for(const b of dotsOf)if(a.id<b.id&&(a.symbol||b.symbol)&&Math.abs(a.x-b.x)<SYMBOL_DOT_GAP)throw new Stop('NUMBER_LINE_SYMBOL_TOO_CLOSE',{dots:[a.id,b.id]});
     }
-    const typeset=typesetter(),font=typographyPolicy.baseFontPx,placed=[];
     for(const label of spec.labels){
       let fragment;
-      try{fragment=typeset({id:label.id,owner:label.owner,factRole:['set','endpoint','integer','point-value'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'number-line',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
+      try{fragment=rowFragments.get(label.id)??typeset({id:label.id,owner:label.owner,factRole:['set','endpoint','integer','point-value'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'number-line',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},identity);}
       catch(error){if(!isDomainCode(error))throw error;throw new Stop('NUMBER_LINE_TYPESET_ERROR',{labelId:label.id,code:error.message});}
       const {width,height}=fragment.intrinsic,{x,y,align}=label.anchor;
       if(height>label.rowHeight)throw new Stop('NUMBER_LINE_LABEL_TOO_LARGE',{labelId:label.id,height,rowHeight:label.rowHeight});
