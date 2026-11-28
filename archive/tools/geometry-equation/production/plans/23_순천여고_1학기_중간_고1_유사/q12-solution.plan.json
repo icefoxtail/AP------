@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["4", "-4", "1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["-1", "3"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [-1, 3],
+    "viewport": [-2, 4, -2, 12],
+    "requiredPoints": [
+      {"id": "L", "x": -1, "y": 9},
+      {"id": "V", "x": 2, "y": 0},
+      {"id": "R", "x": 3, "y": 1}
+    ],
+    "axisTickValues": {"x": ["-1", "2", "3"], "y": []}
+  },
+  "caption": "정수 a의 최대 허용값 3을 대입하면 f(x)=(x−2)²이며 −1≤x≤3에서 최소가 0이다.",
+  "accessibilityDescription": "닫힌 구간 마이너스 1부터 3까지 포물선 y=(x−2)²가 x=2에서 x축에 닿는다.",
+  "sourceConditions": [
+    {"id": "interval", "condition": "−1≤x≤3", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "boundary", "condition": "9−a²≥0의 경계 a=3에서 f(x)=x²−4x+4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "x=2인 꼭짓점의 최솟값은 0", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["정답 a=3을 구한 후의 경계 사례에서 모든 x에 대해 0 이상임을 시각화한다."]
+}

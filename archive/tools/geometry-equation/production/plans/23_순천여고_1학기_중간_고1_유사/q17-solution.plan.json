@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["0", "-3"]},
+      {"coefficients": ["8", "-1"]},
+      {"coefficients": ["0", "3"]}
+    ],
+    "breakpoints": [{"x": "-4", "y": "12"}, {"x": "2", "y": "6"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-6, 4],
+    "viewport": [-6, 4, 0, 19],
+    "requiredPoints": [{"id": "A", "x": -4, "y": 12}, {"id": "V", "x": 2, "y": 6}],
+    "axisTickValues": {"x": ["-4", "2"], "y": []}
+  },
+  "caption": "f(x)=2|x−2|+|x+4|는 x=−4,2에서 꺾이며 전체 최솟값은 f(2)=6이다.",
+  "accessibilityDescription": "x=마이너스 4와 x=2에서 이어진 세 직선 구간이며 가장 낮은 점 V는 (2,6)이다.",
+  "sourceConditions": [
+    {"id": "left", "condition": "x<−4에서 f=−3x", "mappedTo": "graphPlan.pieces[0]"},
+    {"id": "center", "condition": "−4≤x<2에서 f=−x+8", "mappedTo": "graphPlan.pieces[1]"},
+    {"id": "right", "condition": "x≥2에서 f=3x", "mappedTo": "graphPlan.pieces[2]"},
+    {"id": "minimum", "condition": "최솟값은 x=2에서 6", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["세 구간의 기울기와 연결점, 최소점을 한 좌표계에서 비교한다."]
+}

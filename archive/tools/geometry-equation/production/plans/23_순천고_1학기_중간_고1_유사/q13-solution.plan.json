@@ -1,0 +1,30 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["3", "2", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 5],
+    "viewport": [-3, 5, -5, 35],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "lines": [
+        {"id": "L1", "slope": "4-4*sqrt(2)", "intercept": "-6+4*sqrt(2)", "label": "l1"},
+        {"id": "L2", "slope": "4+4*sqrt(2)", "intercept": "-6-4*sqrt(2)", "label": "l2"}
+      ],
+      "points": [
+        {"id": "P", "x": "1", "y": "-2"},
+        {"id": "T1", "curveX": "1-2*sqrt(2)"},
+        {"id": "T2", "curveX": "1+2*sqrt(2)"}
+      ]
+    }
+  },
+  "caption": "점 P(1,−2)를 지나는 서로 다른 두 직선이 포물선 y=x²+2x+3에 접한다. 판별식에서 두 기울기의 곱은 −16이다.",
+  "accessibilityDescription": "포물선 아래의 점 P에서 출발한 기울기가 다른 두 직선이 각기 서로 다른 한 점에서 포물선에 접한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "포물선 y=x²+2x+3", "mappedTo": "graphPlan.coefficients"},
+    {"id": "point", "condition": "두 접선 모두 P(1,−2)를 지난다", "mappedTo": "graphPlan.overlays.points[0]"},
+    {"id": "tangents", "condition": "접선 기울기의 방정식 m²−8m−16=0, m=4±4√2", "mappedTo": ["graphPlan.overlays.lines", "graphPlan.overlays.points[1]", "graphPlan.overlays.points[2]"]}
+  ],
+  "newVisualInformation": ["서로 다른 두 접선의 실제 접점을 보여 주되 문제축에는 풀이 결과를 선공개하지 않는다."]
+}

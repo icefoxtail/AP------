@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["25", "4", "-1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["-5", "5"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [-5, 5],
+    "viewport": [-6, 6, -26, 36],
+    "requiredPoints": [
+      {"id": "L", "x": -5, "y": -20},
+      {"id": "V", "x": 2, "y": 29},
+      {"id": "R", "x": 5, "y": 20}
+    ],
+    "axisTickValues": {"x": ["-5", "2", "5"], "y": []}
+  },
+  "caption": "x²+y²=25에서 −5≤x≤5이고 y²+4x=−(x−2)²+29이다. 최대 29, 최소 −20을 표시한다.",
+  "accessibilityDescription": "닫힌 구간 마이너스 5부터 5까지의 아래로 열린 이차함수와 왼쪽 끝 L, 꼭짓점 V, 오른쪽 끝 R을 표시한다.",
+  "sourceConditions": [
+    {"id": "domain", "condition": "y²=25−x²≥0이므로 −5≤x≤5", "mappedTo": ["graphPlan.sourceDomain", "graphPlan.domain"]},
+    {"id": "curve", "condition": "y²+4x=25−x²+4x", "mappedTo": "graphPlan.coefficients"},
+    {"id": "extrema", "condition": "최댓값은 (2,29), 최솟값은 (−5,−20), 오른쪽 끝은 (5,20)", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["꼭짓점과 두 끝점의 높이를 비교해 구간 최솟값이 왼쪽 끝임을 보여 준다."]
+}

@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_THROUGH_POINT",
+        "args": {},
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "schemaVersion": "construction-spike-v1"
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayCircles": [],
+  "hiddenPointNames": ["O"],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "dashed": true,
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {"id": "rC", "refs": ["A", "C", "B"]},
+    {"id": "rD", "refs": ["C", "D", "B"]}
+  ],
+  "planeMarks": {
+    "arcs": [
+      {"id": "upper", "circle": "k", "center": "O", "from": "A", "to": "B", "side": "CW"}
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "b"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "2a",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "원에 내접한 직각삼각형 ACB에서 지름 AB=2a와 수선 CD=b를 표시한 예시 도식이다.",
+  "sourceConditions": [
+    {
+      "id": "diameter",
+      "condition": "AB는 원의 지름이며 AB=2a",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.arcs[0]",
+        "planeMarks.dimensions[0]"
+      ]
+    },
+    {
+      "id": "on-circle",
+      "condition": "C는 지름 AB의 원 위에 있어 각 ACB는 직각",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "rightAngles[0]"
+      ]
+    },
+    {
+      "id": "altitude",
+      "condition": "CD는 AB에 수직이고 길이는 b",
+      "mappedTo": [
+        "displaySegments",
+        "rightAngles[1]",
+        "planeMarks.expressionLabels[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB의 지름과 수선 CD를 도형으로 보이고 답인 이차방정식은 표시하지 않는다."
+  ],
+  "accessibilityDescription": "원 위의 점 C와 지름의 끝점 A, B, 수선의 발 D가 있으며 AB=2a, CD=b와 두 직각이 보인다."
+}

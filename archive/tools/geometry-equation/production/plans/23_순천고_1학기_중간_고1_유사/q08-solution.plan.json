@@ -1,0 +1,24 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["5", "-3"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-5, 3],
+    "viewport": [-5, 3, 0, 24],
+    "requiredPoints": [{"id": "P", "x": -2, "y": 11}],
+    "axisTickValues": {"x": ["-2"], "y": []},
+    "overlays": {
+      "lines": [{"id": "L1", "slope": "-1", "intercept": "9", "label": "k=1"}]
+    }
+  },
+  "caption": "k=0인 y=−3x+5와 k=1인 y=−x+9의 예시 두 직선은 P(−2,11)을 함께 지난다. 모든 k에 대한 증명은 계수 비교로 한다.",
+  "accessibilityDescription": "서로 기울기가 다른 두 직선이 점 P(마이너스 2,11)에서 만나는 그림이다.",
+  "sourceConditions": [
+    {"id": "family", "condition": "y=(2k−3)x+4k+5, k=0이면 y=−3x+5", "mappedTo": "graphPlan.pieces[0]"},
+    {"id": "sample", "condition": "k=1이면 y=−x+9", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "common-point", "condition": "2x+4=0을 풀면 x=−2이고 y=11", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["두 표본 직선의 공통점을 보이고 k 전체에 대한 논증은 해설의 항등식과 분리한다."]
+}

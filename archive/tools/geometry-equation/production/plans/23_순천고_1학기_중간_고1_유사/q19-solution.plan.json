@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "inputs": [],
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_THROUGH_POINT",
+        "args": {},
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "schemaVersion": "construction-spike-v1"
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "dashed": true,
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "upper",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "b"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "AD"
+      },
+      {
+        "id": "lDB",
+        "ownerSegment": "sDB",
+        "text": "BD"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "2a",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ACB에서 높이 CD=b를 빗변 AB에 내리면 두 부분 AD와 DB의 곱이 CD²와 같다.",
+  "sourceConditions": [
+    {
+      "id": "diameter",
+      "condition": "AB는 원의 지름이며 AB=2a",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.arcs[0]",
+        "planeMarks.dimensions[0]"
+      ]
+    },
+    {
+      "id": "on-circle",
+      "condition": "C는 지름 AB의 원 위에 있어 각 ACB는 직각",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "rightAngles[0]"
+      ]
+    },
+    {
+      "id": "altitude",
+      "condition": "CD는 AB에 수직이고 길이는 b",
+      "mappedTo": [
+        "displaySegments",
+        "rightAngles[1]",
+        "planeMarks.expressionLabels[0]"
+      ]
+    },
+    {
+      "id": "similarity",
+      "condition": "직각삼각형 ACD와 CBD의 닮음으로 AD·DB=CD²=b²",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "높이 관계 AD·DB=CD²에 필요한 두 빗변 부분을 각각 실제 선분과 라벨로 표시한다."
+  ],
+  "accessibilityDescription": "빗변 AB가 D에서 AD와 DB로 나뉘고 CD는 AB에 수직이며 길이 b가 표시되어 있다."
+}
