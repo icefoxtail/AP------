@@ -7,6 +7,41 @@ def label(i,at,text='P',kind='POINT_NAME',priority=1,**more):
     return {'id':i,'kind':kind,'at':at,'text':text,'font':13.25,'priority':priority,**more}
 
 class LayoutTests(unittest.TestCase):
+    def test_blocked_point_value_preserves_owner_on_a_leader(self):
+        anchor=(70,10)
+        marker={'id':'A','kind':'point','geometry':(*anchor,3)}
+        item=label('value',anchor,'(1,2)','EQUATION_LABEL',target='A',pointOwned=True,directions=['N'],gaps=[8])
+        safe=Box(5,5,135,95)
+        self.assertEqual(layout([item],[marker],safe)['unresolved'],['value'])
+        placed=layout([item],[marker],safe,last_resort=True)
+        self.assertEqual(placed['unresolved'],[])
+        self.assertEqual(placed['leaders'][0]['from'],list(anchor))
+        self.assertEqual(placed['leaders'][0]['ownerId'],'A')
+        self.assertEqual(placed['labels'][0]['text'],'(1,2)')
+
+    def test_blocked_preferred_point_name_uses_a_clear_leader(self):
+        anchor=(70,10)
+        marker={'id':'A','kind':'point','geometry':(*anchor,3)}
+        item=label('A-name',anchor,'A',target='A',directions=['N'],gaps=[8])
+        safe=Box(5,5,135,95)
+        self.assertEqual(layout([item],[marker],safe)['unresolved'],['A-name'])
+        placed=layout([item],[marker],safe,last_resort=True)
+        self.assertEqual(placed['unresolved'],[])
+        self.assertEqual(placed['leaders'][0]['ownerId'],'A')
+        self.assertNotIn('crossFallback',placed['leaders'][0])
+
+    def test_routed_label_bends_around_an_edge(self):
+        anchor=(30,80)
+        wall={'id':'edge','kind':'line','geometry':[(75,50),(75,105)]}
+        safe=Box(0,0,180,160)
+        destination=lambda box:box.x>=108 and 70<=box.y<=85
+        box,points=routed_label_box(anchor,34,20,safe,[wall],set(),destination)
+        self.assertTrue(destination(box))
+        self.assertGreater(len(points),2)
+        self.assertFalse(leader_clear(points[0],points[-1],[wall],set()))
+        self.assertTrue(all(leader_clear(a,b,[wall],set()) for a,b in zip(points,points[1:])))
+        self.assertTrue(all(safe.contains(Box(*point,0,0)) for point in points))
+
     def test_cluster_name_coordinate(self):
         labels=[];obstacles=[]
         for i,p in enumerate(((160,180),(176.5,163.5),(193,147))):

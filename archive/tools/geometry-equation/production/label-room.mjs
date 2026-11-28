@@ -241,6 +241,14 @@ export function constructionMarginPlan(plan, pad, isPlane) {
 }
 
 /** The dimension lines of a plan stand `offsetPx` from their points (the default is 24: a point name or a label between the figure and its dimension line has no room there). A copy; null when no dimension line can move out. */
+export function constructionCanvasPlan(plan, isPlane) {
+  if (!plan?.mathPlan || plan.graphPlan || !isPlane(plan)) return null;
+  const {width = 384, height = 320} = plan.coordinateCanvas ?? {};
+  const larger = {width: Math.min(width + 96, 720), height: Math.min(height + 80, 600)};
+  if (larger.width <= width && larger.height <= height) return null;
+  return {...plan, coordinateCanvas: larger};
+}
+
 export const CONSTRUCTION_DIMENSION_OFFSETS = Object.freeze([40, 60]);
 export function constructionDimensionPlan(plan, offsetPx) {
   const rows = plan?.planeMarks?.dimensions;

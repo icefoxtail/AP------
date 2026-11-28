@@ -625,7 +625,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // A coordinate pair written beside a point must be that point's coordinates (an optional one-letter name before it is not checked here).
     const written=byPoint&&kind==='MATH'?TEXT_LABEL_COORDINATE.exec(row.text.trim()):null;
     if(written&&(Math.abs(Number(written[1])-place[0])>1e-6||Math.abs(Number(written[2])-place[1])>1e-6))bad('TEXT_LABEL_COORDINATE_MISMATCH:'+row.id+':declared=('+written[1]+','+written[2]+'):point=('+Number(place[0].toFixed(6))+','+Number(place[1].toFixed(6))+')');
-    objects.push({id:row.id,kind:'EQUATION_LABEL',target:row.id,text:row.text,at:place,freeLabel:true,priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...weightOf(row,kind,'textLabels')});
+    objects.push({id:row.id,kind:'EQUATION_LABEL',target:byPoint?row.at:row.id,text:row.text,at:place,freeLabel:true,...(byPoint?{pointOwned:true}:{}),priority:1,...(anchor?{anchor}:{}),...(kind==='TEXT'?{labelKind:'TEXT'}:{}),...weightOf(row,kind,'textLabels')});
     factRolesByLabel[row.id]=role(row);
   }
 
