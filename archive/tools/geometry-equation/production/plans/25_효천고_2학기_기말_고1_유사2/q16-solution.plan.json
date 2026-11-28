@@ -1,0 +1,32 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$0\\lt k\\lt 5$이고, 이를 만족하는 정수 $k$는",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 7, -1, 9],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["4", "-6", "1"], "domain": ["-1", "7"], "abs": true, "color": "BLUE", "label": "f(x)"},
+      {"id": "k", "kind": "LINE", "coefficients": ["4", "0"], "domain": ["-1", "7"], "style": "DASHED", "color": "WARM", "label": "y=4"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "0", "y": "4", "unnamed": true},
+        {"id": "B", "x": "2", "y": "4", "unnamed": true},
+        {"id": "C", "x": "4", "y": "4", "unnamed": true},
+        {"id": "D", "x": "6", "y": "4", "unnamed": true}
+      ]
+    },
+    "axisTickValues": {"x": ["2", "4", "6"], "y": ["4", "5"]}
+  },
+  "caption": "대표 정수 k=4의 수평선은 y=|x²−6x+4| 그래프와 x=0,2,4,6의 네 점에서 만난다. 두 안쪽 교점이 없어지는 경계 k=5는 제외한다.",
+  "accessibilityDescription": "절댓값을 취해 두 골짜기와 가운데 봉우리가 생긴 함수 곡선에 수평선 y=4를 그려 서로 다른 교점 네 개를 표시한다.",
+  "sourceConditions": [
+    {"id": "h16-1", "condition": "f(x)=|x²−6x+4|", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.curves.0.abs"]},
+    {"id": "h16-2", "condition": "0<k<5 중 정수 예시 k=4", "mappedTo": ["graphPlan.curves.1.coefficients"]},
+    {"id": "h16-3", "condition": "k=4에서 교점의 x좌표 0,2,4,6", "mappedTo": ["graphPlan.overlays.points.0", "graphPlan.overlays.points.1", "graphPlan.overlays.points.2", "graphPlan.overlays.points.3"]}
+  ],
+  "newVisualInformation": [
+    "절댓값 함수의 두 가지 방정식 y=±(x²−6x+4)이 한 수평선과 합쳐 네 교점을 만드는 구조를 보인다.",
+    "k=5에서는 안쪽 두 교점이 합쳐져 네 개가 아니므로 엄격한 상한 5를 갖는다는 사실을 그래프 높이로 설명한다."
+  ]
+}

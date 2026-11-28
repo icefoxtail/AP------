@@ -1,0 +1,34 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "등호는 $t=\\dfrac{9}{t}$, 즉 $t=3$ ($x=-2\\lt 0$)일 때 성립한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-6, 3, -1, 12],
+    "curves": [
+      {"id": "f", "kind": "RATIONAL", "numerator": ["-11", "2"], "denominator": ["-1", "1"], "domain": {"from": "-6", "to": "0", "toState": "OPEN"}, "emphasis": [{"from": "-4", "to": "-1", "color": "BLUE"}], "label": "y=-9/(x-1)+2"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "P", "x": "-2", "y": "5", "coordinates": true},
+        {"id": "Q", "x": "-2", "y": "0"},
+        {"id": "R", "x": "0", "y": "5"}
+      ],
+      "segments": [
+        {"id": "PQ", "from": "P", "to": "Q", "length": true},
+        {"id": "PR", "from": "P", "to": "R", "length": true}
+      ]
+    },
+    "axisTickValues": {"x": ["-2"], "y": ["5"]}
+  },
+  "caption": "등호가 성립하는 P(−2,5)에서 x축까지의 거리 PQ=5, y축까지의 거리 PR=2이다. 두 수선이 직각을 이루며 길이의 합은 7이다.",
+  "accessibilityDescription": "유리함수의 왼쪽 가지 위 점 P(−2,5)에서 x축과 y축에 각각 수직인 선분 PQ, PR을 그려 길이 5와 2를 나타낸다.",
+  "sourceConditions": [
+    {"id": "h22-1", "condition": "x<0에서 y=−9/(x−1)+2", "mappedTo": ["graphPlan.curves.0.numerator", "graphPlan.curves.0.denominator", "graphPlan.curves.0.domain"]},
+    {"id": "h22-2", "condition": "등호 t=3이면 x=−2이고 P=(−2,5)", "mappedTo": ["graphPlan.overlays.points.0"]},
+    {"id": "h22-3", "condition": "수선의 발 Q=(−2,0), R=(0,5), PQ=5, PR=2", "mappedTo": ["graphPlan.overlays.points.1", "graphPlan.overlays.points.2", "graphPlan.overlays.segments.0", "graphPlan.overlays.segments.1"]}
+  ],
+  "newVisualInformation": [
+    "최솟값이 실현되는 점 P와 두 수선의 발 Q,R을 한 좌표계에서 연결한다.",
+    "선분 PQ=5와 PR=2가 각각 y좌표와 음의 x좌표에 해당하는 이유를 실제 수선으로 보여 준다."
+  ]
+}

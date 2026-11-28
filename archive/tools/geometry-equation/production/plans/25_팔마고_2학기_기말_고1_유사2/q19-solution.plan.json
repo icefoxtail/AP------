@@ -1,0 +1,24 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "방정식 $(f\\circ f)(x)=0$에서 $f(f(x))=0$이므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 4, -6, 10],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["-4", "-2", "2"], "domain": ["-3", "4"], "color": "BLUE", "label": "f(x)"},
+      {"id": "n", "kind": "LINE", "coefficients": ["-1", "0"], "domain": ["-3", "4"], "style": "DASHED", "color": "WARM", "label": "y=-1"},
+      {"id": "p", "kind": "LINE", "coefficients": ["2", "0"], "domain": ["-3", "4"], "style": "DASHED", "color": "GREEN", "label": "y=2"}
+    ],
+    "axisTickValues": {"x": ["-1", "2"], "y": ["-4", "-1", "2"]}
+  },
+  "caption": "합성방정식 f(f(x))=0은 f(x)=−1 또는 f(x)=2로 나뉜다. 포물선과 두 수평선의 교점은 각각 두 개이므로 총 네 실근이 생긴다.",
+  "accessibilityDescription": "위로 열린 포물선 f(x)=2x²−2x−4와 수평선 y=−1, y=2가 한 좌표평면에서 각각 두 번 교차하는 해설 그래프이다.",
+  "sourceConditions": [
+    {"id": "p19-1", "condition": "그래프에서 유도한 함수 f(x)=2x²−2x−4", "mappedTo": ["graphPlan.curves.0.coefficients"]},
+    {"id": "p19-2", "condition": "f(f(x))=0은 f(x)=−1 또는 f(x)=2", "mappedTo": ["graphPlan.curves.1.coefficients", "graphPlan.curves.2.coefficients"]}
+  ],
+  "newVisualInformation": [
+    "하나의 포물선에 y=−1과 y=2를 동시에 겹쳐 각 방정식의 두 실근을 교점으로 보여 준다.",
+    "두 수평선이 달라 공통근이 없고 실근 네 개가 서로 다르다는 점을 그림으로 구분한다."
+  ]
+}
