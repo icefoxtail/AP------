@@ -1,0 +1,105 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      -12,
+      17
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-6",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "emphasis": [
+          {
+            "from": "6",
+            "to": "7",
+            "color": "WARM",
+            "fromState": "CLOSED"
+          }
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "6"
+      ],
+      "y": [
+        "-10",
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-10"
+        },
+        {
+          "id": "P",
+          "x": "6",
+          "y": "6"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=(x−2)²−10. 꼭짓점 V(2,−10)의 오른쪽에서 단조이고 f(a)=a의 허용 해는 P(6,6)이다.",
+  "accessibilityDescription": "f(x)=(x−2)²−10. 꼭짓점 V(2,−10)의 오른쪽에서 단조이고 f(a)=a의 허용 해는 P(6,6)이다.",
+  "sourceConditions": [
+    {
+      "id": "quadratic",
+      "condition": "f(x)=x²−4x−6, 꼭짓점 (2,−10)",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "domain",
+      "condition": "허용 정의역 x≥a; a=6에서 증가 가지 강조",
+      "mappedTo": "graphPlan.curves[0].emphasis"
+    },
+    {
+      "id": "onto",
+      "condition": "f(a)=a와 y=x 교점 P(6,6)",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선의 교점과 기준선 관계를 한 좌표계에서 드러낸다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P45-Q19-T1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "집합 $X = \\{x \\mid x \\ge a\\}$에 대하여"
+}

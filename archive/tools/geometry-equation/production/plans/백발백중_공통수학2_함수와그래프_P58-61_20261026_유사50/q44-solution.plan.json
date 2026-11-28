@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "5",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "5",
+        "y": "-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "5"
+      ],
+      "y": [
+        "-5"
+      ]
+    }
+  },
+  "caption": "x≥5에서 f(x)=x²−8x+10, 꼭짓점 x=4는 범위 밖이고 경계 (5,−5)가 최솟값이다.",
+  "accessibilityDescription": "x≥5에서 f(x)=x²−8x+10, 꼭짓점 x=4는 범위 밖이고 경계 (5,−5)가 최솟값이다.",
+  "sourceConditions": [
+    {
+      "id": "function",
+      "condition": "원문 및 해설의 이차/일차함수 계수·단조구간",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "anchors",
+      "condition": "해설에서 확인한 꼭짓점·끝점·치역 경계",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "genuine-half-line",
+      "condition": "발문에서 정의역은 x≥5이며 반대 방향은 무한히 이어진다. 유한 창을 정의역으로 잘라내지 않는다.",
+      "mappedTo": "graphPlan.pieces[0].domain"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: $f(x)=x^2-8x+10$의 대칭축은 $x=4$이다. $[a,\\infty)$에서 일대일이려면 $a\\ge4$이고, 공역 $[-5,\\infty)$ 전체에 일대일대응하려면 치역의 최솟값 $f(a)$가 $-5$와 같아야 한다. 따라서 $a^2-8a+10=-5$, 가능한 근은 [3, 5]이다. $a\\ge4$을 만족하는 해는 $a=5$뿐이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "원래 정의역의 무한 꼬리와 닫힌 최댓값/최솟값 경계를 표시한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P61-Q08-S2-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "두 집합 $X=\\{x|x \\ge a\\}, Y=\\{y|y \\ge"
+}

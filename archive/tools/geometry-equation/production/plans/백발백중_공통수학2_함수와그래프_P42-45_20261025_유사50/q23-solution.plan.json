@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "3"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      0,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "7"
+      ]
+    }
+  },
+  "caption": "정의역 [1,4]를 증가하는 f(x)=3x−5가 공역 [−2,7]에 대응시킨다.",
+  "accessibilityDescription": "정의역 [1,4]를 증가하는 f(x)=3x−5가 공역 [−2,7]에 대응시킨다.",
+  "sourceConditions": [
+    {
+      "id": "domain",
+      "condition": "X=[1,4], Y=[−2,7], a>0",
+      "mappedTo": "graphPlan.pieces[0].domain"
+    },
+    {
+      "id": "formula",
+      "condition": "f(1)=−2, f(4)=7에서 a=3, b=−5",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "ends",
+      "condition": "양 끝점의 같은 순서 대응",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P43-Q08-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "두 집합 $X = \\{x \\mid 1 \\le x \\le 4\\}$,"
+}

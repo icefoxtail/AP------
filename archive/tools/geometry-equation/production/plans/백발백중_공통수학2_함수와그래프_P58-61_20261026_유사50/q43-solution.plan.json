@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "4",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "4",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "-2"
+      ]
+    }
+  },
+  "caption": "x≥4에서 f(x)=x²−6x+6, 꼭짓점 x=3은 범위 밖이고 경계 (4,−2)가 최솟값이다.",
+  "accessibilityDescription": "x≥4에서 f(x)=x²−6x+6, 꼭짓점 x=3은 범위 밖이고 경계 (4,−2)가 최솟값이다.",
+  "sourceConditions": [
+    {
+      "id": "function",
+      "condition": "원문 및 해설의 이차/일차함수 계수·단조구간",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "anchors",
+      "condition": "해설에서 확인한 꼭짓점·끝점·치역 경계",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "genuine-half-line",
+      "condition": "발문에서 정의역은 x≥4이며 반대 방향은 무한히 이어진다. 유한 창을 정의역으로 잘라내지 않는다.",
+      "mappedTo": "graphPlan.pieces[0].domain"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: $f(x)=x^2-6x+6$의 대칭축은 $x=3$이다. $[a,\\infty)$에서 일대일이려면 $a\\ge3$이고, 공역 $[-2,\\infty)$ 전체에 일대일대응하려면 치역의 최솟값 $f(a)$가 $-2$와 같아야 한다. 따라서 $a^2-6a+6=-2$, 가능한 근은 [2, 4]이다. $a\\ge3$을 만족하는 해는 $a=4$뿐이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "원래 정의역의 무한 꼬리와 닫힌 최댓값/최솟값 경계를 표시한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P61-Q08-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "두 집합 $X=\\{x|x \\ge a\\}, Y=\\{y|y \\ge"
+}

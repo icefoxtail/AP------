@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -2,
+      12
+    ],
+    "curves": [
+      {
+        "id": "up",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f1"
+      },
+      {
+        "id": "down",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "f2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "5",
+        "11"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "-1"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "11"
+        },
+        {
+          "id": "C",
+          "x": "-2",
+          "y": "11"
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "기울기 a=3인 증가 직선 f1과 a=−3인 감소 직선 f2는 공통 절편 5를 갖고 모두 [−1,11]을 치역으로 한다.",
+  "accessibilityDescription": "기울기 a=3인 증가 직선 f1과 a=−3인 감소 직선 f2는 공통 절편 5를 갖고 모두 [−1,11]을 치역으로 한다.",
+  "sourceConditions": [
+    {
+      "id": "plus",
+      "condition": "a=3, b=5: f1(x)=3x+5, x∈[−2,2]",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "minus",
+      "condition": "a=−3, b=5: f2(x)=−3x+5, x∈[−2,2]",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "images",
+      "condition": "두 경우 모두 정의역 양 끝이 공역 −1,11에 대응",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선의 교점과 기준선 관계를 한 좌표계에서 드러낸다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P43-Q08-S2-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "두 집합 $X = \\{x \\mid -2 \\le x \\le 2\\}$,"
+}

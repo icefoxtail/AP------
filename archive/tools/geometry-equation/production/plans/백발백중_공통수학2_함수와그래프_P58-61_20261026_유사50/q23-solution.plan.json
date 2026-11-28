@@ -1,0 +1,151 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "90/11",
+          "23/11"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2",
+          "5"
+        ]
+      },
+      {
+        "coefficients": [
+          "8"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "4"
+      },
+      {
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "x": "2",
+        "y": "8"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-21/5",
+        "7/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "4",
+        "8"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-2",
+          "y": "4"
+        },
+        {
+          "id": "R",
+          "x": "2",
+          "y": "8"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gL",
+          "from": "L",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gR",
+          "from": "R",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "g(x)=f(x−1)+3; g(-2)=4,g(2)=8. 따라서 f 값의 합은 6.",
+  "accessibilityDescription": "g(x)=f(x−1)+3; g(-2)=4,g(2)=8. 따라서 f 값의 합은 6.",
+  "sourceConditions": [
+    {
+      "id": "polyline",
+      "condition": "원본 SVG의 꼭짓점·선분 끝점과 네 조각의 정확한 유리수 기울기",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "corners",
+      "condition": "원본 SVG의 세 꺾임점 A,B,C 정확한 좌표",
+      "mappedTo": "graphPlan.breakpoints"
+    },
+    {
+      "id": "markers",
+      "condition": "A와 C에서 x축/y축까지 내린 가로·세로 점선",
+      "mappedTo": "graphPlan.overlays.guides"
+    },
+    {
+      "id": "ticks",
+      "condition": "원본 SVG에서 확인한 축 숫자·라벨",
+      "mappedTo": "graphPlan.axisTickValues"
+    },
+    {
+      "id": "shift",
+      "condition": "g(x)=f(x−1)+3 및 원래 함수값의 대응",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: 평행이동한 그래프를 $y=g(x)$라 하면 $g(x)=f(x-1)+3$, 따라서 $f(t)=g(t+1)-3$이다. 그림의 점 $(-2,4)$, $(2,8)$를 읽으면 $g(-2)=4$, $g(2)=8$이다. 그러므로 $f(-3)=4-3=1$, $f(1)=8-3=5$이고 합은 $6$이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P60-Q02-S2-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "함수 $y=f(x)$의 그래프를 $x$축의 방향으로 1만큼,"
+}

@@ -1,0 +1,106 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "-3",
+          "-2",
+          "-1",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "f(x)=|x+1|+2의 치역은 {2,3,4}이다.",
+  "accessibilityDescription": "f(x)=|x+1|+2의 치역은 {2,3,4}이다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "정의역 {-3,-2,-1,0,1}에 대한 값은 4,3,2,3,4이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "입력 원소마다 정확한 출력 화살표 한 개를 표시한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P42-Q03-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ]
+}

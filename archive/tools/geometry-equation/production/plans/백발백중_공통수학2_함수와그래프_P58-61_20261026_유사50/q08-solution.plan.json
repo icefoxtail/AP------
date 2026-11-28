@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          null,
+          "4"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "19",
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "4",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "4",
+        "y": "3"
+      },
+      {
+        "id": "A",
+        "x": "5",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "5"
+      ],
+      "y": [
+        "3",
+        "4"
+      ]
+    },
+    "xWindow": [
+      -1,
+      9
+    ]
+  },
+  "caption": "x<4의 직선과 x≥4의 포물선은 (4,3)에서 이어진다. 해설의 (5,4)도 표시한다.",
+  "accessibilityDescription": "x<4의 직선과 x≥4의 포물선은 (4,3)에서 이어진다. 해설의 (5,4)도 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "branches",
+      "condition": "x<4에서는 계수 -5,2, x≥4에서는 19,-8,1 (상수항부터)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "marked",
+      "condition": "해설에서 지정한 점·경계·값을 보존한다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: $x<4$에서 $f(x)=2x-5$는 증가하고 치역은 $(-\\infty,3)$이다. $x\\ge 4$의 이차식 $x^2-2ax+b$도 일대일이어야 하므로 대칭축 $x=a$가 $a\\le 4$를 만족해야 한다. 따라서 $M=4$이다. $a=4$이면 오른쪽 가지의 최솟값은 $b-16$이다. 역함수가 모든 실수에서 정의되려면 두 가지의 치역이 중복되거나 빠짐없이 실수 전체를 이루어야 하므로 $b-16",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P58-Q06-S3-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수"
+}

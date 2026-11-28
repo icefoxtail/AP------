@@ -1,0 +1,105 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -7,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-4",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "emphasis": [
+          {
+            "from": "4",
+            "to": "5",
+            "color": "WARM",
+            "fromState": "CLOSED"
+          }
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "GREEN",
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "-5",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "1",
+          "y": "-5"
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "4"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=(x−1)²−5. 꼭짓점 V(1,−5)의 오른쪽에서 단조이고 허용된 y=x 교점은 P(4,4)이다.",
+  "accessibilityDescription": "f(x)=(x−1)²−5. 꼭짓점 V(1,−5)의 오른쪽에서 단조이고 허용된 y=x 교점은 P(4,4)이다.",
+  "sourceConditions": [
+    {
+      "id": "quadratic",
+      "condition": "f(x)=x²−2x−4, 꼭짓점 (1,−5)",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "domain",
+      "condition": "허용 정의역 x≥a; a=4에서 증가 가지 강조",
+      "mappedTo": "graphPlan.curves[0].emphasis"
+    },
+    {
+      "id": "onto",
+      "condition": "f(a)=a와 y=x 교점 P(4,4)",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선의 교점과 기준선 관계를 한 좌표계에서 드러낸다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P45-Q19-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "집합 $X = \\{x \\mid x \\ge a\\}$에 대하여"
+}

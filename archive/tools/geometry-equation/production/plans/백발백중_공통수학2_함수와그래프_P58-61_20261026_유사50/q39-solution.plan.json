@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-4",
+          "-1"
+        ],
+        "domain": [null, "-5"],
+        "end": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-5",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5"
+      ],
+      "y": [
+        "5"
+      ]
+    }
+  },
+  "caption": "x≤−5에서 f(x)=−x²−4x+10의 끝점 f(−5)=5가 최대 허용치 −a이다.",
+  "accessibilityDescription": "x≤−5에서 f(x)=−x²−4x+10의 끝점 f(−5)=5가 최대 허용치 −a이다.",
+  "sourceConditions": [
+    {
+      "id": "function",
+      "condition": "원문 및 해설의 이차/일차함수 계수·단조구간",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "anchors",
+      "condition": "해설에서 확인한 꼭짓점·끝점·치역 경계",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "half-line-domain",
+      "condition": "발문의 정의역은 x≤-5인 반직선이고, 왼쪽은 -∞까지 이어진다. 최대값의 경계점은 (-5,5)이다.",
+      "mappedTo": [
+        "graphPlan.pieces[0].domain",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "무한구간 x≤-5를 유한한 자료구간으로 오인하지 않도록 원래 정의역을 보존한다."
+  ],
+  "sourceQuote": "두 집합 $X=\\{x|x \\le a\\}, Y=\\{y|y "
+}

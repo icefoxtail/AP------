@@ -1,0 +1,151 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "29/8",
+          "13/16"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-3/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "8/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "7"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "2"
+      },
+      {
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "x": "3",
+        "y": "7"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-26/5",
+        "9/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "2",
+        "7"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-2",
+          "y": "2"
+        },
+        {
+          "id": "R",
+          "x": "3",
+          "y": "7"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gL",
+          "from": "L",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gR",
+          "from": "R",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "원본의 이동된 그래프 g: A(-2,2), B(0,-1), C(3,7)를 지나는 네 실선 조각과 A,C의 가로·세로 점선을 보존한다.",
+  "accessibilityDescription": "원본의 이동된 그래프 g: A(-2,2), B(0,-1), C(3,7)를 지나는 네 실선 조각과 A,C의 가로·세로 점선을 보존한다.",
+  "sourceConditions": [
+    {
+      "id": "polyline",
+      "condition": "원본 SVG의 꼭짓점·선분 끝점과 네 조각의 정확한 유리수 기울기",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "corners",
+      "condition": "원본 SVG의 세 꺾임점 A,B,C 정확한 좌표",
+      "mappedTo": "graphPlan.breakpoints"
+    },
+    {
+      "id": "markers",
+      "condition": "A와 C에서 x축/y축까지 내린 가로·세로 점선",
+      "mappedTo": "graphPlan.overlays.guides"
+    },
+    {
+      "id": "ticks",
+      "condition": "원본 SVG에서 확인한 축 숫자·라벨",
+      "mappedTo": "graphPlan.axisTickValues"
+    },
+    {
+      "id": "shift",
+      "condition": "g(x)=f(x−3)+2 및 원래 함수값의 대응",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: 평행이동한 그래프를 $y=g(x)$라 하면 $g(x)=f(x-3)+2$, 따라서 $f(t)=g(t+3)-2$이다. 그림의 점 $(-2,2)$, $(3,7)$를 읽으면 $g(-2)=2$, $g(3)=7$이다. 그러므로 $f(-5)=2-2=0$, $f(0)=7-2=5$이고 합은 $5$이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P60-Q02-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "함수 $y=f(x)$의 그래프를 $x$축의 방향으로 3만큼,"
+}

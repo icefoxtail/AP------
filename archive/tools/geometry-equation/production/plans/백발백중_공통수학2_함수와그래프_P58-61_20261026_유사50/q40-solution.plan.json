@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          null,
+          "-4"
+        ],
+        "end": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-4",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4"
+      ],
+      "y": [
+        "4"
+      ]
+    }
+  },
+  "caption": "x≤−4에서 f(x)=−x²−2x+12, 최대 허용치 4가 −a이다.",
+  "accessibilityDescription": "x≤−4에서 f(x)=−x²−2x+12, 최대 허용치 4가 −a이다.",
+  "sourceConditions": [
+    {
+      "id": "function",
+      "condition": "원문 및 해설의 이차/일차함수 계수·단조구간",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "anchors",
+      "condition": "해설에서 확인한 꼭짓점·끝점·치역 경계",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "genuine-half-line",
+      "condition": "발문에서 정의역은 x≤-4이며 반대 방향은 무한히 이어진다. 유한 창을 정의역으로 잘라내지 않는다.",
+      "mappedTo": "graphPlan.pieces[0].domain"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: $f(x)=-x^2-2x+12$의 대칭축은 $x=-1$이다. $X=(-\\infty,a]$에서 일대일이려면 $a\\le-1$이어야 한다. 이 범위에서는 $f$가 증가하므로 최댓값은 $f(a)$이고, 공역 $Y=(-\\infty,-a]$에 들어가려면 $-a^2-2a+12\\le-a$, 즉 $-a^2-1a+12\\le0$이어야 한다. 경계근은 $-4, 3$이고 대칭축 조건과 결합하면 $a\\le-4$. 따",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "원래 정의역의 무한 꼬리와 닫힌 최댓값/최솟값 경계를 표시한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P61-Q07-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "두 집합 $X=\\{x|x \\le a\\}, Y=\\{y|y \\le"
+}

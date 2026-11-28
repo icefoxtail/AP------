@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "2"
+        ],
+        "domain": [
+          null,
+          "3"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "6",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "3",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-3"
+      },
+      {
+        "id": "A",
+        "x": "5",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "5"
+      ],
+      "y": [
+        "-3",
+        "1"
+      ]
+    },
+    "xWindow": [
+      -2,
+      8
+    ]
+  },
+  "caption": "x<3의 직선과 x≥3의 포물선은 (3,-3)에서 이어진다. 해설의 (5,1)도 표시한다.",
+  "accessibilityDescription": "x<3의 직선과 x≥3의 포물선은 (3,-3)에서 이어진다. 해설의 (5,1)도 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "branches",
+      "condition": "x<3에서는 계수 -9,2, x≥3에서는 6,-6,1 (상수항부터)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "marked",
+      "condition": "해설에서 지정한 점·경계·값을 보존한다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P58-Q05-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수"
+}

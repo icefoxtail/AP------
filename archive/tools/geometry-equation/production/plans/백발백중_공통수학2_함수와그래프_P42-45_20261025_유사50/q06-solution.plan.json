@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          null,
+          "3"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "3",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      -2,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "2"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "caption": "x<3에서 2x²−1, x≥3에서 −x+6. f(−1)=1, f(4)=2.",
+  "accessibilityDescription": "x<3에서 2x²−1, x≥3에서 −x+6. f(−1)=1, f(4)=2.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<3: f(x)=2x²−1",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x≥3: f(x)=−x+6",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "values",
+      "condition": "f(−1)=1, f(4)=2",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P42-Q02-S2-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "함수\n$f(x) = \\begin{cases} -x + 6 & (x"
+}

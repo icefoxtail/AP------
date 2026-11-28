@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "V0",
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": [
+        "-1",
+        "3"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "diag",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "-1",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "functionName": "f"
+  },
+  "caption": "x<0: x²+2x, x≥0: x²−2x. 점선 y=x와 세 교점의 입력 -1, 0, 3을 정확히 표시한다.",
+  "accessibilityDescription": "x<0: x²+2x, x≥0: x²−2x. 점선 y=x와 세 교점의 입력 -1, 0, 3을 정확히 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "원문 두 구간의 이차식과 x=0의 포함 관계",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "symmetry",
+      "condition": "이차식마다 해설에서 도출한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "line",
+      "condition": "직선 y=x와의 세 교점 모두에 정확히 점을 표시",
+      "mappedTo": "graphPlan.referenceLines"
+    },
+    {
+      "id": "join",
+      "condition": "x=0에서 두 조각이 O(0,0)으로 만남",
+      "mappedTo": "graphPlan.breakpoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: 항등함수 조건은 정의역 $X$의 모든 원소에서 $f(x)=x$이다. $x\\ge0$에서 $x^2-2x=x$의 허용 해는 [0, 3]이고, $x<0$에서 $x^2+2x=x$의 허용 해는 [-1]이다. 서로 다른 허용 해가 정확히 3개이므로 $X={-1, 0, 3}$이고 $a+b+c=-1+0+3=2$이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P61-Q09-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "집합 $X=\\{a, b, c\\}$를 정의역으로 하는"
+}

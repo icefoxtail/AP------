@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "2"
+        ],
+        "domain": [
+          null,
+          "3"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "8",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "3",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-1"
+      },
+      {
+        "id": "A",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "4"
+      ],
+      "y": [
+        "-1"
+      ]
+    },
+    "xWindow": [
+      -2,
+      8
+    ]
+  },
+  "caption": "x<3의 직선과 x≥3의 포물선은 (3,-1)에서 이어진다. 해설의 (4,0)도 표시한다.",
+  "accessibilityDescription": "x<3의 직선과 x≥3의 포물선은 (3,-1)에서 이어진다. 해설의 (4,0)도 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "branches",
+      "condition": "x<3에서는 계수 -7,2, x≥3에서는 8,-6,1 (상수항부터)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "marked",
+      "condition": "해설에서 지정한 점·경계·값을 보존한다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: $x<3$에서 $f(x)=2x-7$는 증가하고 치역은 $(-\\infty,-1)$이다. $x\\ge 3$의 이차식 $x^2-2ax+b$도 일대일이어야 하므로 대칭축 $x=a$가 $a\\le 3$를 만족해야 한다. 따라서 $M=3$이다. $a=3$이면 오른쪽 가지의 최솟값은 $b-9$이다. 역함수가 모든 실수에서 정의되려면 두 가지의 치역이 중복되거나 빠짐없이 실수 전체를 이루어야 하므로 $b-9=",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P58-Q06-T1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수"
+}

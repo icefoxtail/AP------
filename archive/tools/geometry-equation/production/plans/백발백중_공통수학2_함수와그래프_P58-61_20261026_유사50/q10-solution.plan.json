@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      8,
+      -1,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4/5",
+          "0",
+          "1/5"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "4"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=(x²+4)/5 (x≥0), g=f⁻¹. y=x 위 교점 (1,1),(4,4); 제곱거리 18.",
+  "accessibilityDescription": "f(x)=(x²+4)/5 (x≥0), g=f⁻¹. y=x 위 교점 (1,1),(4,4); 제곱거리 18.",
+  "sourceConditions": [
+    {
+      "id": "curves",
+      "condition": "함수식·정의역·대칭축·정확한 두 그래프의 대응",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "points",
+      "condition": "정확한 원문 해설 좌표",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: $f(x)=\\frac{x^2+4}{5}$는 $x\\ge0$에서 엄격히 증가하므로, $f(x)=y$, $f(y)=x$인 교점에서 $x<y$ 또는 $x>y$라면 증가성에 모순이다. 따라서 모든 교점은 $y=x$ 위에 있다. $f(x)=x\\iff x^2-5x+4=0\\iff(x-1)(x-4)=0$. 두 근 $1,4$은 모두 $x\\ge0$이므로 교점은 $(1,1),(4,4)$이다. $AB^2=(4-1)",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프에 임의의 배경/면 채움이 없다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P59-Q07-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "함수 $f(x)=\\frac{1}{5}x^2+\\frac{4}{5}"
+}

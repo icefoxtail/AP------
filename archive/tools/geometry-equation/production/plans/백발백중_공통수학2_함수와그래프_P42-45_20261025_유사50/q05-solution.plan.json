@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "2"
+        ],
+        "domain": [
+          null,
+          "1"
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "1",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "xWindow": [
+      -2,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "8"
+      },
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "7/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "2",
+        "5",
+        "8"
+      ]
+    }
+  },
+  "caption": "x≤1의 직선과 x>1의 포물선이 점프한다. f(0)=5, f(4)=8.",
+  "accessibilityDescription": "x≤1의 직선과 x>1의 포물선이 점프한다. f(0)=5, f(4)=8.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x≤1: f(x)=2x+5",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x>1: f(x)=x²−3x+4",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "values",
+      "condition": "f(0)=5, f(4)=8",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P42-Q02-S1-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "함수\n$f(x) = \\begin{cases} 2x + 5 & (x"
+}

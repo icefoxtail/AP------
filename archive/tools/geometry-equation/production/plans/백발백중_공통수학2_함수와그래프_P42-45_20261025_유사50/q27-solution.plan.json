@@ -1,0 +1,171 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "f: 항등"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "g: 상수"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "g",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "f(x)=x, g(x)=3이다. 두 함수가 다른 구조임을 대응도에서 확인한다.",
+  "accessibilityDescription": "f(x)=x, g(x)=3이다. 두 함수가 다른 구조임을 대응도에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "function0",
+      "condition": "항등함수 f는 각 원소를 자신에게 보낸다.",
+      "mappedTo": "panels[0].plan.diagram.arrows"
+    },
+    {
+      "id": "function1",
+      "condition": "f(2)+g(1)=5와 g 상수 조건으로 모든 g(x)=3이다.",
+      "mappedTo": "panels[1].plan.diagram.arrows"
+    },
+    {
+      "id": "exam-solution-crosscheck",
+      "condition": "시험지 JS의 풀이 확인: ",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "각 함수의 대응을 독립 패널로 분리하여 합성·순열 조건을 확인한다.",
+    "문항 BV-BAKBAL-H-COM2-HA-P43-Q09-S2-R1의 발문 및 해설과 대조하여 숫자·정의역·구간 경계의 의미를 검토했다."
+  ],
+  "sourceQuote": "집합 $X = \\{1, 2, 3\\}$에 대하여 $X$에서 $X$로의"
+}
