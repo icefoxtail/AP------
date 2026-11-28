@@ -1,24 +1,4 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-2*(x - 4)^2 + 6",
-  "points": {
-    "O": [
-      0,
-      0
-    ],
-    "H": [
-      4,
-      0
-    ],
-    "A": [
-      4,
-      6
-    ]
-  },
-  "polygon": [
-    "O",
-    "H",
-    "A"
-  ],
-  "caption": "y=-2(x-p)²+p+2의 꼭짓점 A와 수선의 발 H로 이루어진 직각삼각형 OHA"
+  "status": "UNSUPPORTED",
+  "reason": "변수 p를 미정으로 둔 y=-2(x-p)²+p+2와 꼭짓점 A=(p,p+2), 수선의 발 H=(p,0), 삼각형 OHA의 넓이 12를 답 p 없이 연동해 그리는 기호 매개변수 작도가 현재 엔진에 없다. p=4를 넣으면 문제의 정답을 누설한다."
 }

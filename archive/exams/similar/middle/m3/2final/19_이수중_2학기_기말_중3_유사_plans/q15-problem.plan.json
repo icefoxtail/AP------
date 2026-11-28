@@ -1,9 +1,444 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
-  },
-  "caption": "접선과 반지름 수직 및 이등변삼각형 성질로 x=110도, y=70도를 구해 합 180도 산출"
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "① 원주각·접선각 55°"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "110"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "T",
+          "P"
+        ],
+        "displayCircles": [
+          "circle"
+        ],
+        "displaySegments": [
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "AT",
+            "refs": [
+              "A",
+              "T"
+            ]
+          },
+          {
+            "id": "OP",
+            "refs": [
+              "O",
+              "P"
+            ]
+          },
+          {
+            "id": "AP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "tangentA",
+            "refs": [
+              "O",
+              "A",
+              "T"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "given55",
+              "refs": [
+                "T",
+                "A",
+                "P"
+              ],
+              "value": 55,
+              "label": "55°",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "unknownX",
+              "refs": [
+                "A",
+                "O",
+                "P"
+              ],
+              "value": 110,
+              "label": "x",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 540,
+          "height": 445
+        },
+        "caption": "접선과 현이 이루는 55°와 중심각 x.",
+        "accessibilityDescription": "접점 A를 지나는 접선 AT가 OA에 수직이고 ∠TAP=55°이며 중심각 AOP=x이다.",
+        "sourceConditions": [
+          {
+            "id": "source",
+            "condition": "OA⊥AT, ∠TAP=55°, x=∠AOP",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "rightAngles",
+              "planeMarks.angles"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "값이 주어진 각과 구하는 문자각은 원문 그대로 표시하고 정답 숫자는 적지 않는다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "② 접선각과 밑각 20°"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "140"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "T",
+          "B"
+        ],
+        "displayCircles": [
+          "circle"
+        ],
+        "displaySegments": [
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "AT",
+            "refs": [
+              "A",
+              "T"
+            ]
+          },
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "tangentA",
+            "refs": [
+              "O",
+              "A",
+              "T"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "given20",
+              "refs": [
+                "O",
+                "B",
+                "A"
+              ],
+              "value": 20,
+              "label": "20°",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "unknownY",
+              "refs": [
+                "T",
+                "A",
+                "B"
+              ],
+              "value": 70,
+              "label": "y",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 540,
+          "height": 445
+        },
+        "caption": "이등변삼각형 OAB의 주어진 각 20°와 접선각 y.",
+        "accessibilityDescription": "접점 A를 지나는 접선 AT가 OA에 수직이고 ∠OBA=20°이며 접선과 현 AB가 이루는 각은 y다.",
+        "sourceConditions": [
+          {
+            "id": "source",
+            "condition": "OA⊥AT, OA=OB, ∠OBA=20°, y=∠TAB",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "rightAngles",
+              "planeMarks.angles"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "값이 주어진 각과 구하는 문자각은 원문 그대로 표시하고 정답 숫자는 적지 않는다."
+        ]
+      }
+    }
+  ],
+  "caption": "서로 다른 두 원 그림에서 접선의 성질과 원의 중심각·밑각 관계를 비교한다.",
+  "accessibilityDescription": "왼쪽에는 접선과 현의 각 55도와 미지 중심각 x, 오른쪽에는 이등변삼각형의 밑각 20도와 미지 접선각 y가 있다.",
+  "sourceQuote": "직선 $AT$가 점 $A$에서 원 $O$에 접하는 접선",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "왼쪽 그림 ∠TAP=55°, x=∠AOP",
+      "mappedTo": [
+        "panels"
+      ]
+    },
+    {
+      "id": "right",
+      "condition": "오른쪽 그림 ∠OBA=20°, y는 접선 AT와 현 AB의 예각",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 상황을 별개의 원과 접선으로 나눠 표현해 x와 y를 혼동하지 않도록 한다."
+  ]
 }

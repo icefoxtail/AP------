@@ -1,15 +1,64 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "3*(x+2)^2",
-  "highlights": {
-    "vertex": [
-      -2,
-      0
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "12",
+          "12",
+          "3"
+        ],
+        "domain": [
+          "-5",
+          "1"
+        ],
+        "label": "f(x)"
+      }
     ],
-    "yIntercept": [
-      0,
-      12
-    ]
+    "viewport": [
+      -6,
+      2,
+      -2,
+      29
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "12",
+          "coordinates": true
+        }
+      ]
+    }
   },
-  "caption": "꼭짓점이 (-2, 0)이고 y절편이 (0, 12)인 아래로 볼록한 포물선"
+  "caption": "꼭짓점 V(-2,0)와 y절편 C(0,12)를 표시한 이차함수 그래프.",
+  "accessibilityDescription": "꼭짓점 V(-2,0)와 y절편 C(0,12)를 표시한 이차함수 그래프.",
+  "sourceQuote": "다음 그림과 같은 이차함수 $y = a(x - p)^2$의 그래프에서",
+  "sourceConditions": [
+    {
+      "id": "graph",
+      "condition": "원문에 있는 그래프의 꼭짓점·절편 및 개형을 표시한다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제용 그림에는 아직 구해야 하는 계수·기울기·정답을 따로 표기하지 않는다."
+  ]
 }

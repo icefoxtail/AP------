@@ -1,15 +1,64 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "(x - 3)^2",
-  "points": {
-    "V": [
-      3,
-      0
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "9",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "8"
+        ],
+        "label": "f(x)"
+      }
     ],
-    "C": [
-      0,
-      9
-    ]
+    "viewport": [
+      -3,
+      9,
+      -2,
+      27
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "9",
+          "coordinates": true
+        }
+      ]
+    }
   },
-  "caption": "꼭짓점이 (3, 0)이고 y절편이 (0, 9)인 포물선"
+  "caption": "꼭짓점 V(3,0)과 y절편 C(0,9)가 보이는 이차함수 그래프. k값은 표기하지 않는다.",
+  "accessibilityDescription": "꼭짓점 V(3,0)과 y절편 C(0,9)가 보이는 이차함수 그래프. k값은 표기하지 않는다.",
+  "sourceQuote": "그림과 같은 이차함수의 그래프가 점 $(k, 12)$를 지난다고 할 때",
+  "sourceConditions": [
+    {
+      "id": "graph",
+      "condition": "원문에 있는 그래프의 꼭짓점·절편 및 개형을 표시한다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제용 그림에는 아직 구해야 하는 계수·기울기·정답을 따로 표기하지 않는다."
+  ]
 }

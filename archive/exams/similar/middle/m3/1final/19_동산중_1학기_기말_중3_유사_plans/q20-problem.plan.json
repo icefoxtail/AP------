@@ -1,9 +1,82 @@
 {
-  "capability": "coordinate-parabola-shaded-v1",
-  "curves": [
-    "4*x^2",
-    "-2*x^2"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=4x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-2x^2"
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -9,
+      18
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "left",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "-2",
+        "to": "0"
+      },
+      {
+        "id": "right",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "0",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "두 포물선 사이의 빗금 영역; 어느 함수 그래프가 영역에 들어가는지 판단한다.",
+  "accessibilityDescription": "두 포물선 사이의 빗금 영역; 어느 함수 그래프가 영역에 들어가는지 판단한다.",
+  "sourceQuote": "두 이차함수 $y = 4x^2$과 $y = -2x^2$의 그래프",
+  "sourceConditions": [
+    {
+      "id": "parabolas",
+      "condition": "원문에 제시된 두 이차함수와 빗금 친 영역의 위아래 경계.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.regions"
+      ]
+    }
   ],
-  "shaded": "between_curves",
-  "caption": "y=4x²과 y=-2x² 그래프 사이의 색칠된 영역"
+  "newVisualInformation": [
+    "두 곡선의 정확한 계수와 원문의 칠해진 영역을 동일 좌표계에 보존한다."
+  ]
 }

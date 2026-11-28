@@ -1,9 +1,214 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "13"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "caption": "반지름 13, 중심거리 5인 원에서 반현 12와 현 전체 길이 x=24 산출"
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "M90",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "radius",
+        "from": "O",
+        "to": "A",
+        "label": "13",
+        "side": "LEFT",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "foot",
+        "from": "O",
+        "to": "M",
+        "label": "5",
+        "side": "RIGHT",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chord",
+        "from": "A",
+        "to": "B",
+        "label": "x",
+        "side": "BELOW",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 630,
+    "height": 490
+  },
+  "caption": "반지름 13cm의 원에서 현 AB에 내린 수선 OM=5cm와 현 길이 x를 표시한다.",
+  "accessibilityDescription": "원 O의 반지름 OA는 13cm, 중심에서 현 AB에 내린 수선 OM은 5cm다. AB 길이는 x로 적고 실제 정답은 나타내지 않는다.",
+  "sourceQuote": "원의 중심에서 현 $AB$에 내린 수선의 발을 $M$",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "OA=OB=13 cm, OM=5 cm, OM⊥AB, M은 AB의 중점이다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks.dimensions"
+      ]
+    },
+    {
+      "id": "unknown",
+      "condition": "문제용 현의 길이는 x로 유지하고 24를 밝히지 않는다",
+      "mappedTo": [
+        "planeMarks.dimensions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반현은 내부 좌표에서 12로 검산되나 숫자는 문제 그림에 표시하지 않는다."
+  ]
 }

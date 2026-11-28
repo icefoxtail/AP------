@@ -1,24 +1,116 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "x^2",
-  "line": "x + 6",
-  "points": {
-    "P": [
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "5"
+        ],
+        "label": "y=x+6"
+      }
+    ],
+    "viewport": [
+      -5,
+      6,
       -2,
-      4
+      27
     ],
-    "Q": [
-      -2,
-      0
-    ],
-    "R": [
-      3,
-      0
-    ],
-    "S": [
-      3,
-      9
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "4"
+        },
+        {
+          "id": "Q",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "S",
+          "x": "3",
+          "y": "9"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        },
+        {
+          "id": "RS",
+          "from": "R",
+          "to": "S"
+        },
+        {
+          "id": "SP",
+          "from": "S",
+          "to": "P"
+        }
+      ]
+    }
   },
-  "caption": "포물선 y=x²과 직선 y=x+6의 두 교점 P, S 및 x축에 내린 수선의 발 Q, R이 이루는 사다리꼴 PQRS"
+  "caption": "이차함수 y=x²와 일차함수 y=x+6의 두 교점 P,S에서 x축에 내린 수선과 사다리꼴 PQRS.",
+  "accessibilityDescription": "이차함수와 일차함수의 두 교점 P와 S, 수선의 발 Q와 R로 이루어진 사다리꼴 PQRS. 문항에서 묻는 좌표와 넓이의 수치 라벨은 표시하지 않는다.",
+  "sourceQuote": "이차함수 $y = x^2$의 그래프와 일차함수 $y = x + 6$의 그래프가 서로 두 점에서 만나고 있다",
+  "sourceConditions": [
+    {
+      "id": "curves",
+      "condition": "y=x²와 y=x+6은 P와 S에서 만난다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "trapezoid",
+      "condition": "Q,R은 P,S에서 x축으로 내린 수선의 발이고 P-Q-R-S가 사다리꼴을 이룬다.",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 그래프의 교점 좌표는 정확히 (-2,4),(3,9)이지만 문제용 점에는 좌표를 표시하지 않는다.",
+    "선분 PQ, QR, RS와 두 점 사이 PS를 표시해 원문의 사다리꼴 관계를 보존한다."
+  ]
 }

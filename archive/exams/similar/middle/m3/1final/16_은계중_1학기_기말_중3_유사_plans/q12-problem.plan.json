@@ -1,15 +1,64 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "0.5*x^2 + 3*x - 2",
-  "points": {
-    "V": [
-      -3,
-      -6.5
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "3",
+          "1/2"
+        ],
+        "domain": [
+          "-7",
+          "1"
+        ],
+        "label": "f(x)"
+      }
     ],
-    "C": [
-      0,
-      -2
-    ]
+    "viewport": [
+      -8,
+      2,
+      -9,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-3",
+          "y": "-13/2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true
+        }
+      ]
+    }
   },
-  "caption": "꼭짓점이 (-3, -13/2)이고 y절편이 (0, -2)인 이차함수 그래프"
+  "caption": "꼭지점 V(-3,-13/2)와 y절편 C(0,-2)를 표시한 이차함수 그래프.",
+  "accessibilityDescription": "꼭지점 V(-3,-13/2)와 y절편 C(0,-2)를 표시한 이차함수 그래프.",
+  "sourceQuote": "이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때",
+  "sourceConditions": [
+    {
+      "id": "graph",
+      "condition": "원문에 있는 그래프의 꼭짓점·절편 및 개형을 표시한다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제용 그림에는 아직 구해야 하는 계수·기울기·정답을 따로 표기하지 않는다."
+  ]
 }
