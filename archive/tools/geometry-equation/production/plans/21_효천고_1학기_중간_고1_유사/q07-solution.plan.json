@@ -1,0 +1,12 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"k","rows":[{"kind":"SET","label":"서로 다른 두 실근","pieces":[{"lo":{"value":"3","state":"OPEN"},"hi":null}]}]},
+  "numberLineCaption":{"text":"판별식이 양수인 범위"},
+  "caption":"D/4=2k−6>0이므로 k>3이다. 3은 포함되지 않는다.",
+  "accessibilityDescription":"수직선에서 3에 열린 끝점을 놓고 3보다 오른쪽의 실수 범위에 선을 긋는다.",
+  "sourceConditions":[
+    {"id":"discriminant","condition":"x²−2kx+k²−2k+6=0의 두 근이 서로 다르려면 D>0","mappedTo":"numberLine.rows[0].label"},
+    {"id":"bound","condition":"D/4=2k−6>0에서 k>3, 경계 3은 제외","mappedTo":"numberLine.rows[0].pieces[0].lo"}
+  ],
+  "newVisualInformation":["두 실근 조건에서 허용되는 실수 k의 열린 경계와 방향을 시각화한다."]
+}

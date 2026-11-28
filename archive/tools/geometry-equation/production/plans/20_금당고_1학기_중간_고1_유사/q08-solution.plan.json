@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["7","-4","1"],
+    "sourceDomain":{"kind":"INTERVAL","range":[-1,4],"states":["CLOSED","CLOSED"]},
+    "domain":[-1,4],"viewport":[-2,5,0,14],
+    "requiredPoints":[{"id":"A","x":-1,"y":12},{"id":"V","x":2,"y":3},{"id":"B","x":4,"y":7}],
+    "axisTickValues":{"x":[-1,2,4],"y":[3,7,12]}
+  },
+  "caption":"구간 −1≤x≤4의 이차함수 y=(x−2)²+3은 꼭짓점 (2,3)에서 최솟값 3, 왼쪽 끝점 (−1,12)에서 최댓값 12를 갖는다.",
+  "accessibilityDescription":"정의역이 −1에서 4까지인 위로 열린 포물선에서 가장 낮은 점 V(2,3)과 두 끝점 A(−1,12), B(4,7)을 표시한다.",
+  "sourceConditions":[
+    {"id":"function","condition":"f(x)=x²−4x+7","mappedTo":"graphPlan.coefficients"},
+    {"id":"domain","condition":"정의역 −1≤x≤4, 두 끝점 모두 포함","mappedTo":"graphPlan.sourceDomain"},
+    {"id":"extrema","condition":"f(−1)=12, f(2)=3, f(4)=7","mappedTo":"graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation":["제한된 구간 안쪽의 최솟값과 끝점에서의 최댓값을 구별한다."]
+}

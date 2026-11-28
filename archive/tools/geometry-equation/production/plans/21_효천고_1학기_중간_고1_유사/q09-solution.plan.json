@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["3","-5","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-1,6],"viewport":[-2,7,-5,12],
+    "requiredPoints":[{"id":"T","x":2,"y":-3},{"id":"V","x":2.5,"y":-3.25}],
+    "overlays":{"lines":[{"id":"line","slope":"-1","intercept":"-1"}]},
+    "axisTickValues":{"x":[2],"y":[]}
+  },
+  "caption":"k=−1일 때 직선 y=−x−1은 포물선 y=x²−5x+3에 T(2,−3)에서 접한다.",
+  "accessibilityDescription":"위로 열린 이차함수와 기울기가 음수인 직선이 x=2의 한 점에서 접하고, 꼭짓점은 (5/2,−13/4)이다.",
+  "sourceConditions":[
+    {"id":"quadratic","condition":"주어진 y=x²−5x+3","mappedTo":"graphPlan.coefficients"},
+    {"id":"tangent","condition":"x²−4x+3−k=0에서 D=0이면 k=−1, 접점 x=2","mappedTo":["graphPlan.overlays.lines[0]","graphPlan.requiredPoints[0]"]},
+    {"id":"vertex","condition":"x²−5x+3의 꼭짓점 (5/2,−13/4)","mappedTo":"graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation":["두 그래프가 단 한 점에서 만나는 접선 조건을 해설 좌표로 확인한다."]
+}

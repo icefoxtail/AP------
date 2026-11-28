@@ -1,0 +1,21 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["-3","-3","1"]},{"coefficients":["3","1","-1"]},{"coefficients":["-3","-3","1"]}],
+    "breakpoints":[{"x":"-1","y":"1"},{"x":"3","y":"-3"}],
+    "sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,5],"viewport":[-3,6,-5,6],
+    "requiredPoints":[{"id":"A","x":-1,"y":1},{"id":"B","x":3,"y":-3},{"id":"V","x":"1/2","y":"13/4"},{"id":"Q","x":2,"y":1},{"id":"R","x":4,"y":1}],
+    "referenceLines":[{"id":"k","y":"1","intersectionX":["-1","2","4"]}],
+    "axisTickValues":{"x":[-1,2,3,4],"y":[1]}
+  },
+  "caption":"h(x)=|x²−2x−3|−x의 꺾임점은 x=−1,3이고 k=1인 수평선은 x=−1,2,4에서 만나 서로 다른 세 근을 준다. k=13/4도 세 근을 만들지만 정수가 아니다.",
+  "accessibilityDescription":"세 구간으로 이어진 이차곡선 h에 y=1을 그으면 왼쪽 꺾임점과 중앙 곡선, 오른쪽 곡선에서 세 번 교차한다.",
+  "sourceConditions":[
+    {"id":"absolute","condition":"h=|x²−2x−3|−x, 바깥 구간 h=x²−3x−3, 안쪽 h=−x²+x+3","mappedTo":"graphPlan.pieces"},
+    {"id":"corners","condition":"원래 이차식의 근 −1,3에서 꺾이고 h(−1)=1, h(3)=−3","mappedTo":["graphPlan.breakpoints","graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]"]},
+    {"id":"threshold","condition":"정수 k 중 세 교점이 생기는 것은 k=1, 교점 x는 −1,2,4","mappedTo":"graphPlan.referenceLines[0]"},
+    {"id":"vertex","condition":"안쪽 조각의 꼭짓점은 (1/2,13/4)","mappedTo":"graphPlan.requiredPoints[2]"}
+  ],
+  "newVisualInformation":["세 근이 생기는 경계값 k=1에서 꺾임점과 수평선의 세 교차를 명료하게 보여준다."]
+}

@@ -1,0 +1,17 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["3","8","-2"],"sourceDomain":{"kind":"INTERVAL","range":[0,4],"states":["CLOSED","CLOSED"]},
+    "domain":[0,4],"viewport":[0,5,0,14],"applicationAxes":true,"axisVariable":"x",
+    "requiredPoints":[{"id":"A","x":0,"y":3},{"id":"V","x":2,"y":11},{"id":"B","x":4,"y":3}],
+    "axisTickValues":{"x":[1,2,3,4],"y":[5,10]}
+  },
+  "caption":"가로축 x는 공을 친 후 시간(초), 세로축 y는 공의 높이(m)이며 x=2초에서 최고 높이 11m에 이른다.",
+  "accessibilityDescription":"0초에서 높이 3m로 시작한 아래로 열린 포물선이 2초에 11m에 도달했다가 4초에 다시 높이 3m가 된다.",
+  "sourceConditions":[
+    {"id":"height","condition":"y=−2x²+8x+3","mappedTo":"graphPlan.coefficients"},
+    {"id":"maximum","condition":"y=−2(x−2)²+11의 꼭짓점 (2,11)","mappedTo":"graphPlan.requiredPoints[1]"},
+    {"id":"units","condition":"x의 단위는 초, y의 단위는 m","mappedTo":"graphPlan.applicationAxes"}
+  ],
+  "newVisualInformation":["시간과 높이의 서로 다른 축 단위 및 발사 후 최고점의 위치를 표시한다."]
+}

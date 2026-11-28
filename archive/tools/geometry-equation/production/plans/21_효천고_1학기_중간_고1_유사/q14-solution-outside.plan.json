@@ -1,0 +1,16 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["0","-9","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-1,10],"viewport":[-2,11,-23,7],
+    "requiredPoints":[{"id":"A","x":0,"y":0},{"id":"B","x":9,"y":0},{"id":"V","x":4.5,"y":-20.25}],
+    "axisTickValues":{"x":[3,6,9],"y":[]}
+  },
+  "caption":"|x−6|≥3√2인 바깥 구간에서는 f(x)+|g(x)|를 0으로 두면 x(x−9)=0이다. 후보 0,9 중 해당 구간의 근은 x=0만 유효하다.",
+  "accessibilityDescription":"위로 열린 포물선 y=x(x−9)이 x축을 0과 9에서 지나지만 절댓값의 바깥 구간 조건에 맞는 근은 0뿐이다.",
+  "sourceConditions":[
+    {"id":"positive","condition":"g≥0일 때 3(x−6)+(x−6)²−18=0, 즉 x(x−9)=0","mappedTo":"graphPlan.coefficients"},
+    {"id":"roots","condition":"x=0,9 후보 중 |x−6|≥3√2를 만족하는 것은 x=0","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation":["절댓값 바깥 구간의 두 대수적 후보를 같은 축에 보여주고 정의역 조건으로 하나를 제외한다."]
+}

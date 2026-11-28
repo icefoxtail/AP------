@@ -1,0 +1,16 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["9","-6","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[0,6],"viewport":[-1,7,-1,11],
+    "requiredPoints":[{"id":"T","x":3,"y":0}],
+    "axisTickValues":{"x":[3],"y":[]}
+  },
+  "caption":"제외되는 경계값 k=9에서는 y=(x−3)²의 그래프가 x축에 (3,0)에서 접하므로 서로 다른 두 실근을 만들지 않는다.",
+  "accessibilityDescription":"위로 열린 포물선이 x축의 3에 한 번 접하며 다른 x절편은 없다.",
+  "sourceConditions":[
+    {"id":"boundary","condition":"판별식 36−4k=0인 경계 k=9에서 y=(x−3)²","mappedTo":"graphPlan.coefficients"},
+    {"id":"touch","condition":"k=9인 경우 x축 접점은 (3,0)","mappedTo":"graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation":["k=8의 두 교점과 k=9의 한 접점을 대비하여 strict D>0 조건의 경계를 설명한다."]
+}

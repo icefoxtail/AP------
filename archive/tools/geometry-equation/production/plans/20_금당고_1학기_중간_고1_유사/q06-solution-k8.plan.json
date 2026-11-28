@@ -1,0 +1,16 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["8","-6","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[0,6],"viewport":[-1,7,-2,10],
+    "requiredPoints":[{"id":"A","x":2,"y":0},{"id":"B","x":4,"y":0},{"id":"V","x":3,"y":-1}],
+    "axisTickValues":{"x":[2,3,4],"y":[]}
+  },
+  "caption":"k=8을 택한 대표 경우 y=x²−6x+8은 x=2와 x=4에서 x축을 서로 다르게 통과한다. 1≤k≤8인 자연수는 모두 두 근을 가진다.",
+  "accessibilityDescription":"위로 열린 포물선이 x축의 2와 4를 지나며 꼭짓점은 (3,−1)이다.",
+  "sourceConditions":[
+    {"id":"sample","condition":"k<9인 자연수 중 k=8의 대표 포물선 y=x²−6x+8","mappedTo":"graphPlan.coefficients"},
+    {"id":"roots","condition":"k=8이면 서로 다른 두 실근 2와 4, 꼭짓점 (3,−1)","mappedTo":"graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation":["두 실근이 실제로 분리되는 허용 경계 표본 k=8을 기하적으로 확인한다."]
+}

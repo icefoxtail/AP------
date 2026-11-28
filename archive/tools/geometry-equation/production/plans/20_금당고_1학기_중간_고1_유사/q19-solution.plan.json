@@ -1,0 +1,19 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["28000","5000","-500"],
+    "sourceDomain":{"kind":"INTERVAL","range":[0,14],"states":["CLOSED","CLOSED"]},
+    "domain":[0,14],"viewport":[0,14,0,45000],"applicationAxes":true,"axisVariable":"t",
+    "requiredPoints":[{"id":"S","x":0,"y":28000},{"id":"V","x":5,"y":40500},{"id":"E","x":14,"y":0}],
+    "axisTickValues":{"x":[2,4,6,8,10,12,14],"y":[10000,20000,30000,40000]}
+  },
+  "caption":"가로축 t는 100원씩 이익을 낮춘 횟수, 세로축은 하루 총이익(원)이다. t=5에서 40500원으로 최대이고 판매량은 20+5·5=45개다.",
+  "accessibilityDescription":"가격을 낮춘 횟수 0에서 이익금 28000원인 포물선이 t=5에서 40500원으로 최고점을 찍고 t=14에서는 이익금이 0원이 된다.",
+  "sourceConditions":[
+    {"id":"profit","condition":"P(t)=(1400−100t)(20+5t)=−500t²+5000t+28000","mappedTo":"graphPlan.coefficients"},
+    {"id":"range","condition":"0≤t≤14의 정수 단계에서 개당 이익금이 음수가 아님","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},
+    {"id":"maximum","condition":"P=−500(t−5)²+40500, 최댓값은 t=5","mappedTo":"graphPlan.requiredPoints[1]"},
+    {"id":"sales","condition":"최대 이익일 때 판매량 20+5t=45개로 이익금과 단위가 다름","mappedTo":"graphPlan.axisVariable"}
+  ],
+  "newVisualInformation":["판매량을 결정하는 t축과 이익금 y축의 단위를 구분하고 최적 이익점의 위치를 표시한다."]
+}
