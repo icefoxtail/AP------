@@ -1,0 +1,54 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1/4",
+        "1/4"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+      "-1/6"
+      ],
+      "y": [
+        "-1/2"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-1/2",
+        "intersectionCount": 1
+      }
+    ],
+    "displaySize": "full"
+  },
+  "caption": "t=(x−π)/4 구간에서 −1/2<sin t<0을 확인하는 그래프",
+  "accessibilityDescription": "구간 −π/4부터 π/4까지의 사인곡선과 기준선 y=−1/2, 사인값이 두 기준 사이인 구간을 보여주는 해설 그래프.",
+  "newVisualInformation": [
+    "t 구간 −π/4부터 π/4",
+    "sin t=−1/2인 위치 −π/6, sin t=0인 위치 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < 2\\pi$에서 부등식 $2\\sin^2\\left(\\frac{x - \\pi}{4}\\right) - \\cos\\left(\\frac{x + \\pi}{4}\\right) < 0$의 해가 $\\alpha < x < \\beta$일 때, $4\\alpha + 2\\beta$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

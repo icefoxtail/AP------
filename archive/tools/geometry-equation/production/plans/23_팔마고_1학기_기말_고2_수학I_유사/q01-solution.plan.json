@@ -1,0 +1,55 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1/2",
+        "intersectionCount": 2
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/6",
+        "5/6"
+      ],
+      "y": [
+        "1/2",
+        "1"
+      ]
+    }
+  },
+  "caption": "0≤x<2π에서 sin x≥1/2인 구간을 판단하는 사인곡선과 기준선",
+  "accessibilityDescription": "사인곡선과 y=1/2 수평선이 x=π/6과 5π/6에서 만나고 두 교점 사이 곡선이 기준선 위에 있는 해설 그래프.",
+  "newVisualInformation": [
+    "y=sin x와 y=1/2의 두 교점",
+    "sin x≥1/2의 연속 구간"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각부등식 $\\sin x \\ge \\frac{1}{2}$의 해는? (단, $0 \\le x < 2\\pi$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
