@@ -1,0 +1,27 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "이를 평행이동하여 겹칠 수 있으려면 표준형 $y=q+\\dfrac{k}{x-p}$로 고쳤을 때 $k=-2$이어야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 6, -7, 8],
+    "curves": [
+      {"id": "f", "kind": "RATIONAL", "numerator": ["-4", "3"], "denominator": ["-2", "1"], "domain": ["-4", "6"], "color": "BLUE", "hideLabels": ["formula", "asymptotes"]},
+      {"id": "r", "kind": "RATIONAL", "numerator": ["4", "-3"], "denominator": ["-2", "1"], "domain": ["-4", "6"], "color": "WARM", "label": "r(x)", "hideLabels": ["asymptotes"]},
+      {"id": "g", "kind": "RATIONAL", "numerator": ["-4", "1"], "denominator": ["-2", "1"], "domain": ["-4", "6"], "color": "GREEN", "label": "g(x)", "hideLabels": ["asymptotes"]},
+      {"id": "h", "kind": "RATIONAL", "numerator": ["0", "2"], "denominator": ["1", "1"], "domain": ["-4", "6"], "color": "VIOLET", "label": "h(x)"}
+    ],
+    "axisTickValues": {"x": ["-1", "2"], "y": ["-3", "1", "2", "3"]}
+  },
+  "caption": "원함수 f를 x축 대칭한 r과 그 평행이동형 g(ㄱ), h(ㄴ)를 비교한다. 세 함수는 같은 반비례 계수 -2를 가져 점근선의 교점을 옮겨 겹칠 수 있다.",
+  "accessibilityDescription": "유리함수 f와 그 x축 대칭 그래프 r, 조건에 맞는 두 후보 ㄱ과 ㄴ의 네 곡선을 한 좌표평면에서 비교한다. r, g, h는 반비례 계수가 같고 점근선 위치만 다르다.",
+  "sourceConditions": [
+    {"id": "s13-1", "condition": "원함수는 (3x-4)/(x-2)=3+2/(x-2)", "mappedTo": ["graphPlan.curves.0.numerator", "graphPlan.curves.0.denominator"]},
+    {"id": "s13-2", "condition": "x축 대칭한 함수는 -3-2/(x-2)", "mappedTo": ["graphPlan.curves.1.numerator", "graphPlan.curves.1.denominator"]},
+    {"id": "s13-3", "condition": "ㄱ은 1-2/(x-2)로 세로 평행이동", "mappedTo": ["graphPlan.curves.2.numerator", "graphPlan.curves.2.denominator"]},
+    {"id": "s13-4", "condition": "ㄴ은 2-2/(x+1)로 가로·세로 평행이동", "mappedTo": ["graphPlan.curves.3.numerator", "graphPlan.curves.3.denominator"]}
+  ],
+  "newVisualInformation": [
+    "x축 대칭으로 반비례 계수 2가 -2로 바뀐 결과를 원함수 f와 대칭 그래프 r의 반대 방향 가지로 나타낸다.",
+    "ㄱ과 ㄴ 그래프 g와 h는 r과 서로 점근선 교점의 위치만 달라 같은 모양으로 평행이동할 수 있다."
+  ]
+}
