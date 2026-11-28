@@ -1,0 +1,174 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "8pi",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sBC",
+        "text": "15pi",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "ownerSegment": "sAC",
+        "text": "17pi",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "원기둥의 옆면을 펼친 전개도는 가로의 길이가 밑면의 둘레 $2\\pi\\times 4 = 8\\pi\\text{ (cm)}$, 세로의 길이가 높이 $15\\pi\\text{ cm}$인 직사각형이다. 최단 거리는 이 직사각형의 대각선의 길이와 같으므로 $$\\sqrt{(8\\pi)^2 + (15\\pi)^2} = \\sqrt{64\\pi^2 + 225\\pi^2} = \\sqrt{289\\pi^2} = 17\\pi\\text{ (cm)}$$ 따라서 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "q21_solution",
+      "condition": "원기둥의 옆면을 펼친 전개도는 가로의 길이가 밑면의 둘레 $2\\pi\\times 4 = 8\\pi\\text{ (cm)}$, 세로의 길이가 높이 $15\\pi\\text{ cm}$인 직사각형이다. 최단 거리는 이 직사각형의 대각선의 길이와 같으므로 $$\\sqrt{(8\\pi)^2 + (15\\pi)^2} = \\sqrt{64\\pi^2 + 225\\pi^2} = \\sqrt{289\\pi^2} = 17\\pi\\text{ (cm)}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 옆면 전개도 가로 8π·세로 15π의 대각선 17π",
+  "accessibilityDescription": "동산중 21번 해설 그림. 옆면 전개도 가로 8π·세로 15π의 대각선 17π",
+  "newVisualInformation": [
+    "실제 선분 5개: sAB, sBC, sCD, sDA, sAC",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 3개"
+  ]
+}

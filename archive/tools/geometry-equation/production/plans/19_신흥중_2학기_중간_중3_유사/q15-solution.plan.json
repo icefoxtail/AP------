@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sDA",
+        "text": "16",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "접은 각과 엇각이 같으므로 $\\angle\\text{FBD}=\\angle\\text{CBD}=\\angle\\text{BDF}$이어서 $\\triangle\\text{FBD}$는 $\\overline{\\text{FB}}=\\overline{\\text{FD}}$인 이등변삼각형이다. $\\overline{\\text{AF}}=x\\text{ cm}$라 하면 $\\overline{\\text{FB}}=\\overline{\\text{FD}}=16-x\\text{ (cm)}$이므로 직각삼각형 $\\text{ABF}$에서 $$x^2 + 8^2 = (16 - x)^2 \\implies x^2 + 64 = 256 - 32x + x^2 \\implies 32x = 192 \\implies x = 6$$ 따라서 $\\overline{\\text{FD}} = 16 - 6 = 10\\text{ cm}$이고, $\\triangle\\text{FBD}$의 넓이는 $$\\frac{1}{2} \\times \\overline{\\text{FD}} \\times \\overline{\\text{AB}} = \\frac{1}{2} \\times 10 \\times 8 = 40\\text{ (cm}^2\\text{)}$$ 이므로 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "접은 각과 엇각이 같으므로 $\\angle\\text{FBD}=\\angle\\text{CBD}=\\angle\\text{BDF}$이어서 $\\triangle\\text{FBD}$는 $\\overline{\\text{FB}}=\\overline{\\text{FD}}$인 이등변삼각형이다. $\\overline{\\text{AF}}=x\\text{ cm}$라 하면 $\\overline{\\text{FB}}=\\overline{\\text{FD}}=16-x\\text{ (cm)}$이므로 직각삼각형 $\\text{ABF}$에서 $$x^2 + 8^2 = (16 - x)^2 \\implies x^2 + 64 = 256 - 32x + x^2 \\implies 32x = 192 \\implies x = 6$$ 따라서 $\\overline{\\text{FD}} = 16 - 6 = 10\\text{ cm}$이고, $\\triangle\\text{FBD}$의 넓이는 $$\\frac{1}{2} \\times \\overline{\\text{FD}} \\times \\overline{\\text{AB}} = \\frac{1}{2} \\times 10 \\times 8 = 40\\text{ (cm}^2\\text{)}$$ 이므로 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: BF=FD=10, AF=6에서 △FBD 넓이40인 접기 대칭",
+  "accessibilityDescription": "신흥중 15번 해설 그림. BF=FD=10, AF=6에서 △FBD 넓이40인 접기 대칭",
+  "newVisualInformation": [
+    "실제 선분 8개: sAB, sBC, sCD, sDA, sBD, sBE, sEF, sFD",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 2개"
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=8$, $\\angle\\text{A}=60^\\circ$이므로 $30^\\circ$-$60^\\circ$-$90^\\circ$ 직각삼각형의 변의 비 $1:\\sqrt{3}:2$에 의해 $$x = \\overline{\\text{AC}} = 4, \\quad \\overline{\\text{BC}} = 4\\sqrt{3}$$ 직각삼각형 $\\text{CDB}$에서 $\\angle\\text{D}=90^\\circ$, $\\angle\\text{CBD}=45^\\circ$이므로 직각이등변삼각형이어서 $$y = \\overline{\\text{CD}} = \\frac{\\overline{\\text{BC}}}{\\sqrt{2}} = \\frac{4\\sqrt{3}}{\\sqrt{2}} = 2\\sqrt{6}$$ 따라서 $x=4$, $y=2\\sqrt{6}$이므로 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q14_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=8$, $\\angle\\text{A}=60^\\circ$이므로 $30^\\circ$-$60^\\circ$-$90^\\circ$ 직각삼각형의 변의 비 $1:\\sqrt{3}:2$에 의해 $$x = \\overline{\\text{AC}} = 4, \\quad \\overline{\\text{BC}} = 4\\sqrt{3}$$ 직각삼각형 $\\text{CDB}$에서 $\\angle\\text{D}=90^\\circ$, $\\angle\\text{CBD}=45^\\circ$이므로 직각이등변삼각형이어서 $$y = \\overline{\\text{CD}} = \\frac{\\overline{\\text{BC}}}{\\sqrt{2}} = \\frac{4\\sqrt{3}}{\\sqrt{2}} = 2\\sqrt{6}$$ 따라서 $x=4$, $y=2\\sqrt{6}$이므로 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 30°·60°·90°와 45°·45°·90°의 변 대응으로 AC4, CD2√6",
+  "accessibilityDescription": "신흥중 14번 해설 그림. 30°·60°·90°와 45°·45°·90°의 변 대응으로 AC4, CD2√6",
+  "newVisualInformation": [
+    "실제 선분 5개: sAB, sAC, sBC, sBD, sCD",
+    "원 0개, 각호 2개, 원호 0개, 길이라벨 1개"
+  ]
+}

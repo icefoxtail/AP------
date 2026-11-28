@@ -1,0 +1,362 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "4",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "2",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "2",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sPE",
+      "refs": [
+        "P",
+        "E"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sAC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "ownerSegment": "sBC",
+        "text": "2sqrt(5)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "E",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "다음 이등변삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=\\overline{\\text{AC}}=5\\text{ cm}$, $\\overline{\\text{BC}}=2\\sqrt{5}\\text{ cm}$이다. 변 $\\text{BC}$ 위의 한 점 $\\text{P}$에서 두 변 $\\text{AB}$, $\\text{AC}$에 내린 수선의 발을 각각 $\\text{D}$, $\\text{E}$라 할 때, $\\overline{\\text{DP}}+\\overline{\\text{EP}}$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "q16_problem",
+      "condition": "다음 이등변삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=\\overline{\\text{AC}}=5\\text{ cm}$, $\\overline{\\text{BC}}=2\\sqrt{5}\\text{ cm}$이다. 변 $\\text{BC}$ 위의 한 점 $\\text{P}$에서 두 변 $\\text{AB}$, $\\text{AC}$에 내린 수선의 발을 각각 $\\text{D}$, $\\text{E}$라 할 때, $\\overline{\\text{DP}}+\\overline{\\text{EP}}$의 값은?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: AB=AC=5, BC=2√5이고 P에서 AB·AC로 내린 두 수선",
+  "accessibilityDescription": "신흥중 16번 문제 그림. AB=AC=5, BC=2√5이고 P에서 AB·AC로 내린 두 수선",
+  "newVisualInformation": [
+    "실제 선분 7개: sAB, sAC, sBC, sPD, sPE, sAD, sAE",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 3개"
+  ]
+}

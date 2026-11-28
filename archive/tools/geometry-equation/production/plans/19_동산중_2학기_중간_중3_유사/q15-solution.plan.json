@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "B",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "6sqrt(2)",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "$\\triangle\\text{ABD}$는 $\\overline{\\text{AD}}=\\overline{\\text{BD}}$인 직각이등변삼각형이고 빗변 $\\overline{\\text{AB}}=6\\sqrt{2}$이므로 $$\\overline{\\text{AD}} = \\overline{\\text{BD}} = 6$$ 직각삼각형 $\\text{ADC}$에서 $\\angle\\text{C}=60^\\circ$이므로 $\\overline{\\text{DC}} = \\frac{6}{\\sqrt{3}} = 2\\sqrt{3}$이다. 따라서 $\\overline{\\text{BC}} = 6 + 2\\sqrt{3}$이고, $\\triangle\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times (6 + 2\\sqrt{3}) \\times 6 = 18 + 6\\sqrt{3}$$ 이므로 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "$\\triangle\\text{ABD}$는 $\\overline{\\text{AD}}=\\overline{\\text{BD}}$인 직각이등변삼각형이고 빗변 $\\overline{\\text{AB}}=6\\sqrt{2}$이므로 $$\\overline{\\text{AD}} = \\overline{\\text{BD}} = 6$$ 직각삼각형 $\\text{ADC}$에서 $\\angle\\text{C}=60^\\circ$이므로 $\\overline{\\text{DC}} = \\frac{6}{\\sqrt{3}} = 2\\sqrt{3}$이다. 따라서 $\\overline{\\text{BC}} = 6 + 2\\sqrt{3}$이고, $\\triangle\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times (6 + 2\\sqrt{3}) \\times 6 = 18 + 6\\sqrt{3}$$ 이므로 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: AD=BD=6, DC=2√3을 합쳐 BC를 구하고 밑변·높이로 넓이 계산",
+  "accessibilityDescription": "동산중 15번 해설 그림. AD=BD=6, DC=2√3을 합쳐 BC를 구하고 밑변·높이로 넓이 계산",
+  "newVisualInformation": [
+    "실제 선분 5개: sAB, sAD, sBD, sDC, sAC",
+    "원 0개, 각호 1개, 원호 0개, 길이라벨 1개"
+  ]
+}

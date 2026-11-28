@@ -1,0 +1,404 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "296",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "222",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "L",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sHI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "sIA",
+      "refs": [
+        "I",
+        "A"
+      ]
+    },
+    {
+      "id": "sAL",
+      "refs": [
+        "A",
+        "L"
+      ]
+    },
+    {
+      "id": "sLM",
+      "refs": [
+        "L",
+        "M"
+      ]
+    },
+    {
+      "id": "sBL",
+      "refs": [
+        "B",
+        "L"
+      ]
+    },
+    {
+      "id": "sLC",
+      "refs": [
+        "L",
+        "C"
+      ]
+    },
+    {
+      "id": "sFM",
+      "refs": [
+        "F",
+        "M"
+      ]
+    },
+    {
+      "id": "sMG",
+      "refs": [
+        "M",
+        "G"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sBC",
+        "text": "10",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "hiddenPointNames": [],
+  "sourceQuote": "$\\overline{\\text{AC}}=\\sqrt{10^2-6^2}=8$이고, 닮음에 의해 $\\overline{\\text{BL}}=\\frac{6^2}{10}=\\frac{18}{5}$, $\\overline{\\text{LC}}=\\frac{8^2}{10}=\\frac{32}{5}$, $\\overline{\\text{AL}}=\\frac{6\\times 8}{10}=\\frac{24}{5}$이다.\n\n- ㄱ: $\\triangle\\text{AEB}$의 세 변은 $6, 6, 6\\sqrt{2}$이고 $\\triangle\\text{EBC}$는 변 $\\overline{\\text{BC}}=10$을 포함하므로 합동이 아니다. (거짓)   - ㄴ: $\\triangle\\text{AEB} = \\frac{1}{2}\\times 6\\times 6 = 18$, $\\triangle\\text{BFL} = \\frac{1}{2}\\times 10\\times \\frac{18}{5} = 18$이므로 넓이가 같다. (참)   - ㄷ: $\\overline{\\text{AE}}=6\\sqrt{2}$는 $\\triangle\\text{ABC}$의 세 변 $6, 8, 10$ 중 어느 것과도 같지 않으므로 합동이 아니다. (거짓)   - ㄹ: $\\square\\text{BFML} = 10\\times \\frac{18}{5} = 36$, $\\triangle\\text{ABF} = \\frac{1}{2}\\times 10\\times \\frac{18}{5} = 18$이므로 $\\square\\text{BFML}=2\\triangle\\text{ABF}$이다. (참)   - ㅁ: $\\square\\text{LMGC} = \\frac{32}{5}\\times 10 = 64$, $2\\triangle\\text{ALC} = \\frac{24}{5}\\times \\frac{32}{5} = \\frac{768}{25} \\ne 64$이다. (거짓) 따라서 옳은 것은 ㄴ, ㄹ의 $2$개이므로 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q17_solution",
+      "condition": "$\\overline{\\text{AC}}=\\sqrt{10^2-6^2}=8$이고, 닮음에 의해 $\\overline{\\text{BL}}=\\frac{6^2}{10}=\\frac{18}{5}$, $\\overline{\\text{LC}}=\\frac{8^2}{10}=\\frac{32}{5}$, $\\overline{\\text{AL}}=\\frac{6\\times 8}{10}=\\frac{24}{5}$이다.\n\n- ㄱ: $\\triangle\\text{AEB}$의 세 변은 $6, 6, 6\\sqrt{2}$이고 $\\triangle\\text{EBC}$는 변 $\\overline{\\text{BC}}=10$을 포함하므로 합동이 아니다. (거짓)   - ㄴ: $\\triangle\\text{AEB} = \\frac{1}{2}\\times 6\\times 6 = 18$, $\\triangle\\text{BFL} = \\frac{1}{2}\\times 10\\times \\frac{18}{5} = 18$이므로 넓이가 같다. (참)   - ㄷ: $\\overline{\\text{AE}}=6\\sqrt{2}$는 $\\triangle\\text{ABC}$의 세 변 $6, 8, 10$ 중 어느 것과도 같지 않으므로 합동이 아니다. (거짓)   - ㄹ: $\\square\\text{BFML} = 10\\times \\frac{18}{5} = 36$, $\\triangle\\text{ABF} = \\frac{1}{2}\\times 10\\times \\frac{18}{5} = 18$이므로 $\\square\\text{BFML}=2\\triangle\\text{ABF}$이다. (참)   - ㅁ: $\\square\\text{LMGC} = \\frac{32}{5}\\times 10 = 64$, $2\\triangle\\text{ALC} = \\frac{24}{5}\\times \\frac{32}{5} = \\frac{768}{25} \\ne 64$이다. (거짓) 따라서 옳은 것은 ㄴ, ㄹ의 $2$개이므로 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: BL=18/5, LC=32/5, AL=24/5 및 넓이 18·36의 비교",
+  "accessibilityDescription": "동산중 17번 해설 그림. BL=18/5, LC=32/5, AL=24/5 및 넓이 18·36의 비교",
+  "newVisualInformation": [
+    "실제 선분 18개: sAB, sBC, sCA, sAD, sDE, sEB, sBF, sFG, sGC, sCH, sHI, sIA, sAL, sLM, sBL, sLC, sFM, sMG",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 2개"
+  ]
+}

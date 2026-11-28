@@ -1,0 +1,62 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 12
+      },
+      "height": 4,
+      "names": "........"
+    }
+  ],
+  "segments": [
+    {
+      "from": "#b0",
+      "to": "#t2",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "3"
+    },
+    {
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "4"
+    },
+    {
+      "edge": [
+        "#b1",
+        "#b2"
+      ],
+      "label": "12"
+    }
+  ],
+  "sourceQuote": "직육면체의 세로의 길이를 $x\\text{ cm}$라 하면 공간대각선의 길이 공식에 의해 $$x^2 + 3^2 + 4^2 = 13^2 \\implies x^2 = 169 - 9 - 16 = 144$$ $x>0$이므로 $x = 12\\text{ cm}$이다. 따라서 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "q18_solution",
+      "condition": "직육면체의 세로의 길이를 $x\\text{ cm}$라 하면 공간대각선의 길이 공식에 의해 $$x^2 + 3^2 + 4^2 = 13^2 \\implies x^2 = 169 - 9 - 16 = 144$$ $x>0$이므로 $x = 12\\text{ cm}$이다. 따라서 정답은 ①이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "caption": "해설 관계: 공간대각선 제곱 3²+4²+12²=13²로 세로 12",
+  "accessibilityDescription": "동산중 18번 해설 그림. 공간대각선 제곱 3²+4²+12²=13²로 세로 12",
+  "newVisualInformation": [
+    "실제 입체 PRISM",
+    "입체 선분 1개, 치수 3개, 단면 0개"
+  ]
+}

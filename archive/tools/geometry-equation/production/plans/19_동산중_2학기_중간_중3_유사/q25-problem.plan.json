@@ -1,0 +1,71 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 9,
+        "depth": 9
+      },
+      "height": 9,
+      "names": {
+        "base": [
+          "B",
+          "A",
+          ".",
+          "F"
+        ],
+        "top": [
+          "C",
+          ".",
+          ".",
+          "."
+        ]
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "A",
+      "label": "9"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $9\\text{ cm}$인 정육면체에서 세 꼭짓점 $\\text{A}$, $\\text{F}$, $\\text{C}$를 지나는 평면으로 잘라 사면체 $\\text{B}-\\text{AFC}$를 만들었다. 꼭짓점 $\\text{B}$에서 밑면 $\\text{AFC}$에 내린 수선 $\\overline{\\text{BJ}}$의 길",
+  "sourceConditions": [
+    {
+      "id": "q25_problem",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $9\\text{ cm}$인 정육면체에서 세 꼭짓점 $\\text{A}$, $\\text{F}$, $\\text{C}$를 지나는 평면으로 잘라 사면체 $\\text{B}-\\text{AFC}$를 만들었다. 꼭짓점 $\\text{B}$에서 밑면 $\\text{AFC}$에 내린 수선 $\\overline{\\text{BJ}}$의 길이를 구하시오.",
+      "mappedTo": "solids"
+    }
+  ],
+  "caption": "문제 조건: 정육면체 모서리9와 A·F·C를 잇는 절단 삼각면, B에서 높이를 내릴 대상",
+  "accessibilityDescription": "동산중 25번 문제 그림. 정육면체 모서리9와 A·F·C를 잇는 절단 삼각면, B에서 높이를 내릴 대상",
+  "newVisualInformation": [
+    "실제 입체 PRISM",
+    "입체 선분 3개, 치수 1개, 단면 0개"
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sED",
+        "text": "9",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "E",
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "직각삼각형 $\\text{AED}$에서 $\\overline{\\text{AD}}=\\overline{\\text{AB}}=15$, $\\overline{\\text{ED}}=9$이므로 $$\\overline{\\text{AE}} = \\sqrt{15^2 - 9^2} = \\sqrt{225 - 81} = 12$$ $\\overline{\\text{AD}}\\parallel\\overline{\\text{BC}}$이고 $\\overline{\\text{EG}}\\perp\\overline{\\text{BC}}$이므로 $\\overline{\\text{EF}}\\perp\\overline{\\text{AD}}$이다. 직각삼각형의 닮음에 의해 $\\overline{\\text{AE}}^2 = \\overline{\\text{AF}}\\cdot\\overline{\\text{AD}}$이므로 $$12^2 = \\overline{\\text{AF}} \\times 15 \\implies \\overline{\\text{AF}} = \\frac{144}{15} = \\frac{48}{5}$$ 따라서 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "q12_solution",
+      "condition": "직각삼각형 $\\text{AED}$에서 $\\overline{\\text{AD}}=\\overline{\\text{AB}}=15$, $\\overline{\\text{ED}}=9$이므로 $$\\overline{\\text{AE}} = \\sqrt{15^2 - 9^2} = \\sqrt{225 - 81} = 12$$ $\\overline{\\text{AD}}\\parallel\\overline{\\text{BC}}$이고 $\\overline{\\text{EG}}\\perp\\overline{\\text{BC}}$이므로 $\\overline{\\text{EF}}\\perp\\overline{\\text{AD}}$이다. 직각삼각형의 닮음에 의해 $\\overline{\\text{AE}}^2 = \\overline{\\text{AF}}\\cdot\\overline{\\text{AD}}$이므로 $$12^2 = \\overline{\\text{AF}} \\times 15 \\implies \\overline{\\text{AF}} = \\frac{144}{15} = \\frac{48}{5}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: AE12 및 닮음으로 AF=AE²/AD=48/5가 되는 수선 F",
+  "accessibilityDescription": "신흥중 12번 해설 그림. AE12 및 닮음으로 AF=AE²/AD=48/5가 되는 수선 F",
+  "newVisualInformation": [
+    "실제 선분 8개: sAB, sBC, sCD, sDA, sAE, sED, sEF, sFG",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 2개"
+  ]
+}

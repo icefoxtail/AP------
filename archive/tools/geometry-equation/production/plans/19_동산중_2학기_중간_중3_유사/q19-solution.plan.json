@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "SPHERE",
+      "radius": 9,
+      "names": {
+        "center": "O"
+      }
+    }
+  ],
+  "section": {
+    "kind": "LEVEL",
+    "at": "7/9"
+  },
+  "dims": [
+    {
+      "radius": "center",
+      "label": "9"
+    }
+  ],
+  "sourceQuote": "구의 반지름의 길이를 $r\\text{ cm}$라 하면 구의 부피가 $972\\pi\\text{ cm}^3$이므로 $$\\frac{4}{3}\\pi r^3 = 972\\pi \\implies r^3 = 729 \\implies r = 9\\text{ (cm)}$$ 중심에서 단면까지의 거리가 $5\\text{ cm}$이므로 단면인 원의 반지름을 $x\\text{ cm}",
+  "sourceConditions": [
+    {
+      "id": "q19_solution",
+      "condition": "구의 반지름의 길이를 $r\\text{ cm}$라 하면 구의 부피가 $972\\pi\\text{ cm}^3$이므로 $$\\frac{4}{3}\\pi r^3 = 972\\pi \\implies r^3 = 729 \\implies r = 9\\text{ (cm)}$$ 중심에서 단면까지의 거리가 $5\\text{ cm}$이므로 단면인 원의 반지름을 $x\\text{ cm}$라 하면 $$x^2 + 5^2 = 9^2 \\implies x^2 = 81 - 25 = 56$$ 따라서 단면인 원의 넓이는 $\\pi x^2 = 56\\pi\\text{ (cm}^2\\text{)}$이므로 정답은 ②이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "caption": "해설 관계: 구 반지름 9, 평면까지 5, 단면 반지름 √56의 직각 관계",
+  "accessibilityDescription": "동산중 19번 해설 그림. 구 반지름 9, 평면까지 5, 단면 반지름 √56의 직각 관계",
+  "newVisualInformation": [
+    "실제 입체 SPHERE",
+    "입체 선분 0개, 치수 1개, 단면 1개"
+  ]
+}
