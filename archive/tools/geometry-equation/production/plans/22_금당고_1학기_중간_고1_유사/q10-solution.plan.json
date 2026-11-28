@@ -1,0 +1,19 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["9/16", "3/2", "1"]}],
+    "breakpoints": [], "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 3], "viewport": [-3, 3, -1, 12],
+    "functionName": "f", "referenceLines": [{"id": "L", "slope": "3", "intercept": "0", "intersectionX": ["3/4"]}],
+    "requiredPoints": [{"id": "V", "x": -0.75, "y": 0}, {"id": "T", "x": 0.75, "y": 2.25}],
+    "exactCoordinates": {"V": ["-3/4", "0"], "T": ["3/4", "9/4"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "최대 a=1/4이면 f(x)=(x+3/4)²은 V(−3/4,0)에서 x축에 접하고, y=3x와는 T(3/4,9/4)에서 접한다.",
+  "accessibilityDescription": "포물선 y=(x+3/4)²과 직선 y=3x의 접점 (3/4,9/4), x축 접점 (−3/4,0)을 한 좌표평면에 표시한다.",
+  "sourceConditions": [
+    {"id": "xaxis", "condition": "x축 접함에서 b=9a², a=1/4이면 b=9/16", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.requiredPoints[0]"]},
+    {"id": "line", "condition": "f(x)=3x는 (x−3/4)²=0, 접점 (3/4,9/4)", "mappedTo": ["graphPlan.referenceLines[0]", "graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation": ["두 번의 접함 조건을 각각 x축 접점과 y=3x 접점으로 독립 표시한다."]
+}

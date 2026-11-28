@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-5", "4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-6, 2],
+    "viewport": [-6.5, 2.5, -10, 12],
+    "requiredPoints": [{"id": "A", "x": -5, "y": 0}, {"id": "P", "x": -2, "y": -9}, {"id": "B", "x": 1, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a=4에서 y=x²+4x−5=(x+5)(x−1)이고, 고정점 P(−2,−9)가 꼭짓점이며 두 근 −5,1의 절댓값 합은 6이다.",
+  "accessibilityDescription": "포물선 y=x²+4x−5가 x축과 만나는 A(−5,0), B(1,0), 꼭짓점 P(−2,−9)을 표시한다.",
+  "sourceConditions": [
+    {"id": "fixed", "condition": "x=−2에서 x²+ax+2a−13=−9, a에 무관한 점 P", "mappedTo": "graphPlan.requiredPoints[1]"},
+    {"id": "vertex", "condition": "P가 꼭짓점이므로 −a/2=−2, a=4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "roots", "condition": "x²+4x−5=(x+5)(x−1)", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["기존 문제 그림의 A·P·B에 풀이로 확정된 정확한 좌표를 연결한다."]
+}
