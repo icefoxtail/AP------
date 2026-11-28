@@ -1,0 +1,144 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "value": 53,
+        "label": "θ",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lP",
+        "ownerSegment": "sP",
+        "text": "y=3x"
+      },
+      {
+        "id": "lQ",
+        "ownerSegment": "sQ",
+        "text": "y=x/3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 점에서 만나는 두 직선 y=3x와 y=x/3이 있고, 두 직선이 이루는 예각을 세타로 표시한 그림이다.",
+  "accessibilityDescription": "한 점에서 갈라지는 두 직선이 있고, 그 사이의 예각에 세타 표시가 있다. 한 직선에는 y=3x, 다른 직선에는 y=x/3이 적혀 있다.",
+  "newVisualInformation": [
+    "한 점에서 만나는 두 직선 y=3x와 y=x/3",
+    "두 직선 사이 예각의 세타 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $y=3x$와 $y=\\dfrac{1}{3}x$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
