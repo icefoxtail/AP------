@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": true,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {"value": "0.5", "state": "OPEN"},
+            "hi": {"value": "3.5", "state": "OPEN"}
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "q",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {"value": "-0.25", "state": "OPEN"},
+            "hi": {"value": "3.75", "state": "OPEN"}
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "정수",
+        "within": 1,
+        "band": false,
+        "points": [
+          {"id": "P0", "value": "0", "hideName": true},
+          {"id": "P1", "value": "1", "hideName": true},
+          {"id": "P2", "value": "2", "hideName": true},
+          {"id": "P3", "value": "3", "hideName": true}
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "k=3/4인 경우의 두 조건과 정수"
+  },
+  "caption": "k=3/4일 때 q에 속한 정수 0, 1, 2, 3 가운데 p에 속하지 않는 정수는 0 하나이다.",
+  "accessibilityDescription": "k가 3/4일 때 조건 p의 해집합은 0.5와 3.5 사이의 열린구간이고 조건 q의 해집합은 -0.25와 3.75 사이의 열린구간이다. q에 속하는 정수 0, 1, 2, 3 중 0은 p의 범위 밖이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "p: (2-2k)<x<(2+2k), k=3/4일 때 0.5<x<3.5", "mappedTo": "numberLine"},
+    {"id": "c2", "condition": "q: (k-1)<x<(k+3), k=3/4일 때 -0.25<x<3.75", "mappedTo": "numberLine"}
+  ],
+  "newVisualInformation": [
+    "한 허용 예시 k=3/4에서 두 열린구간과 정수 반례의 소속을 직접 비교"
+  ]
+}
