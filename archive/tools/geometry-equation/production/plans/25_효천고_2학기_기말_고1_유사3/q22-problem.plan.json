@@ -1,0 +1,55 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "유리함수 $y=\\dfrac{9}{x-2}+2$ $(x\\gt 2)$의 그래프 위의 점 $P$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q$, $R$이라 할 때",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["5", "2"],
+    "denominator": ["-2", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [3, 8],
+    "viewport": [-1, 9, -1, 12],
+    "equalUnits": true,
+    "formulaTex": "\\frac{9}{x-2}+2",
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "Q", "x": "4", "y": "0"},
+        {"id": "P", "curveX": "4"},
+        {"id": "R", "x": "0", "y": "13/2"}
+      ],
+      "segments": [
+        {"id": "OQ", "from": "O", "to": "Q"},
+        {"id": "QP", "from": "Q", "to": "P"},
+        {"id": "PR", "from": "P", "to": "R"},
+        {"id": "RO", "from": "R", "to": "O"}
+      ],
+      "rightAngles": [
+        {"at": "Q", "from": ["O", "P"]}
+      ]
+    }
+  },
+  "caption": "예: 곡선 위에 P를 임의로 한 곳 잡고 두 좌표축에 수선을 내리면 OQPR이 직사각형이 된다. P는 움직이는 점이며 예시 위치는 넓이의 최솟값을 주는 점이 아니다.",
+  "accessibilityDescription": "x가 2보다 큰 쪽의 유리함수 그래프, 그 위에서 움직이는 점 P, 좌표축에 내린 두 수선의 발 Q와 R, 원점 O를 잇는 직사각형 OQPR이 보인다. P의 좌표와 최소 넓이는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "h22-1",
+      "condition": "주어진 함수 y=9/(x-2)+2, x>2의 오른쪽 가지",
+      "mappedTo": ["graphPlan.numerator", "graphPlan.denominator", "graphPlan.domain"]
+    },
+    {
+      "id": "h22-2",
+      "condition": "예시 P는 주어진 곡선 위에 있고 Q와 R은 각각 x축, y축에 내린 수선의 발",
+      "mappedTo": ["graphPlan.overlays.points.1", "graphPlan.overlays.points.2", "graphPlan.overlays.points.3", "graphPlan.overlays.segments.1", "graphPlan.overlays.segments.2"]
+    },
+    {
+      "id": "h22-3",
+      "condition": "O는 원점이며 OQPR은 직사각형",
+      "mappedTo": ["graphPlan.overlays.points.0", "graphPlan.overlays.segments.0", "graphPlan.overlays.segments.3", "graphPlan.overlays.rightAngles.0"]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 위의 움직이는 점 P와 수선의 발 Q, R, 원점 O가 이루는 직사각형의 네 변을 실제 선분 필드로 표시한다.",
+    "Q에서 두 변이 수직인 직각 표식과 가로 길이 OQ, 세로 길이 OR의 위치 관계를 보이며 넓이 최솟값은 노출하지 않는다."
+  ]
+}
