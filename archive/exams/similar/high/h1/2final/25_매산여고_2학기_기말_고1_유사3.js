@@ -1133,7 +1133,10 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q18",
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사3/q18-solution.svg",
+    "solutionImageAlt": "두 곡선이 (-6,6)만큼 평행이동되며 넓이 6·3=18이다.",
+    "solutionImageCaption": "두 곡선이 (-6,6)만큼 평행이동되며 넓이 6·3=18이다.",
+    "solutionImageSize": "full",
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
