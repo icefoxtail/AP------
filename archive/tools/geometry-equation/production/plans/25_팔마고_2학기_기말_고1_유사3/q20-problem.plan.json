@@ -1,0 +1,37 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "함수 $f(x)=x^2-4x+5$가 일대일대응이 되도록",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 6, -1, 12],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": ["5", "-4", "1"],
+        "domain": ["-1", "5"],
+        "color": "BLUE",
+        "label": "f(x)"
+      }
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "문제에 주어진 함수 f(x)=x²−4x+5의 전체 개형을 나타낸다. 정의역의 시작점 k, 공역의 경계 2k, 구해야 할 k의 값은 표시하지 않는다.",
+  "accessibilityDescription": "위로 열린 포물선은 왼쪽에서 감소하다가 가장 낮은 위치를 지난 후 오른쪽에서 증가한다. 정의역의 미지 경계 k와 그 값은 그림에 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "p20-1",
+      "condition": "원문에서 주어진 함수 f(x)=x²−4x+5",
+      "mappedTo": ["graphPlan.curves.0.kind", "graphPlan.curves.0.coefficients"]
+    },
+    {
+      "id": "p20-2",
+      "condition": "보이는 구간은 전체 개형의 일부이며 정의역 X=[k,∞)의 경계 k를 뜻하지 않음",
+      "mappedTo": ["graphPlan.curves.0.domain", "graphPlan.axisTickValues"]
+    }
+  ],
+  "newVisualInformation": [
+    "하나의 이차함수 곡선에 감소하는 왼쪽 가지와 증가하는 오른쪽 가지를 함께 표시하여 전체 구간의 일대일성 판단을 돕는다.",
+    "미지수 k의 시작선이나 풀이로 정해지는 숫자 좌표를 추가하지 않고 주어진 함수의 모양만 나타낸다."
+  ]
+}
